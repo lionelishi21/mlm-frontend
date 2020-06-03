@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="fixed sidebar-light">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+
+        <!-- Vendor CSS -->
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/animate/animate.css">
+
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/magnific-popup/magnific-popup.css" />
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
+
+    <!-- Specific Page Vendor CSS -->
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/owl.carousel/assets/owl.carousel.css" />
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/owl.carousel/assets/owl.theme.default.css" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="<%= BASE_URL %>css/theme.css" />
+
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="<%= BASE_URL %>css/skins/default.css" />
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="<%= BASE_URL %>css/custom.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>css/theme-shop.css">
+    
+    <!-- Head Libs -->
+    <script src="<%= BASE_URL %>vendor/modernizr/modernizr.js"></script>
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
@@ -13,5 +38,33 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+
+    <!-- Vendor -->
+    <script src="<%= BASE_URL %>vendor/jquery/jquery.js"></script>
+    <script src="<%= BASE_URL %>vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+    <script src="<%= BASE_URL %>vendor/popper/umd/popper.min.js"></script>
+    <script src="<%= BASE_URL %>vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="<%= BASE_URL %>vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="<%= BASE_URL %>vendor/common/common.js"></script>
+    <script src="<%= BASE_URL %>vendor/nanoscroller/nanoscroller.js"></script>
+    <script src="<%= BASE_URL %>vendor/magnific-popup/jquery.magnific-popup.js"></script>
+    <script src="<%= BASE_URL %>vendor/jquery-placeholder/jquery.placeholder.js"></script>
+    
+    <!-- Specific Page Vendor -->
+    <script src="<%= BASE_URL %>vendor/jquery-appear/jquery.appear.js"></script>
+    <script src="<%= BASE_URL %>vendor/owl.carousel/owl.carousel.js"></script>
+    <script src="<%= BASE_URL %>vendor/isotope/isotope.js"></script>
+    
+    <!-- Theme Base, Components and Settings -->
+    <script src="<%= BASE_URL %>js/theme.js"></script>
+    
+    <!-- Theme Custom -->
+    <script src="<%= BASE_URL %>js/custom.js"></script>
+    
+    <!-- Theme Initialization Files -->
+    <script src="<%= BASE_URL %>js/theme.init.js"></script>
+
+    <!-- Examples -->
+    <script src="<%= BASE_URL %>js/examples/examples.landing.dashboard.js"></script>
   </body>
 </html>
