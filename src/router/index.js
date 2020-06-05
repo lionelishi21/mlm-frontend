@@ -6,6 +6,8 @@ import Dashboard from '@/views/Dashboard.vue'
 import Register from '@/views/Register.vue'
 import Affiliates from '@/views/Affiliates.vue'
 import Details from '@/views/Details.vue'
+import Landing from '@/views/Landing.vue'
+
 import { isLoggedIn } from '../utils/auth.js'
 
 Vue.use(VueRouter)
@@ -41,9 +43,16 @@ Vue.use(VueRouter)
     
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
-
   {
     path: '/',
+    name: 'Landing',
+    component: Landing,
+    meta: {
+      allowAnonymous: true
+    }
+  },
+  {
+    path: '/login',
     name: 'Login',
     component: Login,
     meta: {

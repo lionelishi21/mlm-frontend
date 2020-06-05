@@ -1,6 +1,6 @@
 <template>
 <!-- start: header -->
-<header class="header">
+<header class="header-transparent header-transparent-dark-bottom-border header-transparent-dark-bottom-border-1 header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
 	<div class="logo-container">
 		<a href="../2.2.0" class="logo">
 			<img src="img/logomcc.png" width="75" height="35" alt="Porto Admin" />

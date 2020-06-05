@@ -27,12 +27,30 @@
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="<%= BASE_URL %>css/custom.css">
     <link rel="stylesheet" href="<%= BASE_URL %>css/theme-shop.css">
+
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/rs-plugin/css/layers.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/rs-plugin/css/navigation.css">
+  
+
+        <!-- Vendor CSS -->
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="<%= BASE_URL %>css/theme-elements.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>css/theme-blog.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>css/theme-shop.css">
     
+    <!-- Demo CSS -->
+
     <!-- Head Libs -->
     <script src="<%= BASE_URL %>vendor/modernizr/modernizr.js"></script>
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
-  <body>
+ <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
@@ -42,13 +60,25 @@
     <!-- Vendor -->
     <script src="<%= BASE_URL %>vendor/jquery/jquery.js"></script>
     <script src="<%= BASE_URL %>vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+    <script src="<%= BASE_URL %>vendor/jquery.appear/jquery.appear.min.js"></script>
+    <script src="<%= BASE_URL %>vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="<%= BASE_URL %>vendor/jquery.cookie/jquery.cookie.min.js"></script>
     <script src="<%= BASE_URL %>vendor/popper/umd/popper.min.js"></script>
-    <script src="<%= BASE_URL %>vendor/bootstrap/js/bootstrap.js"></script>
+    <!-- <script src="<%= BASE_URL %>vendor/bootstrap/js/bootstrap.js"></script> -->
     <script src="<%= BASE_URL %>vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="<%= BASE_URL %>vendor/common/common.js"></script>
     <script src="<%= BASE_URL %>vendor/nanoscroller/nanoscroller.js"></script>
     <script src="<%= BASE_URL %>vendor/magnific-popup/jquery.magnific-popup.js"></script>
     <script src="<%= BASE_URL %>vendor/jquery-placeholder/jquery.placeholder.js"></script>
+    <script src="<%= BASE_URL %>vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<%= BASE_URL %>vendor/common/common.min.js"></script>
+    <script src="<%= BASE_URL %>vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="<%= BASE_URL %>vendor/jquery.gmap/jquery.gmap.min.js"></script>
+    <script src="<%= BASE_URL %>vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+    <script src="<%= BASE_URL %>vendor/isotope/jquery.isotope.min.js"></script>
+    <script src="<%= BASE_URL %>vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="<%= BASE_URL %>vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="<%= BASE_URL %>vendor/vide/jquery.vide.min.js"></script>
+    <script src="<%= BASE_URL %>vendor/vivus/vivus.min.js"></script>
     
     <!-- Specific Page Vendor -->
     <script src="<%= BASE_URL %>vendor/jquery-appear/jquery.appear.js"></script>
@@ -57,7 +87,10 @@
     
     <!-- Theme Base, Components and Settings -->
     <script src="<%= BASE_URL %>js/theme.js"></script>
-    
+
+    <script src="<%= BASE_URL %>vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="<%= BASE_URL %>vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <!-- <script src="<%= BASE_URL %>js/views/view.contact.js"></script> -->
     <!-- Theme Custom -->
     <script src="<%= BASE_URL %>js/custom.js"></script>
     
@@ -65,6 +98,23 @@
     <script src="<%= BASE_URL %>js/theme.init.js"></script>
 
     <!-- Examples -->
-    <script src="<%= BASE_URL %>js/examples/examples.landing.dashboard.js"></script>
+    <!-- <script src="<%= BASE_URL %>js/examples/examples.landing.dashboard.js"></script> -->
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script>
+
+      /*
+      Map Settings
+
+        Find the Latitude and Longitude of your address:
+          - https://www.latlong.net/
+          - http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
+
+      */
+
+      // Styles from https://snazzymaps.com/
+      var styles = [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}];
+
+    </script>
   </body>
 </html>

@@ -4,6 +4,9 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import vueCountryRegionSelect from 'vue-country-region-select'
+import $ from 'jquery'
+window.$ = $
+
 
 Vue.use(vueCountryRegionSelect)
 Vue.config.productionTip = false
