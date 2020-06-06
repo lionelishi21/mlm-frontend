@@ -35,7 +35,7 @@
 				    <p class="pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800" data-appear-animation-duration="750">
 						The Sole Objective of The Majestic Cares Community (MCC), Is To Liberate and Empower Our Family, Friends And Neighbors, Startinng With the Purchase and Sale of This Dynamic Publication, AND Through Our PROPRIETARY AUTOMATED CASH BONUS SYSTEM! This Powerful And Unique Publication Will Enrich Your Life, As Well As The Lives of Others – Or Your Money Back!
 				    </p>
-					<a href="https://themeforest.net/item/porto-admin-responsive-html5-template/8539472" class="btn btn-modern btn-successinde btn-rounded btn-px-5 py-3 text-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-appear-animation-duration="750" target="_blank">Buy Now</a>
+					<a href="https://themeforest.net/item/porto-admin-responsive-html5-template/8539472" class="btn btn-success btn-rounded btn-px-5 py-3 text-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-appear-animation-duration="750" target="_blank">Buy Now</a>
 				</div>
 
 				<div class="col-md-5">

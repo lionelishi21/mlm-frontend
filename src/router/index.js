@@ -9,6 +9,7 @@ import Details from '@/views/Details.vue'
 import Landing from '@/views/Landing.vue'
 import LandingPage from '@/views/landing/index.vue'
 import Checkout from '@/views/Checkout.vue'
+import Howitworks from '@/views/Howitworks';
 import { isLoggedIn } from '../utils/auth.js'
 
 Vue.use(VueRouter)
@@ -51,6 +52,17 @@ Vue.use(VueRouter)
          meta: {
            allowAnonymous: true
         }
+      },
+      {
+        path: 'howitworks',
+        component: Howitworks,
+        meta: {
+           allowAnonymous: true
+        }
+      },
+      {
+        path: '/register',
+        component: Register,
       },
       {
         path: '/login',
