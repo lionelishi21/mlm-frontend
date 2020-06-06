@@ -7,7 +7,8 @@ import Register from '@/views/Register.vue'
 import Affiliates from '@/views/Affiliates.vue'
 import Details from '@/views/Details.vue'
 import Landing from '@/views/Landing.vue'
-
+import LandingPage from '@/views/landing/index.vue'
+import Checkout from '@/views/Checkout.vue'
 import { isLoggedIn } from '../utils/auth.js'
 
 Vue.use(VueRouter)
@@ -32,42 +33,35 @@ Vue.use(VueRouter)
       }
    ]
   },
-
-  {
-    path: '/about',
-    name: 'About',
-
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
   {
     path: '/',
     name: 'Landing',
     component: Landing,
-    meta: {
-      allowAnonymous: true
-    }
+    children: [
+      {
+        path: '',
+        component: LandingPage,
+        meta: {
+           allowAnonymous: true
+        }
+      }, 
+      {
+        path: 'checkout',
+        component: Checkout,
+         meta: {
+           allowAnonymous: true
+        }
+      },
+      {
+        path: '/login',
+        component: Login,
+        meta: {
+           allowAnonymous: true
+        }
+      }
+    ]
   },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login,
-    meta: {
-       allowAnonymous: true
-    }
-  },
-
-  {
-    path: '/register',
-    anme: 'Register',
-    component: Register,
-    meta: {
-      allowAnonymous: true
-    }
-  }
+ 
 ]
 
 const router = new VueRouter({
