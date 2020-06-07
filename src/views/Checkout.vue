@@ -1,9 +1,17 @@
 <template>
 	<div class="container" style="padding-top: 8.5%">
 			<div class="">
-				 <span class="alert alert-danger">
-					<li>{{msg.email}}</li>
-			     </span>
+				<div class="alert alert-danger" role="alert" v-if="msg.email">
+					<strong><i class="fas fa-exclamation-triangle"></i>Oh snap!</strong> Please enter all require fields
+					<ul>
+						<li v-if="msg.email">{{msg.email}}</li>
+						<li v-if="msg.first_name">{{msg.first_name}}</li>
+						<li v-if="msg.last_name">{{msg.last_name}}</li>
+						<li v-if="msg.country">{{msg.country}}</li>
+						<li v-if="msg.region">{{msg.region}}</li>
+						<li v-if="msg.address">{{msg.address}}</li>
+					</ul>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-9">
@@ -21,10 +29,10 @@
 							<div id="collapseOne" class="collapse show">
 								<div class="card-body">
 									<form action="/" id="frmBillingAddress" method="post">
-										<div class="form-row">
-											<div class="form-group col-lg-12" :class="{ 'has-error': emailIsInvalid }">
+										<div class="form-row ">
+											<div class="form-group col-lg-12" :class="{ 'has-danger': emailIsInvalid }">
 												<label  class="font-weight-bold text-dark text-2">Email Address<span class="text-danger">* </span><small><i>Why we require?</i></small></label>
-												<input v-model="form.email" type="text" value="" class="form-control">
+												<input re v-model="form.email" type="text" value="" class="require form-control ">
 												<span class="help-block text-danger">{{msg.email}}</span>
 												<br>
 											</div>
@@ -50,7 +58,7 @@
 							<div id="collapseOne" class="collapse show">
 								<div class="card-body">
 									  <div class="form-row">
-											<div class="form-group col-lg-6">
+											<div class="form-group has-danger col-lg-6">
 												<label class="font-weight-bold text-dark text-2">First Name <span class="text-danger">*</span></label>
 												<input v-model="form.first_name" type="text" value="" class="form-control">
 												<span class="help-block text-danger">{{msg.first_name}}</span>
@@ -73,6 +81,7 @@
 											<div class="form-group col">
 												<label class="font-weight-bold text-dark text-2">City <span class="text-danger">*</span></label>
 												<region-select class="form-control" v-model="form.region" :country="form.country" :region="form.region" />
+												<span class="help-block text-danger">{{msg.region}}</span>
 												<br>
 											</div>
 										</div>
@@ -80,6 +89,7 @@
 											<div class="form-group col">
 												<label class="font-weight-bold text-dark text-2">Address <span class="text-danger">*</span></label>
 												<input v-model="form.address" type="text" value="" class="form-control">
+												<span class="help-block text-danger">{{msg.address}}</span>
 											</div>
 										</div>
 										
@@ -141,9 +151,7 @@
 												<td class="product-name">
 													<img src="@/assets/ebook.png">
 												</td>
-												<td class="product-price">
-													<span class="amount">$34.95</span>
-												</td>
+				
 												<td class="product-subtotal">
 													<span class="amount">$34.95</span>
 												</td>
@@ -188,13 +196,20 @@
 				<div class="col-lg-3">
 					<div class="card">
 						<div class="card-body">
-							<h4 class="text-primary">Cart Totals</h4>
+							<h4 class="text-primary">Ebook</h4>
 							<table class="cart-totals">
+
 								<tbody>
-									<tr class="total">
+									<tr>
+										<td>
+											<img src="@/assets/ebook.png">
+										</td>
+									</tr>
+									<tr class="total mt-3">
 										<th>
 											<strong class="text-dark">Order Total</strong>
 										</th>
+
 										<td>
 											<strong class="text-dark"><span class="amount">$34.95</span></strong>
 										</td>
@@ -245,8 +260,8 @@ export default {
 	    continue: false,
 	    loading: false,
 	    form: {
-	      	country: '',
-	      	region: '',
+	      	country: null,
+	      	region: null,
 	        name: null,
 	        email: null,
 	        first_name: null,
@@ -254,7 +269,7 @@ export default {
 	        password: null,
 	        password_confimation: null,
 	        referral_id: '',
-	        address: ''
+	        address:null
 	      },
 	      validationErrors: "",
 	      errors: {
@@ -264,7 +279,12 @@ export default {
 	        password_confimation: [],
 	      },
 	       msg: {
-	    	email: ''
+	    	email: '',
+	    	first_name: '',
+	    	last_name: '',
+	    	country: '',
+	    	region: '',
+	    	address: ''
 	       },
 	       paypal: {
 		       sandbox: 'AbUMmsT4JJSCUg86MP4SV1-iA3jjCtPYpqkrV3xrU2ZrAZ17FkFHA_AuI2LVe2xhu-nYBZB5ezKN2Y9z',
@@ -285,9 +305,30 @@ export default {
   },
 
   computed: {
+  
   	emailIsInvalid() {
-       return !this.form.email
+        return !this.form.email
     },
+
+    firstNameIsInValid() {
+    	return !this.form.first_name
+    },
+
+    lastNameIsInValid() {
+    	return !this.form.last_name
+    },
+
+    countryIsInValid() {
+    	return !this.form.country
+    },
+
+    regionIsInvalid() {
+    	return !this.form.region
+    },
+
+    addressIsInvalid() {
+    	return !this.form.address
+    }
 
   },
   created() {
@@ -312,8 +353,51 @@ export default {
    			this.step = 2
 	   	} else {
 	   		this.validateEmail(this.form.email)
+	   		this.validateFirstName(this.form.first_name)
+	   		this.validateLastName(this.form.last_name)
+	   		this.validateCountry(this.form.country)
+	   		this.validateRegion(this.form.country)
+	   		this.validateAddress(this.form.address)
+
 	   	}
    },
+   validateLastName(value) {
+   		if (value !== null) {
+   			this.msg.last_name = null
+   		} else {
+   			this.msg.last_name = 'Last name is require'
+   		}
+   },
+    validateFirstName(value) {
+   		if (value !== null) {
+   			this.msg.first_name = null
+   		} else {
+   			this.msg.first_name = 'First name is require'
+   		}
+   },
+   validateCountry( value ) {
+   		if ( value !== null) {
+   			this.msg.country = null
+   		} else {
+   			this.msg.country = 'Country is require'
+   		}
+   },
+   validateRegion( value ) {
+   		if ( value !== null) {
+   			this.msg.region= null
+   		} else {
+   			this.msg.region = 'City/state is require'
+   		}
+   },
+   validateAddress( value ) {
+
+   		if ( value !== null) {
+   			this.msg.address = null
+   		} else {
+   			this.msg.address = 'Address is require'
+   		}
+   },
+
    validateEmail(value) {
 	   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
 		   this.msg.email = '';
@@ -362,8 +446,9 @@ export default {
    			this.$store.dispatch('BUY_BOOK', form)
    				.then( response => {
    					console.log(response)
-   					alert('working')
    					this.loading = false
+
+   					this.$router.push('/order-completed?payments=')
 
    				}).catch( error => {
    				 	console.log(error.response)

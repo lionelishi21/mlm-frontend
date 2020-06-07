@@ -75,7 +75,7 @@
 	export default {
 		data() {
 			return {
-				headerClass: ''
+				headerClass: 'bg-dark'
 			}
 		},
 		watch: {
@@ -85,6 +85,14 @@
 				} else {
 					this.headerClass = 'bg-dark'
 				}
+			}
+		},
+		computed: function() {
+
+			if (this.$route.path !== '/'){
+				this.headerClass = 'bg-dark'
+			} else {
+				this.headerClass = ''
 			}
 		}
 	}

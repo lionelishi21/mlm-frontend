@@ -10,6 +10,8 @@ import Landing from '@/views/Landing.vue'
 import LandingPage from '@/views/landing/index.vue'
 import Checkout from '@/views/Checkout.vue'
 import Howitworks from '@/views/Howitworks';
+import OrderComplete from '@/views/OrderComplete.vue';
+
 import { isLoggedIn } from '../utils/auth.js'
 
 Vue.use(VueRouter)
@@ -58,6 +60,13 @@ Vue.use(VueRouter)
         component: Howitworks,
         meta: {
            allowAnonymous: true
+        }
+      },
+      {
+        path: '/order-completed',
+        component: OrderComplete,
+        meta: {
+          allowAnonymous: true
         }
       },
       {
