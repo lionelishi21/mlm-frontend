@@ -17,7 +17,7 @@
 							<div class="header-nav header-nav-links header-nav-dropdowns-dark header-nav-light-text order-2 order-lg-1">
 								<div class="header-nav-main header-nav-main-mobile-dark header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-2 header-nav-main-sub-effect-1">
 									<nav class="collapse">
-										<ul class="nav nav-pills" id="mainNav">
+										<ul class="nav nav-pills mt-4" id="mainNav">
 											<li class="dropdown">
 												<a class="dropdown-item dropdown-toggle" href="/">
 													Home

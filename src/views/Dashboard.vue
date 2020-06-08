@@ -10,7 +10,6 @@
 							<i class="fas fa-home"></i>
 						</a>
 					</li>
-					<li><span>Home</span></li>
 					<li><span>Dashboard</span></li>
 				</ol>
 				<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
@@ -19,8 +18,6 @@
 		<div class="row">
 			<div class="col-md-12">
                
-              
-
 			    <h4>Your Affilate ID is: <strong> 100100100</strong></h4>
 		    </div>
 		</div>

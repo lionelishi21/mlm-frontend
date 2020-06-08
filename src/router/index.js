@@ -11,6 +11,7 @@ import LandingPage from '@/views/landing/index.vue'
 import Checkout from '@/views/Checkout.vue'
 import Howitworks from '@/views/Howitworks';
 import OrderComplete from '@/views/OrderComplete.vue';
+import Profile from '@/views/Profile.vue';
 
 import { isLoggedIn } from '../utils/auth.js'
 
@@ -33,6 +34,10 @@ Vue.use(VueRouter)
       {
         path: 'affiliates/:id',
         component: Details
+      }, 
+      {
+        path: 'profile',
+        component: Profile
       }
    ]
   },

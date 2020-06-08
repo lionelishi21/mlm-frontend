@@ -36,6 +36,12 @@
                     <li>
                         <a class="nav-link" href="layouts-default.html">
                             <i class="fas fa-book" aria-hidden="true"></i>
+                            <span>Wallet</span>
+                        </a>                        
+                    </li>
+                    <li>
+                        <a class="nav-link" href="layouts-default.html">
+                            <i class="fas fa-book" aria-hidden="true"></i>
                             <span>Ebooks</span>
                         </a>                        
                     </li>
