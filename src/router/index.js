@@ -12,6 +12,9 @@ import Checkout from '@/views/Checkout.vue'
 import Howitworks from '@/views/Howitworks';
 import OrderComplete from '@/views/OrderComplete.vue';
 import Profile from '@/views/Profile.vue';
+import UserHomePage from '@/views/UserHomePage.vue';
+import Wallet from '@/views/Wallet.vue';  
+import AdminDashboard from '@/views/AdminDashboard';
 
 import { isLoggedIn } from '../utils/auth.js'
 
@@ -28,6 +31,10 @@ Vue.use(VueRouter)
         component: Dashboard
       },
       {
+        path: 'admin', 
+        component: AdminDashboard
+      },
+      {
         path: 'affiliates',
         component: Affiliates
       }, 
@@ -38,8 +45,19 @@ Vue.use(VueRouter)
       {
         path: 'profile',
         component: Profile
+      }, 
+      {
+        path: 'wallet',
+        component: Wallet
       }
    ]
+  },
+   {
+    path: '/homepage',
+    component: UserHomePage,
+    meta: {
+      allowAnonymous: true
+    }
   },
   {
     path: '/',

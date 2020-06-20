@@ -10,7 +10,10 @@ const state = {
   },
   userDetails: {},
   profile: {},
-  user: {}
+  user: {},
+  group_sales: 0,
+  adminDashboard: {},
+  cashbonuses: {}
 
 }
 
@@ -120,6 +123,43 @@ const actions = {
 
   FETCH_USER({ commit, dispatch}) {
 
+  },
+  USER_GROUP_SALES({commit, dispatch}) {
+
+      api.fetchUserGroupSales()
+        .then( response => {
+          console.log( response )
+          commit('SET_GROUP_SALES', response.data)
+        })
+        .catch( error => {
+          console.log(error.response)
+        })
+  },
+
+  ADMIN_DASHBOARD({commit}) {
+
+    api.fetchAdminDashboard()
+      .then( response => {
+         console.log(response) 
+         commit('SET_ADMIN_DASHBOARD',response.data)
+      })
+      .catch( error => {
+        console.log( error.response )
+      })
+  },
+
+  GET_USER_CASHBONUS({commit}, id) {
+
+     api.fetchUserCashBonuses(id) 
+       .then( response => {
+
+          console.log(response) 
+          commit('SET_CASHBONUSES', response.data)
+       })
+       .catch(error => {
+
+          console.log(error.response)
+       }) 
   }
 
 }
@@ -137,6 +177,18 @@ const mutations = {
 
     SET_LOGIN_USER(state, detail) {
       state.user = detail
+    },
+
+    SET_GROUP_SALES(state, sale) {
+      state.group_sales = sale
+    },
+
+    SET_ADMIN_DASHBOARD(state, dash) {
+      state.adminDashboard = dash
+    },
+
+    SET_CASHBONUSES(state, cash) {
+      state.cashbonuses = cash
     }
 
 }
@@ -151,8 +203,10 @@ const getters = {
     getUserDetails(state) {
       return state.userDetails 
     },
-
-    getLoginUser: state => state.user
+    getLoginUser: state => state.user,
+    getGroupSales: state => state.group_sales,
+    getAdminDashboard: state => state.adminDashboard,
+    getCashBonuses: state => state.cashbonuses
 }
 
 export default {

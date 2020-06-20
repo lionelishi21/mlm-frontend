@@ -122,47 +122,12 @@
 							<div class="card-header">
 								<h4 class="card-title m-0">
 									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-										Review &amp; Payment
+										Payment
 									</a>
 								</h4>
 							</div>
 							<div id="collapseThree" class="collapse show">
 								<div class="card-body">
-									<table class="shop_table cart">
-										<thead>
-											<tr>
-												<th class="product-thumbnail">
-													&nbsp;
-												</th>
-												<th class="product-name">
-													Product
-												</th>
-												<th class="product-price">
-													Price
-												</th>
-												<th class="product-subtotal">
-													Total
-												</th>
-											</tr>
-										</thead>
-										<tbody>
-											
-											<tr class="cart_table_item">
-												<td class="product-name">
-													<img src="@/assets/ebook.png">
-												</td>
-				
-												<td class="product-subtotal">
-													<span class="amount">$34.95</span>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-					
-									<hr class="solid my-5">
-					
-									<h4 class="text-primary">Cart Totals</h4>
-					
 									<form action="/" id="frmPayment" method="post">
 										<div class="form-row">
 											<div class="form-group col">
@@ -419,46 +384,58 @@ export default {
    },
 
    paymentAuthorized: function( data ) {
+		    
+	    this.loading = true
+		let formData = new FormData()
+		formData.append('payments', data)
+		formData.append('form', JSON.stringify(this.form))
 
+		console.log(formData)
+
+		let form = {
+			payments: data,
+			user: this.form
+		}
+
+		this.$store.dispatch('BUY_BOOK', form)
+		.then( response => {
+			console.log(response)
+
+		}).catch( error => {
+		 	console.log(error.response)
+		})
    },
-
    paymentCompleted: function (data) {
-   		this.loading = true
-   		console.log(this.form)
-
-   		if (data['state'] == 'approved') {
-
-   			let details = {
-
-   			}
-
-   			let formData = new FormData()
-   			formData.append('payments', data)
-   			formData.append('form', JSON.stringify(this.form))
-
-   			console.log(formData)
-
-   			let form = {
-   				payments: data,
-   				user: this.form
-   			}
-
-   			this.$store.dispatch('BUY_BOOK', form)
-   				.then( response => {
-   					console.log(response)
-   					this.loading = false
-
-   					this.$router.push('/order-completed?payments=')
-
-   				}).catch( error => {
-   				 	console.log(error.response)
-   				})
-   		}
+   	    this.$router.push('/order-completed?payments=23232')
    },
 
    paymentCancelled: function (data) {
 
    },
+   order() {
+     this.loading = true
+   			let formData = new FormData()
+   			// formData.append('payments', data)
+   			formData.append('form', JSON.stringify(this.form))
+
+   			console.log(formData)
+
+   			let form = {
+   				// payments: data,
+   				user: this.form
+   			}
+
+   			this.$store.dispatch('BUY_BOOK', form)
+			.then( response => {
+				console.log(response)
+
+			}).catch( error => {
+			 	console.log(error.response)
+			})
+   }
   }
 }
+
+
+</script>
 </script>

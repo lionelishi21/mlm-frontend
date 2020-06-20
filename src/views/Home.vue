@@ -38,4 +38,7 @@ export default {
 @import '../assets/css/custom.css';
 // @import '../assets/vendor/modernizr/modernizr.js';
 
+.content-body {
+	background: #eeeeee !important;
+}
 </style>

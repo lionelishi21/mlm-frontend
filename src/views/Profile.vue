@@ -34,7 +34,7 @@
 											<span class="thumb-info-type">{{getUserDetails.first_name}} {{getUserDetails.last_name}}</span>
 										</div>
 									</div>
-<!-- 
+
 									<div class="widget-toggle-expand mb-3">
 										<div class="widget-header">
 											<h5 class="mb-2">Profile Completion</h5>
@@ -49,7 +49,6 @@
 										</div>
 										<div class="widget-content-expanded">
 											<ul class="simple-todo-list mt-3">
-												<li class="completed">Update Profile Picture</li>
 												<li class="completed">Change Personal Information</li>
 												<li>Update Social Media</li>
 												<li>Follow Someone</li>
@@ -64,8 +63,8 @@
 									<div class="clearfix">
 										<a class="text-uppercase text-muted float-right" href="#">(View All)</a>
 									</div>
-
-									<hr class="dotted short"> -->
+ 
+									<hr class="dotted short">
 
 									
 
@@ -146,7 +145,7 @@
 												<a href="#" class="col-md-3" v-for="af in getAffiliateDetails.affiliate" @click.prevent="replaceRoute(af.user_id)">
 													<section class="card " style="margin-top: 50px;" >
 														<div class="card-header  text-center">
-															<h4>{{af.username}}</h4>
+															<h4><small></small>{{af.username}}</h4>
 														</div>
 													</section>
 												</a>

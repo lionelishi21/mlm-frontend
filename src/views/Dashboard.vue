@@ -18,8 +18,14 @@
 		<div class="row">
 			<div class="col-md-12">
                
-			    <h4>Your Affilate ID is: <strong> 100100100</strong></h4>
+			    <h4>Your Affilate ID is: <strong> {{getUserDetails.affiliate_id.affiliate_id}}</strong></h4>
+			    <h6> Affiliate Link: <a :href="'http://majesticares.com/checkout?referral_id='+getUserDetails.affiliate_id.affiliate_id">
+			    	 	http://majesticares.com/checkout?referral_id={{getUserDetails.affiliate_id.affiliate_id}}
+			    	 </a></h6>
 		    </div>
+		</div>
+		<div class="row">
+			
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
@@ -35,15 +41,14 @@
 											</div>
 											<div class="widget-summary-col">
 												<div class="summary">
-													<h3>Personal Sales Status</h3>
+													<h4><b>Personal Sales </b></h4>
 													<div class="info">
 														<strong class="amount">{{getUserDetails.purchase.length}}</strong>
-														<span v-if="getUserDetails.purchase.length >= 3" class="text-success">(Active)</span>
+														<span v-if="getUserDetails.purchase.length >= 3" class="text-success text-5">
+														 <b>(Active)</b>
+													   </span>
 														<span v-else class="text-danger">(Inactive)</span>
 													</div>
-												</div>
-												<div class="summary-footer">
-													<a class="text-muted text-uppercase" href="#">(view all)</a>
 												</div>
 											</div>
 										</div>
@@ -56,18 +61,15 @@
 										<div class="widget-summary">
 											<div class="widget-summary-col widget-summary-col-icon">
 												<div class="summary-icon bg-secondary">
-													<i class="fas fa-dollar-sign"></i>
+													<i class="fas fa-shopping-cart"></i>
 												</div>
 											</div>
 											<div class="widget-summary-col">
 												<div class="summary">
-													<h3>Total Group Sales</h3>
+													<h4><b>Total Group Sales</b></h4>
 													<div class="info">
-														<strong class="amount">100</strong>
+														<strong class="amount">{{getGroupSales.response}}</strong>
 													</div>
-												</div>
-												<div class="summary-footer">
-													<a class="text-muted text-uppercase" href="#">(view)</a>
 												</div>
 											</div>
 										</div>
@@ -80,18 +82,15 @@
 										<div class="widget-summary">
 											<div class="widget-summary-col widget-summary-col-icon">
 												<div class="summary-icon bg-tertiary">
-													<i class="fas fa-shopping-cart"></i>
+													<i class="fas fa-dollar-sign"></i>
 												</div>
 											</div>
 											<div class="widget-summary-col">
 												<div class="summary">
-													<h3>Cash Bonus</h3>
+													<h4><b>Cash Bonus</b></h4>
 													<div class="info">
-														<strong class="amount">$ 138</strong>
+														<strong class="amount" v-if="getGroupSales.response >= 12">$100.00</strong>
 													</div>
-												</div>
-												<div class="summary-footer">
-													<a class="text-muted text-uppercase" href="#">(view)</a>
 												</div>
 											</div>
 										</div>
@@ -109,13 +108,10 @@
 											</div>
 											<div class="widget-summary-col">
 												<div class="summary">
-													<h3>Wallet</h3>
+													<h4><b>Wallet</b></h4>
 													<div class="info">
-														<strong class="amount">$1,000</strong>
+														<strong class="amount">$0</strong>
 													</div>
-												</div>
-												<div class="summary-footer">
-													<a class="text-muted text-uppercase" href="#">Radiant Mutual (withdraw )</a>
 												</div>
 											</div>
 										</div>
@@ -158,7 +154,7 @@
 								</tr>
 								<tr>
 									<td><strong class="text-default">Silver</strong></td>
-									<td><strong>26</strong></td>
+									<td><strong>36</strong></td>
 									<td><strong>$600</strong></td>
 									<td></td>
 									<td></td>
@@ -179,8 +175,8 @@
 								</tr>
 								<tr>
 									<td><strong class="text-danger">Diamond</strong></td>
-									<td><strong>927</strong></td>
-									<td><strong>$153,040</strong> <small>(Recycle)</small></td>
+									<td><strong>972</strong></td>
+									<td><strong>$412,855.60</strong> <small>(Recycle)</small></td>
 									<td></td>
 									<td></td>
 								</tr>
@@ -203,15 +199,23 @@ export default {
 	data() {
 		return {
 			tilte: 'Dashbord',
+			cash: 0
 		}
 	},
 	computed: {
 		...mapGetters([
-		 	'getUserDetails'
-		])
+		 	'getUserDetails',
+		 	'getGroupSales'
+		]),
+		cashBonus: function() {
+			if ( this.getGroupSales.response == 12 ) {
+				this.cash = 100
+			}
+		}
 	},
 	created() {
 		this.$store.dispatch('GET_USER_DETAILS')
+		this.$store.dispatch('USER_GROUP_SALES')
 	},
 	methods:{
 	}

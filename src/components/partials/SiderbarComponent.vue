@@ -32,12 +32,11 @@
                             <span>Affiliates</span>
                         </router-link>                        
                     </li>
-
                     <li>
-                        <a class="nav-link" href="layouts-default.html">
-                            <i class="fas fa-book" aria-hidden="true"></i>
+                        <router-link  tag="a" to="/dashboard/wallet" class="nav-link" >
+                          	<i class="fas fa-dollar-sign"></i>
                             <span>Wallet</span>
-                        </a>                        
+                        </router-link>                        
                     </li>
                     <li>
                         <a class="nav-link" href="layouts-default.html">

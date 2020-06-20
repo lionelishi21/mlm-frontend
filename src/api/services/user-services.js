@@ -60,5 +60,17 @@ export default {
 
 	purchaseEBook(params) {
 		return Api().post('/purchase', params)
+	},
+
+	fetchUserGroupSales() {
+		return Api().get('/affiliates/group-sales')
+	},
+
+	fetchAdminDashboard() {
+		return Api().get('/admin/dashboard')
+	},
+
+	fetchUserCashBonuses(userId) {
+		return Api().get('/cashbonuses/'+userId)
 	}
 }

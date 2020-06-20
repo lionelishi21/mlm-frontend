@@ -9,10 +9,11 @@
 							<div class="col-lg-12 mb-5 nt-5">
 								<h1 class="font-weight-bold text-12 text-success line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400" data-appear-animation-duration="750"> MAJESTIC CARES COMMUNITY - MCC <br>
 							     A SIMPLE ACT OF CARING</h1>
-								<p class="text-success  font-weight-extra-bold custom-font-size-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900" data-appear-animation-duration="750">
-									Caring Creates An Everlasting Ripple Effect! Recieve Cash Bonuses For Any Worthwhile Purpose And Transform Your Life As Well The Lives of Others With a Simple Act of Caring And Sharing!
+								<h4 class="text-success  font-weight-extra-bold font-size-6 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900" data-appear-animation-duration="750">
 
-									 <a href="#intro" data-hash data-hash-offset="120" class="text-color-light font-weight-semibold text-1 d-block">VIEW MORE <i class="fa fa-long-arrow-alt-right ml-1"></i></a></p>
+									Caring Creates An Everlasting Ripple Effect! Receive Cash Bonuses For Any Worthwhile Purpose <br>And Transform Your Life As Well As The Lives of Others With a Simple Act of Caring And Sharing!
+
+									 <a href="#intro" data-hash data-hash-offset="120" class="text-color-light font-weight-semibold text-1 d-block">VIEW MORE <i class="fa fa-long-arrow-alt-right ml-1"></i></a></h4>
 								
 
 							</div>
@@ -152,21 +153,21 @@
 		<div class="container">
 
 			<div class="text-center mb-5">
-				<h5 class="font-weight-semibold positive-ls-2 text-4 text-primary mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250" data-appear-animation-duration="750">YOU HAVE THE POWER TO IMPACT YOUR FUTURE – TODAY!</h5>
+				<h5 class="font-weight-semibold positive-ls-2 text-5 text-primary mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250" data-appear-animation-duration="750">YOU HAVE THE POWER TO IMPACT YOUR FUTURE – TODAY!</h5>
 				<h2 class="font-weight-bold text-9 mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600" data-appear-animation-duration="750">
 				   WHY NOT START DOING SOMETHING ABOUT IT – NOW?
 			    </h2>
 			</div>
 			<div class="row pb-5">
 				<div class="col-md-8 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700" data-appear-animation-duration="750">
-					<div class="bg-color-dark-scale-2 rounded p-5">
-						<p class="custom-text-color-1 text-3 color-inherit mb-0">Majestic Cares Communitys Noble Endeavor To Help Change Lives
+					<div class="rounded">
+						<p class="custom-text-color-1 text-5 color-inherit mb-0">Majestic Cares Communitys Noble Endeavor To Help Change Lives
 							Around The World, Has Resulted In A Breakthrough Initiative: The
 							Majestic Cares International Affiliate Online Community.
 							</p>
 					</div>
-					<div class="bg-color-dark-scale-2 rounded p-5">
-						<p class="custom-text-color-1 text-3 color-inherit mb-0">
+					<div class="rounded mt-4">
+						<p class="custom-text-color-1 text-5 color-inherit mb-0">
 							
 							Inspired By Ordinary People Nationwide, Majestic Cares Online
 							Community (MCC), Was Created So That ALL of Its Affiliate/Members
@@ -174,8 +175,8 @@
 
 						</p>
 					</div>
-					<div class="bg-color-dark-scale-2 rounded p-5">
-						<p class="custom-text-color-1 text-3 color-inherit mb-0">
+					<div class="rounded mt-4">
+						<p class="custom-text-color-1 text-5 color-inherit mb-0">
 
 							When Our Affiliate/Members Utilize MCCs Unique, PROPRIERTARY GROUP SALES FORMULA,
 							Each Affiliate Will Not Only Benefit Themselves, But At The Same Time, Enrich The Lives of Others,
@@ -183,8 +184,8 @@
 						</p>
 						
 					</div>
-					<div class="bg-color-dark-scale-2 rounded p-5">
-						<p class="custom-text-color-1 text-3 color-inherit mb-0">Majestic Cares Communitys Noble Endeavor To Help Change Lives
+					<div class="rounded mt-4">
+						<p class="custom-text-color-1 text-5 color-inherit mb-0">Majestic Cares Communitys Noble Endeavor To Help Change Lives
 
 							Majestic Cares Vision Is To Enable Its Affiliate/Members To Earn A Substantial Residual Income, And At The Same Time, Lift As Many People As Possible Out of Debt And Poverty, Using A Proprietary Automated Cash Bonus Payment System!</p>
 					</div>
@@ -195,7 +196,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<a href="https://themeforest.net/item/porto-responsive-html5-template/4106987" class="btn btn-dark btn-modern btn-rounded px-5 btn-py-3 text-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1800" data-appear-animation-duration="750" target="_blank">Read More</a>
+				<a href="https://themeforest.net/item/porto-responsive-html5-template/4106987" class="btn btn-primary btn-modern btn-rounded text-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1800" data-appear-animation-duration="750" target="_blank">Read More</a>
 			</div>
 		</div>
 	</section>

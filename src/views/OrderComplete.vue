@@ -2,12 +2,13 @@
 	<div class="container" style="padding-top: 8.5%">
 	<section class="http-error" style="height: 70vh;">
 		<div class="row justify-content-center py-3">
-			<div class="col-6 text-center mt-3 pt-3">
+			<div class="col-8 text-center mt-3 pt-3">
 				<div class="http-error-main">
-					<h4 class="mb-0">Order Complete!</h4>
-					<p class="text-3 my-4">Thank you for your order! Please Check your email for further instructions</p>
+					<h3 class="mb-0">Order Complete!</h3>
+					<p class="text-6 my-4">"Please check your email (and Spam) for further instructions." <br>
+					Contact <a href="">admin@majesticares.com </a>if assistance is needed.</p>
 				</div>
-				<a href="#" @click="goToHome()" class="btn btn-primary btn-rounded btn-xl font-weight-semibold text-2 px-4 py-3 mt-1 mb-4"><i class="fas fa-angle-left pr-3"></i>GO BACK TO HOME PAGE</a>
+				<a href="/login" class="btn btn-primary btn-rounded btn-xl font-weight-semibold text-2 px-4 py-3 mt-1 mb-4"><i class="fas fa-angle-left pr-3"></i>PROCEED TO LOGIN</a>
 			</div>
 		</div>
 	</section>
@@ -27,11 +28,11 @@
 				this.$route.push('/')
 			}
 
-			this.$store.dispatch('ORDER_COMPLETED', id)
+			// this.$store.dispatch('ORDER_COMPLETED', id)
 		},
 		methods:{
 			goToHome() {
-				this.$route.push('/')
+				this.$route.push('/login')
 			}
 		}
 	}

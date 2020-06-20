@@ -1,16 +1,21 @@
 <template>
 <section role="main" class="content-body">
-	<header class="page-header">
-		<div class="right-wrapper text-right">
-			<ol class="breadcrumbs">
-				<li>
-					<a href="/">
-						<i class="fas fa-home"></i>
-					</a>
-				</li>
-			</ol>
-		</div>
-	</header>
+		<header class="page-header">
+			<h2>Affliates </h2>
+		
+			<div class="right-wrapper text-right">
+				<ol class="breadcrumbs">
+					<li>
+						<a href="index.html">
+							<i class="fas fa-home"></i>
+						</a>
+					</li>
+					<li><span>Dashboard</span></li>
+					<li><spand>Affiliates</spand></li>
+				</ol>
+				<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
+			</div>
+		</header>
 	<div class="row pt-4 mt-1">
 			<div class="col-xl-12">
 				<section class="card">
@@ -19,33 +24,41 @@
 							<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
 							<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
 						</div>
-		
-						<h2 class="card-title">Affilate Stats</h2>
+						<h2 class="card-title">All Affiliates</h2>
 					</header>
+
 					<div class="card-body">
 						<table class="table table-responsive-md table-striped mb-0">
 							<thead>
-								<tr>
+								<tr class="text-6">
 									<th>Name</th>
 									<th>Email</th>
 									<th>Affilate ID</th>
 									<th>Sales</th>
 									<th>Status</th>
-									<th>Cash Bonus</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr v-for="affiliate in getAffiliates.response">
-									<td><a href="#">{{affiliate.name}}</a></td>
+									<td><a @click="goToDetails(affiliate.user_id)" href="#">{{affiliate.name}}</a></td>
 									<td>{{affiliate.email}}</td>
 									<td>{{affiliate.affiliate_id}}</td>
 									<td>{{affiliate.sales}}</td>
-									<td><span class="badge badge-primary">{{affiliate.status}}
-									</span>
+									<td>
+										<span v-if="affiliate.status === 'Active'" class="badge badge-success text-5" >
+											{{affiliate.status}}
+									     </span>
+									     <span v-else class="badge btn-danger text-5 text-white" >
+											{{affiliate.status}}
+									     </span>
 									</td>
-									<td></td>
-									<td><button @click="goToDetails(affiliate.user_id)" class="btn btn-primary"> <i class="fa fa-eye"></i></button></td>
+
+									<td>
+										<button @click="goToDetails(affiliate.user_id)" class="btn btn-primary"> 
+											<i class="fa fa-eye"></i>
+									    </button>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -85,3 +98,8 @@ export default {
 	}
 }
 </script>
+<style>
+	.badge-success {
+		background: #44bd32;		
+	}
+</style>

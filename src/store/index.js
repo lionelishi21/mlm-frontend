@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 
 import user from './modules/user.js';
 import affiliate from './modules/affiliate.js';
+import cashbonus from './modules/cash-bonus.js';
 
 Vue.use(Vuex)
 Vue.config.debug = true
@@ -11,6 +12,7 @@ Vue.config.debug = true
 export default new Vuex.Store({
     modules: {
     	user,
-    	affiliate
+    	affiliate,
+    	cashbonus
     },
 });
