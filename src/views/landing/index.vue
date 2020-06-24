@@ -30,13 +30,13 @@
 					<h2 class="font-weight-bold text-9 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200" data-appear-animation-duration="750">THIS PUBLICATION WILL CHANGE YOUR FINANCIAL LIFE FOR THE BETTER OR YOUR MONEY BACK!</h2>
 
 					<p class="pb-2 mb-4 appear-animation mt-5" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800" data-appear-animation-duration="750">
-						Our Future Is Very Sensitive and Highly Dependent On Current Events That May Seem Insignificant, Yet, What Happens Today, May Completely Transform Our Future. What We Do Today, Will Have a Profound Effect On What Could Happen To Us Tomorrow And For Many Years To Come!
+						Our Future Is Very Sensitive And Highly Dependent On Current Events That May Seem Insignificant, Yet, What Happens Today, May Completely Transform Our Future. What We Do Today, Will Have A Profound Effect On What Could Happen To Us Tomorrow And For Many Years To Come!
 				    </p>
 
 				    <p class="pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800" data-appear-animation-duration="750">
-						The Sole Objective of The Majestic Cares Community (MCC), Is To Liberate and Empower Our Family, Friends And Neighbors, Startinng With the Purchase and Sale of This Dynamic Publication, AND Through Our PROPRIETARY AUTOMATED CASH BONUS SYSTEM! This Powerful And Unique Publication Will Enrich Your Life, As Well As The Lives of Others – Or Your Money Back!
+						The Sole Objective Of Majestic Cares Community (MCC), Is To Liberate And Empower Our Family, Friends And Neighbors, Beginning With The Purchase And Sale Of This Dynamic Publication, AND Through Our PROPRIETARY AUTOMATED CASH BONUS SYSTEM! This Powerful And Unique Publication Will Enrich Your Life, As Well as The Lives Of Others – Or Your Money Back!
 				    </p>
-					<a href="https://themeforest.net/item/porto-admin-responsive-html5-template/8539472" class="btn btn-success btn-rounded btn-px-5 py-3 text-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-appear-animation-duration="750" target="_blank">Buy Now</a>
+					<a href="#" @click="goToCheckout()" class="btn btn-success btn-rounded btn-px-5 py-3 text-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-appear-animation-duration="750" target="_blank">Buy Now</a>
 				</div>
 
 				<div class="col-md-5">
@@ -131,8 +131,6 @@
 								<li><i class="fas fa-check"></i> HOME HEALTHCARE</li>
 								<li><i class="fas fa-check"></i> RETIREMENT INCOME</li>
 								<li><i class="fas fa-check"></i> FINANCE A VACATION</li>
-								<li><i class="fas fa-check"></i> SUPPORT PROJECT COST</li>
-								<li><i class="fas fa-check"></i> START-UP BUSINESS COST</li>
 							</ul>
 						</div> 
 				   </div>
@@ -142,7 +140,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<a href="https://themeforest.net/item/porto-responsive-html5-template/4106987" class="btn btn-success btn-modern btn-rounded px-5 btn-py-3 text-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1800" data-appear-animation-duration="750" target="_blank">BUY NOW</a>
+				<a href="" class="btn btn-success btn-modern btn-rounded px-5 btn-py-3 text-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1800" data-appear-animation-duration="750" target="_blank">BUY NOW</a>
 			</div>
 		</div>
 	</section>
@@ -161,33 +159,28 @@
 			<div class="row pb-5">
 				<div class="col-md-8 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700" data-appear-animation-duration="750">
 					<div class="rounded">
-						<p class="custom-text-color-1 text-5 color-inherit mb-0">Majestic Cares Communitys Noble Endeavor To Help Change Lives
-							Around The World, Has Resulted In A Breakthrough Initiative: The
-							Majestic Cares International Affiliate Online Community.
+						<p class="custom-text-color-1 text-5 color-inherit mb-0">Majestic Cares Community’s Noble Endeavor To Help Change Lives Around The World, Has Resulted In A Breakthrough Initiative: The Majestic Cares International Affiliate Online Community.
 							</p>
 					</div>
 					<div class="rounded mt-4">
 						<p class="custom-text-color-1 text-5 color-inherit mb-0">
 							
-							Inspired By Ordinary People Nationwide, Majestic Cares Online
-							Community (MCC), Was Created So That ALL of Its Affiliate/Members
-							Can Receive A Residual Income For Any Worthwhile Purpose.
+							Inspired By Ordinary People Nationwide, Majestic Cares Community (MCC), Was Created So That ALL Of Its Affiliate/Members Can Receive A Residual Income For Any Worthwhile Purpose.
 
 						</p>
 					</div>
 					<div class="rounded mt-4">
 						<p class="custom-text-color-1 text-5 color-inherit mb-0">
 
-							When Our Affiliate/Members Utilize MCCs Unique, PROPRIERTARY GROUP SALES FORMULA,
-							Each Affiliate Will Not Only Benefit Themselves, But At The Same Time, Enrich The Lives of Others,
-							And In A Systematic Way, Potentially Lead In A Positive Way, Every Nation On Earth!
+							When Our Affiliate/Members Utilize MCC’s UNIQUE PROPRIERTARY GROUP SALES FORMULA, Each Affiliate Will Not Only Benefit Themselves, But At The Same Time, Enrich The Lives Of Others, And In A Systematic Way, Potentially Lead In A Positive Way, Every Nation On Earth!
+
 						</p>
 						
 					</div>
 					<div class="rounded mt-4">
-						<p class="custom-text-color-1 text-5 color-inherit mb-0">Majestic Cares Communitys Noble Endeavor To Help Change Lives
-
-							Majestic Cares Vision Is To Enable Its Affiliate/Members To Earn A Substantial Residual Income, And At The Same Time, Lift As Many People As Possible Out of Debt And Poverty, Using A Proprietary Automated Cash Bonus Payment System!</p>
+						<p class="custom-text-color-1 text-5 color-inherit mb-0">
+							MCC’s Vision Is To Enable Its Affiliate/Members To Earn A Substantial Residual Income, And At The Same Time, Lift As Many People As Possible To Be Out of Debt And Poverty, Using A Proprietary Automated Cash Bonus Payment System! 
+						</p>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -208,10 +201,10 @@
 				<div class="row align-items-center justify-content-between">
 					<div class="col-sm-12">
 						<hr class="my-5">
-						<h2 class="font-weight-bold text-center text-10 pt-3 mb-4">MCC PLANS TO DONATE TO WORTHWHILE</h2>
+						<h2 class="font-weight-bold text-center text-10 pt-3 mb-4">MAJESTIC CARES COMMUNITY – MCC</h2>
 					</div>
 					<div class="col-lg-8 offset-lg-2 px-lg-0 text-center">
-						<p class="text-4">RELIEF CAUSES LOCALLY, AND EVENTUALLY, AROUND THE WORLD!</p>
+						<p class="text-4"></p>
 					</div>
 				</div>
 				<div class="image-wrapper position-relative z-index-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-appear-animation-duration="750" style="height: 0; padding-bottom: 16%;">
@@ -228,22 +221,34 @@
 			</h2>
 			<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900" data-appear-animation-duration="750">
 				<h4 class="font-weight-light text-6 col-lg-12 px-0 fw-400 mb-5 opacity-8">
-					Without a moment’s notice, tragedy can strike anywhere, at any time. Natural disasters are devasting & unexpected in most
-					cases. With this in mind, Majestic Cares Community will focus a portion of it’s profit revenue to assist with humanitarian aid
-					across the globe. Along with our Affiliate/Member’s input – collective decisions will be
-					made as to how these profits will be allocated to support those humanitarian relief efforts.
+			
 				</h4>
 			</div>
 			<div class="col-12 px-0 pb-2 mb-4">
 				<div class="row flex-column flex-lg-row justify-content-center">
 				</div>
 			</div>
-			<a href="https://themeforest.net/item/porto-responsive-html5-template/4106987" class="btn btn-dark btn-modern btn-rounded px-5 btn-py-3 text-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1800" data-appear-animation-duration="750" target="_blank">Read More</a>
+			
 		</div>
 	</section>
 	<!-- End Section Six -->
 </div>
 </template>
+<script>
+	export default {
+		data() {
+			return {
+				title: 'Home Page"'
+			}
+		},
+		methods: {
+			goToCheckout() {
+
+				this.$router.push('/checkout')
+			}
+		}
+	}
+</script>
 <style lang="scss" scoped>
 	.text-success {
 		color: #2ecc71 !important;

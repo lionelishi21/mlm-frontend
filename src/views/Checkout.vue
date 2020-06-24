@@ -1,5 +1,5 @@
 <template>
-	<div class="container" style="padding-top: 8.5%">
+	<div class="container" style="padding-top: 8.5%; background: #ececec;">
 			<div class="">
 				<div class="alert alert-danger" role="alert" v-if="msg.email">
 					<strong><i class="fas fa-exclamation-triangle"></i>Oh snap!</strong> Please enter all require fields
@@ -30,15 +30,33 @@
 								<div class="card-body">
 									<form action="/" id="frmBillingAddress" method="post">
 										<div class="form-row ">
-											<div class="form-group col-lg-12" :class="{ 'has-danger': emailIsInvalid }">
-												<label  class="font-weight-bold text-dark text-2">Email Address<span class="text-danger">* </span><small><i>Why we require?</i></small></label>
-												<input re v-model="form.email" type="text" value="" class="require form-control ">
+											<div class="form-group col-lg-12" :class="{ 'has-success': email,  'has-danger' : emailIsInvalid }">
+												<label  class="font-weight-bold text-dark text-2">Email Address<span class="text-danger">* </span></label>
+												<input placeholder="Email" v-model="form.email" type="text" value="" class="require form-control ">
 												<span class="help-block text-danger">{{msg.email}}</span>
 												<br>
 											</div>
 										</div>
+
 										<div class="form-row">
-											<div class="form-group col-lg-12">
+											<div class="form-group col-md-12" :class="{'has-danger': usernameIsInvalid}">
+												<label  class="font-weight-bold text-dark text-2">Username<span class="text-danger">*</span></label>
+												<input type="text" class="form-control" v-model="form.username" placeholder="Username">
+												<span class="help-block text-danger">{{msg.username}}</span>
+												<br>
+									    	</div>
+										</div>
+
+										<div class="form-row">
+											<div class="form-group col-md-12 has-success">
+												<label  class="font-weight-bold text-dark text-2">Phone Number <small>Optional</small></label>
+												<vue-phone-number v-model="form.phone_number" />
+												<br>
+									    	</div>
+										</div>
+
+										<div class="form-row ">
+											<div class="form-group col-lg-12 has-danger">
 												<label  class="font-weight-bold text-dark text-2">Refferal ID<span class="text-danger">*</span> <small><i>What is this?</i></small></label>
 												<input disabled="disabled" v-model="form.referral_id" type="text" value="" class="form-control">
 											</div>
@@ -58,38 +76,51 @@
 							<div id="collapseOne" class="collapse show">
 								<div class="card-body">
 									  <div class="form-row">
-											<div class="form-group has-danger col-lg-6">
-												<label class="font-weight-bold text-dark text-2">First Name <span class="text-danger">*</span></label>
+											<div class="form-group col-lg-6"  :class="{'has-danger': firstnameIsInvalid}">
+												<label class="font-weight-bold text-dark text-2" >First Name <span class="text-danger">*</span></label>
 												<input v-model="form.first_name" type="text" value="" class="form-control">
 												<span class="help-block text-danger">{{msg.first_name}}</span>
 											</div>
-											<div class="form-group col-lg-6">
+											<div class="form-group col-lg-6" :class="{'has-success': 'lastnameIsInvalid'}">
 												<label class="font-weight-bold text-dark text-2">Last Name <span class="text-danger">*</span></label>
 												<input v-model="form.last_name" type="text" value="" class="form-control">
 												<span class="help-block text-danger">{{msg.last_name}}</span>
 											</div>
 										</div>
 										<div class="form-row">
-											<div class="form-group col">
+											<div class="form-group col"  :class="{'has-success': 'countryIsInValid'}">
 												<label class="font-weight-bold text-dark text-2">Country  <span class="text-danger">*</span></label>
 												<country-select class="form-control" v-model="form.country" :country="form.country" topCountry="US" />
 												<span class="help-block text-danger">{{msg.country}}</span>
 												<br>
 											</div>
 										</div>
+									
+
 										<div class="form-row">
-											<div class="form-group col">
-												<label class="font-weight-bold text-dark text-2">City <span class="text-danger">*</span></label>
-												<region-select class="form-control" v-model="form.region" :country="form.country" :region="form.region" />
-												<span class="help-block text-danger">{{msg.region}}</span>
-												<br>
+											<div class="form-group col" :class="{'has-danger': 'address1IsInValid'}">
+												<label class="font-weight-bold text-dark text-2">Address <span class="text-danger">*</span></label>
+												<input v-model="form.address" type="text" value="" class="form-control">
+												<span class="help-block text-danger">{{msg.address}}</span>
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col">
-												<label class="font-weight-bold text-dark text-2">Address <span class="text-danger">*</span></label>
+												<label class="font-weight-bold text-dark text-2">Address <small>optional</small></label>
 												<input v-model="form.address" type="text" value="" class="form-control">
-												<span class="help-block text-danger">{{msg.address}}</span>
+												<span class="help-block text-danger">{{msg.address1}}</span>
+											</div>
+										</div>
+									    <div class="form-row">
+											<div class="form-group col has-danger">
+												<label class="font-weight-bold text-dark text-2">State <span class="text-danger">*</span></label>
+												<region-select class="form-control" v-model="form.region" :country="form.country" :region="form.region" />
+												<span class="help-block text-danger">{{msg.region}}</span>
+											</div>
+											<div class="form-group col has-danger">
+												<label class="font-weight-bold text-dark text-2"> ZIP </label>
+												<input v-model="form.zip" type="text" value="" class="form-control">
+												<span class="help-block text-danger">{{msg.zip}}</span>
 											</div>
 										</div>
 										
@@ -231,6 +262,7 @@ export default {
 	        email: null,
 	        first_name: null,
 	        last_name: null,
+	        phone_number: null,
 	        password: null,
 	        password_confimation: null,
 	        referral_id: '',
@@ -243,13 +275,15 @@ export default {
 	        password: [],
 	        password_confimation: [],
 	      },
+
 	       msg: {
 	    	email: '',
 	    	first_name: '',
 	    	last_name: '',
 	    	country: '',
 	    	region: '',
-	    	address: ''
+	    	address: '',
+	    	username: ''
 	       },
 	       paypal: {
 		       sandbox: 'AbUMmsT4JJSCUg86MP4SV1-iA3jjCtPYpqkrV3xrU2ZrAZ17FkFHA_AuI2LVe2xhu-nYBZB5ezKN2Y9z',
@@ -266,6 +300,7 @@ export default {
 	          shape: 'rect',
 	          color: 'blue'
 	      },
+	      email: false,
 	    }
   },
 
@@ -293,6 +328,16 @@ export default {
 
     addressIsInvalid() {
     	return !this.form.address
+    },
+
+    usernameIsInvalid() {
+    	return !this.form.username
+    },
+    firstnameIsInvalid() {
+    	return !this.form.first_name
+    },
+    lastnameIsInvalid() {
+    	return !this.form.last_name
     }
 
   },
@@ -306,6 +351,9 @@ export default {
   	'form.email': function ( value ) {
 	    this.validateEmail(value)
   	},
+  	'form.username': function ( value ) {
+  		this.validateUserName( value )
+  	}
 
   },
 
@@ -362,16 +410,48 @@ export default {
    			this.msg.address = 'Address is require'
    		}
    },
+   validateUserName( value ) {
+
+   },
 
    validateEmail(value) {
 	   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+
+	   	   this.email = true
 		   this.msg.email = '';
+
 	   } else if (value == ''){
+
+	   	  this.email = false
 	   	  this.msg.email = 'Email Address is require'
+
 	   }else {
+
+	   	   this.email = false
 		   this.msg.email = 'Invalid Email Address';
 	   } 
    },
+
+   validateUserName(value) {
+
+   		this.$store.dispatch('FETCH_USER_USERNAME', value )
+   			.then( response => {
+   			     console.log('fetching user name...')
+   			     console.log(response)
+   				if (response.status == false) {
+   					this.msg.username = 'Username is already taken';
+   				} else {
+   					this.msg.username = 'Username is available'
+   				}
+
+   				
+   			})
+   			.catch( error => {
+
+   				console.log(error.response)
+   			})
+   },
+
    validRefferalCode(value) {
 	
 	this.$store.dispatch('FETCH_REFFERAL_CODE', value)

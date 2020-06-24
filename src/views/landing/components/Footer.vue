@@ -8,7 +8,7 @@
 			<div class="col-lg-4 mb-4 mb-md-0 text-center text-lg-left pt-3">
 				<h5 class="text-5 text-transform-none font-weight-semibold text-color-light mb-4">Quick Links</h5>
 				<p class="text-4 font-weight-semibold mb-1"><span class="text-color-light">About</span></p>
-				<p class="text-4 font-weight-semibold mb-1"><span class="text-color-light">Faqs</span></p>
+				<p class="text-4 font-weight-semibold mb-1"><span class="text-color-light">FAQS</span></p>
 				<p class="text-4 font-weight-semibold mb-1"><span class="text-color-light">Contacts</span></p>
 				<p class="text-4 font-weight-semibold mb-1"><span class="text-color-light">Private Policy</span></p>
 			</div>

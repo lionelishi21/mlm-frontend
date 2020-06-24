@@ -31,17 +31,33 @@
 			<div class="col-lg-12">
 				<div class="overflow-hidden">
 					<p class="lead mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">
-						Please first note, that this is not an mlm, net-work-marketing, or a get rich quick community. the mcc online community gives each affiliate/member, the unique opportunity of receiving company shared cash bonuses based on their total sales volume.
+						Inspired by Ordinary People Nationwide, And Soon to Be Worldwide, The Majestic Cares Community, or “MCC”, was created so that ALL of its Affiliate/Members can receive a residual income for any worthwhile purpose, such as: Humanitarian projects to benefit those in need around the world, business start-ups, paying off debts, buying a new car or home, or to be able to travel abroad, and visit with family and friends! 
 					</p>
 					<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
-						There are no enrollment, or administration fees, and no recruiting or sponsoring required to become an mcc sales affiliate, to earn commissions selling mcc’sself-help publication, which sells for $34.95 (including free shipping (us only) and comes with a 30-day money back guarantee.
+						
+						No Matter what your current financial needs are, The Majestic Cares Community (MCC), is the answer to helping you and your loved ones, to fulfill your financial hopes and dreams! 
+
 					</p>
 
 					<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
-						Here is an example of how this works: <br>
-						When you, as an mcc sales affiliate, make a minimum of 3 personal sales, and have a total of (12) group sales, you will qualify as a bronze sales affiliate, and be paid a cash bonus as per mcc’s compensation plan as follows:
-						Note: (the following sales commissions are based on a $34.95 sale)
+						Please First Note, that this is NOT a Network-Marketing, or a Get-Rich-Quick Community. The MCC Online Community gives each Affiliate/Member, the unique opportunity of receiving Company Shared Cash Bonuses based on their total Group Sales Volume.
+
 					</p>
+					<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
+						There are no Enrollment, or Administration Fees and no Recruiting or Sponsoring Required to Become an MCC Sales Affiliate. However, to start receiving Cash Bonuses, an Affiliate must make no less than 3 eBook Sales of MCC’S Self-Help Publication entitled, “Learn How to Stop Working for Money, and Let Your Money Work for you”, which sells for $34.95, and comes with a 30-day Money Back Guarantee. 
+					</p>
+
+					<h4 class="lead mb-0 appear-animation mt-3"><strong>Here Is an Example of How This Works:</strong></h4>
+
+					<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
+                        When you, as an MCC Sales Affiliate, make a minimum of 3 Personal eBook Sales, and there is a TOTAL of (12) eBook Sales in your group, you will qualify as a Bronze Sales Affiliate, and be paid a Cash Bonus as per MCC’S Compensation Plan. 
+
+					</p>
+
+					<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
+					Note: Since this is a community effort, your 3 Personal eBook Sales (and any additional sales) may not necessarily be placed in your personal group, as it will fall into the next available open position in MCC’S very exclusive Community Cash Bonus System, as follows:
+				     </p>
+
 				</div>
 			</div>
 		</div>
@@ -52,142 +68,26 @@
 			</div>
 		</div>
 
-		
-			<div class="row align-items-center">
-				<div class="col-lg-6 p-0">
-					
-				</div>
-				<div class="col-lg-6 p-0">
-					<section class="section section-no-border h-100 m-0">
-						<div class="row m-0">
-							<div class="col-half-section col-half-section-left">
-								<h1 class="text-primary"><strong>1.</strong></h1>
-								<div class="overflow-hidden">
-									<h4 class="mb-0 appear-animation" data-appear-animation="maskUp"><a href="#" class="text-4 font-weight-bold d-block text-dark text-decoration-none pb-1">Bronze Affiliate</a></h4>
-								</div>
-								<div class="overflow-hidden mb-2">
-									<p class="mb-0 lead text-4 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">3 PERSONAL PLUS 9 BOOK SALES (12 GROUP SALES) = $100</p>
-								</div>
-								<!-- <p class="text-2 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla non metus pulvinar.</p> -->
-							</div>
-						</div>
-					</section>
-				</div>
-			</div>
-			<div class="row align-items-center">
-				<div class="col-lg-6 order-2 order-lg-1 p-0">
-					<section class="section section-no-border h-100 m-0">
-						<div class="row justify-content-end m-0">
-							<div class="col-half-section col-half-section-right custom-text-align-right">
-								<h1 class="text-primary"><strong>2.</strong></h1>
-								<div class="overflow-hidden">
-									<h4 class="mb-0appear-animation" data-appear-animation="maskUp"><a href="#" class="text-4 font-weight-bold pt-2 d-block text-dark text-decoration-none pb-1">Silver Affiliate</a></h4>
-								</div>
-								<div class="overflow-hidden mb-2">
-									<p class="mb-0 lead text-4 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">36 BOOK GROUP SALES = $600</p>
-								</div>
-							<!-- 	<p class="text-2 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla non metus pulvinar.</p> -->
-							</div>
-						</div>
-					</section>
-				</div>
-				<div class="col-lg-6 order-1 order-lg-2 p-0">
-					
-				</div>
-			</div>
-			<div class="row align-items-center">
-				<div class="col-lg-6 p-0">
-					
-				</div>
-				<div class="col-lg-6 p-0">
-					<section class="section section-no-border h-100 m-0">
-						<div class="row m-0">
-							<div class="col-half-section col-half-section-left">
-								<h1 class="text-primary"><strong>3.</strong></h1>
-								<div class="overflow-hidden">
-									<h4 class="mb-0 appear-animation" data-appear-animation="maskUp"><a href="#" class="text-4 font-weight-bold pt-2 d-block text-dark text-decoration-none pb-1">GOLD AFFILIATE</a></h4>
-								</div>
-								<div class="overflow-hidden mb-2">
-									<p class="mb-0 lead text-4 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">72 BOOK GROUP SALES = $2,500</p>
-								</div>
-							</div>
-						</div>
-					</section>
-				</div>
-			</div>
-				<div class="row align-items-center">
-				<div class="col-lg-6 p-0">
-					<section class="section section-no-border h-100 m-0">
-						<div class="row m-0">
-							<div class="col-half-section col-half-section-left">
-								<h1 class="text-primary"><strong>4.</strong></h1>
-								<div class="overflow-hidden">
-									<h4 class="mb-0 appear-animation" data-appear-animation="maskUp"><a href="#" class="text-4 font-weight-bold pt-2 d-block text-dark text-decoration-none pb-1">PLATINUM AFFILIATE</a></h4>
-								</div>
-								<div class="overflow-hidden mb-2">
-									<p class="mb-0 lead text-4 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">224 BOOK GROUP SALES = $5,200</p>
-								</div>
-							<!-- 	<p class="text-2 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla non metus pulvinar.</p> -->
-							</div>
-						</div>
-					</section>
-				</div>
-				<div class="col-lg-6 p-0">
-					
-				</div>
-			</div>
-				<div class="row align-items-center">
-				<div class="col-lg-6 p-0">
-					
-				</div>
-				<div class="col-lg-6 p-0">
-					<section class="section section-no-border h-100 m-0">
-						<div class="row m-0">
-							<div class="col-half-section col-half-section-left">
-								<h1 class="text-primary"><strong>5.</strong></h1>
-								<div class="overflow-hidden">
-									<h4 class="mb-0 appear-animation" data-appear-animation="maskUp"><a href="#" class="text-4 font-weight-bold pt-2 d-block text-dark text-decoration-none pb-1">RUBY AFFILIATE</a></h4>
-								</div>
-								<div class="overflow-hidden mb-2">
-									<p class="mb-0 lead text-4 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">384 BOOK GROUP SALES = $10,680</p>
-								</div>
-							<!-- 	<p class="text-2 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla non metus pulvinar.</p> -->
-							</div>
-						</div>
-					</section>
-				</div>
-			</div>
-			<div class="row align-items-center">
-				<div class="col-lg-6 p-0">
-					<section class="section section-no-border h-100 m-0">
-						<div class="row m-0">
-							<div class="col-half-section col-half-section-left">
-								<h1 class="text-primary"><strong>6.</strong></h1>
-								<div class="overflow-hidden">
-									<h4 class="mb-0 appear-animation" data-appear-animation="maskUp"><a href="#" class="text-4 font-weight-bold pt-2 d-block text-dark text-decoration-none pb-1">DIAMOND AFFILIATE</a></h4>
-								</div>
-								<div class="overflow-hidden mb-2">
-									<p class="mb-0 lead text-4 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">768 BOOK GROUP SALES = $20,000</p>
-								</div>
-							<!-- 	<p class="text-2 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla non metus pulvinar.</p> -->
-							</div>
-						</div>
-					</section>
-				</div>
-				<div class="col-lg-6 p-0">
-				
-				</div>
+			<div class="row">
+				BRONZE Affiliate: 3 personal plus 9 eBook sales (12 group sales) = $100 	<br>              
+				SILVER Affiliate:  36 eBook group sales = $600 	                <br>
+				GOLD Affiliate:  108 eBook group sales = $3,800 	         <br>
+				RUBY Affiliate:  324 eBook group sales = $22,000 	      <br>
+				DIAMOND Affiliate: 972 eBook group sales = $412,855.60 (Recycles) <br>
+
 			</div>
 			<div class="row mt-3">
 			  <p class="lead mb-0 appear-animation mt-3 text-center" data-appear-animation="maskUp" data-appear-animation-delay="200">
-						******* CONGRATULATIONS! YOU NOW QUALIFY TO RECEIVE UP-TO 80% OF YOUR TOTAL GROUP SALES VOLUME TO INFINITY!! ***********
+						******* CONGRATULATIONS! YOU NOW QUALIFY TO RECEIVE UP-TO 90% PLUS OF YOUR TOTAL GROUP SALES VOLUME FOR LIFE!! ***********
 			  </p>
 			</div>
 			<div class="row">
 				<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
 					<small>
 						<i>
-							Disclaimer: The MAJESTIC CARES COMMUNITY, OR MCC AND ITS AFFILIATES, are an online Sales Affiliate Community, and this information, as well as the information contained in our publications are for illustration purposes only, with no promises or guarantees of income. Neither the owners, administrators, subsidiaries, nor the Affiliate/Members of the Majestic Cares Community, make no income guarantees.
+							Disclaimer: The MAJESTIC CARES COMMUNITY, OR MCC AND ITS AFFILIATES, is an online
+Sales Affiliate Community. This information, as well as the information contained in our publications, is for illustration purposes only, with no promises or guarantees of income. Neither the administrators, subsidiaries, nor the Affiliate/Members of the Majestic Cares Community, make no income guarantees.
+
 				        </i>
 				   </small>
 				</p>

@@ -1,5 +1,5 @@
 <template>
-  <section class="body">
+  <section class="body" style="background: #ececec;">
        <router-view/>
   </section>
 </template>

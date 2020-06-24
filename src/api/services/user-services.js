@@ -72,5 +72,8 @@ export default {
 
 	fetchUserCashBonuses(userId) {
 		return Api().get('/cashbonuses/'+userId)
+	},
+	fetchUsername(username) {
+		return Api().get('/username-availability?username='+username)
 	}
 }

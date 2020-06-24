@@ -117,12 +117,21 @@ const actions = {
         })
         .catch( error => {
           console.log(error.response)
+          console.log(error.response)
         })
     })
   },
+  FETCH_USER_USERNAME( context, username) {
+     return new Promise((resolve, reject) => {
+          api.fetchUsername(username)
+            .then( response => {
 
-  FETCH_USER({ commit, dispatch}) {
-
+              resolve(response)
+            })
+            .catch( error => {
+               reject(error)
+            })
+     })
   },
   USER_GROUP_SALES({commit, dispatch}) {
 

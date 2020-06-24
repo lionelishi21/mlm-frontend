@@ -10,6 +10,10 @@ window.$ = $
 import { ModalPlugin } from 'bootstrap-vue'
 import PrettyCheckbox from 'pretty-checkbox-vue';
 
+import VuePhoneNumberInput from 'vue-phone-number-input';
+import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+ 
+Vue.component('vue-phone-number', VuePhoneNumberInput);
 Vue.use(PrettyCheckbox);
 Vue.use(ModalPlugin)
 Vue.use(VueCurrencyFilter,
