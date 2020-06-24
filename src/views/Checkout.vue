@@ -107,7 +107,7 @@
 										<div class="form-row">
 											<div class="form-group col">
 												<label class="font-weight-bold text-dark text-2">Address <small>optional</small></label>
-												<input v-model="form.address" type="text" value="" class="form-control">
+												<input v-model="form.address2" type="text" value="" class="form-control">
 												<span class="help-block text-danger">{{msg.address1}}</span>
 											</div>
 										</div>
@@ -266,7 +266,8 @@ export default {
 	        password: null,
 	        password_confimation: null,
 	        referral_id: '',
-	        address:null
+	        address: null,
+	        city: '',
 	      },
 	      validationErrors: "",
 	      errors: {
@@ -338,7 +339,8 @@ export default {
     },
     lastnameIsInvalid() {
     	return !this.form.last_name
-    }
+    },
+
 
   },
   created() {

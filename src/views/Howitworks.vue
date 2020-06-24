@@ -73,12 +73,13 @@
 				SILVER Affiliate:  36 eBook group sales = $600 	                <br>
 				GOLD Affiliate:  108 eBook group sales = $3,800 	         <br>
 				RUBY Affiliate:  324 eBook group sales = $22,000 	      <br>
-				DIAMOND Affiliate: 972 eBook group sales = $412,855.60 (Recycles) <br>
+				DIAMOND Affiliate: 972 eBook group sales = $412,855.60  <br>
+				DIAMOND REPEAT: 12 eBook diamond group sales = $412,855.60  <br>
 
 			</div>
 			<div class="row mt-3">
 			  <p class="lead mb-0 appear-animation mt-3 text-center" data-appear-animation="maskUp" data-appear-animation-delay="200">
-						******* CONGRATULATIONS! YOU NOW QUALIFY TO RECEIVE UP-TO 90% PLUS OF YOUR TOTAL GROUP SALES VOLUME FOR LIFE!! ***********
+						******* CONGRATULATIONS! YOU NOW QUALIFY TO RECEIVE UP-TO 90% PLUS OF YOUR TOTAL GROUP SALES VOLUME FOR LIFE!!
 			  </p>
 			</div>
 			<div class="row">

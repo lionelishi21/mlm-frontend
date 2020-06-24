@@ -156,6 +156,9 @@ const actions = {
         console.log( error.response )
       })
   },
+   FETCH_USER() {
+
+   },
 
   GET_USER_CASHBONUS({commit}, id) {
 
