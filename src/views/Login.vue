@@ -119,9 +119,8 @@ export default {
 							this.loading = false
 							console.log( err.response )
 						})
-				}).catch ( error => {
+				}).catch ( ( error ) => {
 					console.log(error.response)
-					let errorMessage = error.response.data.message
 					this.is_valid = 'is-invalid'
 					this.error.message = error.response.data
 					this.loading = false
