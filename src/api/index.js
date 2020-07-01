@@ -2,8 +2,8 @@ import axios from 'axios'
 import Vue from 'vue';
 export default() => {
     return axios.create({
-        baseURL: 'http://127.0.0.1:8000/api/v1/',
-        // baseURL: 'http://18.206.230.202/api/',
+        // baseURL: 'http://127.0.0.1:8000/api/v1/',
+        baseURL: 'https://majesticaring/api/',
         withCredentials: false,
         headers: {
             'Access-Control-Allow-Origin': '*',

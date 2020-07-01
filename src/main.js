@@ -9,7 +9,6 @@ import $ from 'jquery'
 window.$ = $
 import { ModalPlugin } from 'bootstrap-vue'
 import PrettyCheckbox from 'pretty-checkbox-vue';
-
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
  
@@ -28,6 +27,8 @@ Vue.use(VueCurrencyFilter,
 
 Vue.use(vueCountryRegionSelect)
 Vue.config.productionTip = false
+
+
 
 new Vue({
   router,

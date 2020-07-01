@@ -1,5 +1,6 @@
 <template>
 	<div class="container" style="padding-top: 8.5%; background: #ececec;">
+
 			<div class="">
 				<div class="alert alert-danger" role="alert" v-if="msg.email">
 					<strong><i class="fas fa-exclamation-triangle"></i>Oh snap!</strong> Please enter all require fields
@@ -13,6 +14,9 @@
 					</ul>
 				</div>
 			</div>
+		<div class="row">
+			<terms-component></terms-component>
+		</div>
 			<div class="row">
 				<div class="col-lg-9">
 					<div class="accordion accordion-modern" id="accordion">
@@ -25,110 +29,165 @@
 									</a>
 								</h4>
 							</div>
-							
-							<div id="collapseOne" class="collapse show">
+
+							<div class="collapse show">
 								<div class="card-body">
-									<form action="/" id="frmBillingAddress" method="post">
-										<div class="form-row ">
-											<div class="form-group col-lg-12" :class="{ 'has-success': email,  'has-danger' : emailIsInvalid }">
-												<label  class="font-weight-bold text-dark text-2">Email Address<span class="text-danger">* </span></label>
-												<input placeholder="Email" v-model="form.email" type="text" value="" class="require form-control ">
-												<span class="help-block text-danger">{{msg.email}}</span>
-												<br>
+									<ValidationObserver ref="observer" v-slot="{ invalid }">
+									<form>
+									   <div class="form-row">
+										   <div class="col-lg-6">
+												<validation-provider rules="required" v-slot="{ errors }">
+													<div class="form-group" :class="{ 'has-danger': errors[0]}">
+														<label class="font-weight-bold text-dark text-2" >First Name <span class="text-danger">*</span></label>
+														<input v-model="form.first_name" type="text" value="" class="form-control" style="background: redp">
+														<span class="help-block text-danger" v-if="errors[0]">{{ errors[0] }}</span>
+													</div>
+												</validation-provider>
+										   </div>
+
+											<div class="col-lg-6">
+												    <validation-provider rules="required" v-slot="{ errors }">
+														<div class="form-group" :class="{ 'has-danger': errors[0]}">
+															<label class="font-weight-bold text-dark text-2">Last Name <span class="text-danger">*</span></label>
+															<input v-model="form.last_name" type="text" value="" class="form-control">
+															<span class="help-block text-danger" v-if="errors[0]">{{errors[0]}}</span>
+														</div>
+													</validation-provider>
 											</div>
 										</div>
 
-										<div class="form-row">
-											<div class="form-group col-md-12" :class="{'has-danger': usernameIsInvalid}">
-												<label  class="font-weight-bold text-dark text-2">Username<span class="text-danger">*</span></label>
-												<input type="text" class="form-control" v-model="form.username" placeholder="Username">
-												<span class="help-block text-danger">{{msg.username}}</span>
-												<br>
-									    	</div>
-										</div>
-
-										<div class="form-row">
-											<div class="form-group col-md-12 has-success">
-												<label  class="font-weight-bold text-dark text-2">Phone Number <small>Optional</small></label>
-												<vue-phone-number v-model="form.phone_number" />
-												<br>
-									    	</div>
-										</div>
-
-										<div class="form-row ">
-											<div class="form-group col-lg-12 has-danger">
-												<label  class="font-weight-bold text-dark text-2">Refferal ID<span class="text-danger">*</span> <small><i>What is this?</i></small></label>
-												<input disabled="disabled" v-model="form.referral_id" type="text" value="" class="form-control">
+										<div class="form-row mt-3">
+											<div class="form-group col">
+											    <label class="font-weight-bold text-dark text-2">Company <small>( optional )</small></label>
+												<input v-model="form.company" type="text" value="" class="form-control">
 											</div>
 										</div>
+
+										<div class="form-row mt-3">
+											<div class="col-md-12 ">
+												<validation-provider rules="required" v-slot="{ errors }">
+													<div class="form-group" :class="{ 'has-danger': errors[0]}">
+														<label  class="font-weight-bold text-dark text-2">Phone Number <small class="text-danger">*</small></label>
+														<vue-phone-number v-model="form.phone_number" />
+														<span class="help-block text-danger" v-if="errors[0]">{{errors[0]}}</span>
+													</div>
+												</validation-provider>
+											</div>
+										</div>
+										<div class="form-row mt-3">
+
+											<div class="col-md-6">
+												<validation-provider name="confirm" rules="required|email" v-slot="{ errors }">
+												<div class="form-group"  :class="{ 'has-danger': errors[0]}" >
+													<label  class="font-weight-bold text-dark text-2">Email Address<span class="text-danger">* </span></label>
+													<input placeholder="Email" v-model="form.email" type="email" class="form-control ">
+													<span class="help-block text-danger" v-if="errors[0]">{{errors[0]}}</span>
+												</div>
+												</validation-provider>
+											</div>
+
+											<div class="col-md-6">
+											<validation-provider  rules="required|email|emailconfirm:@confirm" v-slot="{ errors }">
+												<div class="form-group" >
+													<label  class="font-weight-bold text-dark text-2">Confirm Email Address<span class="text-danger">* </span></label>
+													<input  placeholder="Email" v-model="form.confirm_email" type="email" value="" class="require form-control ">
+													<span class="help-block text-danger" v-if="errors[0]">{{errors[0]}}</span>
+												</div>
+											</validation-provider>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="col-md-12">
+													<div class="form-group">
+														<div class="custom-control custom-checkbox">
+															<input type="checkbox" value="card" class="custom-control-input" id="paymentcheque">
+															<label class="custom-control-label" for="paymentcheque">I agree to recieve email from MCC</label>
+														</div>
+													</div>
+											</div>
+										</div>
+										<div class="form-row mt-3">
+											<div class="col-md-12">
+												<validation-provider rules="required" v-slot="{ errors }">
+													<div class="form-group ">
+														<label class="font-weight-bold text-dark text-2">Address <small>optional</small></label>
+														<input v-model="form.address" type="text" value="" class="form-control">
+														<span class="help-block text-danger">{{errors[0]}}</span>
+													</div>
+												</validation-provider>
+											</div>
+										</div>
+
+										<div class="form-row mt-3">
+											<div class="col-md-4">
+												<validation-provider rules="required" v-slot="{ errors }">
+													<div class="form-group">
+														<label class="font-weight-bold text-dark text-2">Country  <span class="text-danger">*</span></label>
+														<country-select class="form-control" v-model="form.country" :country="form.country" topCountry="US" />
+														<span class="help-block text-danger">{{errors[0]}}</span>
+													</div>
+												</validation-provider>
+											</div>
+
+											<div class="col-md-4">
+												<validation-provider rules="required" v-slot="{ errors }">
+													<div class="form-group">
+														<label class="font-weight-bold text-dark text-2">State / Province <span class="text-danger">*</span></label>
+														<region-select class="form-control" v-model="form.region" :country="form.country" :region="form.region" />
+														<span class="help-block text-danger">{{errors[0]}}</span>
+													</div>
+												</validation-provider>
+											</div>
+
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="font-weight-bold text-dark text-2"> ZIP </label>
+													<input v-model="form.zip" type="text" value="" class="form-control">
+													<span class="help-block text-danger">{{msg.zip}}</span>
+												</div>
+											</div>
+										</div>
+										<div class="form-row mt-3">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label  class="font-weight-bold text-dark text-2">Username<span class="text-danger">*</span></label>
+													<input type="text" class="form-control" v-model="form.username" placeholder="Username">
+
+												</div>
+											</div>
+											<div class=" col-md-6">
+												<validation-provider rules="required" v-slot="{ errors }">
+												<div class="form-group">
+													<label  class="font-weight-bold text-dark text-2">Refferal ID<span class="text-danger">*</span> <small><i>What is this?</i></small></label>
+													<input disabled="disabled" v-model="form.referral_id" type="text" value="" class="form-control">
+													<span class="help-block text-danger">{{errors[0]}}</span>
+												</div>
+												</validation-provider>
+											</div>
+										</div>
+
+										<div class="form-row mt-2">
+											<validation-provider rules="required" v-slot="{ errors }">
+											<div class="form-group col">
+												<div class="">
+													<input type="checkbox" value="terms" v-model="form.terms">
+													<label class=""> I agree to the <a href="#" v-b-modal.modal-1>Terms and Condition</a></label>
+													<span class="help-block text-danger">{{errors[0]}}</span>
+												</div>
+												<br>
+											</div>
+											</validation-provider>
+										</div>
+
+										<div class="form-row">
+											<div class="form-group col">
+												<button @click.prevent="invalidSubmit()" v-if="invalid" class="btn btn-xl btn-primary pr-4 pl-4 text-2 font-weight-semibold text-uppercase float-right mb-2"> Submit </button>
+												<button @click.prevent="goToPayment()" v-else class="btn btn-xl btn-primary pr-4 pl-4 text-2 font-weight-semibold text-uppercase float-right mb-2">Continue to Payment</button>
+											</div>
+										</div>
+
 									</form>
-								</div>
-							</div>
-						</div>
-						<div class="card card-default" v-if="step == 1">
-							<div class="card-header">
-								<h4 class="card-title m-0">
-									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-										Billing Address
-									</a>
-								</h4>
-							</div>
-							<div id="collapseOne" class="collapse show">
-								<div class="card-body">
-									  <div class="form-row">
-											<div class="form-group col-lg-6"  :class="{'has-danger': firstnameIsInvalid}">
-												<label class="font-weight-bold text-dark text-2" >First Name <span class="text-danger">*</span></label>
-												<input v-model="form.first_name" type="text" value="" class="form-control">
-												<span class="help-block text-danger">{{msg.first_name}}</span>
-											</div>
-											<div class="form-group col-lg-6" :class="{'has-success': 'lastnameIsInvalid'}">
-												<label class="font-weight-bold text-dark text-2">Last Name <span class="text-danger">*</span></label>
-												<input v-model="form.last_name" type="text" value="" class="form-control">
-												<span class="help-block text-danger">{{msg.last_name}}</span>
-											</div>
-										</div>
-										<div class="form-row">
-											<div class="form-group col"  :class="{'has-success': 'countryIsInValid'}">
-												<label class="font-weight-bold text-dark text-2">Country  <span class="text-danger">*</span></label>
-												<country-select class="form-control" v-model="form.country" :country="form.country" topCountry="US" />
-												<span class="help-block text-danger">{{msg.country}}</span>
-												<br>
-											</div>
-										</div>
-									
-
-										<div class="form-row">
-											<div class="form-group col" :class="{'has-danger': 'address1IsInValid'}">
-												<label class="font-weight-bold text-dark text-2">Address <span class="text-danger">*</span></label>
-												<input v-model="form.address" type="text" value="" class="form-control">
-												<span class="help-block text-danger">{{msg.address}}</span>
-											</div>
-										</div>
-										<div class="form-row">
-											<div class="form-group col">
-												<label class="font-weight-bold text-dark text-2">Address <small>optional</small></label>
-												<input v-model="form.address2" type="text" value="" class="form-control">
-												<span class="help-block text-danger">{{msg.address1}}</span>
-											</div>
-										</div>
-									    <div class="form-row">
-											<div class="form-group col has-danger">
-												<label class="font-weight-bold text-dark text-2">State <span class="text-danger">*</span></label>
-												<region-select class="form-control" v-model="form.region" :country="form.country" :region="form.region" />
-												<span class="help-block text-danger">{{msg.region}}</span>
-											</div>
-											<div class="form-group col has-danger">
-												<label class="font-weight-bold text-dark text-2"> ZIP </label>
-												<input v-model="form.zip" type="text" value="" class="form-control">
-												<span class="help-block text-danger">{{msg.zip}}</span>
-											</div>
-										</div>
-										
-										<div class="form-row">
-											<div class="form-group col">
-												<button @click="goToPayment()" class="btn btn-xl btn-primary pr-4 pl-4 text-2 font-weight-semibold text-uppercase float-right mb-2">Continue to Payment</button>
-											</div>
-										</div>
+									</ValidationObserver>
 								</div>
 							</div>
 						</div>
@@ -146,10 +205,10 @@
 								<h6>Referral Id <strong> {{form.referral_id}}</strong></h6>
 							</div>
 							<div class="card-footer text-center">
-								<button class="btn btn-link"> Edit </button>
+								<button class="btn btn-link" @click="step = 1"> Edit </button>
 							</div>
 						</div>
-						<div class="card card-default"  v-if="step == 2">
+						<div class="card card-default" v-if="step == 2">
 							<div class="card-header">
 								<h4 class="card-title m-0">
 									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
@@ -176,12 +235,12 @@
 												</div>
 											</div>
 										</div>
-										
+
 										<div class="form-row" v-if="payment_methods == 'card'" style="margin-top: 30px;" y>
 											<div class="col-md-12">
-												<label>Enter Credit Card Info</label>
-											    <credit-card-field v-model="card"></credit-card-field>
-										    </div>
+												<label>Enter Credit Card Information</label>
+												<card-payment :form="form"></card-payment>
+									</div>
 										</div>
 									</form>
 								</div>
@@ -226,7 +285,8 @@
 			                     v-on:payment-completed="paymentCompleted"
 			                     v-on:payment-cancelled="paymentCancelled">
 			                  </PayPal>
-							 <button v-else @click="order()" name="proceed" class="btn btn-primary btn-block mt-5 mb-5 mb-lg-0">
+
+							 <button v-else @click="submit()" name="proceed" class="btn btn-primary btn-block mt-5 mb-5 mb-lg-0">
 							 	Place Order
 							 </button>
 							</div>
@@ -237,17 +297,44 @@
 	</div>
 </template>
 <script>
-	
 
-// import ValidationError from '@/components/ValidationError.vue'
-import CreditCardField from 'vue-credit-card-field/src/Components/CreditCardField'
 import PayPal from 'vue-paypal-checkout'
 
+import { StripeElements } from 'vue-stripe-checkout';
+import  CardPayment from '../components/CardPayment.vue';
+
+import { ValidationProvider, extend, ValidationObserver } from 'vee-validate';
+import { required, email } from 'vee-validate/dist/rules';
+import TermsComponent from '../components/Terms.vue';
+
+extend('required', {
+	...required,
+	message: 'This field is required'
+});
+
+extend('email', {
+	...email,
+	message: 'The E-mail field must be a valid email'
+});
+
+extend('emailconfirm', {
+	params: ['target'],
+	validate(value, { target }) {
+		return value === target;
+	},
+	message: 'Email confirmation does not match'
+});
+
+
 export default {
-  components: {
-     CreditCardField,
-     PayPal
-  },
+	components: {
+        PayPal,
+	    StripeElements,
+	    CardPayment,
+		ValidationProvider,
+		TermsComponent,
+		ValidationObserver
+	},
   data() {
     return {
 	    card: {},
@@ -263,11 +350,10 @@ export default {
 	        first_name: null,
 	        last_name: null,
 	        phone_number: null,
-	        password: null,
-	        password_confimation: null,
 	        referral_id: '',
 	        address: null,
-	        city: '',
+	        city: null,
+			zip: null
 	      },
 	      validationErrors: "",
 	      errors: {
@@ -295,229 +381,145 @@ export default {
 	          no_shipping: 1,
 	        },
 	      },
+
+
 	      myStyle: {
 	          label: 'checkout',
 	          size:  'responsive',
 	          shape: 'rect',
 	          color: 'blue'
 	      },
+		  loading: false,
 	      email: false,
+	      publishableKey: 'pk_test_Yfe8V58F3Kw8aZUWqLtXqNnl00Bv7eXD7P',
+		  amount: 100,
+		  token: null,
+		  charge: null,
+	      successUrl: 'https://magesticares.com',
+	      cancelUrl: 'https://magesticares.com',
 	    }
   },
 
-  computed: {
-  
-  	emailIsInvalid() {
-        return !this.form.email
-    },
-
-    firstNameIsInValid() {
-    	return !this.form.first_name
-    },
-
-    lastNameIsInValid() {
-    	return !this.form.last_name
-    },
-
-    countryIsInValid() {
-    	return !this.form.country
-    },
-
-    regionIsInvalid() {
-    	return !this.form.region
-    },
-
-    addressIsInvalid() {
-    	return !this.form.address
-    },
-
-    usernameIsInvalid() {
-    	return !this.form.username
-    },
-    firstnameIsInvalid() {
-    	return !this.form.first_name
-    },
-    lastnameIsInvalid() {
-    	return !this.form.last_name
-    },
-
-
-  },
   created() {
+
       if (this.$route.query.referral_id != undefined ) {
          this.form.referral_id = this.$route.query.referral_id
       }
-  },  
-
-  watch: {
-  	'form.email': function ( value ) {
-	    this.validateEmail(value)
-  	},
-  	'form.username': function ( value ) {
-  		this.validateUserName( value )
-  	}
-
   },
 
   methods: {
 
-   goToPayment() {
-   		if (this.form.email !== null && this.form.referral_id !== null && this.form.first_name !== null &&
-   			this.form.last_name !== null && this.form.country !== '' && this.form.region !== null && 
-   			this.form.address !== '') {
-   			this.step = 2
-	   	} else {
-	   		this.validateEmail(this.form.email)
-	   		this.validateFirstName(this.form.first_name)
-	   		this.validateLastName(this.form.last_name)
-	   		this.validateCountry(this.form.country)
-	   		this.validateRegion(this.form.country)
-	   		this.validateAddress(this.form.address)
+	  invalidSubmit() {
+		  this.$refs.observer.validate().then(() => {
+			  console.log(this.$refs.observer);
+		  })
+	  },
 
-	   	}
-   },
-   validateLastName(value) {
-   		if (value !== null) {
-   			this.msg.last_name = null
-   		} else {
-   			this.msg.last_name = 'Last name is require'
-   		}
-   },
-    validateFirstName(value) {
-   		if (value !== null) {
-   			this.msg.first_name = null
-   		} else {
-   			this.msg.first_name = 'First name is require'
-   		}
-   },
-   validateCountry( value ) {
-   		if ( value !== null) {
-   			this.msg.country = null
-   		} else {
-   			this.msg.country = 'Country is require'
-   		}
-   },
-   validateRegion( value ) {
-   		if ( value !== null) {
-   			this.msg.region= null
-   		} else {
-   			this.msg.region = 'City/state is require'
-   		}
-   },
-   validateAddress( value ) {
+	  goToPayment() {
+		  this.step = 2;
+	  },
 
-   		if ( value !== null) {
-   			this.msg.address = null
-   		} else {
-   			this.msg.address = 'Address is require'
-   		}
-   },
-   validateUserName( value ) {
+	  validRefferalCode(value) {
+		this.$store.dispatch('FETCH_REFFERAL_CODE', value)
+			.then ( response => {
 
-   },
-
-   validateEmail(value) {
-	   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
-
-	   	   this.email = true
-		   this.msg.email = '';
-
-	   } else if (value == ''){
-
-	   	  this.email = false
-	   	  this.msg.email = 'Email Address is require'
-
-	   }else {
-
-	   	   this.email = false
-		   this.msg.email = 'Invalid Email Address';
-	   } 
-   },
-
-   validateUserName(value) {
-
-   		this.$store.dispatch('FETCH_USER_USERNAME', value )
-   			.then( response => {
-   			     console.log('fetching user name...')
-   			     console.log(response)
-   				if (response.status == false) {
-   					this.msg.username = 'Username is already taken';
-   				} else {
-   					this.msg.username = 'Username is available'
-   				}
-
-   				
-   			})
-   			.catch( error => {
-
-   				console.log(error.response)
-   			})
-   },
-
-   validRefferalCode(value) {
-	
-	this.$store.dispatch('FETCH_REFFERAL_CODE', value)
-		.then ( response => {
-
-		})
-		.catch(error => {
-
-		})
-   },
-
-   paymentAuthorized: function( data ) {
-		    
-	    this.loading = true
-		let formData = new FormData()
-		formData.append('payments', data)
-		formData.append('form', JSON.stringify(this.form))
-
-		console.log(formData)
-
-		let form = {
-			payments: data,
-			user: this.form
-		}
-
-		this.$store.dispatch('BUY_BOOK', form)
-		.then( response => {
-			console.log(response)
-
-		}).catch( error => {
-		 	console.log(error.response)
-		})
-   },
-   paymentCompleted: function (data) {
-   	    this.$router.push('/order-completed?payments=23232')
-   },
-
-   paymentCancelled: function (data) {
-
-   },
-   order() {
-     this.loading = true
-   			let formData = new FormData()
-   			// formData.append('payments', data)
-   			formData.append('form', JSON.stringify(this.form))
-
-   			console.log(formData)
-
-   			let form = {
-   				// payments: data,
-   				user: this.form
-   			}
-
-   			this.$store.dispatch('BUY_BOOK', form)
-			.then( response => {
-				console.log(response)
-
-			}).catch( error => {
-			 	console.log(error.response)
 			})
+			.catch(error => {
+
+			})
+	   },
+
+	   sendPaymentDetails( data ) {
+
+		   this.loading = true
+		   let formData = new FormData()
+
+		   formData.append('payments', data)
+		   formData.append('form', JSON.stringify(this.form))
+
+		   console.log(formData)
+
+		   let form = {
+			   payments: data,
+			   user: this.form
+		   }
+
+		   this.$store.dispatch('BUY_BOOK', form)
+			   .then( response => {
+				   console.log(response)
+			   }).catch( error => {
+			   console.log(error.response)
+		   })
+
+	   },
+
+	   paymentAuthorized: function( data ) {
+		   this.sendPaymentDetails( data )
+	   },
+
+	   paymentCompleted: function (data) {
+			this.$router.push('/order-completed')
+	   },
+
+	   paymentCancelled: function (data) {
+
+	   },
+
+	  checkout () {
+		  this.$refs.checkoutRef.redirectToCheckout();
+	   },
+
+
+	  submit () {
+		  this.$refs.elementsRef.submit();
+	  },
+
+	  ensurePayment(data) {
+
+		  this.loading = true
+		  let formData = new FormData()
+
+		  formData.append('payments', data)
+		  formData.append('form', JSON.stringify(this.form))
+
+		  console.log(formData)
+
+		  let form = {
+			  payments: data,
+			  user: this.form
+		  }
+
+		  this.$store.dispatch('BUY_BOOK', form)
+				  .then( response => {
+					  this.$router.push('/order-completed')
+				  }).catch( error => {
+			  console.log(error.response)
+		  })
+	  },
+
+	  tokenCreated (token) {
+
+		  this.token = token;
+		  // for additional charge objects go to https://stripe.com/docs/api/charges/object
+		  this.charge = {
+			  tokenId: token.id,
+			  amount: this.amount, // the amount you want to charge the customer in cents. $100 is 1000 (it is strongly recommended you use a product id and quantity and get calculate this on the backend to avoid people manipulating the cost)
+			  description: this.description // optional description that will show up on stripe when looking at payments
+		  }
+		  console.log(this.charge)
+		  this.sendTokenToServer(this.charge);
+	  },
+
+	  sendTokenToServer (charge) {
+		    this.$store.dispatch('MAKE_PAYMENT', charge)
+		  	.then( response => {
+		  		console.log(response)
+				this.ensurePayment( response )
+			})
+		  	.catch( error => {
+		  		console.log(error.response)
+			})
+	  }
    }
-  }
 }
-
-
-</script>
 </script>

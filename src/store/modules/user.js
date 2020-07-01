@@ -86,6 +86,7 @@ const actions = {
            commit('SET_LOGIN_USER', response.data)
          })
          .catch( error => {
+
            console.log(error.response)
          })
   },
