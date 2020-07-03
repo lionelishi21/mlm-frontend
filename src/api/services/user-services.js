@@ -75,5 +75,18 @@ export default {
 	},
 	fetchUsername(username) {
 		return Api().get('/username-availability?username='+username)
+	},
+	getCountries() {
+		return Api().get('/countries')
+	},
+	getStates(id) {
+		return Api().get('/states/'+id)
+	},
+	getCities(id) {
+		return Api().get('/cities/'+id)
+	},
+
+	fetchAffiliate() {
+		return Api().get('/link')
 	}
 }

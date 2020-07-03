@@ -13,7 +13,8 @@ const state = {
   user: {},
   group_sales: 0,
   adminDashboard: {},
-  cashbonuses: {}
+  cashbonuses: {},
+    links: {}
 
 }
 
@@ -161,19 +162,30 @@ const actions = {
 
    },
 
-  GET_USER_CASHBONUS({commit}, id) {
+      GET_USER_CASHBONUS({commit}, id) {
 
-     api.fetchUserCashBonuses(id) 
-       .then( response => {
+         api.fetchUserCashBonuses(id)
+           .then( response => {
 
-          console.log(response) 
-          commit('SET_CASHBONUSES', response.data)
-       })
-       .catch(error => {
+              console.log(response)
+              commit('SET_CASHBONUSES', response.data)
+           })
+           .catch(error => {
 
-          console.log(error.response)
-       }) 
-  }
+              console.log(error.response)
+           })
+      },
+
+    GET_AFFILIATE_LINK({commit, dispatch}) {
+      api.fetchAffiliate()
+          .then( response => {
+              console.log(response)
+              commit('SET_BITLY_LINK', response.data)
+          })
+          .catch( error => {
+              console.log( error.response.data.link)
+          })
+    }
 
 }
 
@@ -202,6 +214,10 @@ const mutations = {
 
     SET_CASHBONUSES(state, cash) {
       state.cashbonuses = cash
+    },
+
+    SET_BITLY_LINK (state, link) {
+        state.links = link
     }
 
 }
@@ -219,7 +235,8 @@ const getters = {
     getLoginUser: state => state.user,
     getGroupSales: state => state.group_sales,
     getAdminDashboard: state => state.adminDashboard,
-    getCashBonuses: state => state.cashbonuses
+    getCashBonuses: state => state.cashbonuses,
+    fetchLink: state => state.links
 }
 
 export default {

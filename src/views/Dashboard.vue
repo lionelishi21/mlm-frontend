@@ -17,15 +17,8 @@
 		</header>
 		<div class="row">
 			<div class="col-md-12">
-               
-			    <h4>Your Affilate ID is: <strong> {{getUserDetails.affiliate_id.affiliate_id}}</strong></h4>
-			    <h6> Affiliate Link: <a :href="'http://majesticares.com/checkout?referral_id='+getUserDetails.affiliate_id.affiliate_id">
-			    	 	http://majesticares.com/checkout?referral_id={{getUserDetails.affiliate_id.affiliate_id}}
-			    	 </a></h6>
+			    <h4>Your Link ID is: <strong> {{fetchLink.link}}</strong></h4>
 		    </div>
-		</div>
-		<div class="row">
-			
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
@@ -205,8 +198,11 @@ export default {
 	computed: {
 		...mapGetters([
 		 	'getUserDetails',
-		 	'getGroupSales'
+		 	'getGroupSales',
+			'fetchLink'
+
 		]),
+
 		cashBonus: function() {
 			if ( this.getGroupSales.response == 12 ) {
 				this.cash = 100
@@ -216,6 +212,7 @@ export default {
 	created() {
 		this.$store.dispatch('GET_USER_DETAILS')
 		this.$store.dispatch('USER_GROUP_SALES')
+		this.$store.dispatch('GET_AFFILIATE_LINK')
 	},
 	methods:{
 	}

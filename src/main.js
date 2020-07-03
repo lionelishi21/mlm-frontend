@@ -11,7 +11,10 @@ import { ModalPlugin } from 'bootstrap-vue'
 import PrettyCheckbox from 'pretty-checkbox-vue';
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
- 
+import csc from 'country-state-city'
+
+// Import Interfaces`
+import { ICountry, IState, ICity } from 'country-state-city'
 Vue.component('vue-phone-number', VuePhoneNumberInput);
 Vue.use(PrettyCheckbox);
 Vue.use(ModalPlugin)

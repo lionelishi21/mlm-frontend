@@ -17,6 +17,7 @@
 		<div class="row">
 			<terms-component></terms-component>
 		</div>
+
 			<div class="row">
 				<div class="col-lg-9">
 					<div class="accordion accordion-modern" id="accordion">
@@ -39,7 +40,7 @@
 												<validation-provider rules="required" v-slot="{ errors }">
 													<div class="form-group" :class="{ 'has-danger': errors[0]}">
 														<label class="font-weight-bold text-dark text-2" >First Name <span class="text-danger">*</span></label>
-														<input v-model="form.first_name" type="text" value="" class="form-control" style="background: redp">
+														<input v-model="form.first_name" type="text" value="" class="form-control">
 														<span class="help-block text-danger" v-if="errors[0]">{{ errors[0] }}</span>
 													</div>
 												</validation-provider>
@@ -107,11 +108,20 @@
 											</div>
 										</div>
 										<div class="form-row mt-3">
-											<div class="col-md-12">
+											<div class="col-md-6">
+												<validation-provider rules="required" v-slot="{ errors }">
+													<div class="form-group ">
+														<label class="font-weight-bold text-dark text-2">Address <small>*</small></label>
+														<input v-model="form.address" type="text" value="" class="form-control">
+														<span class="help-block text-danger">{{errors[0]}}</span>
+													</div>
+												</validation-provider>
+											</div>
+											<div class="col-md-6">
 												<validation-provider rules="required" v-slot="{ errors }">
 													<div class="form-group ">
 														<label class="font-weight-bold text-dark text-2">Address <small>optional</small></label>
-														<input v-model="form.address" type="text" value="" class="form-control">
+														<input v-model="form.address1" type="text" value="" class="form-control">
 														<span class="help-block text-danger">{{errors[0]}}</span>
 													</div>
 												</validation-provider>
@@ -119,27 +129,40 @@
 										</div>
 
 										<div class="form-row mt-3">
-											<div class="col-md-4">
+											<div class="col-md-6">
 												<validation-provider rules="required" v-slot="{ errors }">
 													<div class="form-group">
 														<label class="font-weight-bold text-dark text-2">Country  <span class="text-danger">*</span></label>
-														<country-select class="form-control" v-model="form.country" :country="form.country" topCountry="US" />
+														<select name="" id="" class="form-control" v-model="form.country">
+															<option  v-for="country in countries" :value="country.id">{{country.name}}</option>
+														</select>
 														<span class="help-block text-danger">{{errors[0]}}</span>
 													</div>
 												</validation-provider>
 											</div>
 
-											<div class="col-md-4">
+											<div class="col-md-6">
 												<validation-provider rules="required" v-slot="{ errors }">
 													<div class="form-group">
 														<label class="font-weight-bold text-dark text-2">State / Province <span class="text-danger">*</span></label>
-														<region-select class="form-control" v-model="form.region" :country="form.country" :region="form.region" />
+														<select name="" id="" class="form-control" v-model="form.region">
+															<option  v-for="state in states" :value="state.id">{{state.name}}</option>
+														</select>
 														<span class="help-block text-danger">{{errors[0]}}</span>
 													</div>
 												</validation-provider>
 											</div>
-
-											<div class="col-md-4">
+										</div>
+										<div class="form-row mt-3">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="font-weight-bold text-dark text-2"> City </label>
+													<select  class="form-control" v-model="form.city">
+														<option  v-for="city in cities" :value="city.id">{{city.name}}</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
 												<div class="form-group">
 													<label class="font-weight-bold text-dark text-2"> ZIP </label>
 													<input v-model="form.zip" type="text" value="" class="form-control">
@@ -222,7 +245,7 @@
 										<div class="form-row">
 											<div class="form-group col">
 												<div class="custom-control custom-checkbox">
-													<input v-model="payment_methods" type="radio" value="card" class="custom-control-input" id="paymentcheque">
+													<input v-model="payment_methods" type="radio" value="card" class="custom-control-input" >
 													<label   class="custom-control-label" for="paymentcheque">Card</label>
 												</div>
 											</div>
@@ -230,8 +253,8 @@
 										<div class="form-row">
 											<div class="form-group col">
 												<div class="custom-control custom-checkbox">
-													<input v-model="payment_methods" type="radio" value="paypal" class="custom-control-input" id="paymentpaypal">
-													<label  value="paypal" class="custom-control-label" for="paymentpaypal">Paypal</label>
+													<input v-model="payment_methods" type="radio" value="paypal" class="custom-control-input">
+													<label  value="paypal" class="custom-control-label">Paypal</label>
 												</div>
 											</div>
 										</div>
@@ -306,6 +329,7 @@ import  CardPayment from '../components/CardPayment.vue';
 import { ValidationProvider, extend, ValidationObserver } from 'vee-validate';
 import { required, email } from 'vee-validate/dist/rules';
 import TermsComponent from '../components/Terms.vue';
+import { mapGetters } from 'vuex';
 
 extend('required', {
 	...required,
@@ -352,6 +376,7 @@ export default {
 	        phone_number: null,
 	        referral_id: '',
 	        address: null,
+			address1: null,
 	        city: null,
 			zip: null
 	      },
@@ -399,12 +424,28 @@ export default {
 	      cancelUrl: 'https://magesticares.com',
 	    }
   },
-
+	computed: {
+		...mapGetters([
+				'countries',
+				'states',
+				'cities'
+		])
+	},
+	watch: {
+		'form.country': function(value) {
+			this.$store.dispatch('GET_STATES', value)
+		},
+		'form.region': function( value ) {
+			this.$store.dispatch('GET_CITIES', value)
+		}
+	},
   created() {
 
       if (this.$route.query.referral_id != undefined ) {
          this.form.referral_id = this.$route.query.referral_id
       }
+
+      this.$store.dispatch('GET_COUNTRIES')
   },
 
   methods: {
