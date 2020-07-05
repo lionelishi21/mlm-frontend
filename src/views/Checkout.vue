@@ -98,14 +98,7 @@
 											</div>
 										</div>
 										<div class="form-row">
-											<div class="col-md-12">
-													<div class="form-group">
-														<div class="custom-control custom-checkbox">
-															<input type="checkbox" value="card" class="custom-control-input" id="paymentcheque">
-															<label class="custom-control-label" for="paymentcheque">I agree to recieve email from MCC</label>
-														</div>
-													</div>
-											</div>
+
 										</div>
 										<div class="form-row mt-3">
 											<div class="col-md-6">
@@ -190,17 +183,41 @@
 										</div>
 
 										<div class="form-row mt-2">
-											<validation-provider rules="required" v-slot="{ errors }">
-											<div class="form-group col">
-												<div class="">
-													<input type="checkbox" value="terms" v-model="form.terms">
-													<label class=""> I agree to the <a href="#" v-b-modal.modal-1>Terms and Condition</a></label>
-													<span class="help-block text-danger">{{errors[0]}}</span>
+											<div class="col-md-12">
+												<div class="form-group">
+													<div class="custom-control custom-checkbox">
+														<input type="checkbox" value="card" class="custom-control-input" v-model="form.recieve_email" >
+														<label class="custom-control-label"><b>I agree to recieve emails from MCC</b></label>
+													</div>
 												</div>
-												<br>
 											</div>
-											</validation-provider>
 										</div>
+
+										<div class="form-row mt-2">
+											<div class="col-md-12">
+												<validation-provider rules="required" v-slot="{ errors }">
+												<div class="form-group">
+													<div class="custom-control custom-checkbox">
+														<input type="checkbox" value="card" v-model="form.terms" class="custom-control-input">
+														<label class="custom-control-label"><b>  I agree to the <a href="#" v-b-modal.modal-1>Terms and Conditions</a></b></label>
+														<span class="help-block text-danger">{{errors[0]}}</span>
+													</div>
+												</div>
+												</validation-provider>
+											</div>
+										</div>
+<!--										<div class="form-row mt-2">-->
+<!--											<validation-provider rules="required" v-slot="{ errors }">-->
+<!--											<div class="form-group col">-->
+<!--												<div class="custom-control custom-checkbox">-->
+<!--													<input type="checkbox" value="terms" v-model="form.terms">-->
+<!--													<label class=""> <b clss="ml-2">  I agree to the <a href="#" v-b-modal.modal-1>Terms and Condition</a></b></label>-->
+<!--													<span class="help-block text-danger">{{errors[0]}}</span>-->
+<!--												</div>-->
+<!--												<br>-->
+<!--											</div>-->
+<!--											</validation-provider>-->
+<!--										</div>-->
 
 										<div class="form-row">
 											<div class="form-group col">
@@ -371,6 +388,7 @@ export default {
 	      	region: null,
 	        name: null,
 	        email: null,
+			terms: null,
 	        first_name: null,
 	        last_name: null,
 	        phone_number: null,

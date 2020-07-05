@@ -90,3 +90,4 @@ export default {
 		return Api().get('/link')
 	}
 }
+
