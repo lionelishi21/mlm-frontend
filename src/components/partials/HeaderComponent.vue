@@ -14,104 +14,6 @@
 				<div class="header-right">
 			
 					<span class="separator"></span>
-			<!-- 
-					<ul class="notifications">
-						<li>
-							<a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
-								<i class="fas fa-envelope"></i>
-								<span class="badge">4</span>
-							</a>
-			
-							<div class="dropdown-menu notification-menu">
-								<div class="notification-title">
-									<span class="float-right badge badge-default">230</span>
-									Messages
-								</div>
-			
-								<div class="content">
-									<ul>
-										<li>
-											<a href="#" class="clearfix">
-												<figure class="image">
-													<img src="img/!sample-user.jpg" alt="Joseph Doe Junior" class="rounded-circle" />
-												</figure>
-												<span class="title">Joseph Doe</span>
-												<span class="message">Lorem ipsum dolor sit.</span>
-											</a>
-										</li>
-									
-										<li>
-											<a href="#" class="clearfix">
-												<figure class="image">
-													<img src="img/!sample-user.jpg" alt="Joe Junior" class="rounded-circle" />
-												</figure>
-												<span class="title">Joe Junior</span>
-												<span class="message">Lorem ipsum dolor sit.</span>
-											</a>
-										</li>
-									</ul>
-			
-									<hr />
-			
-									<div class="text-right">
-										<a href="#" class="view-more">View All</a>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
-								<i class="fas fa-bell"></i>
-								<span class="badge">3</span>
-							</a>
-			
-							<div class="dropdown-menu notification-menu">
-								<div class="notification-title">
-									<span class="float-right badge badge-default">3</span>
-									Alerts
-								</div>
-			
-								<div class="content">
-									<ul>
-										<li>
-											<a href="#" class="clearfix">
-												<div class="image">
-													<i class="fas fa-thumbs-down bg-danger text-light"></i>
-												</div>
-												<span class="title">Server is Down!</span>
-												<span class="message">Just now</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="clearfix">
-												<div class="image">
-													<i class="fas fa-lock bg-warning text-light"></i>
-												</div>
-												<span class="title">User Locked</span>
-												<span class="message">15 minutes ago</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="clearfix">
-												<div class="image">
-													<i class="fas fa-signal bg-success text-light"></i>
-												</div>
-												<span class="title">Connection Restaured</span>
-												<span class="message">10/10/2017</span>
-											</a>
-										</li>
-									</ul>
-			
-									<hr />
-			
-									<div class="text-right">
-										<a href="#" class="view-more">View All</a>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul> -->
-			
 					<span class="separator"></span>
 			
 					<div id="userbox" class="userbox">
@@ -120,8 +22,8 @@
 								<img src="@/assets/img/logged-user.jpg" alt="Joseph Doe" class="rounded-circle" data-lock-picture="@/assets/img/logged-user.jpg" />
 							</figure>
 							<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
-								<span class="name">{{getLoginUser.first_name}}</span>
-								<span class="role" v-if="getLoginUser.role_id == 1">administrator</span>
+								<span class="name">{{user.first_name}}</span>
+								<span class="role" v-if="user.role_id == 1">administrator</span>
 								<span class="role" v-else >Affiliate</span>
 							</div>
 			
@@ -147,21 +49,13 @@
 <!-- end: header -->
 </template>
 <script>
-import { mapGetters } from 'vuex'
 export default {
 	data() {
 		return{
 			title: 'Header Component'
 		}
 	},
-	computed: {
-	   ...mapGetters([
-	   	'getLoginUser'
-	   ])
-	},
-	created() {
-		this.$store.dispatch('GET_LOGIN_USER')
-	},
+	props:['user'],
     methods: {
     	logOut: function() {
     		this.$store.dispatch('AUTH_LOGOUT')

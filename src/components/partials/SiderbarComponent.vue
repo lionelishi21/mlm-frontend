@@ -26,7 +26,7 @@
                         </router-link>                        
                     </li>
 
-                     <li>
+                     <li v-if="user.role_id == 1">
                         <router-link tag="a" to="/dashboard/affiliates" class="nav-link">
                             <i class="fas fa-users" aria-hidden="true"></i>
                             <span>Affiliates</span>
@@ -51,3 +51,13 @@
 </aside>
 <!-- end: sidebar -->
 </template>
+<script>
+    export default  {
+        props:['user'],
+        data() {
+            return {
+                name: 'SiderBar Component'
+            }
+        }
+    }
+</script>

@@ -1,23 +1,39 @@
 <template>
+
 <section class="body">
-  <header-component></header-component>
-  <div class="inner-wrapper">
-   	<sidebar-component></sidebar-component>
-   	<router-view/>
-  </div>
+
+         <header-component :user="getLoginUser"></header-component>
+         <div class="inner-wrapper">
+                <sidebar-component :user="getLoginUser"></sidebar-component>'
+                <router-view/>
+             </div>
 </section>
 </template>
 <script>
 // @ is an alias to /src
 import HeaderComponent from '@/components/partials/HeaderComponent.vue'
 import SidebarComponent from '@/components/partials/SiderbarComponent.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Home',
   components: {
   	HeaderComponent,
   	SidebarComponent
-  }
+  },
+    computed: {
+      ...mapGetters([
+          'getLoginUser'
+      ])
+    },
+    created() {
+      this.$store.dispatch('GET_LOGIN_USER')
+    },
+    methods: {
+      logOut() {
+
+      }
+    }
 }
 </script>
 <style lang="scss" scoped>
