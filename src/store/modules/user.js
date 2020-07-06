@@ -115,10 +115,10 @@ const actions = {
 
       api.purchaseEBook(params)
         .then ( response => {
-          console.log(response)
+            resolve(response)
         })
         .catch( error => {
-          console.log(error.response)
+            reject(error.response)
           console.log(error.response)
         })
     })
