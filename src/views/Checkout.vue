@@ -111,13 +111,10 @@
 												</validation-provider>
 											</div>
 											<div class="col-md-6">
-												<validation-provider rules="required" v-slot="{ errors }">
 													<div class="form-group ">
 														<label class="font-weight-bold text-dark text-2">Address <small>optional</small></label>
 														<input v-model="form.address1" type="text" value="" class="form-control">
-														<span class="help-block text-danger">{{errors[0]}}</span>
 													</div>
-												</validation-provider>
 											</div>
 										</div>
 
