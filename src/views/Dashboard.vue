@@ -80,15 +80,15 @@
 								</div>
 							</div>
 							<div class="card-bottom-section">
-								<h5>4 Members Going</h5>
+								<h5>{{getGroupSales.response}}} Members Going</h5>
 
-								<div class="img-group">
-									<img src="@/cork/img/90x90.jpg" alt="avatar">
-									<img src="@/cork/img/90x90.jpg" alt="avatar">
-									<img src="@/cork/img/90x90.jpg" alt="avatar">
-									<img src="@/cork/img/90x90.jpg" alt="avatar">
-								</div>
-								<a href="javascript:void(0);" class="btn">View Details</a>
+<!--								<div class="img-group">-->
+<!--									<img src="@/cork/img/90x90.jpg" alt="avatar">-->
+<!--									<img src="@/cork/img/90x90.jpg" alt="avatar">-->
+<!--									<img src="@/cork/img/90x90.jpg" alt="avatar">-->
+<!--									<img src="@/cork/img/90x90.jpg" alt="avatar">-->
+<!--								</div>-->
+<!--								<a href="javascript:void(0);" class="btn">View Details</a>-->
 							</div>
 						</div>
 					</div>
