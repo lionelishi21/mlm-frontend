@@ -31,7 +31,7 @@
 </template>
 
 <script>
-    let stripe = Stripe(`pk_test_Yfe8V58F3Kw8aZUWqLtXqNnl00Bv7eXD7P`),
+    let stripe = Stripe(`pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5`),
     elements = stripe.elements(),
     cardNumber = undefined,
     cardExpiry = undefined,
@@ -57,7 +57,7 @@
                 isDisabled: false,
                 loading: false,
                 email: false,
-                publishableKey: 'pk_test_Yfe8V58F3Kw8aZUWqLtXqNnl00Bv7eXD7P',
+                publishableKey: 'pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5',
                 amount: 34.95,
                 token: null,
                 charge: null,
