@@ -185,9 +185,9 @@
 										<div class="form-row mt-2">
 											<div class="col-md-12">
 												<div class="form-group">
-													<div class="custom-control custom-checkbox">
-														<input type="checkbox" value="card" class="custom-control-input" v-model="form.recieve_email" >
-														<label class="custom-control-label"><b>I agree to recieve emails from MCC</b></label>
+													<div class="">
+														<input type="checkbox" value="1" class="" v-model="form.recieve_email" >
+														<label class=""><b  class="ml-2">I agree to recieve emails from MCC</b></label>
 													</div>
 												</div>
 											</div>
@@ -197,11 +197,11 @@
 											<div class="col-md-12">
 												<validation-provider rules="required" v-slot="{ errors }">
 												<div class="form-group">
-													<div class="custom-control custom-checkbox">
-														<input type="checkbox" value="card" v-model="form.terms" class="custom-control-input">
-														<label class="custom-control-label"><b>  I agree to the <a href="#" v-b-modal.modal-1>Terms and Conditions</a></b></label>
-														<span class="help-block text-danger">{{errors[0]}}</span>
+													<div class="">
+														<input type="checkbox" value="1" v-model="form.terms" class="">
+														<label class=""> <b class="ml-2">I agree to the <a href="#" v-b-modal.modal-1>Terms and Conditions</a></b></label>
 													</div>
+													<span class="help-block text-danger">{{errors[0]}}</span>
 												</div>
 												</validation-provider>
 											</div>
@@ -261,17 +261,17 @@
 									<form action="/" id="frmPayment" method="post">
 										<div class="form-row">
 											<div class="form-group col">
-												<div class="custom-control custom-checkbox">
-													<input v-model="payment_methods" type="radio" value="card" class="custom-control-input" >
-													<label   class="custom-control-label" for="paymentcheque">Card</label>
+												<div class="">
+													<input v-model="payment_methods" type="radio" value="card" class="" >
+													<label class="ml-2" >Card</label>
 												</div>
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col">
-												<div class="custom-control custom-checkbox">
-													<input v-model="payment_methods" type="radio" value="paypal" class="custom-control-input">
-													<label  value="paypal" class="custom-control-label">Paypal</label>
+												<div class="">
+													<input v-model="payment_methods" type="radio" value="paypal" class="">
+													<label  value="paypal" class="ml-2">Paypal</label>
 												</div>
 											</div>
 										</div>

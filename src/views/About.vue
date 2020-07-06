@@ -77,7 +77,7 @@
 						<div>
 							<img class="img-fluid rounded-0 mb-4" src="@/assets/lionel.jpg" alt="" />
 							<h3 class="font-weight-bold text-color-dark text-4 mb-0">Lionel Francis</h3>
-							<p class="text-2 mb-0">Software Engineer</p>
+<!--							<p class="text-2 mb-0">Software Engineer</p>-->
 						</div>
 					</div>
 				</div>
@@ -138,3 +138,85 @@
 
 </div>
 </template>
+<script>
+	export default  {
+		data() {
+			return {
+				name: 'Title'
+			}
+		},
+		mounted() {
+			// Animate
+			(function($) {
+
+				'use strict';
+
+				if ($.isFunction($.fn['themePluginAnimate'])) {
+
+					$(function() {
+						$('[data-appear-animation]').each(function() {
+							var $this = $(this),
+									opts;
+
+							var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
+							if (pluginOptions)
+								opts = pluginOptions;
+
+							$this.themePluginAnimate(opts);
+						});
+					});
+
+				}
+
+			}).apply(this, [jQuery]);
+
+			// Carousel
+			(function($) {
+
+				'use strict';
+
+				if ($.isFunction($.fn['themePluginCarousel'])) {
+
+					$(function() {
+						$('[data-plugin-carousel]:not(.manual), .owl-carousel:not(.manual)').each(function() {
+							var $this = $(this),
+									opts;
+
+							var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
+							if (pluginOptions)
+								opts = pluginOptions;
+
+							$this.themePluginCarousel(opts);
+						});
+					});
+
+				}
+
+			}).apply(this, [jQuery]);
+
+			// Counter
+			(function($) {
+
+				'use strict';
+
+				if ($.isFunction($.fn['themePluginCounter'])) {
+
+					$(function() {
+						$('[data-plugin-counter]:not(.manual), .counters [data-to]').each(function() {
+							var $this = $(this),
+									opts;
+
+							var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
+							if (pluginOptions)
+								opts = pluginOptions;
+
+							$this.themePluginCounter(opts);
+						});
+					});
+
+				}
+
+			}).apply(this, [jQuery]);
+		}
+	}
+</script>

@@ -243,7 +243,6 @@
 		},
 		methods: {
 			goToCheckout() {
-
 				this.$router.push('/checkout')
 			}
 		}

@@ -1,8 +1,10 @@
 <template>
-  <section class="body" style="background: #ececec;">
-       <router-view/>
-  </section>
+    <router-view/>
 </template>
 <style lang="scss">
 
 </style>
+
+
+
+
