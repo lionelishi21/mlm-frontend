@@ -18,6 +18,7 @@
     @import '../cork/css/plugins.css';
     @import '../cork/css/dashboard/dash_1.css';
     @import '../cork/css/tables/table-basic.css';
+    @import '../cork/css/forms/custom-clipboard.css';
     @import '../cork/css/widgets/modules-widgets.css';
     @import '../cork/css/components/cards/card.css';
     @import '../cork/css/components/custom-modal.css';
@@ -55,7 +56,11 @@ import '../cork/js/libs/jquery-3.1.1.min.js';
 import '../cork/bootstrap/js/popper.min.js';
 import '../cork/bootstrap/js/bootstrap.js';
 import '../cork/plugins/perfect-scrollbar/perfect-scrollbar.min.js';
-import '../cork/js/widgets/modules-widgets.js'
+import '../cork/js/widgets/modules-widgets.js';
+
+import '../cork/js/clipboard/clipboard.min.js';
+// import '../cork/js/forms/custom-clipboard.js';
+
 // import '../cork/plugins/apex/apexcharts.min.js';
 import '../cork/js/dashboard/dash_1.js';
 import '../cork/plugins/perfect-scrollbar/perfect-scrollbar.min.js';

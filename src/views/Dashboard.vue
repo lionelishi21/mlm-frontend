@@ -16,12 +16,10 @@
 							</div>
 
 							<div class="w-content">
-								<div class="input-group mt-5">
+								<div class="input-group mt-4">
 									<input type="text" class="form-control" :value="fetchLink.link">
-									<div class="input-group-append">
-										<span class="input-group-text" id="basic-addon6">Copy</span>
-									</div>
 								</div>
+								<a @click="copy(fetchLink.link)" class="mt-3 btn btn-primary" href="#"><svg> ... </svg> Copy from Input</a>
 							</div>
 						</div>
 					</div>
@@ -267,7 +265,8 @@ export default {
 	data() {
 		return {
 			tilte: 'Dashbord',
-			cash: 0
+			cash: 0,
+			canCopy:false
 		}
 	},
 	computed: {
@@ -290,8 +289,12 @@ export default {
 		this.$store.dispatch('USER_GROUP_SALES')
 		this.$store.dispatch('GET_AFFILIATE_LINK')
 		this.$store.dispatch('GET_TOTAL_GROUP_SALES')
+		this.canCopy = !!navigator.clipboard;
 	},
 	methods:{
+		async copy(s) {
+			await navigator.clipboard.writeText(s);
+		}
 	}
 }
 </script>
