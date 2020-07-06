@@ -126,21 +126,18 @@
 												<validation-provider rules="required" v-slot="{ errors }">
 													<div class="form-group">
 														<label class="font-weight-bold text-dark text-2">Country  <span class="text-danger">*</span></label>
-														<select name="" id="" class="form-control" v-model="form.country">
-															<option  v-for="country in countries" :value="country.id">{{country.name}}</option>
-														</select>
+														<country-select class="form-control" v-model="form.country" :country="country" topCountry="US" />
 														<span class="help-block text-danger">{{errors[0]}}</span>
 													</div>
 												</validation-provider>
 											</div>
 
+
 											<div class="col-md-6">
 												<validation-provider rules="required" v-slot="{ errors }">
 													<div class="form-group">
 														<label class="font-weight-bold text-dark text-2">State / Province <span class="text-danger">*</span></label>
-														<select name="" id="" class="form-control" v-model="form.region">
-															<option  v-for="state in states" :value="state.id">{{state.name}}</option>
-														</select>
+														<region-select class="form-control" v-model="form.region" :country="form.country" :region="form.region" />
 														<span class="help-block text-danger">{{errors[0]}}</span>
 													</div>
 												</validation-provider>
@@ -148,12 +145,13 @@
 										</div>
 										<div class="form-row mt-3">
 											<div class="col-md-6">
+												<validation-provider rules="required" v-slot="{ errors }">
 												<div class="form-group">
-													<label class="font-weight-bold text-dark text-2"> City </label>
-													<select  class="form-control" v-model="form.city">
-														<option  v-for="city in cities" :value="city.id">{{city.name}}</option>
-													</select>
+													 <label class="font-weight-bold text-dark text-2"> City </label>
+													 <input type="text" class="form-control" v-model="form.city" placeholder="Enter City Name">
+												    	<span class="help-block text-danger">{{errors[0]}}</span>
 												</div>
+												</validation-provider>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
@@ -245,44 +243,54 @@
 								<h6>Referral Id <strong> {{form.referral_id}}</strong></h6>
 							</div>
 							<div class="card-footer text-center">
-								<button class="btn btn-link" @click="step = 1"> Edit </button>
+								<button class="btn btn-success" @click="step = 1"> Edit </button>
 							</div>
 						</div>
 						<div class="card card-default" v-if="step == 2">
 							<div class="card-header">
 								<h4 class="card-title m-0">
 									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-										Payment
+										Credit Card Checkout
 									</a>
 								</h4>
 							</div>
 							<div id="collapseThree" class="collapse show">
 								<div class="card-body">
-									<form action="/" id="frmPayment" method="post">
-										<div class="form-row">
-											<div class="form-group col">
-												<div class="">
-													<input v-model="payment_methods" type="radio" value="card" class="" >
-													<label class="ml-2" >Card</label>
-												</div>
-											</div>
-										</div>
-										<div class="form-row">
-											<div class="form-group col">
-												<div class="">
-													<input v-model="payment_methods" type="radio" value="paypal" class="">
-													<label  value="paypal" class="ml-2">Paypal</label>
-												</div>
-											</div>
-										</div>
-
-										<div class="form-row" v-if="payment_methods == 'card'" style="margin-top: 30px;" y>
+										<div class="form-row" >
 											<div class="col-md-12">
-												<label>Enter Credit Card Information</label>
 												<card-payment :form="form"></card-payment>
-									</div>
+									       </div>
 										</div>
-									</form>
+								</div>
+							</div>
+						</div>
+						<div class="card card-default" v-if="step == 2">
+							<div class="card-header">
+								<h4 class="card-title m-0">
+									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+										Paypal Checkout
+									</a>
+								</h4>
+							</div>
+							<div id="collapseThr" class="collapse show">
+								<div class="card-body">
+									<div class="form-row">
+										<div class="col-md-4">
+											<label >Paypal Checkout </label>
+										   <PayPal
+												class="form-control"
+												currency="USD"
+												env="sandbox"
+												:button-style="myStyle"
+												amount="34.95"
+												:client="paypal"
+												:experience="experience"
+												v-on:payment-authorized="paymentAuthorized"
+												v-on:payment-completed="paymentCompleted"
+												v-on:payment-cancelled="paymentCancelled">
+										</PayPal>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -292,17 +300,18 @@
 					<div class="card">
 						<div class="card-body">
 							<h4 class="text-primary">Ebook</h4>
-							<table class="cart-totals">
+							 <img src="@/assets/ebook.png" class="img-fluid">
+							<table class="cart-totals mt-2">
 
 								<tbody>
 									<tr>
-										<td>
-											<img src="@/assets/ebook.png">
+										<td class="ce">
+
 										</td>
 									</tr>
 									<tr class="total mt-3">
 										<th>
-											<strong class="text-dark">Order Total</strong>
+											<strong class="text-dark">Order Total: </strong>
 										</th>
 
 										<td>
@@ -311,25 +320,6 @@
 									</tr>
 								</tbody>
 							</table>
-							<div v-if="step == 2">
-							 <PayPal
-							 	 class="mt-5 mb-5 mb-lg-0"
-							 	 v-if="payment_methods == 'paypal'"
-			                     currency="USD"
-			                     env="sandbox"
-			                     :button-style="myStyle"
-			                     amount="34.95"
-			                     :client="paypal"
-			                     :experience="experience"
-			                     v-on:payment-authorized="paymentAuthorized"
-			                     v-on:payment-completed="paymentCompleted"
-			                     v-on:payment-cancelled="paymentCancelled">
-			                  </PayPal>
-
-							 <button v-else @click="submit()" name="proceed" class="btn btn-primary btn-block mt-5 mb-5 mb-lg-0">
-							 	Place Order
-							 </button>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -339,10 +329,7 @@
 <script>
 
 import PayPal from 'vue-paypal-checkout'
-
-import { StripeElements } from 'vue-stripe-checkout';
 import  CardPayment from '../components/CardPayment.vue';
-
 import { ValidationProvider, extend, ValidationObserver } from 'vee-validate';
 import { required, email } from 'vee-validate/dist/rules';
 import TermsComponent from '../components/Terms.vue';
@@ -366,11 +353,11 @@ extend('emailconfirm', {
 	message: 'Email confirmation does not match'
 });
 
-
+import { ModelSelect } from 'vue-search-select'
 export default {
 	components: {
+		ModelSelect,
         PayPal,
-	    StripeElements,
 	    CardPayment,
 		ValidationProvider,
 		TermsComponent,
@@ -442,30 +429,11 @@ export default {
 	      cancelUrl: 'https://magesticares.com',
 	    }
   },
-	computed: {
-		...mapGetters([
-				'countries',
-				'states',
-				'cities'
-		])
-	},
-	watch: {
-		'form.country': function(value) {
-			this.$store.dispatch('GET_STATES', value)
-		},
-		'form.region': function( value ) {
-			this.$store.dispatch('GET_CITIES', value)
-		}
-	},
   created() {
-
       if (this.$route.query.referral_id != undefined ) {
          this.form.referral_id = this.$route.query.referral_id
       }
-
-      this.$store.dispatch('GET_COUNTRIES')
   },
-
   methods: {
 
 	  invalidSubmit() {
@@ -578,6 +546,13 @@ export default {
 		  	.catch( error => {
 		  		console.log(error.response)
 			})
+	  },
+	  reset2 () {
+		  this.form.city = ''
+	  },
+	  selectFromParentComponent2 () {
+		  // select option from parent component
+		  this.form.city = this.cities[0].name
 	  }
    }
 }

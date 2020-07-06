@@ -41,8 +41,8 @@
 				<div class="col-sm-6 col-lg63 mb-5 mb-lg-0">
 					<div class="counter">
 						<i class="icons icon-badge text-color-light"></i>
-						<strong class="text-color-light font-weight-extra-bold" data-to="30">0</strong>
-						<label class="text-4 mt-1 text-color-light">Years In Business</label>
+						<strong class="text-color-light font-weight-extra-bold" data-to="50">0</strong>
+						<label class="text-4 mt-1 text-color-light">Years of Experience</label>
 					</div>
 				</div>
 			</div>
@@ -95,7 +95,7 @@
 				<div class="col-lg-12 pb-sm-4 pb-lg-0 pr-lg-5 mb-sm-5 mb-lg-0">
 					<h2 class="text-color-dark font-weight-normal text-6 mb-2">Who <strong class="font-weight-extra-bold">We Are</strong></h2>
 					<p class="pr-5 mr-5">
-						Founded by entrepreneurs, Bob Donald of South Carolina, Jim Miller & Larron Campbell of California, and Rosalinda Burton of Utah, Majestic Cares Community (MCC) was created as an Online Community (https://majesticares.com) where Affiliate/Members actively participate in Community Cash Bonuses (Profit Sharing) Initiatives.
+						Founded by entrepreneurs, Bob Donald of South Carolina, Jim Miller & Larron Campbell of California, and Rosalinda Burton of Utah, Majestic Cares Community (MCC) was created as an Online Community where Affiliate/Members actively participate in Community Cash Bonuses (Profit Sharing) Initiatives.
 					</p>
 					<p class="pr-5 mr-5">
 						We have been inspired by extraordinary individuals worldwide. Therefore, the Majestic Cares Community, which has been in development since early 2020, provides a gateway to raise enough capital for any worthwhile humanitarian projects within local communities and around the world!
@@ -108,7 +108,7 @@
 					</p>
 
 					<p class="pr-5 mr-5">
-						MCC Founders, Bob Donald, our Administrator, Jim Miller, the mastermind behind MCC, Larron Campbell, the creator of MCC’s unique formula, and Rosalinda Burton, our MCC’s voice, and contributor of MCC’s launch and media presentation, are all dedicated to fulfilling MCC’s unique vision for you.
+						MCC Founders, Bob Donald, our Administrator, Jim Miller, the mastermind behind MCC, Larron Campbell, the creator of MCC’s unique pay-it-forward formula, and Rosalinda Burton, our MCC’s voice, and contributor of MCC’s media and launch, are all dedicated to fulfilling MCC’s unique vision for you.
 					</p>
 					<p class="pr-5 mr-5">
 						Finally, it is worthy to mention our MCC’s Head Programmer, Lionel Francis of Jamaica, who makes this all possible to complete MCC’s vision and team.

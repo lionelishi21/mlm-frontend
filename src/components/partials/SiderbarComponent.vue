@@ -11,18 +11,18 @@
         </div>
 
         <ul class="menu-categories">
-            <li class="menu">
-                <a href="#dashboard" data-active="false" class="menu-toggle">
+            <router-link tag="li" active-class="active" to="/dashboard" class="menu" exact>
+                <a href="/dashboard" data-active="false" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                         </div>
                     </div>
                 </a>
-                <div class="tooltip"><span>Menu 1</span></div>
-            </li>
+                <div class="tooltip"><span>Dasboard</span></div>
+            </router-link>
 
-            <li class="menu">
+            <router-link to="/dashboard/affiliates" tag="li" active-class="active" class="menu">
                 <a href="#app" data-active="false" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons">
@@ -30,8 +30,8 @@
                         </div>
                     </div>
                 </a>
-                <div class="tooltip"><span>Menu 2</span></div>
-            </li>
+                <div class="tooltip"><span>Affiliates</span></div>
+            </router-link>
 
             <li class="menu">
                 <a href="#users" data-active="false" class="menu-toggle">
@@ -44,7 +44,7 @@
                 <div class="tooltip"><span>Menu 3</span></div>
             </li>
 
-            <li class="menu active">
+            <li class="menu">
                 <a href="#more" data-active="true" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons">
@@ -77,7 +77,21 @@
 
             <ul class="submenu-list" data-parent-element="#dashboard">
                 <li>
-                    <a href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> Submenu 1 </a>
+                    <a href="javascript:void(0)">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="24"
+                             height="24"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             class="feather feather-grid">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect></svg> Submenu 1
+                    </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> Submenu 2 </a>

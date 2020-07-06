@@ -108,28 +108,28 @@
 
 								<div class="acc-total-info">
 									<h5>Balance</h5>
-									<p class="acc-amount">$470</p>
+									<p class="acc-amount">$0</p>
 								</div>
 
-								<div class="inv-detail">
+<!--								<div class="inv-detail">-->
 
-									<div class="info-detail-1">
-										<p>Mcc Bronze Cash Bonuse Payout</p>
-										<p>$ 199.0</p>
-									</div>
-									<div class="info-detail-3 info-sub">
-										<div class="info-detail-sub">
-											<p>Transfer</p>
-											<p>$ -0.68</p>
-										</div>
-									</div>
-									<div class="info-detail-3 info-sub">
-										<div class="info-detail-sub">
-											<p>Total</p>
-											<p>$ -0.68</p>
-										</div>
-									</div>
-								</div>
+<!--									<div class="info-detail-1">-->
+<!--										<p>Mcc Bronze Cash Bonuse Payout</p>-->
+<!--										<p>$ 199.0</p>-->
+<!--									</div>-->
+<!--									<div class="info-detail-3 info-sub">-->
+<!--										<div class="info-detail-sub">-->
+<!--											<p>Transfer</p>-->
+<!--											<p>$ -0.68</p>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--									<div class="info-detail-3 info-sub">-->
+<!--										<div class="info-detail-sub">-->
+<!--											<p>Total</p>-->
+<!--											<p>$ -0.68</p>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--								</div>-->
 
 								<div class="inv-action">
 									<a href="" class="btn btn-outline-dark">Summary</a>
@@ -156,54 +156,90 @@
 										<tr>
 											<td>
 												<div class="d-flex">
-													<div class="usr-img-frame mr-2 rounded-circle">
-														<img alt="avatar" class="img-fluid rounded-circle" src="assets/img/90x90.jpg">
-													</div>
-													<p class="align-self-center mb-0">Shaun</p>
+													<p class="align-self-center mb-0">Bronze</p>
 												</div>
 											</td>
-											<td>10/08/2020</td>
-											<td>320</td>
-											<td class=" text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x t-icon t-hover-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></td>
+											<td>12</td>
+											<td>$100</td>
+											<td class=" text-center">
+												<svg xmlns="http://www.w3.org/2000/svg"
+													 width="24" height="24" viewBox="0 0 24 24" fill="none"
+													 stroke="currentColor"
+													 stroke-width="2"
+													 stroke-linecap="round"
+													 stroke-linejoin="round"
+													 class="feather feather-x t-icon t-hover-icon">
+													<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+											   </td>
 										</tr>
 										<tr>
 											<td>
 												<div class="d-flex">
-													<div class="usr-img-frame mr-2 rounded-circle">
-														<img alt="avatar" class="img-fluid rounded-circle" src="assets/img/90x90.jpg">
-													</div>
-													<p  class="align-self-center mb-0">Alma</p>
+													<p  class="align-self-center mb-0">Silver</p>
 												</div>
 											</td>
-											<td>11/08/2020</td>
-											<td>420</td>
+											<td>36</td>
+											<td>$600</td>
 											<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x t-icon t-hover-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></td>
 										</tr>
 										<tr>
 											<td>
 												<div class="d-flex">
-													<div class="usr-img-frame mr-2 rounded-circle">
-														<img alt="avatar" class="img-fluid rounded-circle" src="assets/img/90x90.jpg">
-													</div>
-													<p  class="align-self-center mb-0">Kelly</p>
+													<p  class="align-self-center mb-0">Gold</p>
 												</div>
 											</td>
-											<td>12/08/2020</td>
-											<td>130</td>
-											<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x t-icon t-hover-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></td>
+											<td>108</td>
+											<td>$308</td>
+											<td class="text-center">
+												<svg xmlns="http://www.w3.org/2000/svg"
+													 width="24"
+													 height="24"
+													 viewBox="0 0 24 24"
+													 fill="none" stroke="currentColor"
+													 stroke-width="2" stroke-linecap="round"
+													 stroke-linejoin="round"
+													 class="feather feather-x t-icon t-hover-icon">
+													<line x1="18" y1="6" x2="6" y2="18"></line>
+													<line x1="6" y1="6" x2="18" y2="18"></line></svg>
+											</td>
 										</tr>
 										<tr>
 											<td>
 												<div class="d-flex">
-													<div class="usr-img-frame mr-2 rounded-circle">
-														<img alt="avatar" class="img-fluid rounded-circle" src="assets/img/90x90.jpg">
-													</div>
-													<p  class="align-self-center mb-0">Vincent</p>
+													<p  class="align-self-center mb-0">Ruby</p>
 												</div>
 											</td>
-											<td>13/08/2020</td>
-											<td>260</td>
-											<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x t-icon t-hover-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></td>
+											<td>324</td>
+											<td>$22,000</td>
+											<td class="text-center">
+												<svg xmlns="http://www.w3.org/2000/svg"
+													 width="24" height="24"
+													 viewBox="0 0 24 24" fill="none"
+													 stroke="currentColor" stroke-width="2"
+													 stroke-linecap="round" stroke-linejoin="round"
+													 class="feather feather-x t-icon t-hover-icon">
+													<line x1="18" y1="6" x2="6" y2="18"></line>
+													<line x1="6" y1="6" x2="18" y2="18"></line></svg>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="d-flex">
+													<p  class="align-self-center mb-0">Diamond</p>
+												</div>
+											</td>
+											<td>972</td>
+											<td>$412,855.60 (Recycle)</td>
+											<td class="text-center">
+												<svg xmlns="http://www.w3.org/2000/svg"
+													 width="24" height="24"
+													 viewBox="0 0 24 24" fill="none"
+													 stroke="currentColor" stroke-width="2"
+													 stroke-linecap="round" stroke-linejoin="round"
+													 class="feather feather-x t-icon t-hover-icon">
+													<line x1="18" y1="6" x2="6" y2="18"></line>
+													<line x1="6" y1="6" x2="18" y2="18"></line></svg>
+											</td>
 										</tr>
 										</tbody>
 									</table>
@@ -238,7 +274,8 @@ export default {
 		...mapGetters([
 		 	'getUserDetails',
 		 	'getGroupSales',
-			'fetchLink'
+			'fetchLink',
+			'groupSales'
 
 		]),
 
@@ -252,6 +289,7 @@ export default {
 		this.$store.dispatch('GET_USER_DETAILS')
 		this.$store.dispatch('USER_GROUP_SALES')
 		this.$store.dispatch('GET_AFFILIATE_LINK')
+		this.$store.dispatch('GET_TOTAL_GROUP_SALES')
 	},
 	methods:{
 	}

@@ -16,6 +16,7 @@ import UserHomePage from '@/views/UserHomePage.vue';
 import Wallet from '@/views/Wallet.vue';  
 import AdminDashboard from '@/views/AdminDashboard';
 import Aboutus from '@/views/About.vue';
+import Payment from "@/views/Payment.vue";
 
 import { isLoggedIn } from '../utils/auth.js'
 
@@ -53,7 +54,11 @@ Vue.use(VueRouter)
       }
    ]
   },
-
+    {
+      path: '/payment',
+      name: 'Payment',
+      component: Payment
+    },
    {
     path: '/homepage',
     component: UserHomePage,

@@ -64,7 +64,7 @@
 
 		<div class="row">
 			<div class="col py-3">
-				<hr class="solid mt-5 mb-2">
+				<hr class="solid mt-3 mb-2">
 			</div>
 		</div>
 
@@ -78,7 +78,7 @@
 
 			</div>
 			<div class="row mt-3">
-			  <p class="lead mb-0 appear-animation mt-3 text-center" data-appear-animation="maskUp" data-appear-animation-delay="200">
+			  <p class="lead mb-0 appear-animation text-center" data-appear-animation="maskUp" data-appear-animation-delay="200">
 						******* CONGRATULATIONS! YOU NOW QUALIFY TO RECEIVE UP-TO 90% PLUS OF YOUR TOTAL GROUP SALES VOLUME FOR LIFE!!
 			  </p>
 			</div>
