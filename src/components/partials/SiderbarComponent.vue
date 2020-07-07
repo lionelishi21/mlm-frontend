@@ -22,7 +22,7 @@
                 <div class="tooltip"><span>Dasboard</span></div>
             </router-link>
 
-            <router-link to="/dashboard/affiliates" tag="li" active-class="active" class="menu">
+            <router-link v-if="user.role_id == 1" to="/dashboard/affiliates" tag="li" active-class="active" class="menu">
                 <a href="#app" data-active="false" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons">
@@ -33,27 +33,7 @@
                 <div class="tooltip"><span>Affiliates</span></div>
             </router-link>
 
-            <li class="menu">
-                <a href="#users" data-active="false" class="menu-toggle">
-                    <div class="base-menu">
-                        <div class="base-icons">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-                        </div>
-                    </div>
-                </a>
-                <div class="tooltip"><span>Menu 3</span></div>
-            </li>
 
-            <li class="menu">
-                <a href="#more" data-active="true" class="menu-toggle">
-                    <div class="base-menu">
-                        <div class="base-icons">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-terminal"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-                        </div>
-                    </div>
-                </a>
-                <div class="tooltip"><span>Starter Kit</span></div>
-            </li>
         </ul>
 
         <div class="external-links">

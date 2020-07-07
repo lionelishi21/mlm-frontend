@@ -90,8 +90,8 @@ export default {
 		return Api().get('/link')
 	},
 
-	changePassword() {
-		return Api().post('/changePassword')
+	changePassword(payload) {
+		return Api().post('/changePassword', payload)
 	}
 }
 

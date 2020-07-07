@@ -71,7 +71,7 @@
 
 									<p class="text-4 mt-1 text-white"><strong>{{getGroupSales.response}} Members Going</strong></p>
 								</ul>
-								<a href="javascript:void(0);" class="btn">View Details</a>
+								<a @click="goToDetails()" href="javascript:void(0);" class="btn">View Details</a>
 							</div>
 
 						</div>
@@ -283,6 +283,10 @@ export default {
 	methods:{
 		async copy(s) {
 			await navigator.clipboard.writeText(s);
+		},
+		goToDetails() {
+			var url = '/dashboard/affiliates/'+this.getUserDetails.id
+			this.$router.push(url);
 		}
 	}
 }

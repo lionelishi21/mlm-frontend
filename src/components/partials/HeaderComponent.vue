@@ -201,7 +201,7 @@ export default {
     			})
     	},
 		goToProfile() {
-    		this.$router.push('profile');
+    		this.$router.push('/dashboard/profile');
 		}
     }
 }

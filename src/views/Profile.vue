@@ -53,8 +53,11 @@
 								<div class="row">
 									<div class="col-md-12 mx-auto">
 										<div class="row">
-											<div class="alert alert-danger">
+											<div class="alert alert-danger" v-if="error">
 													{{ message }}
+											</div>
+											<div class="alert alert-danger" v-if="success">
+												{{ message }}
 											</div>
 										</div>
 										<div class="row">
@@ -141,7 +144,7 @@ export default {
 				confirm_password: ''
 			},
 			error: false,
-			message: '',
+			message: 'something went wrong',
 			success: false
 		}
 
@@ -165,7 +168,7 @@ export default {
 			this.$store.dispatch('CHANGE_PASSWORD', this.password)
 				.then( response => {
 
-						console.log(response.data.message)
+						console.log(response.data)
 					 if ( response.data.status == false) {
 					 	 this.error = true
 						 this.message = response.data.message
@@ -179,7 +182,6 @@ export default {
 				})
 			.catch( error => {
 				this.error = true
-				console.log(error)
 			})
 		}
 	}

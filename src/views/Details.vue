@@ -243,8 +243,8 @@
 											<div class="col-md-12 text-right">
 												<div class="progress p-o-progress mt-2">
 													<div class="progress-bar bg-danger"
-														 role="progressbar" :style="'width:'+silverPercentage+'%'"
-														 :aria-valuenow="silverPercentage" aria-valuemin="0" aria-valuemax="100">
+														 role="progressbar" :style="'width:'+goldPercentage+'%'"
+														 :aria-valuenow="goldPercentage" aria-valuemin="0" aria-valuemax="100">
 													</div>
 												</div>
 											</div>
@@ -284,6 +284,84 @@
 													<div class="progress-bar bg-danger"
 														 role="progressbar" :style="'width:'+silverPercentage+'%'"
 														 :aria-valuenow="silverPercentage" aria-valuemin="0" aria-valuemax="100">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div v-if="ruby()" class="ruby widget widget-card-four" >
+								<div class="widget-content">
+									<div class="w-content">
+										<div class="w-info">
+											<p class="text-6 text-dark">Group Sales Status <b>( Gold )</b></p>
+											<hr>
+										</div>
+									</div>
+									<div class="progress-order-body">
+										<div class="row mt-1">
+											<div class="col-md-12">
+												<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
+
+													<li v-show="getAffiliateDetails.group_sales_counts > 10" class="list-inline-item chat-online-usr" v-for="sale in 10">
+														<img alt="avatar" src="@/assets/img/90x90.jpg">
+													</li>
+													<li v-show="getAffiliateDetails.group_sales_counts > 10" class="list-inline-item badge-notify mr-0">
+														<div class="notification">
+															<span class="badge badge-info badge-pill">+{{groupMore}} more</span>
+														</div>
+													</li>
+													<li v-show="getAffiliateDetails.group_sales_counts <= 10" class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.group_sales_counts">
+														<img alt="avatar" src="@/assets/img/90x90.jpg">
+													</li>
+													<p class="text-4 mt-1 text-dark"><strong>{{getAffiliateDetails.group_sales_counts}} Group Sales</strong></p>
+												</ul>
+											</div>
+											<div class="col-md-12 text-right">
+												<div class="progress p-o-progress mt-2">
+													<div class="progress-bar bg-danger"
+														 role="progressbar" :style="'width:'+rubyPercentage+'%'"
+														 :aria-valuenow="rubyPercentage" aria-valuemin="0" aria-valuemax="100">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div v-if="diamond()" class=" diamond widget widget-card-four" >
+								<div class="widget-content">
+									<div class="w-content">
+										<div class="w-info">
+											<p class="text-6 text-dark">Group Sales Status <b>( Diamond )</b></p>
+											<hr>
+										</div>
+									</div>
+									<div class="progress-order-body">
+										<div class="row mt-1">
+											<div class="col-md-12">
+												<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
+
+													<li v-show="getAffiliateDetails.group_sales_counts > 10" class="list-inline-item chat-online-usr" v-for="sale in 10">
+														<img alt="avatar" src="@/assets/img/90x90.jpg">
+													</li>
+													<li v-show="getAffiliateDetails.group_sales_counts > 10" class="list-inline-item badge-notify mr-0">
+														<div class="notification">
+															<span class="badge badge-info badge-pill">+{{groupMore}} more</span>
+														</div>
+													</li>
+													<li v-show="getAffiliateDetails.group_sales_counts <= 10" class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.group_sales_counts">
+														<img alt="avatar" src="@/assets/img/90x90.jpg">
+													</li>
+													<p class="text-4 mt-1 text-dark"><strong>{{getAffiliateDetails.group_sales_counts}} Group Sales</strong></p>
+												</ul>
+											</div>
+											<div class="col-md-12 text-right">
+												<div class="progress p-o-progress mt-2">
+													<div class="progress-bar bg-danger"
+														 role="progressbar" :style="'width:'+diamondPercentage+'%'"
+														 :aria-valuenow="diamondPercentage" aria-valuemin="0" aria-valuemax="100">
 													</div>
 												</div>
 											</div>
