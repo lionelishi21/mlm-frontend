@@ -185,6 +185,20 @@ const actions = {
           .catch( error => {
               console.log( error.response.data.link)
           })
+    },
+
+    CHANGE_PASSWORD(context, payload) {
+
+       return new Promise((resolve, reject) => {
+           api.changePassword(payload)
+               .then( response => {
+                   resolve(response)
+               })
+               .catch( error => {
+                   reject(error.response)
+               })
+       })
+
     }
 
 }

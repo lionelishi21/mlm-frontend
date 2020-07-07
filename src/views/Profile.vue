@@ -1,245 +1,186 @@
 <template>
-<section role="main" class="content-body">
+	<div id="content" class="main-content">
 
-					<header class="page-header">
-						<h2>User Profile</h2>
-					
-						<div class="right-wrapper text-right">
-							<ol class="breadcrumbs">
-								<li>
-									<a href="index.html">
-										<i class="fas fa-home"></i>
-									</a>
-								</li>
-								<li><span>Dashboard</span></li>
-								<li><span>User Profile</span></li>
-							</ol>
-					
-							<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
-						</div>
-					</header>
+		<div class="layout-px-spacing">
 
-					<!-- start: page -->
+		   <div class="row layout-spacing">
 
-					<div class="row">
-						<div class="col-lg-4 col-xl-3 mb-4 mb-xl-0">
-
-							
-							<section class="card">
-								<div class="card-body">
-									<div class="thumb-info mb-3">
-										<img src="" class="rounded img-fluid" alt="John Doe">
-										<div class="thumb-info-title">
-											<span class="thumb-info-inner">Lionel Francis</span>
-											<span class="thumb-info-type">{{getUserDetails.first_name}} {{getUserDetails.last_name}}</span>
-										</div>
-									</div>
-
-									<div class="widget-toggle-expand mb-3">
-										<div class="widget-header">
-											<h5 class="mb-2">Profile Completion</h5>
-											<div class="widget-toggle">+</div>
-										</div>
-										<div class="widget-content-collapsed">
-											<div class="progress progress-xs light">
-												<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-													60%
-												</div>
-											</div>
-										</div>
-										<div class="widget-content-expanded">
-											<ul class="simple-todo-list mt-3">
-												<li class="completed">Change Personal Information</li>
-												<li>Update Social Media</li>
-												<li>Follow Someone</li>
-											</ul>
-										</div>
-									</div>
-
-									<hr class="dotted short">
-
-									<h5 class="mb-2 mt-3">About</h5>
-									<p class="text-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis vulputate quam. Interdum et malesuada</p>
-									<div class="clearfix">
-										<a class="text-uppercase text-muted float-right" href="#">(View All)</a>
-									</div>
- 
-									<hr class="dotted short">
-
-									
-
-								</div>
-							</section>
-
-							<section class="card">
-								<header class="card-header">
-
-									<h2 class="card-title">
-										<span class="va-middle"> Personal Sales</span>
-									</h2>
-								</header>
-								<div class="card-body pb-1" v-for="sale in getAffiliateDetails.personal_sales">
-									<div class="content" >
-										<ul class="simple-user-list">
-											<li >
-												<figure class="image rounded">
-													<img width="40px" src="@/assets/ebook.png">
-												</figure>
-												<span class="title">{{sale.purchaser_name}}  -  <small>{{sale.date}}</small></span>
-												<span class="message truncate">{{sale.purchaser_name}} purchased ebook using your affiliate id.</span>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</section>
-							<section class="card">
-								<header class="card-header">
-
-									<h2 class="card-title">
-										<span class="va-middle">Group Sales</span>
-									</h2>
-								</header>
-								<div class="card-body pb-1" v-for="sale in getAffiliateDetails.sales">
-									<div class="content" >
-										<ul class="simple-user-list">
-											<li >
-												<figure class="image rounded">
-													<img width="40px" src="@/assets/ebook.png">
-												</figure>
-												<span class="title">{{sale.purchaser_name}}  -  <small>{{sale.date}}</small></span>
-												<span class="message truncate">{{sale.purchaser_name}} purchased ebook using affiliate {{sale.affiliate_id}}.</span>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</section>
-
-						</div>
-						<div class="col-lg-8 col-xl-6">
-
-							<div class="tabs">
-								<ul class="nav nav-tabs tabs-primary">
-									<li class="nav-item active">
-										<a class="nav-link" href="#overview" data-toggle="tab">Overview</a>
-									</li>
-								</ul>
-								<div class="tab-content">
-									<div id="overview" class="tab-pane active">
-										{{getUserDetails.affiliate}}
-										<div>
-											<h4 class="mb-3 pt-4">Affiliates</h4>
-											<div class="row">
-												<div class="col-md-4"></div>
-												<div class="col-md-4">
-													<section class="card card-featured">
-														<header class="card-header text-center">
-															<h2 class="card-title">{{getUserDetails.first_name}} {{getUserDetails.last_name}}</h2>
-															<small>Me</small>
-														</header>
-													</section>
-												</div>
-												<div class="col-md-4"></div>
-											</div>
-											 <div class="row">
-												<div class="col-md-1"></div>
-												<a href="#" class="col-md-3" v-for="af in getAffiliateDetails.affiliate" @click.prevent="replaceRoute(af.user_id)">
-													<section class="card " style="margin-top: 50px;" >
-														<div class="card-header  text-center">
-															<h4><small></small>{{af.username}}</h4>
+					<div class="col-md-6 layout-spacing">
+						<form id="general-info" class="section general-info">
+							<div class="info">
+								<h6 class="">General Information</h6>
+								<div class="row">
+									<div class="col-lg-12 mx-auto">
+										<div class="row">
+											<div class="col-xl-12 col-lg-12 col-md-8 mt-md-0 mt-4">
+												<div class="form">
+													<div class="row">
+														<div class="col-sm-6">
+															<div class="form-group">
+																<label for="fullName">First Name</label>
+																<input type="text" class="form-control" id="fullName" placeholder="Full Name" :value="getLoginUser.first_name">
+															</div>
 														</div>
-													</section>
-												</a>
-												<div class="col-md-1"></div>
+														<div class="col-sm-6">
+															<label for="fullName">Last Name</label>
+															<input type="text" class="form-control" placeholder="Last Name" :value="getLoginUser.last_name">
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="company">Company</label>
+														<input type="text" class="form-control"  placeholder="Company Name" :value="getLoginUser.company">
+													</div>
+													<div class="form-group">
+														<label for="phone">Phone Number</label>
+														<input type="text" class="form-control" placeholder="Phone Number" :value="getLoginUser.phone_number">
+													</div>
+													<div class="form-group">
+														<button class="btn btn-success">Update</button>
+													</div>
+												</div>
 											</div>
 										</div>
-
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-xl-3">
-
-							<h4 class="mb-3 mt-0">Sale Stats</h4>
-							<ul class="simple-card-list mb-3">
-								<li class="primary">
-									<h3>{{getAffiliateDetails.personal_sales.length}}</h3>
-									<p class="text-light">Personal Sales</p>
-								</li>
-								<li class="primary">
-									<h3>$0</h3>
-									<p class="text-light">Group Sales</p>
-								</li>
-							<!-- 	<li class="primary">
-									<h3>16</h3>
-									<p class="text-light">Nullam quris ris.</p>
-								</li> -->
-							</ul>
-
-							<h4 class="mb-3 mt-4 pt-2">Personal Sales Status</h4>
-							<ul class="simple-bullet-list mb-3">
-								<li class="red">
-									<span class="title">Bronze</span>
-									<span class="description truncate">12 Group sales</span>
-								</li>
-								<li class="green">
-									<span class="title">Silver</span>
-									<span class="description truncate">26 Group sales</span>
-								</li>
-								<li class="blue">
-									<span class="title">Gold</span>
-									<span class="description truncate">108 Group sales</span>
-								</li>
-								<li class="orange">
-									<span class="title">Ruby</span>
-									<span class="description truncate">304 Group sales</span>
-								</li>
-								<li class="orange">
-									<span class="title">Dianmond</span>
-									<span class="description truncate">927 Group sales</span>
-								</li>
-							</ul>
-
-							</div>
-
+						</form>
 					</div>
-					<!-- end: page -->
-				</section>
+					<div class="col-md-6 layout-spacing">
+						<ValidationObserver ref="observer" v-slot="{ invalid }">
+						<form id="contact" class="section contact">
+							<div class="info">
+								<h5 class="">Update Password</h5>
+								<div class="row">
+									<div class="col-md-12 mx-auto">
+										<div class="row">
+											<div class="alert alert-danger">
+													{{ message }}
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<validation-provider rules="required" v-slot="{ errors }">
+													<div class="form-group">
+														<label class="text-dark" for="location">Current Password</label>
+														<input type="password" v-model="password.current_password" class="form-control"  placeholder="Enter current password">
+														<span class="help-block text-danger">{{errors[0]}}</span>
+													</div>
+
+												</validation-provider>
+											</div>
+											<div class="col-md-6">
+												<validation-provider name="confirm" rules="required" v-slot="{ errors }">
+												<div class="form-group">
+													<label class="text-dark" for="address">New Password</label>
+													<input type="password" v-model="password.new_password" class="form-control" id="address" placeholder="New Password" value="New York" >
+													<span class="help-block text-danger" v-if="errors[0]">{{errors[0]}}</span>
+												</div>
+
+												</validation-provider>
+											</div>
+											<div class="col-md-6">
+												<validation-provider  rules="required|passwordconfirm:@confirm" v-slot="{ errors }">
+												<div class="form-group">
+													<label class="text-dark" for="location">Confrim Password</label>
+													<input type="password" v-model="password.confirm_password "class="form-control" id="location" placeholder="Confrim password">
+													<span class="help-block text-danger" v-if="errors[0]">{{errors[0]}}</span>
+												</div>
+
+												</validation-provider>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<button :disabled="invalid" class="btn btn-primary pull-right" @click.prevent="changePassword()">Update Password </button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+						</ValidationObserver>
+					</div>
+			</div>
+	   </div>
+   </div>
 </template>
+<style lang="scss" scoped>
+	@import '../cork/css/elements/alert.css';
+</style>
 <script>
+import { ValidationProvider, extend, ValidationObserver } from 'vee-validate';
 import { mapGetters } from 'vuex';
+import {required} from "vee-validate/dist/rules";
+
+extend('passwordconfirm', {
+	params: ['target'],
+	validate(value, { target }) {
+		return value === target;
+	},
+	message: 'Password does not match'
+});
+
+extend('required', {
+	...required,
+	message: 'This field is required'
+});
+
+
+
+
 export default {
+	components: {
+		ValidationProvider,
+		ValidationObserver
+	},
 	data() {
-		return{
-			title:' Affiliates Details',
+		return {
+			password: {
+				current_password: '',
+				new_password: '',
+				confirm_password: ''
+			},
+			error: false,
+			message: '',
+			success: false
 		}
+
 	},
 	created() {
-		this.init()
+
 	},
 	computed: {
 		...mapGetters([
-			'getAffiliateDetails',
-			'getUserDetails'
+			'getLoginUser'
 		])
 	},
 	methods: {
-		init() {
-			var affiliateId = 'user'
 
-			this.$store.dispatch('AFFILIATE_DETAILS', affiliate_id)
-			this.$store.dispatch('GET_USER_DETAILS')
-		},
-		replaceRoute(value) {
-			var affiliateId = value
-			this.$store.dispatch('AFFILIATE_DETAILS', affiliateId)
-			this.$store.dispatch('GET_USER_DETAILS')
-		},
-		goToDetails(value) {
-			var url = '/dashboard/affiliates/'+value
-			this.$router.push(url);
-		},
-		updateInformation(value) {
 
+		resetPsswordFeield() {
+
+		},
+
+		changePassword() {
+			this.$store.dispatch('CHANGE_PASSWORD', this.password)
+				.then( response => {
+
+						console.log(response.data.message)
+					 if ( response.data.status == false) {
+					 	 this.error = true
+						 this.message = response.data.message
+					 }
+
+					 if ( response.data.status  == true) {
+					 	 this.error = false
+						 this.success = true
+						 this.message = response.data.message
+					 }
+				})
+			.catch( error => {
+				this.error = true
+				console.log(error)
+			})
 		}
 	}
 }

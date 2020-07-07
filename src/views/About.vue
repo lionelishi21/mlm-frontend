@@ -119,12 +119,12 @@
 					</p>
 
 					<p class="pr-5 mr-5">
-						We have been Affiliate Marketing leaders since the last few decades, and are now introducing you to Financial Freedom, offering you the best Online Business Opportunity ever to be devised!
+						We have been Affiliate Marketing leaders since the last few decades, and are now introducing you to Financial Freedom, offering you the best Online Business Opportunity ever to be created!
 
 					</p>
 
 					<p class="pr-5 mr-5">
-						We are dedicated to helping you achieve your financial goals in a legitimate, no risk environment, in the shortest, and quickest way possible. Unlike many others, we do not hide behind our website, but give our Sales Affiliates/Members complete and free access to us, as your Affiliate Leaders, Family and Friends!
+						We are dedicated to helping you achieve your financial goals in a legitimate,low to no risk environment, in the shortest, and quickest way possible. Unlike many others, we do not hide behind our website, but give our Sales Affiliates/Members complete and free access to us, as your Affiliate Leaders, Family and Friends!
 					</p>
 
 					<p class="pr-5 mr-5">

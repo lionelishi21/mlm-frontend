@@ -49,12 +49,12 @@
 
 					<h4 class="lead mb-0 appear-animation mt-3"><strong>Here Is an Example of How This Works:</strong></h4>
 
-					<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
-                        When you, as an MCC Sales Affiliate, make a minimum of 3 Personal eBook Sales, and there is a TOTAL of (12) eBook Sales in your group, you will qualify as a Bronze Sales Affiliate, and be paid a Cash Bonus as per MCC’S Compensation Plan. 
+					<p class="lead mb-0 appear-animation mt-0" data-appear-animation="maskUp" data-appear-animation-delay="200">
+                        When you, as an MCC Sales Affiliate, make a minimum of 3 Personal eBook Sales, and there is a TOTAL of (12) eBook Sales in your group, you will qualify as a Bronze Sales Affiliate, and be paid a Cash Bonus as per MCC’S Compensation Plan.
 
 					</p>
 
-					<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
+					<p class="lead mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">
 					Note: Since this is a community effort, your 3 Personal eBook Sales (and any additional sales) may not necessarily be placed in your personal group, as it will fall into the next available open position in MCC’S very exclusive Community Cash Bonus System, as follows:
 				     </p>
 
@@ -63,8 +63,9 @@
 		</div>
 
 		<div class="row">
-			<div class="col py-3">
-				<hr class="solid mt-3 mb-2">
+			<div class="col py-
+">
+				<hr class="solid mb-2">
 			</div>
 		</div>
 

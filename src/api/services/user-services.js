@@ -88,6 +88,10 @@ export default {
 
 	fetchAffiliate() {
 		return Api().get('/link')
+	},
+
+	changePassword() {
+		return Api().post('/changePassword')
 	}
 }
 

@@ -31,38 +31,14 @@
 							<div class="header">
 								<div class="header-body">
 									<h6>Personal Sales</h6>
-									<p class="meta-date">Nov 2019</p>
-								</div>
-								<div class="task-action">
-									<div class="dropdown  custom-dropdown">
-										<a class="dropdown-toggle" href="#" role="button" id="pendingTask" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<svg xmlns="http://www.w3.org/2000/svg"
-												 width="24" height="24" viewBox="0 0 24 24"
-												 fill="none"
-												 stroke="currentColor"
-												 stroke-width="2" stroke-linecap="round"
-												 stroke-linejoin="round"
-												 class="feather feather-more-horizontal"
-											>
-												<circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle>
-												</svg>
-										</a>
-
-										<div class="dropdown-menu dropdown-menu-right" aria-labelledby="pendingTask">
-											<a class="dropdown-item" href="javascript:void(0);">Add</a>
-											<a class="dropdown-item" href="javascript:void(0);">View</a>
-											<a class="dropdown-item" href="javascript:void(0);">Update</a>
-											<a class="dropdown-item" href="javascript:void(0);">Clear All</a>
-										</div>
-									</div>
 								</div>
 							</div>
 
 							<div class="w-content">
-								<div class="">
-									<p class="task-left">{{getGroupSales.response}}</p>
-									<p class="task-hight-priority" v-if="getGroupSales.response < 3"> <span>{{getGroupSales.response}} Sales</span> Inactive</p>
-									<p class="task-hight-priority" v-else> <span>{{getGroupSales.response}} Sales</span> Active</p>
+								<div class="text-center mt-3">
+									<h1>{{getUserDetails.purchase.length}} </h1>
+									<h2 class="task-hight-priority text-danger text-4" v-if="getUserDetails.purchase.length < 3"> Personal Sales ( Inactive )</h2>
+									<h2 class="text-success text-6" v-else><strong> </strong> Personal Sales ( Active )</h2>
 								</div>
 							</div>
 						</div>
@@ -78,16 +54,26 @@
 								</div>
 							</div>
 							<div class="card-bottom-section">
-								<h5>{{getGroupSales.response}}} Members Going</h5>
+								<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
 
-<!--								<div class="img-group">-->
-<!--									<img src="@/cork/img/90x90.jpg" alt="avatar">-->
-<!--									<img src="@/cork/img/90x90.jpg" alt="avatar">-->
-<!--									<img src="@/cork/img/90x90.jpg" alt="avatar">-->
-<!--									<img src="@/cork/img/90x90.jpg" alt="avatar">-->
-<!--								</div>-->
-<!--								<a href="javascript:void(0);" class="btn">View Details</a>-->
+									<li v-show="getGroupSales.response > 10" class="list-inline-item chat-online-usr" v-for="sale in 10">
+										<img alt="avatar" src="@/assets/img/90x90.jpg">
+									</li>
+									<li v-show="getGroupSales.response > 10" class="list-inline-item badge-notify mr-0">
+										<div class="notification">
+											<span class="badge badge-info badge-pill">+{{ groupMore}} more</span>
+										</div>
+									</li>
+
+									<li v-show="getGroupSales.response <= 10" class="list-inline-item chat-online-usr" v-for="sale in getGroupSales.response">
+										<img alt="avatar" src="@/assets/img/90x90.jpg">
+									</li>
+
+									<p class="text-4 mt-1 text-white"><strong>{{getGroupSales.response}} Members Going</strong></p>
+								</ul>
+								<a href="javascript:void(0);" class="btn">View Details</a>
 							</div>
+
 						</div>
 					</div>
 				</div>
@@ -187,7 +173,7 @@
 												</div>
 											</td>
 											<td>108</td>
-											<td>$308</td>
+											<td>$3,800</td>
 											<td class="text-center">
 												<svg xmlns="http://www.w3.org/2000/svg"
 													 width="24"
@@ -282,7 +268,10 @@ export default {
 			if ( this.getGroupSales.response == 12 ) {
 				this.cash = 100
 			}
-		}
+		},
+		groupMore() {
+			return this.getGroupSales.response - 10
+		},
 	},
 	created() {
 		this.$store.dispatch('GET_USER_DETAILS')

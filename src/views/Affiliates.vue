@@ -132,7 +132,7 @@
 									<div class="user-profile" @click="goToDetails(affiliate.user_id)">
 										<img src="@/assets/img/90x90.jpg" alt="avatar">
 										<div class="user-meta-info">
-											<p class="user-name" data-name="Alan Green">{{affiliate.name | str_limit(8)}}</p>
+											<p class="user-name" data-name="Alan Green">{{affiliate.name | str_limit(12)}}</p>
 											<p class="user-work" data-occupation="Web Developer">Affiliate</p>
 										</div>
 									</div>
@@ -147,23 +147,23 @@
 									<div class="user-email">
 										<p class="info-title">Status </p>
 										<span v-if="affiliate.status === 'Active'" class="badge badge-success text-5" >
-											{{affiliate.status}}
+											{{affiliate.status }}
 									     </span>
 										<span v-else class="badge btn-danger text-5 text-white" >
-											{{affiliate.status}}
+											{{affiliate.status | str_limit(6)}}
 									     </span>
 									</div>
 									<div class="user-email">
 										<p class="info-title">Email: </p>
-										<p class="usr-email-addr" data-email="alan@mail.com">{{affiliate.email}}</p>
+										<p class="usr-email-addr" data-email="alan@mail.com">{{affiliate.email | str_limit(12)}}</p>
 									</div>
 									<div class="user-location">
 										<p class="info-title">Location: </p>
-										<p class="usr-location" data-location="Boston, USA">{{affiliate.details.state}}, {{affiliate.details.country}}</p>
+										<p class="usr-location" data-location="Boston, USA">{{affiliate.details.country | str_limit(12)}}</p>
 									</div>
 									<div class="user-phone">
 										<p class="info-title">Phone: </p>
-										<p class="usr-ph-no" data-phone="+1 (070) 123-4567"></p>
+										<p class="usr-ph-no" :data-phone="affiliate.details.phone_number">{{affiliate.details.phone_number | str_limit(12)}}</p>
 									</div>
 									<div class="action-btn">
 										<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" f
