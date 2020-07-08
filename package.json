@@ -20,6 +20,7 @@
     "vue": "^2.6.11",
     "vue-credit-card-field": "^0.3.14",
     "vue-currency-filter": "^5.1.0",
+    "vue-loading-overlay": "^3.3.2",
     "vue-paypal-checkout": "^3.2.0",
     "vue-phone-number-input": "^1.1.9",
     "vue-router": "^3.1.6",

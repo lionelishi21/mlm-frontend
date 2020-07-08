@@ -30,9 +30,13 @@
     @import '../cork/css/components/custom-counter.css';
     @import '../cork/css/elements/miscellaneous.css';
     @import '../cork/css/users/account-setting.css';
-
+    @import '../cork/css/elements/infobox.css';
+    @import '../cork/css/dashboard/dash_2.css';
     @import '../cork/css/elements/avatar.css';
     @import '../cork/css/elements/alert.css';
+
+    @import '../cork/plugins/font-icons/fontawesome/css/regular.css';
+    @import '../cork/plugins/font-icons/fontawesome/css/fontawesome.css';
 
     @import '../cork/css/apps/contacts.css';
     @import '../cork/plugins/jquery-ui/jquery-ui.min.css';

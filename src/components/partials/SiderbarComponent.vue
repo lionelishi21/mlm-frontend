@@ -33,6 +33,17 @@
                 <div class="tooltip"><span>Affiliates</span></div>
             </router-link>
 
+            <router-link v-if="user.role_id == 1" to="/dashboard/ebook" tag="li" active-class="active" class="menu">
+                <a href="#app" data-active="false" class="menu-toggle">
+                    <div class="base-menu">
+                        <div class="base-icons text-white">
+                            <i class="far fa-address-book"></i>
+                        </div>
+                    </div>
+                </a>
+                <div class="tooltip"><span>Ebook</span></div>
+            </router-link>
+
 
         </ul>
 

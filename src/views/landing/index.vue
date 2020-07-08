@@ -4,22 +4,22 @@
 
 	<!--  Slider  -->
 	<section  class="section section-concept tp-opacity-overlay section-no-border section-dark pt-5 m-0" id="section-concept" style="background-size: cover; background-position: center; animation-duration: 750ms; animation-delay: 300ms; animation-fill-mode: forwards; height: 100vh;" data-plugin-lazyload data-plugin-options="{'threshold': 500}" data-original="img/landing/slider_02.png">
-						<div class="container pt-5" style="margin-top: 10%">
-						<div class="row align-items-center pt-3">
-							<div class="col-lg-12 mb-5 nt-5">
-								<h1 class="font-weight-bold text-12 text-success line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400" data-appear-animation-duration="750"> MAJESTIC CARES COMMUNITY - MCC <br>
-							     A SIMPLE ACT OF CARING</h1>
-								<h4 class="text-success  font-weight-extra-bold font-size-6 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900" data-appear-animation-duration="750">
+			<div class="container pt-5" style="margin-top: 10%">
+			<div class="row align-items-center pt-3">
+				<div class="col-lg-12 mb-5 nt-5">
+					<h1 class="font-weight-bold text-12 text-success line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400" data-appear-animation-duration="750"> MAJESTIC CARES COMMUNITY - MCC <br>
+					 A SIMPLE ACT OF CARING</h1>
+					<h4 class="text-success  font-weight-extra-bold font-size-6 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900" data-appear-animation-duration="750">
 
-									Caring Creates An Everlasting Ripple Effect! Receive Cash Bonuses For Any Worthwhile Purpose <br>And Transform Your Life As Well As The Lives of Others With a Simple Act of Caring And Sharing!
+						Caring Creates An Everlasting Ripple Effect! Receive Cash Bonuses For Any Worthwhile Purpose <br>And Transform Your Life As Well As The Lives of Others With a Simple Act of Caring And Sharing!
 
-									 <a href="#intro" data-hash data-hash-offset="120" class="text-color-light font-weight-semibold text-1 d-block">VIEW MORE <i class="fa fa-long-arrow-alt-right ml-1"></i></a></h4>
-								
+						 <a href="#intro" data-hash data-hash-offset="120" class="text-color-light font-weight-semibold text-1 d-block">VIEW MORE <i class="fa fa-long-arrow-alt-right ml-1"></i></a></h4>
 
-							</div>
-						</div>
-					</div>
-				</section>
+
+				</div>
+			</div>
+		</div>
+	</section>
 	<!--  End SLider -->
 
 	<!-- Section One -->

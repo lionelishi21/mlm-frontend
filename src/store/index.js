@@ -7,6 +7,7 @@ import affiliate from './modules/affiliate.js';
 import cashbonus from './modules/cash-bonus.js';
 import payment from './modules/payment';
 import country from "./modules/country";
+import ebook from './modules/ebook';
 
 Vue.use(Vuex)
 Vue.config.debug = true
@@ -17,6 +18,7 @@ export default new Vuex.Store({
     	affiliate,
     	cashbonus,
 		payment,
-		country
+		country,
+		ebook
     },
 });
