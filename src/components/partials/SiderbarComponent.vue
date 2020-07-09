@@ -33,7 +33,7 @@
                 <div class="tooltip"><span>Affiliates</span></div>
             </router-link>
 
-            <router-link v-if="user.role_id == 1" to="/dashboard/ebook" tag="li" active-class="active" class="menu">
+            <router-link to="/dashboard/ebook" tag="li" active-class="active" class="menu">
                 <a href="#app" data-active="false" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons text-white">
@@ -43,15 +43,13 @@
                 </a>
                 <div class="tooltip"><span>Ebook</span></div>
             </router-link>
-
-
         </ul>
 
-        <div class="external-links">
-            <a href="../../documentation/index.html" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                <div class="tooltip"><span>Documentation</span></div>
-            </a>
-        </div>
+<!--        <div class="external-links">-->
+<!--            <a href="../../documentation/index.html" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>-->
+<!--                <div class="tooltip"><span>Documentation</span></div>-->
+<!--            </a>-->
+<!--        </div>-->
     </nav>
 
     <div id="compact_submenuSidebar" class="submenu-sidebar">
