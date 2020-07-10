@@ -33,11 +33,11 @@
 													How it Works
 												</router-link>
 											</li>
-											<li class="dropdown">
-												<router-link to="/checkout" active-class="checkout" tag="a" class="dropdown-item dropdown-toggle" href="index.html">
-													Buy Now
-												</router-link>
-											</li>
+<!--											<li class="dropdown">-->
+<!--												<router-link to="/checkout" active-class="checkout" tag="a" class="dropdown-item dropdown-toggle" href="index.html">-->
+<!--													Buy Now-->
+<!--												</router-link>-->
+<!--											</li>-->
 											<li class="dropdown">
 												<router-link to="/login" tag="a" class="dropdown-item dropdown-toggle" href="index.html">
 													Affiliate Login
