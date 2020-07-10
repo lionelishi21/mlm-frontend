@@ -2,8 +2,6 @@
 	<div id="content" class="main-content">
 		<div class="layout-px-spacing">
 
-
-
 			<div class="row layout-spacing layout-top-spacing" id="cancel-row">
 				<div class="col-lg-12">
 					<div class="widget-content searchable-container list">
@@ -86,10 +84,9 @@
 											</div>
 											<div class="modal-footer">
 												<button id="btn-edit" class="float-left btn">Save</button>
-
 												<button class="btn" data-dismiss="modal"> <i class="flaticon-delete-1"></i> Discard</button>
-
 												<button id="btn-add" class="btn">Add</button>
+
 											</div>
 										</div>
 									</div>
@@ -140,10 +137,12 @@
 										<p class="info-title">Affiliates Id </p>
 										<p class="usr-email-addr" data-email="alan@mail.com">{{affiliate.affiliate_id}}</p>
 									</div>
+
 									<div class="user-email">
 										<p class="info-title">Sales </p>
 										<p class="usr-email-addr" data-email="alan@mail.com">{{affiliate.sales}}</p>
 									</div>
+
 									<div class="user-email">
 										<p class="info-title">Status </p>
 										<span v-if="affiliate.status === 'Active'" class="badge badge-success text-5" >
@@ -153,18 +152,22 @@
 											{{affiliate.status | str_limit(6)}}
 									     </span>
 									</div>
+
 									<div class="user-email">
 										<p class="info-title">Email: </p>
 										<p class="usr-email-addr" data-email="alan@mail.com">{{affiliate.email | str_limit(12)}}</p>
 									</div>
+
 									<div class="user-location">
 										<p class="info-title">Location: </p>
 										<p class="usr-location" data-location="Boston, USA">{{affiliate.details.country | str_limit(12)}}</p>
 									</div>
+
 									<div class="user-phone">
 										<p class="info-title">Phone: </p>
 										<p class="usr-ph-no" :data-phone="affiliate.details.phone_number">{{affiliate.details.phone_number | str_limit(12)}}</p>
 									</div>
+
 									<div class="action-btn">
 										<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" f
 											 ill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

@@ -5,7 +5,6 @@
 				 :can-cancel="true"
 				 :on-cancel="onCancel"
 				 :is-full-page="fullPage"></loading>
-
 		<label><input type="checkbox" v-model="fullPage">Full page?</label>
 		<button @click.prevent="doAjax">fetch Data</button>
 	</div>
@@ -126,7 +125,7 @@ export default {
 	},
 	methods: {
 		goToForgotPassword(){
-			this.router.push('/forgotpassword')
+			this.$router.push('passwordreset')
 		},
 		login(user) {
 			this.isLoading = true

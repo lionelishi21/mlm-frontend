@@ -200,6 +200,18 @@ const actions = {
                })
        })
 
+    },
+    PASSWORD_RESET( context, params) {
+      return new Promise( (resolve, reject) => {
+
+          api.changePassword( params )
+              .then( response => {
+                  resolve(response)
+              })
+              .catch( error => {
+                  reject(error)
+              })
+      })
     }
 
 }

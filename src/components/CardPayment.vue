@@ -32,7 +32,6 @@
 
 <script>
     let stripe = Stripe(`pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5`),
-
     elements = stripe.elements(),
     cardNumber = undefined,
     cardExpiry = undefined,
@@ -106,6 +105,8 @@
 
             sendPaymentInformation(charge) {
                 this.loading = true
+
+                this.form.payment_type = 'stripe';
 
                 let form = {
                     charge: charge,

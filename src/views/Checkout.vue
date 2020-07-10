@@ -453,6 +453,32 @@ export default {
 			})
 	   },
 
+	   paypalPayment(data) {
+
+		   this.loading = true
+		   let formData = new FormData()
+
+		   formData.append('payments', data)
+		   formData.append('form', JSON.stringify(this.form))
+		   console.log(formData)
+
+		   this.form.payment_type = 'paypal';
+
+		   let form = {
+			   payments: data,
+			   user: this.form
+		   }
+
+		   this.$store.dispatch('MAKE_PAYMENT', form)
+			   .then( response => {
+				   console.log(response)
+			   }).catch( error => {
+			      console.log(error.response)
+		   })
+
+
+	   },
+
 	   sendPaymentDetails( data ) {
 
 		   this.loading = true
@@ -478,7 +504,7 @@ export default {
 	   },
 
 	   paymentAuthorized: function( data ) {
-		   this.sendPaymentDetails( data )
+		   this.paypalPayment( data )
 	   },
 
 	   paymentCompleted: function (data) {

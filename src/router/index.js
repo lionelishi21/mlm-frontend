@@ -18,8 +18,10 @@ import AdminDashboard from '@/views/AdminDashboard';
 import Aboutus from '@/views/About.vue';
 import Payment from "@/views/Payment.vue";
 import Ebook from '@/views/Ebook.vue';
+import ForgotPassword from "../views/ForgotPassword";
 
 import { isLoggedIn } from '../utils/auth.js'
+import PasswordReset from "../views/PasswordReset";
 
 Vue.use(VueRouter)
 
@@ -122,6 +124,20 @@ Vue.use(VueRouter)
         component: Login,
         meta: {
            allowAnonymous: true
+        }
+      },
+      {
+        path: '/passwordreset',
+        component: ForgotPassword,
+        meta: {
+          allowAnonymous: true
+        }
+      },
+      {
+        path:'/reset-password',
+        component: PasswordReset,
+        meta: {
+          allowAnonymous: true
         }
       }
     ]

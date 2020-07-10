@@ -4,9 +4,8 @@ import axios from 'axios';
 const actions = {
     GET_EBOOK_TOKEN() {
         return new Promise((resolve, reject) => {
-
             axios({
-                url: 'http://majesticaring/api/v1/download-ebook',
+                url: 'https://majesticaring.com/api/v1/download-ebook',
                 method: 'GET',
                 responseType: 'blob',
             })
