@@ -212,6 +212,19 @@ const actions = {
                   reject(error)
               })
       })
+    },
+    PASSWORD_POST(context, params) {
+
+      return new Promise(( resolve, reject) => {
+          api.PostPassword( params )
+              .then( response => {
+                  console.log(response)
+                  resolve(response)
+              })
+              .catch( error => {
+                  reject(error.response)
+              })
+      })
     }
 
 }

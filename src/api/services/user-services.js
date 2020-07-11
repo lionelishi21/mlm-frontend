@@ -92,6 +92,10 @@ export default {
 
 	changePassword(payload) {
 		return Api().post('/password/email', payload)
+	},
+
+	PostPassword( payload ) {
+		return Api().post('/password/reset', payload)
 	}
 }
 

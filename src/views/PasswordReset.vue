@@ -23,46 +23,43 @@
                         </div>
                         <!-- Form Group -->
                         <ValidationObserver ref="observer" v-slot="{ invalid }">
-                            <form @submit.prevent="login(user)">
+                            <form @submit.prevent="password(user)">
 
-                                <div class="form-group mb-3 text-center">
-                                    <legend><small>MCC Back Office Login Information</small></legend>
-                                </div>
+<!--                                <div class="form-group mb-3 text-center">x`-->
+<!--                                    <legend><small>MCC Back Office Login Information</small></legend>-->
+<!--                                </div>-->
 
                                 <validation-provider rules="required|email" v-slot="{ errors }">
                                     <div class="form-group mb-3">
                                         <label class="text-dark">Email Address</label>
                                         <div class="input-group">
-                                            <input v-model="user.email" name="username" type="text" class="form-control form-control-lg" />
+                                            <input v-model="user.email" name="username" placeholder="Email address" type="text" class="form-control form-control-lg" />
                                         </div>
-                                        <<span class="help-block text-danger">{{errors[0]}}</span>
+                                        <span class="help-block text-danger">{{errors[0]}}</span>
                                     </div>
                                 </validation-provider>
 
-                                <validation-provider rules="required" v-slot="{ errors }">
+                                <validation-provider name="confirm" rules="required" v-slot="{ errors }">
                                     <div class="form-group mb-3">
-                                        <div class="clearfix">
-                                            <label class="float-left text-dark">Password</label>
-                                            <a href="#" @click="goToForgotPassword()" class="float-right">Lost Password?</a>
-                                        </div>
+                                        <label class="text-dark">Password</label>
                                         <div class="input-group">
-                                            <input v-model="user.password" name="pwd" type="password" class="form-control text-dark form-control-lg" />
+                                            <input v-model="user.password" name="pwd" type="password"  placeholder="Enter password" class="form-control text-dark form-control-lg" />
                                         </div>
                                         <span class="help-block text-danger">{{errors[0]}}</span>
                                     </div>
                                 </validation-provider>
-                                <validation-provider rules="required" v-slot="{ errors }">
-                                    <div class="form-group mb-3">
-                                        <div class="input-group">
-                                            <input v-model="user.password_confrimed" name="pwd" type="password" class="form-control text-dark form-control-lg" />
-                                        </div>
-                                        <span class="help-block text-danger">{{errors[0]}}</span>
+
+                                <validation-provider  rules="required|passwordconfirm:@confirm" v-slot="{ errors }">
+                                    <div class="form-group">
+                                        <label class="text-dark" for="location">Confrim Password</label>
+                                        <input type="password" v-model="user.password_confirmation" class="form-control form-control-lg" id="location" placeholder="Confrim password">
+                                        <span class="help-block text-danger" v-if="errors[0]">{{errors[0]}}</span>
                                     </div>
                                 </validation-provider>
 
                                 <div class="row">
-                                    <div class="col-sm-4 text-right">
-                                        <button :disabled="invalid" type="submit" class="btn btn-primary mt-2">Sign In</button>
+                                    <div class="col-sm-12  text-right">
+                                        <button :disabled="invalid" type="submit" class="btn pull-right btn-primary mt-2">Sign In</button>
                                     </div>
                                 </div>
                             </form>
@@ -80,15 +77,25 @@
     import { ValidationProvider, extend, ValidationObserver } from 'vee-validate';
     import { required, email } from 'vee-validate/dist/rules';
 
+    extend('email', {
+        ...email,
+        message: 'The E-mail field must be a valid email'
+    });
+
+    extend('passwordconfirm', {
+        params: ['target'],
+        validate(value, { target }) {
+            return value === target;
+        },
+        message: 'Password does not match'
+    });
+
     extend('required', {
         ...required,
         message: 'This field is required'
     });
 
-    extend('email', {
-        ...email,
-        message: 'The E-mail field must be a valid email'
-    });
+
 
 
     export default {
@@ -105,7 +112,8 @@
                 user: {
                     email: '',
                     password: '',
-                    password_confim: ''
+                    token: '',
+                    password_confirmation: ''
                 },
                 successMsg: false,
                 validationErr: '',
@@ -118,46 +126,32 @@
 
         created() {
             this.successMsg = false
-            if ( this.$route.query.user != undefined ) {
-                this.successMsg = true
+            if (this.$route.query.token != undefined ) {
+                this.user.token = this.$route.query.token
+            } else {
+                this.$router.push('/login')
             }
+
         },
         mounted() {
 
         },
         methods: {
-            goToForgotPassword(){
-                this.$router.push('passwordreset')
-            },
-            login(user) {
+            password(user) {
+                this.error.message = ''
                 this.isLoading = true
-
-                this.is_valid = '',
-                    this.error.message = ''
-
-
-                this.$store.dispatch('login', user)
+                this.$store.dispatch('PASSWORD_POST', user)
                     .then( response => {
-                        console.log( response )
-                        console.log('logging user in...')
-
-                        this.$store.dispatch('FETCH_USER')
-                            .then ( resp => {
-                                this.isLoading = false
-                                this.$router.push('/dashboard')
-                            })
-                            .catch(err => {
-                                this.isLoading = false
-                                console.log( err.response )
-                            })
-
-                    }).catch ( ( error ) => {
-                    this.isLoading = false
-                    console.log(error.response)
-                    this.is_valid = 'is-invalid'
-                    this.error.message = error.response.data
-                    this.loading = false
-                })
+                        this.isLoading = false
+                        this.complete = true
+                        console.log(response)
+                        this.$router.push('/login')
+                    })
+                    .catch( error => {
+                        this.isLoading = false
+                        this.error.message = 'Email address is incorrect'
+                        console.log(error.response)
+                    })
             }
         }
     }

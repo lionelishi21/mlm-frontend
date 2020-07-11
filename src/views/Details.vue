@@ -530,9 +530,11 @@ export default {
 			return false
 		},
 		diamond() {
+
 			if (this.getAffiliateDetails.group_sales_counts < 972  && this.getAffiliateDetails.group_sales_counts >= 324) {
 				return true
 			}
+
 			return false
 		},
 		diamondRepeat() {
