@@ -3,6 +3,9 @@
 	<div id="content" class="main-content">
 		<div class="layout-px-spacing">
 			<!-- CONTENT AREA -->
+			<div class="row">
+				<pre>{{userDasboard}}</pre>
+			</div>
 			<div class="row layout-top-spacing">
 				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 					<div class="widget widget-five">
@@ -136,23 +139,23 @@
 
 								<div class="acc-total-info">
 									<h5>Balance</h5>
-									<p class="acc-amount">${{totalCashBonuses}}</p>
+									<p class="acc-amount">{{userDasboard.cashbouns}}</p>
 								</div>
 
-								<div class="inv-detail" style="max-height: 100px; overflow: auto;" >
-									<div class="info-detail-1" v-for="cash in userDasboard.cashbouns">
-										<p>Mcc Bronze Cash Bonuse Payout</p>
-										<p>$ {{cash.cash_bonus_amount}}</p>
-									</div>
+<!--								<div class="inv-detail" style="max-height: 100px; overflow: auto;" >-->
+<!--									<div class="info-detail-1" v-for="cash in userDasboard.cashbouns">-->
+<!--										<p>Mcc Bronze Cash Bonuse Payout</p>-->
+<!--										<p>$ {{cash.cash_bonus_amount}}</p>-->
+<!--									</div>-->
 
 
-									<div class="info-detail-3 info-sub">
-										<div class="info-detail-sub">
-											<p>Total</p>
-											<p>$ {totalCashBonuses</p>
-										</div>
-									</div>
-								</div>
+<!--									<div class="info-detail-3 info-sub">-->
+<!--										<div class="info-detail-sub">-->
+<!--											<p>Total</p>-->
+<!--											<p>$ {totalCashBonuses</p>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--								</div>-->
 
 								<div class="inv-action">
 									<a href="" class="btn btn-outline-dark">Summary</a>
