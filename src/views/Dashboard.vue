@@ -165,47 +165,47 @@
 				</div>
 			</div>
 			<div class="row sales">
-				<div class="col-xl-12 col-lg-12 col-md-12 col-sm12 col-12 layout-spacing">
-							<div class="widget-content widget-content-area">
-								<div class="table-responsive" >
-									<table class="table table-bordered table-striped mb-4">
-										<thead>
-										<tr>
-											<th>Personal Sales Status</th>
-											<th>Total Group Sales</th>
-											<th>Cash Bonus</th>
-											<th class="text-center">Status</th>
-										</tr>
-										</thead>
-										<tbody>
-										<tr v-for="status in userDasboard.cashbouns">
-											<td>
-												<div class="d-flex">
-													<p class="align-self-center mb-0" v-if="status.sales_count == 12"><i class="badge badge-warning">Bronze</i></p>
-													<p class="align-self-center mb-0" v-if="status.sales_count == 36"><i class="badge badge-silver">Silver</i></p>
-													<p class="align-self-center mb-0" v-if="status.sales_count == 108"><i class="badge badge-gold">Gold</i></p>
-													<p class="align-self-center mb-0" v-if="status.sales_count == 324"><i class="badge badge-ruby">Ruby</i></p>
-													<p class="align-self-center mb-0" v-if="status.sales_count == 972"><i class="badge badge-diamond">Diamond</i></p>
-												</div>
-											</td>
-											<td>{{status.sales_count}}</td>
-											<td>{{status.cash_bonus_amount}}</td>
-											<td class=" text-center">
-												<svg xmlns="http://www.w3.org/2000/svg"
-													 width="24" height="24" viewBox="0 0 24 24" fill="none"
-													 stroke="currentColor"
-													 stroke-width="2"
-													 stroke-linecap="round"
-													 stroke-linejoin="round"
-													 class="feather feather-x t-icon t-hover-icon">
-													<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-											   </td>
-										</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-				</div>
+<!--				<div class="col-xl-12 col-lg-12 col-md-12 col-sm12 col-12 layout-spacing">-->
+<!--							<div class="widget-content widget-content-area">-->
+<!--								<div class="table-responsive" >-->
+<!--									<table class="table table-bordered table-striped mb-4">-->
+<!--										<thead>-->
+<!--										<tr>-->
+<!--											<th>Personal Sales Status</th>-->
+<!--											<th>Total Group Sales</th>-->
+<!--											<th>Cash Bonus</th>-->
+<!--											<th class="text-center">Status</th>-->
+<!--										</tr>-->
+<!--										</thead>-->
+<!--										<tbody>-->
+<!--										<tr v-for="status in userDasboard.cashbouns">-->
+<!--											<td>-->
+<!--												<div class="d-flex">-->
+<!--													<p class="align-self-center mb-0" v-if="status.sales_count == 12"><i class="badge badge-warning">Bronze</i></p>-->
+<!--													<p class="align-self-center mb-0" v-if="status.sales_count == 36"><i class="badge badge-silver">Silver</i></p>-->
+<!--													<p class="align-self-center mb-0" v-if="status.sales_count == 108"><i class="badge badge-gold">Gold</i></p>-->
+<!--													<p class="align-self-center mb-0" v-if="status.sales_count == 324"><i class="badge badge-ruby">Ruby</i></p>-->
+<!--													<p class="align-self-center mb-0" v-if="status.sales_count == 972"><i class="badge badge-diamond">Diamond</i></p>-->
+<!--												</div>-->
+<!--											</td>-->
+<!--											<td>{{status.sales_count}}</td>-->
+<!--											<td>{{status.cash_bonus_amount}}</td>-->
+<!--											<td class=" text-center">-->
+<!--												<svg xmlns="http://www.w3.org/2000/svg"-->
+<!--													 width="24" height="24" viewBox="0 0 24 24" fill="none"-->
+<!--													 stroke="currentColor"-->
+<!--													 stroke-width="2"-->
+<!--													 stroke-linecap="round"-->
+<!--													 stroke-linejoin="round"-->
+<!--													 class="feather feather-x t-icon t-hover-icon">-->
+<!--													<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>-->
+<!--											   </td>-->
+<!--										</tr>-->
+<!--										</tbody>-->
+<!--									</table>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--				</div>-->
 			</div>
 		</div>
 		<div class="footer-wrapper">
