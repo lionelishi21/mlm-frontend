@@ -58,6 +58,7 @@
                 loading: false,
                 email: false,
                 publishableKey: 'pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5',
+                publishableKeyTest: 'sk_test_Yha4F4mAhvGfsvZSvvCDgbBy00nMLLAhkJ',
                 amount: 34.95,
                 token: null,
                 charge: null,
