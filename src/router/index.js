@@ -21,6 +21,7 @@ import Ebook from '@/views/Ebook.vue';
 import ForgotPassword from "../views/ForgotPassword";
 
 import { isLoggedIn } from '../utils/auth.js'
+
 import PasswordReset from "../views/PasswordReset";
 
 Vue.use(VueRouter)
@@ -121,6 +122,7 @@ Vue.use(VueRouter)
       },
       {
         path: '/login',
+        name: 'Login',
         component: Login,
         meta: {
            allowAnonymous: true
@@ -145,19 +147,22 @@ Vue.use(VueRouter)
  
 ]
 
+
+
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
 
-
 router.beforeEach((to, from, next) => {
-  if (to.name == 'signin' && isLoggedIn()) {
-    next({ path: '/' })
+
+  if (to.name == 'Login' && isLoggedIn()) {
+    next({ path: '/dashboard' })
+
   } else if (!to.meta.allowAnonymous && !isLoggedIn()) {
     next({
-      path: '/signin',
+      path: '/login',
       query: { redirect: to.fullPath }
     })
   } else if (to.name == 'register' && isLoggedIn()) {
@@ -166,6 +171,8 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
+
+
 
 export default router
 

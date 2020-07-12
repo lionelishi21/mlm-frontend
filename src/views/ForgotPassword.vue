@@ -15,7 +15,7 @@
 
                     <div class="card-body text-center" style="margin-top: 10%; background: white">
                         <p class="text-primary text-6">Email Successfully Send!!</p>
-                        <p>Password reset link has been send to your email. Please check your email for further instructions</p>
+                        <p>Password reset link has been sent to your email. Please check your email for further instructions</p>
                     </div>
                 </div>
                 <div class="col-md-1"></div>

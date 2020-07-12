@@ -7,19 +7,25 @@ const state = {
 }
 
 const actions = {
-	FETCH_AFFILIATES({commit}) {
+	FETCH_AFFILIATES(context) {
 
-		  let token = localStorage.getItem('access_token')
-          axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+		return new Promise((resolve, reject) =>{
+			let token = localStorage.getItem('access_token')
+			axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 
-		api.fetchAffiliates()
-			.then( response => {
-				console.log(response)
-				commit('SET_AFFILIATES', response.data)
-			})
-			.catch( error => {
-				console.log(error.response)
-			})
+			api.fetchAffiliates()
+				.then( response => {
+					console.log(response)
+					context.commit('SET_AFFILIATES', response.data)
+					resolve(response)
+				})
+				.catch( error => {
+					console.log(error.response)
+					reject(error)
+				})
+		})
+
+
 	},
 	AFFILIATE_DETAILS({commit}, affiliateId) {
 

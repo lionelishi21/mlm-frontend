@@ -52,6 +52,12 @@
 								<div class="w-img">
 									<img src="@/cork/img/90x90.jpg" alt="avatar">
 								</div>
+								<div class="media-body">
+									<h4 class="media-heading">Group Sales</h4>
+									<h5 class="media-text text-primary">
+										{{getGroupSales.response}}
+									</h5>
+								</div>
 							</div>
 							<div class="card-bottom-section">
 								<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
@@ -78,7 +84,45 @@
 					</div>
 				</div>
 			</div>
-			<div class="row sales">
+			<div class="row layout-top-spacing">
+				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+					<div class="widget widget-five">
+						<div class="widget-content">
+
+							<div class="header">
+								<div class="header-body">
+									<h6>Countries</h6>
+								</div>
+							</div>
+
+							<div class="w-content">
+								<div class="text-center mt-3">
+									<h1>{{userDasboard.countries}} </h1>
+									<h2 class="text-success text-6" ><strong>Countries</strong></h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+					<div class="widget widget-five">
+						<div class="widget-content">
+
+							<div class="header">
+								<div class="header-body">
+									<h6>Total Members</h6>
+								</div>
+							</div>
+
+							<div class="w-content">
+								<div class="text-center mt-3">
+									<h1>{{userDasboard.all_members}} </h1>
+									<h2 class="text-success text-6" ><strong>Members </strong></h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
 
 					<div class="widget widget-account-invoice-one">
@@ -92,41 +136,38 @@
 
 								<div class="acc-total-info">
 									<h5>Balance</h5>
-									<p class="acc-amount">$0</p>
+									<p class="acc-amount">${{totalCashBonuses}}</p>
 								</div>
 
-<!--								<div class="inv-detail">-->
+								<div class="inv-detail" style="max-height: 100px; overflow: auto;" >
+									<div class="info-detail-1" v-for="cash in userDasboard.cashbouns">
+										<p>Mcc Bronze Cash Bonuse Payout</p>
+										<p>$ {{cash.cash_bonus_amount}}</p>
+									</div>
 
-<!--									<div class="info-detail-1">-->
-<!--										<p>Mcc Bronze Cash Bonuse Payout</p>-->
-<!--										<p>$ 199.0</p>-->
-<!--									</div>-->
-<!--									<div class="info-detail-3 info-sub">-->
-<!--										<div class="info-detail-sub">-->
-<!--											<p>Transfer</p>-->
-<!--											<p>$ -0.68</p>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--									<div class="info-detail-3 info-sub">-->
-<!--										<div class="info-detail-sub">-->
-<!--											<p>Total</p>-->
-<!--											<p>$ -0.68</p>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</div>-->
+
+									<div class="info-detail-3 info-sub">
+										<div class="info-detail-sub">
+											<p>Total</p>
+											<p>$ {totalCashBonuses</p>
+										</div>
+									</div>
+								</div>
 
 								<div class="inv-action">
 									<a href="" class="btn btn-outline-dark">Summary</a>
-									<a href="" class="btn btn-danger">Transfer</a>
+									<a href="" class="btn btn-success">Withdraw</a>
 								</div>
 							</div>
 						</div>
 
 					</div>
 				</div>
-				<div class="col-xl-8 col-lg-6 col-md-6 col-sm12 col-12 layout-spacing">
+			</div>
+			<div class="row sales">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm12 col-12 layout-spacing">
 							<div class="widget-content widget-content-area">
-								<div class="table-responsive">
+								<div class="table-responsive" >
 									<table class="table table-bordered table-striped mb-4">
 										<thead>
 										<tr>
@@ -137,14 +178,18 @@
 										</tr>
 										</thead>
 										<tbody>
-										<tr>
+										<tr v-for="status in userDasboard.cashbouns">
 											<td>
 												<div class="d-flex">
-													<p class="align-self-center mb-0">Bronze</p>
+													<p class="align-self-center mb-0" v-if="status.sales_count == 12"><i class="badge badge-warning">Bronze</i></p>
+													<p class="align-self-center mb-0" v-if="status.sales_count == 36"><i class="badge badge-silver">Silver</i></p>
+													<p class="align-self-center mb-0" v-if="status.sales_count == 108"><i class="badge badge-gold">Gold</i></p>
+													<p class="align-self-center mb-0" v-if="status.sales_count == 324"><i class="badge badge-ruby">Ruby</i></p>
+													<p class="align-self-center mb-0" v-if="status.sales_count == 972"><i class="badge badge-diamond">Diamond</i></p>
 												</div>
 											</td>
-											<td>12</td>
-											<td>$100</td>
+											<td>{{status.sales_count}}</td>
+											<td>{{status.cash_bonus_amount}}</td>
 											<td class=" text-center">
 												<svg xmlns="http://www.w3.org/2000/svg"
 													 width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -155,75 +200,6 @@
 													 class="feather feather-x t-icon t-hover-icon">
 													<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
 											   </td>
-										</tr>
-										<tr>
-											<td>
-												<div class="d-flex">
-													<p  class="align-self-center mb-0">Silver</p>
-												</div>
-											</td>
-											<td>36</td>
-											<td>$600</td>
-											<td class="text-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x t-icon t-hover-icon"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></td>
-										</tr>
-										<tr>
-											<td>
-												<div class="d-flex">
-													<p  class="align-self-center mb-0">Gold</p>
-												</div>
-											</td>
-											<td>108</td>
-											<td>$3,800</td>
-											<td class="text-center">
-												<svg xmlns="http://www.w3.org/2000/svg"
-													 width="24"
-													 height="24"
-													 viewBox="0 0 24 24"
-													 fill="none" stroke="currentColor"
-													 stroke-width="2" stroke-linecap="round"
-													 stroke-linejoin="round"
-													 class="feather feather-x t-icon t-hover-icon">
-													<line x1="18" y1="6" x2="6" y2="18"></line>
-													<line x1="6" y1="6" x2="18" y2="18"></line></svg>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="d-flex">
-													<p  class="align-self-center mb-0">Ruby</p>
-												</div>
-											</td>
-											<td>324</td>
-											<td>$22,000</td>
-											<td class="text-center">
-												<svg xmlns="http://www.w3.org/2000/svg"
-													 width="24" height="24"
-													 viewBox="0 0 24 24" fill="none"
-													 stroke="currentColor" stroke-width="2"
-													 stroke-linecap="round" stroke-linejoin="round"
-													 class="feather feather-x t-icon t-hover-icon">
-													<line x1="18" y1="6" x2="6" y2="18"></line>
-													<line x1="6" y1="6" x2="18" y2="18"></line></svg>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="d-flex">
-													<p  class="align-self-center mb-0">Diamond</p>
-												</div>
-											</td>
-											<td>972</td>
-											<td>$412,855.60 (Recycle)</td>
-											<td class="text-center">
-												<svg xmlns="http://www.w3.org/2000/svg"
-													 width="24" height="24"
-													 viewBox="0 0 24 24" fill="none"
-													 stroke="currentColor" stroke-width="2"
-													 stroke-linecap="round" stroke-linejoin="round"
-													 class="feather feather-x t-icon t-hover-icon">
-													<line x1="18" y1="6" x2="6" y2="18"></line>
-													<line x1="6" y1="6" x2="18" y2="18"></line></svg>
-											</td>
 										</tr>
 										</tbody>
 									</table>
@@ -269,7 +245,8 @@ export default {
 		 	'getUserDetails',
 		 	'getGroupSales',
 			'fetchLink',
-			'groupSales'
+			'groupSales',
+			'userDasboard'
 
 		]),
 
@@ -278,15 +255,29 @@ export default {
 				this.cash = 100
 			}
 		},
+
 		groupMore() {
 			return this.getGroupSales.response - 10
 		},
+
+		totalCashBonuses: function() {
+			let sum = 0;
+			let cashbonus = this.userDasboard.cashbouns
+
+			for (let i = 0; i < this.userDasboard.cashbouns.length; i++){
+					sum += (parseFloat(this.userDasboard.cashbouns[i].cash_bonus_amount));
+			}
+
+			return sum
+		}
 	},
+
 	created() {
 		this.$store.dispatch('GET_USER_DETAILS')
 		this.$store.dispatch('USER_GROUP_SALES')
 		this.$store.dispatch('GET_AFFILIATE_LINK')
 		this.$store.dispatch('GET_TOTAL_GROUP_SALES')
+		this.$store.dispatch('USER_DASHBOARD')
 		this.canCopy = !!navigator.clipboard;
 	},
 	methods:{
@@ -300,7 +291,43 @@ export default {
 	}
 }
 </script>
+<style>
+	.badge-silver {
+		color: #fff;
+		background: #C0C0C0;
+		box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.2);
+		will-change: opacity, transform;
+		transition: all 0.3s ease-out;
+		-webkit-transition: all 0.3s ease-out;
+	}
 
+	.badge-gold {
+		color: black;
+		background: #FFDF00;
+		box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.2);
+		will-change: opacity, transform;
+		transition: all 0.3s ease-out;
+		-webkit-transition: all 0.3s ease-out;
+	}
+
+	.badge-ruby {
+		color: #fff;
+		background: #e0115f;
+		box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.2);
+		will-change: opacity, transform;
+		transition: all 0.3s ease-out;
+		-webkit-transition: all 0.3s ease-out;
+	}
+
+	.badge-diamond {
+		color: #fff;
+		background: #b9f2ff;
+		box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.2);
+		will-change: opacity, transform;
+		transition: all 0.3s ease-out;
+		-webkit-transition: all 0.3s ease-out;
+	}
+</style>
 
 
 

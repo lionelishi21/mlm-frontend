@@ -1,8 +1,6 @@
 <template>
 	<div id="content" class="main-content">
-
 		<div class="layout-px-spacing">
-
 		   <div class="row layout-spacing">
 
 					<div class="col-md-6 layout-spacing">
@@ -51,15 +49,18 @@
 							<div class="info">
 								<h5 class="">Update Password</h5>
 								<div class="row">
+									<div class="col-md-12">
+									   <validation-errors :errors="validationErrors" v-if="validationErrors"></validation-errors>
+									</div>
+									<div class="col-md-12" v-if="completed">
+										<ul class="alert alert-danger mb-4 list-unstyled">
+											<li>Your password updated</li>
+										</ul>
+									</div>
+								</div>
+								<div class="row">
 									<div class="col-md-12 mx-auto">
-										<div class="row">
-											<div class="alert alert-danger" v-if="error">
-													{{ message }}
-											</div>
-											<div class="alert alert-danger" v-if="success">
-												{{ message }}
-											</div>
-										</div>
+
 										<div class="row">
 											<div class="col-md-12">
 												<validation-provider rules="required" v-slot="{ errors }">
@@ -114,6 +115,7 @@
 import { ValidationProvider, extend, ValidationObserver } from 'vee-validate';
 import { mapGetters } from 'vuex';
 import {required} from "vee-validate/dist/rules";
+import ValidationErrors from "../components/ValidationError";
 
 extend('passwordconfirm', {
 	params: ['target'],
@@ -133,19 +135,23 @@ extend('required', {
 
 export default {
 	components: {
+		ValidationErrors,
 		ValidationProvider,
 		ValidationObserver
 	},
 	data() {
 		return {
 			password: {
+				email: '',
 				current_password: '',
 				new_password: '',
 				confirm_password: ''
 			},
 			error: false,
 			message: 'something went wrong',
-			success: false
+			success: false,
+			validationErrors: '',
+			completed: false
 		}
 
 	},
@@ -165,10 +171,12 @@ export default {
 		},
 
 		changePassword() {
+
+			this.password.email = this.getLoginUser.email
 			this.$store.dispatch('CHANGE_PASSWORD', this.password)
 				.then( response => {
 
-						console.log(response.data)
+					 console.log(response.data)
 					 if ( response.data.status == false) {
 					 	 this.error = true
 						 this.message = response.data.message
@@ -179,9 +187,15 @@ export default {
 						 this.success = true
 						 this.message = response.data.message
 					 }
+					this.completed = true
+					 this.password = {}
 				})
 			.catch( error => {
-				this.error = true
+				// this.error = true
+				this.isLoading = false
+				if (error.response.status == 422){
+					this.validationErrors = error.response.data.errors;
+				}
 			})
 		}
 	}

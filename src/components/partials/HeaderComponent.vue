@@ -197,7 +197,7 @@ export default {
     	logOut: function() {
     		this.$store.dispatch('AUTH_LOGOUT')
     			.then( response => {
-    				this.$router.push('/')
+    				location.reload()
     			})
     	},
 		goToProfile() {

@@ -96,6 +96,11 @@ export default {
 
 	PostPassword( payload ) {
 		return Api().post('/password/reset', payload)
+	},
+
+	fetchUserDashboard() {
+		return Api().get('/affiliates/user-dashboard')
 	}
 }
+
 

@@ -6453,10 +6453,10 @@
 		msg = 'DataTables warning: '+
 			(settings ? 'table id='+settings.sTableId+' - ' : '')+msg;
 	
-		if ( tn ) {
-			msg += '. For more information about this error, please see '+
-			'http://datatables.net/tn/'+tn;
-		}
+		// if ( tn ) {
+		// 	msg += '. For more information about this error, please see '+
+		// 	'http://datatables.net/tn/'+tn;
+		// }
 	
 		if ( ! level  ) {
 			// Backwards compatibility pre 1.10

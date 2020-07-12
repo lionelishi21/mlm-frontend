@@ -14,7 +14,8 @@ const state = {
   group_sales: 0,
   adminDashboard: {},
   cashbonuses: {},
-    links: {}
+    links: {},
+    dashboard: {}
 
 }
 
@@ -196,7 +197,7 @@ const actions = {
                })
                .catch( error => {
                    console.log(error.response)
-                   reject(error.response)
+                   reject(error)
                })
        })
 
@@ -225,6 +226,17 @@ const actions = {
                   reject(error.response)
               })
       })
+    },
+    USER_DASHBOARD({commit}) {
+
+      api.fetchUserDashboard()
+          .then( response => {
+              console.log( response)
+              commit('SET_USER_DASHBOARD',response.data)
+          })
+          .catch( error => {
+               console.log(error)
+          })
     }
 
 }
@@ -258,6 +270,10 @@ const mutations = {
 
     SET_BITLY_LINK (state, link) {
         state.links = link
+    },
+
+    SET_USER_DASHBOARD(state, dash) {
+        state.dashboard = dash
     }
 
 }
@@ -276,7 +292,8 @@ const getters = {
     getGroupSales: state => state.group_sales,
     getAdminDashboard: state => state.adminDashboard,
     getCashBonuses: state => state.cashbonuses,
-    fetchLink: state => state.links
+    fetchLink: state => state.links,
+    userDasboard: state => state.dashboard
 }
 
 export default {

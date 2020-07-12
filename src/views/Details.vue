@@ -5,7 +5,7 @@
 				<!-- Content -->
 				<div class="col-xl-4 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
 
-					<div class="user-profile layout-spacing">
+					<div class="user-profile">
 						<div class="widget-content widget-content-area">
 							<div class="d-flex justify-content-between">
 								<h3 class="">Info</h3>
@@ -30,7 +30,7 @@
 							</div>
 							<div class="user-info-list">
 								<div class="">
-									<ul class="contacts-block list-unstyled">
+									<ul class="contacts-block list-unstyled" style="max-width: 50%;">
 
 										<li class="contacts-block__item">
 											<svg xmlns="http://www.w3.org/2000/svg"

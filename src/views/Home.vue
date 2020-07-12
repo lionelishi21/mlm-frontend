@@ -41,6 +41,9 @@
     @import '../cork/css/apps/contacts.css';
     @import '../cork/plugins/jquery-ui/jquery-ui.min.css';
 
+    @import '../cork/plugins/table/datatable/datatables.css';
+    @import '../cork/plugins/table/datatable/dt-global_style.css';
+    @import '../cork/plugins/table/datatable/custom_dt_custom.css';
 
     @import '../cork/plugins/sweetalerts/sweetalert2.min.css';
     @import '../cork/plugins/sweetalerts/sweetalert.css';
@@ -75,6 +78,8 @@ import '../cork/plugins/jquery-ui/jquery-ui.min.js';
 // import '../cork/js/custom.js';
 // import '../cork/js/apps/contact.js';
 
+import '../cork/plugins/table/datatable/datatables.js';
+
 // @ is an alias to /src
 import HeaderComponent from '@/components/partials/HeaderComponent.vue'
 import SidebarComponent from '@/components/partials/SiderbarComponent.vue'
@@ -93,6 +98,9 @@ export default {
     },
     created() {
       this.$store.dispatch('GET_LOGIN_USER')
+    },
+    mounted() {
+
     },
     methods: {
       logOut() {
