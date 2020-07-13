@@ -1,6 +1,5 @@
 <template>
 	<div class="container" style="padding-top: 8.5%; background: #ececec;">
-
 			<div class="">
 				<div class="alert alert-danger" role="alert" v-if="msg.email">
 					<strong><i class="fas fa-exclamation-triangle"></i>Oh snap!</strong> Please enter all require fields
@@ -14,6 +13,7 @@
 					</ul>
 				</div>
 			</div>
+
 		<div class="row">
 			<terms-component></terms-component>
 		</div>
@@ -362,6 +362,7 @@ export default {
 	},
   data() {
     return {
+		isLoading: false,
 	    card: {},
 	    step: 1,
 	 	payment_methods: 'card',
@@ -494,9 +495,13 @@ export default {
 			   user: this.form
 		   }
 
+		   this.isLoading = true
 		   this.$store.dispatch('BUY_BOOK', form)
 			   .then( response => {
+
+				   this.isLoading = false
 				   console.log(response)
+
 			   }).catch( error => {
 			   console.log(error.response)
 		   })

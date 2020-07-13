@@ -86,7 +86,7 @@ export default {
 		this.datatable()
 	},
 	created() {
-
+		this.datatable()
 		this.isLoading = true
 		this.$store.dispatch('FETCH_AFFILIATES')
 			.then( response => {
@@ -99,7 +99,6 @@ export default {
 	},
 	methods: {
 		goToDetails(value) {
-
 			var url = '/dashboard/affiliates/'+value
 			this.$router.push(url);
 		},

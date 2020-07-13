@@ -1,11 +1,14 @@
 <template>
     <div>
-        <div class="loading-overlay">
-            <div class="bounce-loader">
-                <div class="bounce1"></div>
-                <div class="bounce2"></div>
-                <div class="bounce3"></div>
-            </div>
+        <loading
+                :active.sync="isLoading"
+                 :can-cancel="true"
+                 :on-cancel="onCancel"
+                 :is-full-page="fullPage">
+        </loading>
+
+        <div class="form-row" v-if="api_error">
+            <span class="alert alert-danger">{{api_error_message}}</span>
         </div>
         <div class="form-row" style="margin-top: 30px;">
             <div class="col-md-12">
@@ -31,7 +34,9 @@
 </template>
 
 <script>
-    let stripe = Stripe(`pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5`),
+    import {ValidationObserver, ValidationProvider} from "vee-validate";
+
+    let stripe = Stripe(`pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5`),
     elements = stripe.elements(),
     cardNumber = undefined,
     cardExpiry = undefined,
@@ -50,10 +55,16 @@
         },
     }
 
+    import Loading from 'vue-loading-overlay';
     export default {
+        components: {
+            Loading,
+        },
         props:['form'],
         data () {
             return {
+                fullpage: true,
+                isLoading: false,
                 isDisabled: false,
                 loading: false,
                 email: false,
@@ -62,7 +73,9 @@
                 amount: 34.95,
                 token: null,
                 charge: null,
-                hasCardErrors: false
+                hasCardErrors: false,
+                api_error: false,
+                api_error_message: ''
             }
         },
         mounted: function () {
@@ -82,31 +95,46 @@
             purchase: function () {
 
                 this.isDisabled = true
-
+                this.isLoading = true
                 let self = this;
+
                 stripe.createToken(cardNumber).then(function(result) {
 
-                    if (result.error) {
+                    if ( result.error ) {
+                        console.log(result.error)
+                        self.isLoading = false
+                        self.isDisabled = false
                         self.hasCardErrors = true;
+                        self.api_error = true,
+                            self.api_error_message = 'Something went wrong whilte trying to process credit card please contact administrator'
                         self.$forceUpdate(); // Forcing the DOM to update so the Stripe Element can update.
                         return;
                     }
 
                     var token = result.token
+
                     self.charge = {
                         tokenId: token.id,
                         amount: self.amount, // the amount you want to charge the customer in cents. $100 is 1000 (it is strongly recommended you use a product id and quantity and get calculate this on the backend to avoid people manipulating the cost)
                         description: self.description // optional description that will show up on stripe when looking at payments
                     }
+
                     console.log(self.charge)
                     self.sendPaymentInformation(self.charge);
+                })
+                .catch(error => {
+
+                      console.log(error)
+                      this.isLoading = false
+                      this.isDisabled = false
                 });
+
             },
 
 
             sendPaymentInformation(charge) {
-                this.loading = true
 
+                this.api_error = false
                 this.form.payment_type = 'stripe';
 
                 let form = {
@@ -116,12 +144,12 @@
 
                 this.$store.dispatch('BUY_BOOK', form)
                     .then( response => {
-                        this.isDisabled = true
+                        this.isDisabled = false
                         this.$router.push('/order-completed')
-
+                        this.isLoading = false
                     }).catch( error => {
-
-                    this.isDisabled = true
+                    this.isLoading = false
+                    this.isDisabled = false
                     console.log(error.response)
                 })
 
