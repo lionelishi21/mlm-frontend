@@ -277,7 +277,6 @@
 										   <PayPal
 												class="form-control"
 												currency="USD"
-												env="production"
 												:button-style="myStyle"
 												amount="34.95"
 												:client="paypal"
@@ -402,7 +401,7 @@ export default {
 	       },
 	       paypal: {
 		       sandbox: 'AbUMmsT4JJSCUg86MP4SV1-iA3jjCtPYpqkrV3xrU2ZrAZ17FkFHA_AuI2LVe2xhu-nYBZB5ezKN2Y9z',
-		       production: 'EGAth7zVgYJiZMpRpI2QVdnczo1rJ78MT-0D-q5ODseSM_5MgpvnZstNaWAMBIihBwA0vhBX0ITqzDVm'
+		       production: 'ASDLLb5slq4glmE0Xoa1ANXKNp9Z6JDsdBB1HnYwQNTOwK5s1lxreTz0wuo_gWyJCsvlmJpKJqrD1Jj9'
 	       },
 	      experience: {
 	        input_fields: {
