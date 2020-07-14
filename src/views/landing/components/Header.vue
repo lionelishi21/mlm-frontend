@@ -12,11 +12,11 @@
 							</div>
 						</div>
 					</div>
-					<div class="header-column justify-content-end">
+					<div class="header-column justify-content-end mb-4">
 						<div class="header-row">
 							<div class="header-nav header-nav-links header-nav-dropdowns-dark header-nav-light-text order-2 order-lg-1">
 								<div class="header-nav-main header-nav-main-mobile-dark header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-effect-2 header-nav-main-sub-effect-1">
-									<nav class="collapse">
+									<nav class="mb-4 collapse">
 										<ul class="nav nav-pills mt-4" id="mainNav">
 											<li class="dropdown">
 												<a class="dropdown-item dropdown-toggle" href="/">
@@ -46,7 +46,7 @@
 										</ul>
 									</nav>
 								</div>
-							</div>
+						z	</div>
 						</div>
 					</div>
 				</div>

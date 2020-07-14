@@ -1,5 +1,5 @@
 <template>
-	<div class="container" style="padding-top: 8.5%; background: #ececec;">
+	<div class="container" style="padding-top: 10.5%; background: #ececec;">
 			<div class="">
 				<div class="alert alert-danger" role="alert" v-if="msg.email">
 					<strong><i class="fas fa-exclamation-triangle"></i>Oh snap!</strong> Please enter all require fields
@@ -18,7 +18,7 @@
 			<terms-component></terms-component>
 		</div>
 
-			<div class="row">
+			<div class="row mt-5">
 				<div class="col-lg-9">
 					<div class="accordion accordion-modern" id="accordion">
 						<div class="card card-default" v-if="step == 1">

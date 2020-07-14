@@ -2,166 +2,164 @@ import axios from "axios";
 import api from '../../api/services/user-services.js'
 
 const state = {
-  tokens: {
-    access_token: null,
-    expires_in: null,
-    refresh_token: null,
-    token_type: null
-  },
-  userDetails: {},
-  profile: {},
-  user: {},
-  group_sales: 0,
-  adminDashboard: {},
-  cashbonuses: {},
+    tokens: {
+        access_token: null,
+        expires_in: null,
+        refresh_token: null,
+        token_type: null
+    },
+    userDetails: {},
+    profile: {},
+    user: {},
+    group_sales: 0,
+    adminDashboard: {},
+    cashbonuses: {},
     links: {},
-    dashboard: {}
-
+    dashboard: {},
+    allusers: {}
 }
 
 const actions = {
-  login( context, user) {
-     return new Promise((resolve, reject) => {
+      login( context, user) {
+         return new Promise((resolve, reject) => {
 
-        let data = {
-          email: user.email,
-          password: user.password,
-        };
+            let data = {
+              email: user.email,
+              password: user.password,
+            };
 
-         api.loginUser(data).then(response => {
-            let responseData = response.data
-            let now = Date.now()
+             api.loginUser(data).then(response => {
+                let responseData = response.data
+                let now = Date.now()
 
-            responseData.expires_in = responseData.expires_in + now
-            context.commit('updateTokens', responseData.token)
-            localStorage.setItem('access_token', responseData.token )
+                responseData.expires_in = responseData.expires_in + now
+                context.commit('updateTokens', responseData.token)
+                localStorage.setItem('access_token', responseData.token )
 
-            resolve(response)
-          }).catch( err => { reject(err)})
-     })
-  },
-
-  AUTH_REGISTER(context, user) {
-
-    return new Promise((resolve, reject) => {
-      
-       api.registerUser(user).then(response => {
-        
-          let responseData = response.data
-          let now = Date.now()
-
-          responseData.expires_in = responseData.expires_in + now
-          context.commit('updateTokens', responseData.token)
-
-          resolve(response)
-        }).catch( err => { reject(err)})
-     })
-  },
-  AUTH_LOGOUT({commit, dispatch}){
-     
-    let token = localStorage.getItem('access_token')
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-
-    return new Promise(( resolve, reject) => {
-        
-        api.logoutUser().then( response => {
- 
-             localStorage.removeItem('access_token')
-             let user = {}
-             // context.dispatch('getCurrentUser')
-             
-            resolve(response)
-        }).catch( error => {
-            reject(error)
-        })
-    });
-  
-   },
-  
-  GET_LOGIN_USER({commit, dispatch}) {
-
-       let token = localStorage.getItem('access_token')
-       axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-
-       api.fetchUser()
-         .then( response => {
-           commit('SET_LOGIN_USER', response.data)
+                resolve(response)
+              }).catch( err => { reject(err)})
          })
-         .catch( error => {
+      },
 
-           console.log(error.response)
-         })
-  },
+      AUTH_REGISTER(context, user) {
 
-  GET_USER_DETAILS({commit}, payload) {
+        return new Promise((resolve, reject) => {
 
-     let token = localStorage.getItem('access_token')
-     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+           api.registerUser(user).then(response => {
 
-     return new Promise((resolve, reject) => {
+              let responseData = response.data
+              let now = Date.now()
 
-      api.fetchUserProfile().then( response => {
-           console.log(response.data.response)
-           commit('SET_USER_DETAILS', response.data.response)
-           resolve(response)
-        }).catch( error => {
-          console.log(error.response)
-          reject(error)
-        })
-    })
-  },
-
-   BUY_BOOK (context, params) {
-    return new Promise((resolve, reject) => {
-
-      api.purchaseEBook(params)
-        .then ( response => {
-            resolve(response)
-        })
-        .catch( error => {
-            reject(error.response)
-          console.log(error.response)
-        })
-    })
-  },
-  FETCH_USER_USERNAME( context, username) {
-     return new Promise((resolve, reject) => {
-          api.fetchUsername(username)
-            .then( response => {
+              responseData.expires_in = responseData.expires_in + now
+              context.commit('updateTokens', responseData.token)
 
               resolve(response)
+            }).catch( err => { reject(err)})
+         })
+      },
+      AUTH_LOGOUT({commit, dispatch}){
+
+        let token = localStorage.getItem('access_token')
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+        return new Promise(( resolve, reject) => {
+
+            api.logoutUser().then( response => {
+
+                 localStorage.removeItem('access_token')
+                 let user = {}
+                 // context.dispatch('getCurrentUser')
+
+                resolve(response)
+            }).catch( error => {
+                reject(error)
+            })
+        });
+
+       },
+
+      GET_LOGIN_USER({commit, dispatch}) {
+
+           let token = localStorage.getItem('access_token')
+           axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+           api.fetchUser()
+             .then( response => {
+               commit('SET_LOGIN_USER', response.data)
+             })
+             .catch( error => {
+
+               console.log(error.response)
+             })
+      },
+
+          GET_USER_DETAILS({commit}, payload) {
+
+             let token = localStorage.getItem('access_token')
+             axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+             return new Promise((resolve, reject) => {
+
+              api.fetchUserProfile().then( response => {
+                   console.log(response.data.response)
+                   commit('SET_USER_DETAILS', response.data.response)
+                   resolve(response)
+                }).catch( error => {
+                  console.log(error.response)
+                  reject(error)
+                })
+            })
+          },
+
+       BUY_BOOK (context, params) {
+        return new Promise((resolve, reject) => {
+
+          api.purchaseEBook(params)
+            .then ( response => {
+                resolve(response)
             })
             .catch( error => {
-               reject(error)
+                reject(error.response)
+              console.log(error.response)
             })
-     })
-  },
-  USER_GROUP_SALES({commit, dispatch}) {
-
-      api.fetchUserGroupSales()
-        .then( response => {
-          console.log( response )
-          commit('SET_GROUP_SALES', response.data)
         })
-        .catch( error => {
-          console.log(error.response)
-        })
-  },
+      },
+      FETCH_USER_USERNAME( context, username) {
+         return new Promise((resolve, reject) => {
+              api.fetchUsername(username)
+                .then( response => {
 
-  ADMIN_DASHBOARD({commit}) {
+                  resolve(response)
+                })
+                .catch( error => {
+                   reject(error)
+                })
+         })
+      },
 
-    api.fetchAdminDashboard()
-      .then( response => {
-         console.log(response) 
-         commit('SET_ADMIN_DASHBOARD',response.data)
-      })
-      .catch( error => {
-        console.log( error.response )
-      })
-  },
-   FETCH_USER() {
+      USER_GROUP_SALES({commit, dispatch}) {
 
-   },
+          api.fetchUserGroupSales()
+            .then( response => {
+              console.log( response )
+              commit('SET_GROUP_SALES', response.data)
+            })
+            .catch( error => {
+              console.log(error.response)
+            })
+      },
+
+      ADMIN_DASHBOARD({commit}) {
+
+        api.fetchAdminDashboard()
+          .then( response => {
+             console.log(response)
+             commit('SET_ADMIN_DASHBOARD',response.data)
+          })
+          .catch( error => {
+            console.log( error.response )
+          })
+      },
 
       GET_USER_CASHBONUS({commit}, id) {
 
@@ -237,12 +235,30 @@ const actions = {
           .catch( error => {
                console.log(error)
           })
+    },
+    FETCH_USER() {
+
+    },
+    GET_ALL_USER({commit}) {
+
+      api.fetchAllUser()
+          .then( response => {
+              console.log(response)
+              commit('SET_ALL_USERS', response.data)
+          })
+          .catch( error => {
+              console.log(error.response)
+          })
     }
 
 }
 
 
 const mutations = {
+
+    SET_ALL_USERS(state, user) {
+        state.allusers = user
+    },
 
     updateTokens(state, tokens) {
       state.tokens = tokens
@@ -293,7 +309,8 @@ const getters = {
     getAdminDashboard: state => state.adminDashboard,
     getCashBonuses: state => state.cashbonuses,
     fetchLink: state => state.links,
-    userDasboard: state => state.dashboard
+    userDasboard: state => state.dashboard,
+    getAllUser: state => state.allusers
 }
 
 export default {

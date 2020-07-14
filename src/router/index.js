@@ -19,6 +19,7 @@ import Aboutus from '@/views/About.vue';
 import Payment from "@/views/Payment.vue";
 import Ebook from '@/views/Ebook.vue';
 import ForgotPassword from "../views/ForgotPassword";
+import User from '../views/Users';
 
 import { isLoggedIn } from '../utils/auth.js'
 
@@ -43,7 +44,11 @@ Vue.use(VueRouter)
       {
         path: 'affiliates',
         component: Affiliates
-      }, 
+      },
+      {
+        path: 'users',
+        component: User
+      },
       {
         path: 'affiliates/:id',
         component: Details

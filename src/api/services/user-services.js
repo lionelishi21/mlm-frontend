@@ -100,6 +100,10 @@ export default {
 
 	fetchUserDashboard() {
 		return Api().get('/affiliates/user-dashboard')
+	},
+
+	fetchAllUser() {
+		return Api().get('/users')
 	}
 }
 
