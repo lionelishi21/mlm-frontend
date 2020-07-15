@@ -249,6 +249,20 @@ const actions = {
           .catch( error => {
               console.log(error.response)
           })
+    },
+    ADD_AFFILIATE(context, params) {
+          return new Promise((resolve, reject) => {
+
+                api.addAffiliate(params)
+                    .then( response => {
+
+                        console.log(response)
+                        resolve(response)
+                    })
+                    .catch( error => {
+                        reject(error)
+                    })
+          })
     }
 
 }

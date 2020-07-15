@@ -34,7 +34,8 @@
     @import '../cork/css/dashboard/dash_2.css';
     @import '../cork/css/elements/avatar.css';
     @import '../cork/css/elements/alert.css';
-
+    @import '../cork/css/elements/custom-pagination.css';
+    @import '../cork/plugins/bootstrap-select/bootstrap-select.min.css';
     @import '../cork/plugins/font-icons/fontawesome/css/regular.css';
     @import '../cork/plugins/font-icons/fontawesome/css/fontawesome.css';
 
@@ -79,6 +80,7 @@ import '../cork/plugins/jquery-ui/jquery-ui.min.js';
 // import '../cork/js/apps/contact.js';
 
 import '../cork/plugins/table/datatable/datatables.js';
+import '../cork/plugins/bootstrap-select/bootstrap-select.min.js'
 
 // @ is an alias to /src
 import HeaderComponent from '@/components/partials/HeaderComponent.vue'

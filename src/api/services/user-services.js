@@ -73,15 +73,19 @@ export default {
 	fetchUserCashBonuses(userId) {
 		return Api().get('/cashbonuses/'+userId)
 	},
+
 	fetchUsername(username) {
 		return Api().get('/username-availability?username='+username)
 	},
+
 	getCountries() {
 		return Api().get('/countries')
 	},
+
 	getStates(id) {
 		return Api().get('/states/'+id)
 	},
+
 	getCities(id) {
 		return Api().get('/cities/'+id)
 	},
@@ -102,8 +106,12 @@ export default {
 		return Api().get('/affiliates/user-dashboard')
 	},
 
-	fetchAllUser() {
-		return Api().get('/users')
+	fetchAllUser(page, params) {
+		return Api().get('/users?page='+page+''+params)
+	},
+
+	addAffiliate(params) {
+		return Api().post('/affiliates/add-affiliate', params)
 	}
 }
 

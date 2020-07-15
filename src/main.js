@@ -16,6 +16,8 @@ import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 // Import Interfaces`
 import { ICountry, IState, ICity } from 'country-state-city'
 Vue.component('vue-phone-number', VuePhoneNumberInput);
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 Vue.use(PrettyCheckbox);
 Vue.use(ModalPlugin)
 Vue.use(VueCurrencyFilter,
