@@ -17,7 +17,7 @@
                         <div class="form-row mb-4">
                             <div class="form-group col-md-12">
                                 <label>Select the affiliate to give sales</label>
-                                <select v-model="form.parent_id">
+                                <select v-model="form.parent_id" class="form-control">
                                     <option v-for="usr in getAffiliates.response" :value="usr.affiliate_id">{{usr.name}}</option>
                                 </select>
                             </div>
