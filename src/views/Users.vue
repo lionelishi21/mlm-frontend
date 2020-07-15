@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-sm-6 col-6">
                                             <div class="w-100">
-                                                <input v-model="filter" type="text" class="w-100 form-control product-search br-30" id="input-search" placeholder="Search Users" >
+                                                <input v-model="filter" autocomplete="false" type="text" class="w-100 form-control product-search br-30" id="input-search" placeholder="Search Users" >
                                             </div>
                                         </div>
                                     </div>
@@ -61,6 +61,7 @@
                                                     <tr>
                                                         <th>Name</th>
                                                         <th>Email</th>
+                                                        <th>Phone Number</th>
                                                         <th>Affiliate Id</th>
                                                         <th class="text-center">Action</th>
                                                     </tr>
@@ -69,6 +70,7 @@
                                                     <tr v-for="user in users.data">
                                                         <td><strong class="text-warning">{{user.first_name}} {{user.last_name}}</strong></td>
                                                         <td><strong class="text-warning">{{user.email}}</strong></td>
+                                                        <td><strong class="text-warning">{{user.phone_number}}</strong></td>
                                                         <td v-if="user.affiliate"><strong class="text-success">{{user.affiliate.affiliate_id}}</strong></td>
                                                         <td v-else="user.affiliate"><strong class="text-danger">No Affiliate Id</strong></td>
                                                         <td class="text-center">
