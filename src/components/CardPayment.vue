@@ -148,8 +148,10 @@
                         this.$router.push('/order-completed')
                         this.isLoading = false
                     }).catch( error => {
-                    this.isLoading = false
+
+                        this.isLoading = false
                     this.isDisabled = false
+
                     console.log(error.response)
                 })
 
