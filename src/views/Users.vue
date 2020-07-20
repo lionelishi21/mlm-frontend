@@ -76,6 +76,8 @@
                                                         <td class="text-center">
                                                             <butto  v-if="user.affiliate" class="btn btn">Added</butto>
                                                             <button v-else @click="showModal(user.id)" class="btn btn-danger">Add Affiliate</button>
+<!--                                                            <button class="btn btn-primary">View Details</button>-->
+
                                                         </td>
                                                     </tr>
 

@@ -21,7 +21,7 @@ import Ebook from '@/views/Ebook.vue';
 import ForgotPassword from "../views/ForgotPassword";
 import User from '../views/Users';
 import Matrix from '../views/Matix'
-
+import UserAffiliateDetails from '../views/UserDetails'
 import { isLoggedIn } from '../utils/auth.js'
 import PasswordReset from "../views/PasswordReset";
 
@@ -57,7 +57,11 @@ Vue.use(VueRouter)
       {
         path: 'affiliates/:id',
         component: Details
-      }, 
+      },
+      {
+        path:'users-affiliates-details/:id',
+        component: UserAffiliateDetails
+      },
       {
         path: 'profile',
         component: Profile

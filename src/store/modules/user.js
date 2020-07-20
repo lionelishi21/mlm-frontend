@@ -16,7 +16,8 @@ const state = {
     cashbonuses: {},
     links: {},
     dashboard: {},
-    allusers: {}
+    allusers: {},
+    serDetailsAffiliates: {}
 }
 
 const actions = {
@@ -262,6 +263,17 @@ const actions = {
                         reject(error)
                     })
           })
+    },
+
+    GET_USER_DETAIL_SPANS({commit}, id) {
+
+          api.fetchUserAffiliateDetails(id)
+              .then( response => {
+                  console.log(response)
+                    commit('SET_USER_DETAILS_SPANS', response.data)
+              }).catch( error => {
+                    console.log(error.response)
+          })
     }
 
 }
@@ -303,6 +315,10 @@ const mutations = {
 
     SET_USER_DASHBOARD(state, dash) {
         state.dashboard = dash
+    },
+
+    SET_USER_DETAILS_SPANS( state, detail) {
+        state.userDetails = detail
     }
 
 }
@@ -323,7 +339,8 @@ const getters = {
     getCashBonuses: state => state.cashbonuses,
     fetchLink: state => state.links,
     userDasboard: state => state.dashboard,
-    getAllUser: state => state.allusers
+    getAllUser: state => state.allusers,
+    getUserAffiliateDetails: state => state.userDetailsAffiliates
 }
 
 export default {

@@ -116,7 +116,11 @@ export default {
 
 	addAffiliate(params) {
 		return Api().post('/affiliates/add-affiliate', params)
-	}
+	},
+
+    fetchUserAffiliateDetails(id) {
+	    return Api.get('/users/details/'+ id)
+    }
 }
 
 
