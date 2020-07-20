@@ -6,7 +6,35 @@
 					 :on-cancel="onCancel"
 					 :is-full-page="fullPage"></loading>
 		</div>
-
+		<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">Delete Affiliate (only admin)</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+						</button>
+					</div>
+					<div class="modal-body">
+						<h4 class="modal-heading mb-4 mt-2">Are Sure yuo want to delete this Affiliates</h4>
+						<p class="modal-text">
+							Delete an Affiliate may cause conflict within the application, please make sure you contact administrator
+							before you click delete
+						</p>
+						<div class="form-group">
+							<textarea class="form-control" id="" cols="30" rows="5" placeholder="descrine the reason for delete this affiliate"></textarea>
+						</div>
+						<div class="form-group">
+							<input class="form-control" type="password" placeholder="Enter Administrator password id or to delete"></input>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
+						<button type="button" class="btn btn-primary" @click="deleteAffiliate()">Confirm</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="layout-px-spacing">
 				<div class="col-lg-12">
 					<div class="widget-content searchable-container list">
@@ -47,6 +75,7 @@
 													</td>
 													<td class="text-center">
 														<button  @click="goToDetails(affiliate.user_id)" class="btn btn-outline-primary">view</button>
+														<button  @click="showDeleteConfirmationModal(affiliate.affiliate_id)" class="btn btn-outline-danger">Delete</button>
 													</td>
 											    	</tr>
 
@@ -75,6 +104,10 @@ export default {
 			title: 'Affiliates',
 			isLoading: false,
 			fullPage: true,
+			password: 'Majesticares1234',
+			form: {
+				affiliate_id: null
+			}
 		}
 	},
 	computed: {
@@ -105,6 +138,23 @@ export default {
 			var url = '/dashboard/affiliates/'+value
 			this.$router.push(url);
 		},
+
+		deleteAffiliate() {
+			this.$store.dispatch('DELETE_AFILIATE', this.form.affiliate_id)
+				.then( response => {
+					$('#deleteConfirmationModal').modal('hide');
+					console.log(response)
+				})
+				.catch(error => {
+					console.log(error)
+				})
+		},
+
+		showDeleteConfirmationModal(id){
+			this.form.affiliate_id = id
+			$('#deleteConfirmationModal').modal('show');
+		},
+
 
 		datatable() {
 

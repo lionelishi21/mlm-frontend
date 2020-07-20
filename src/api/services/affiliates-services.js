@@ -8,5 +8,9 @@ export default {
 
 	fetchAffiliateDetails(id) {
 		return Api().get('/affiliates/details/'+id)
+	},
+
+	deleteAffiliate(id) {
+		return Api().get('/affiliates/delete-affailiate/'+id)
 	}
 }

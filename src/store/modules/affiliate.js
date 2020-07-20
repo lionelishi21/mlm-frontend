@@ -40,6 +40,21 @@ const actions = {
 			.catch( error => {
 				console.log(error.response)
 			})
+	},
+
+	DELETE_AFILIATE(context, id) {
+		return new Promise((resolve, reject) => {
+
+			api.deleteAffiliate(id)
+				.then( response => {
+					console.log(response)
+					resolve(response.data)
+				})
+				.catch( error => {
+					console.log(error.response)
+					reject(error.response)
+				})
+		})
 	}
 }
 
