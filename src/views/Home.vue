@@ -76,7 +76,8 @@ import '../cork/plugins/perfect-scrollbar/perfect-scrollbar.min.js';
 // import '../cork/plugins/notification/snackbar/snackbar.min.js';
 // import '../cork/js/components/notification/custom-snackbar.js';
 import '../cork/plugins/jquery-ui/jquery-ui.min.js';
-// import '../cork/js/custom.js';
+import '../cork/js/custom.js';
+import '../cork/js/app.js';
 // import '../cork/js/apps/contact.js';
 
 import '../cork/plugins/table/datatable/datatables.js';

@@ -120,7 +120,6 @@ const actions = {
             })
             .catch( error => {
                 reject(error.response)
-              console.log(error.response)
             })
         })
       },
@@ -189,7 +188,7 @@ const actions = {
     CHANGE_PASSWORD(context, payload) {
 
        return new Promise((resolve, reject) => {
-           api.changePassword(payload)
+           api.changeUserPassword(payload)
                .then( response => {
                    resolve(response)
                })

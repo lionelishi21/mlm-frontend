@@ -31,7 +31,7 @@
 			<div class="col-lg-12">
 				<div class="overflow-hidden">
 					<p class="lead mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">
-						Inspired by Ordinary People Nationwide, And Soon to Be Worldwide, The Majestic Cares Community, or “MCC”, was created so that ALL of its Affiliate/Members can receive a residual income for any worthwhile purpose, such as: Humanitarian projects to benefit those in need around the world, business start-ups, paying off debts, buying a new car or home, or to be able to travel abroad, and visit with family and friends! 
+						Inspired by Ordinary People Nationwide, And Soon to Be Worldwide, The Majestic Cares Community, or “MCC”, was created so that ALL of its Affiliate/Members can receive a residual income for any worthwhile purpose, such as: Humanitarian projects to benefit those in need around the world, business start-ups, paying off debts, buying a new car or home, or travel abroad, to visit with family and friends!
 					</p>
 					<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
 						
@@ -40,7 +40,7 @@
 					</p>
 
 					<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
-						Please First Note, that this is NOT a Network-Marketing, or a Get-Rich-Quick Community. The MCC Online Community gives each Affiliate/Member, the unique opportunity of receiving Company Shared Cash Bonuses based on their total Group Sales Volume.
+						Please First Note, that this is NOT a Network-Marketing, or a Get-Rich-Quick Community. The MCC Online Community gives each Sales Affiliate/Member, the unique opportunity of receiving Company Shared Cash Bonuses based on their total Group Sales Volume.
 
 					</p>
 					<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
@@ -55,7 +55,7 @@
 					</p>
 
 					<p class="lead mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">
-					Note: Since this is a community effort, your 3 Personal eBook Sales (and any additional sales) may not necessarily be placed in your personal group, as it will fall into the next available open position in MCC’S very exclusive Community Cash Bonus System, as follows:
+					Note: Since this is a community effort, your 3 Personal eBook Sales (and any additional sales) may not necessarily fall under your personal group sales, but will automatically contribute to MCC’S very exclusive Community Cash Bonus System, as follows:
 				     </p>
 
 				</div>
@@ -69,18 +69,25 @@
 			</div>
 		</div>
 
+		<div class="row">
+			<div class="col-md-12">
+				<h4><strong>MCC's Unique Pay-it-Forward Formula</strong></h4>
+				<hr>
+			</div>
+		</div>
 			<div class="row">
-				BRONZE Affiliate: 3 personal plus 9 eBook sales (12 group sales) = $100 	<br>              
-				SILVER Affiliate:  36 eBook group sales = $600 	                <br>
-				GOLD Affiliate:  108 eBook group sales = $3,800 	         <br>
-				RUBY Affiliate:  324 eBook group sales = $22,000 	      <br>
-				DIAMOND Affiliate: 972 eBook group sales = $412,855.60  <br>
-				DIAMOND REPEAT: 12 eBook diamond group sales = $412,855.60  <br>
-
+				<div class="col-md-12">
+					<p class="text-dark text-5">BRONZE Affiliate: 3 personal plus 9 eBook sales (12 group sales) = $100 </p>
+					<p class="text-dark text-5">SILVER Affiliate:  36 eBook group sales = $600 	            </p>
+					<p class="text-dark text-5">GOLD Affiliate:  108 eBook group sales = $3,800 	         </p>
+					<p class="text-dark text-5">RUBY Affiliate:  324 eBook group sales = $22,000 	      </p>
+					<p class="text-dark text-5">DIAMOND Affiliate: 972 eBook group sales = $412,855.60  </p>
+					<p class="text-dark text-5">DIAMOND REPEAT: 12 eBook diamond group sales = $412,855.60  </p>
+				</div>
 			</div>
 			<div class="row mt-3">
-			  <p class="lead mb-0 appear-animation text-center" data-appear-animation="maskUp" data-appear-animation-delay="200">
-						******* CONGRATULATIONS! YOU NOW QUALIFY TO RECEIVE UP-TO 90% PLUS OF YOUR TOTAL GROUP SALES VOLUME FOR LIFE!!
+			  <p class="lead mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">
+						CONGRATULATIONS ON BECOMING OUR NEXT MCC-er! YOU NOW QUALIFY TO RECEIVE UP-TO 90% PLUS OF YOUR TOTAL GROUP SALES VOLUME FOR LIFE!!
 			  </p>
 			</div>
 			<div class="row">
@@ -89,7 +96,6 @@
 						<i>
 							Disclaimer: The MAJESTIC CARES COMMUNITY, OR MCC AND ITS AFFILIATES, is an online
 Sales Affiliate Community. This information, as well as the information contained in our publications, is for illustration purposes only, with no promises or guarantees of income. Neither the administrators, subsidiaries, nor the Affiliate/Members of the Majestic Cares Community, make no income guarantees.
-
 				        </i>
 				   </small>
 				</p>

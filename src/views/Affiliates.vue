@@ -42,7 +42,7 @@
 													<td>{{affiliate.email}}</td>
 													<td>{{affiliate.sales}}</td>
 													<td class="text-center">
-														<span v-if="affiliate.status == 'Active'" class="shadow-none badge outline-badge-success">Active</span>
+														<span v-if="affiliate.sales >= 3" class="shadow-none badge outline-badge-success">Active</span>
 														<span v-else class="shadow-none badge badge-danger">Inactive</span>
 													</td>
 													<td class="text-center">
@@ -82,24 +82,22 @@ export default {
 			'getAffiliates'
 		])
 	},
-	mounted() {
 
-		this.datatable()
-		let self = this
-		this.$nextTick(() => {
-			self.datatable()
-		})
+	mounted() {
+        this.isLoading = true
+        this.$store.dispatch('FETCH_AFFILIATES')
+            .then( response => {
+                console.log(response)
+                this.datatable()
+                this.isLoading = false
+            }).catch(error => {
+            this.isLoading = false
+            console.log(error.response)
+        })
+
 	},
 	created() {
-		this.isLoading = true
-		this.$store.dispatch('FETCH_AFFILIATES')
-			.then( response => {
-				console.log(response)
-				this.isLoading = false
-			}).catch(error => {
-				this.isLoading = false
-				console.log(error.response)
-		})
+
 	},
 	methods: {
 
@@ -109,7 +107,8 @@ export default {
 		},
 
 		datatable() {
-			c3 = $('#style-3').DataTable({
+
+		    c3 = $('#style-3').DataTable({
 				"oLanguage": {
 					"oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
 					"sInfo": "Showing page _PAGE_ of _PAGES_",

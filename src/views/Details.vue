@@ -1,6 +1,9 @@
 <template>
 	<div id="content" class="main-content">
 		<div class="layout-px-spacing">
+<!--			<div class="row">-->
+<!--				<pre>{{getAffiliateDetails}}</pre>-->
+<!--			</div>-->
 			<div class="row layout-spacing">
 				<!-- Content -->
 				<div class="col-xl-4 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
@@ -87,54 +90,26 @@
 					</div>
 
 
-<!--					<div class="work-experience layout-spacing ">-->
+					<div class="work-experience layout-spacing ">
+						<div class="widget-content widget-content-area">
+							<h3 class="">Persons</h3>
+							<div class="timeline-alter">
 
-<!--						<div class="widget-content widget-content-area">-->
+								<div class="item-timeline" v-for="sale in getAffiliateDetails.personal_sales">
+									<div class="t-meta-date">
+										<p class="">{{sale.date}}</p>
+									</div>
+									<div class="t-dot">
+									</div>
+									<div class="t-text">
+										<p>{{sale.purchaser_name}}</p>
+									</div>
+								</div>
 
-<!--							<h3 class="">Work Experience</h3>-->
+							</div>
+						</div>
 
-<!--							<div class="timeline-alter">-->
-
-<!--								<div class="item-timeline">-->
-<!--									<div class="t-meta-date">-->
-<!--										<p class="">04 Mar 2009</p>-->
-<!--									</div>-->
-<!--									<div class="t-dot">-->
-<!--									</div>-->
-<!--									<div class="t-text">-->
-<!--										<p>Netfilx Inc.</p>-->
-<!--										<p>Designer Illustrator</p>-->
-<!--									</div>-->
-<!--								</div>-->
-
-<!--								<div class="item-timeline">-->
-<!--									<div class="t-meta-date">-->
-<!--										<p class="">25 Apr 2014</p>-->
-<!--									</div>-->
-<!--									<div class="t-dot">-->
-<!--									</div>-->
-<!--									<div class="t-text">-->
-<!--										<p>Google Inc.</p>-->
-<!--										<p>Designer Illustrator</p>-->
-<!--									</div>-->
-<!--								</div>-->
-
-<!--								<div class="item-timeline">-->
-<!--									<div class="t-meta-date">-->
-<!--										<p class="">04 Apr 2018</p>-->
-<!--									</div>-->
-<!--									<div class="t-dot">-->
-<!--									</div>-->
-<!--									<div class="t-text">-->
-<!--										<p>Design Reset Inc.</p>-->
-<!--										<p>Designer Illustrator</p>-->
-<!--									</div>-->
-<!--								</div>-->
-
-<!--							</div>-->
-<!--						</div>-->
-
-<!--					</div>-->
+					</div>
 
 				</div>
 
@@ -197,9 +172,7 @@
 													<li class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.group_sales_counts">
 														<img alt="avatar" src="@/assets/img/90x90.jpg">
 													</li>
-
-													<p class="text-4 mt-1"><strong>{{getAffiliateDetails.group_sales_counts}} Group Sales</strong></p>
-												</ul>
+													</ul>
 											</div>
 											<div class="col-md-12 text-right">
 												<div class="progress p-o-progress mt-2">
@@ -231,12 +204,6 @@
 													    <li v-show="getAffiliateDetails.group_sales_counts > 10" class="list-inline-item chat-online-usr" v-for="sale in 10">
 															<img alt="avatar" src="@/assets/img/90x90.jpg">
 														</li>
-														<li v-show="getAffiliateDetails.group_sales_counts > 10" class="list-inline-item badge-notify mr-0">
-															<div class="notification">
-																<span class="badge badge-info badge-pill">+{{groupMore}} more</span>
-															</div>
-														</li>
-
 														<li v-show="getAffiliateDetails.group_sales_counts <= 10" class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.group_sales_counts">
 															<img alt="avatar" src="@/assets/img/90x90.jpg">
 														</li>
@@ -268,16 +235,7 @@
 										<div class="row mt-1">
 											<div class="col-md-12">
 												<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-
-													<li v-show="getAffiliateDetails.group_sales_counts > 10" class="list-inline-item chat-online-usr" v-for="sale in 10">
-														<img alt="avatar" src="@/assets/img/90x90.jpg">
-													</li>
-													<li v-show="getAffiliateDetails.group_sales_counts > 10" class="list-inline-item badge-notify mr-0">
-														<div class="notification">
-															<span class="badge badge-info badge-pill">+{{groupMore}} more</span>
-														</div>
-													</li>
-													<li v-show="getAffiliateDetails.group_sales_counts <= 10" class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.group_sales_counts">
+													<li v-show="getAffiliateDetails.group_sales_counts > 20" class="list-inline-item chat-online-usr" v-for="sale in 10">
 														<img alt="avatar" src="@/assets/img/90x90.jpg">
 													</li>
 													<p class="text-4 mt-1 text-dark"><strong>{{getAffiliateDetails.group_sales_counts}} Group Sales</strong></p>
@@ -299,7 +257,7 @@
 								<div class="widget-content">
 									<div class="w-content">
 										<div class="w-info">
-											<p class="text-6 text-dark">Group Sales Status <b>( Gold )</b></p>
+											<p class="text-6 text-white">Group Sales Status <b>( Ruby )</b></p>
 											<hr>
 										</div>
 									</div>
@@ -308,18 +266,13 @@
 											<div class="col-md-12">
 												<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
 
-													<li v-show="getAffiliateDetails.group_sales_counts > 10" class="list-inline-item chat-online-usr" v-for="sale in 10">
+													<li v-show="getAffiliateDetails.group_sales_counts > 20" class="list-inline-item chat-online-usr" v-for="sale in 10">
 														<img alt="avatar" src="@/assets/img/90x90.jpg">
 													</li>
-													<li v-show="getAffiliateDetails.group_sales_counts > 10" class="list-inline-item badge-notify mr-0">
-														<div class="notification">
-															<span class="badge badge-info badge-pill">+{{groupMore}} more</span>
-														</div>
-													</li>
-													<li v-show="getAffiliateDetails.group_sales_counts <= 10" class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.group_sales_counts">
+													<li v-show="getAffiliateDetails.group_sales_counts <= 20" class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.group_sales_counts">
 														<img alt="avatar" src="@/assets/img/90x90.jpg">
 													</li>
-													<p class="text-4 mt-1 text-dark"><strong>{{getAffiliateDetails.group_sales_counts}} Group Sales</strong></p>
+													<p class="text-4 mt-1 text-white"><strong>{{getAffiliateDetails.group_sales_counts}} Group Sales</strong></p>
 												</ul>
 											</div>
 											<div class="col-md-12 text-right">
@@ -347,15 +300,10 @@
 											<div class="col-md-12">
 												<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
 
-													<li v-show="getAffiliateDetails.group_sales_counts > 10" class="list-inline-item chat-online-usr" v-for="sale in 10">
+													<li v-show="getAffiliateDetails.group_sales_counts > 20" class="list-inline-item chat-online-usr" v-for="sale in 10">
 														<img alt="avatar" src="@/assets/img/90x90.jpg">
 													</li>
-													<li v-show="getAffiliateDetails.group_sales_counts > 10" class="list-inline-item badge-notify mr-0">
-														<div class="notification">
-															<span class="badge badge-info badge-pill">+{{groupMore}} more</span>
-														</div>
-													</li>
-													<li v-show="getAffiliateDetails.group_sales_counts <= 10" class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.group_sales_counts">
+													<li v-show="getAffiliateDetails.group_sales_counts <= 15" class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.group_sales_counts">
 														<img alt="avatar" src="@/assets/img/90x90.jpg">
 													</li>
 													<p class="text-4 mt-1 text-dark"><strong>{{getAffiliateDetails.group_sales_counts}} Group Sales</strong></p>
@@ -390,7 +338,7 @@
 
 									<div class="col-md-4 ">
 
-										<div class="d-flex b-skills text-center">
+										<div class="d-flex b-skills text-center" @click="$router.go(-1)">
 											<div>
 											</div>
 											<div class="text-center">
@@ -406,7 +354,7 @@
 								</div>
 								<div class="row">
 									<div class="col-md-4" v-for="af in getAffiliateDetails.affiliate">
-										<div class="card mt-5" @click.prevent="replaceRoute(af.user_id)">
+											<div class="card mt-5" @click.prevent="replaceRoute(af.user_id)" style="cursor: pointer">
 											<div class="card-body text-center">
 												<h5>{{af.username}}</h5>
 											</div>
@@ -545,7 +493,10 @@ export default {
 		},
 		percentage(partialValue, totalValue) {
 		   return (100 * partialValue) / totalValue;
-		} 
+		},
+		goBack() {
+
+		}
 
 	}
 }

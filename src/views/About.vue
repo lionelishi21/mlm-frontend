@@ -103,12 +103,12 @@
 
 					<p class="pr-5 mr-5">
 
-						Majestic Cares Community, “MCC,” ensures that ALL Qualified Affiliate/Members receive substantial funds for any worthwhile purpose.
+						As the community grows, Majestic Cares Community, “MCC,” ensures that ALL Qualified Sales Affiliates/Members receive substantial funds for any worthwhile purpose.
 
 					</p>
 
 					<p class="pr-5 mr-5">
-						MCC Founders, Bob Donald, our Administrator, Jim Miller, the mastermind behind MCC, Larron Campbell, the creator of MCC’s unique pay-it-forward formula, and Rosalinda Burton, our MCC’s voice, and contributor of MCC’s media and launch, are all dedicated to fulfilling MCC’s unique vision for you.
+						MCC Founders, Bob Donald, the owner and Administrator, Jim Miller, the originator of MCC, Larron Campbell, the creator of MCC’s unique pay-it-forward formula, and Rosalinda Burton, our MCC’s additional contributor and voice, are all dedicated to fulfilling MCC’s unique vision for you.
 					</p>
 					<p class="pr-5 mr-5">
 						Finally, it is worthy to mention our MCC’s Head Programmer, Lionel Francis of Jamaica, who makes this all possible to complete MCC’s vision and team.
@@ -128,7 +128,7 @@
 					</p>
 
 					<p class="pr-5 mr-5">
-						On behalf of our MCC Community, We Welcome You Wholeheartedly to become our next MCC-ER!
+						On behalf of our MCC Community, We Welcome You Wholeheartedly to become our next MCC-er!
 					</p>
 				</div>
 			</div>

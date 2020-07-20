@@ -53,8 +53,8 @@
 									   <validation-errors :errors="validationErrors" v-if="validationErrors"></validation-errors>
 									</div>
 									<div class="col-md-12" v-if="completed">
-										<ul class="alert alert-danger mb-4 list-unstyled">
-											<li>Your password updated</li>
+										<ul class="alert alert-success mb-4 list-unstyled">
+											<li>Your password updated successfully</li>
 										</ul>
 									</div>
 								</div>

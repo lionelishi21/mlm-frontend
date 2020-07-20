@@ -98,6 +98,10 @@ export default {
 		return Api().post('/password/email', payload)
 	},
 
+	changeUserPassword(payload) {
+		return Api().post('/change-password', payload)
+	},
+
 	PostPassword( payload ) {
 		return Api().post('/password/reset', payload)
 	},

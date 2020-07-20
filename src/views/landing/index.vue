@@ -12,6 +12,7 @@
 					<h4 class="text-success  font-weight-extra-bold font-size-6 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900" data-appear-animation-duration="750">
 						Caring Creates An Everlasting Ripple Effect! Receive Cash Bonuses For Any Worthwhile Purpose <br>And Transform Your Life As Well As The Lives of Others With a Simple Act of Caring And Sharing!
 					</h4>
+					<a href="/aboutus" class="btn btn-success appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900" data-appear-animation-duration="750" >View more</a>
 				</div>
 			</div>
 		</div>
@@ -32,7 +33,6 @@
 				    <p class="pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800" data-appear-animation-duration="750">
 						The Sole Objective Of Majestic Cares Community (MCC), Is To Liberate And Empower Our Family, Friends And Neighbors, Beginning With The Purchase And Sale Of This Dynamic Publication, AND Through Our PROPRIETARY AUTOMATED CASH BONUS SYSTEM! This Powerful And Unique Publication Will Enrich Your Life, As Well as The Lives Of Others – Or Your Money Back!
 				    </p>
-					<a href="#" @click="goToCheckout()" class="btn btn-success btn-rounded btn-px-5 py-3 text-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-appear-animation-duration="750" target="_blank">Buy Now</a>
 				</div>
 
 				<div class="col-md-5">
@@ -102,42 +102,34 @@
 						<h2 class="font-weight-bold text-9 mb-5 ">CAN YOU USE SOME <br>EXTRA CASH TO HELP WITH YOUR</h2>
 				   </div>
 				   <div class="row">
-				   		<div class="col-md-3">
+				   		<div class="col-md-6">
 							<ul class="list list-icons list-icons-style-3 list-tertiary">
-								<li><i class="fas fa-check"></i> RENT OR MORTGAGE</li>
-								<li><i class="fas fa-check"></i> MEDICAL BILLS</li>
-								<li><i class="fas fa-check"></i> STUDENT LOANS</li>
-								<li><i class="fas fa-check"></i> UTILITY BILLS</li>
-								<li><i class="fas fa-check"></i> DISASTER RELIEF EFFORTS</li>
+								<li><i class="fas text-dark fa-check"></i> <b>RENT OR MORTGAGE</b></li>
+								<li><i class="fas text-dark fa-check"></i><b>MEDICAL BILLS</b> </li>
+								<li><i class="fas text-dark fa-check"></i><b>STUDENT LOANS</b> </li>
+								<li><i class="fas text-dark fa-check"></i> <b>UTILITY BILLS</b></li>
+								<li><i class="fas text-dark fa-check"></i> <b>DISASTER RELIEF EFFORTS</b></li>
+								<li><i class="fas text-dark fa-check"></i> <b>START-UP BUSINESS COST</b></li>
 							</ul>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-6">
 							<ul class="list list-icons list-icons-style-3 list-tertiary">
-								<li><i class="fas fa-check"></i> BUYING A NEW CAR</li>
-								<li><i class="fas fa-check"></i> HOME HEALTHCARE</li>
-								<li><i class="fas fa-check"></i> RETIREMENT INCOME</li>
-								<li><i class="fas fa-check"></i> FINANCE A VACATION</li>
-								<li><i class="fas fa-check"></i> SUPPORT PROJECT COST</li>
-								<li><i class="fas fa-check"></i> START-UP BUSINESS COST</li>
+								<li><i class="fas text-dark fa-check"></i> <b>BUYING A NEW CAR</b></li>
+								<li><i class="fas text-dark fa-check"></i> <b>HOME HEALTHCARE</b></li>
+								<li><i class="fas text-dark fa-check"></i> <b> RETIREMENT INCOME</b></li>
+								<li><i class="fas text-dark fa-check"></i> <b>FINANCE A VACATION</b></li>
+								<li><i class="fas text-dark fa-check"></i> <b> SUPPORT PROJECT COST</b></li>
+
 							</ul>
 						</div> 
-						<div class="col-md-4">
-							<ul class="list list-icons list-icons-style-3 list-tertiary">
-								<li><i class="fas fa-check"></i> BUYING A NEW CAR</li>
-								<li><i class="fas fa-check"></i> HOME HEALTHCARE</li>
-								<li><i class="fas fa-check"></i> RETIREMENT INCOME</li>
-								<li><i class="fas fa-check"></i> FINANCE A VACATION</li>
-							</ul>
-						</div> 
+
 				   </div>
 				</div>
 				<div class="col-md-4">
 					<img alt="Majestic Cares" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/top_book.png" class="img-fluid ml-5 appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="200" style="width: 390px; max-width: none;">
 				</div>
 			</div>
-			<div class="row">
-				<a href="" class="btn btn-success btn-modern btn-rounded px-5 btn-py-3 text-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1800" data-appear-animation-duration="750" target="_blank">BUY NOW</a>
-			</div>
+
 		</div>
 	</section>
 	<!-- End Section Tree -->
@@ -152,8 +144,8 @@
 				   WHY NOT START DOING SOMETHING ABOUT IT – NOW?
 			    </h2>
 			</div>
-			<div class="row pb-5">
-				<div class="col-md-8 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700" data-appear-animation-duration="750">
+			<div class="row pb-2">
+				<div class="col-md-8 mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700" data-appear-animation-duration="750">
 					<div class="rounded">
 						<p class="custom-text-color-1 text-5 color-inherit mb-0">Majestic Cares Community’s Noble Endeavor To Help Change Lives Around The World, Has Resulted In A Breakthrough Initiative: The Majestic Cares International Affiliate Online Community.
 							</p>
@@ -185,7 +177,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<a href="https://themeforest.net/item/porto-responsive-html5-template/4106987" class="btn btn-primary btn-modern btn-rounded text-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1800" data-appear-animation-duration="750" target="_blank">Read More</a>
+				<a @click="" href="/howitworks" class="btn btn-success btn-modern btn-rounded text-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1800" data-appear-animation-duration="750" target="_blank">How it works</a>
 			</div>
 		</div>
 	</section>
@@ -249,7 +241,4 @@
 		color: #2ecc71 !important;
 	}
 
-	// .slide-overlay {
- //       opacity: 0.5 !important;
- //     }
 </style>

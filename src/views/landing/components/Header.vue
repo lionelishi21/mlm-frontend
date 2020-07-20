@@ -46,7 +46,10 @@
 										</ul>
 									</nav>
 								</div>
-						z	</div>
+								<button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
+									<i class="fas fa-bars"></i>
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -69,6 +72,9 @@
 					this.headerClass = 'bg-dark'
 				}
 			}
+		},
+		mounted() {
+			$('.header-nav-main').collapse();
 		},
 		computed: function() {
 

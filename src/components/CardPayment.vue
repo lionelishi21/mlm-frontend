@@ -10,6 +10,9 @@
         <div class="form-row" v-if="api_error">
             <span class="alert alert-danger">{{api_error_message}}</span>
         </div>
+        <div class="form-row" v-if="emailInvalid">
+            <span class="alert alert-danger">{{error.message}}</span>
+        </div>
         <div class="form-row" style="margin-top: 30px;">
             <div class="col-md-12">
                 <label>Card Number</label>
@@ -36,7 +39,7 @@
 <script>
     import {ValidationObserver, ValidationProvider} from "vee-validate";
 
-    let stripe = Stripe(`pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5`),
+    let stripe = Stripe(`pk_test_Yfe8V58F3Kw8aZUWqLtXqNnl00Bv7eXD7P`),
     elements = stripe.elements(),
     cardNumber = undefined,
     cardExpiry = undefined,
@@ -75,7 +78,11 @@
                 charge: null,
                 hasCardErrors: false,
                 api_error: false,
-                api_error_message: ''
+                emailInvalid: false,
+                api_error_message: '',
+                error: {
+                    message: ''
+                }
             }
         },
         mounted: function () {
@@ -144,15 +151,20 @@
 
                 this.$store.dispatch('BUY_BOOK', form)
                     .then( response => {
+
+                        console.log(response)
                         this.isDisabled = false
                         this.$router.push('/order-completed')
                         this.isLoading = false
+
                     }).catch( error => {
 
+                        console.log(error)
                         this.isLoading = false
-                    this.isDisabled = false
-
-                    console.log(error.response)
+                        this.isDisabled = false
+                        this.emailInvalid = true
+                        this.error.message = error.data.message.email
+                        this.loading = false
                 })
 
             }

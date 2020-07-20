@@ -20,9 +20,9 @@ import Payment from "@/views/Payment.vue";
 import Ebook from '@/views/Ebook.vue';
 import ForgotPassword from "../views/ForgotPassword";
 import User from '../views/Users';
+import Matrix from '../views/Matix'
 
 import { isLoggedIn } from '../utils/auth.js'
-
 import PasswordReset from "../views/PasswordReset";
 
 Vue.use(VueRouter)
@@ -44,6 +44,11 @@ Vue.use(VueRouter)
       {
         path: 'affiliates',
         component: Affiliates
+      },
+      {
+        path: 'matrix',
+        name: 'Matrix',
+        component: Matrix
       },
       {
         path: 'users',
