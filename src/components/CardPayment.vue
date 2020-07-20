@@ -39,7 +39,7 @@
 <script>
     import {ValidationObserver, ValidationProvider} from "vee-validate";
 
-    let stripe = Stripe(`pk_test_Yfe8V58F3Kw8aZUWqLtXqNnl00Bv7eXD7P`),
+    let stripe = Stripe(`pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5`),
     elements = stripe.elements(),
     cardNumber = undefined,
     cardExpiry = undefined,
