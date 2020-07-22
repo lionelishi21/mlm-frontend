@@ -17,19 +17,22 @@
 </template>
 
 <script>
+
     import { mapGetters } from 'vuex';
     export default {
-        name: "UserDetails.vue",
-        data() {
-            return {
 
-            }
+        name: "UserDetails.vue",
+
+        data() {
+            return {}
         },
+
         computed: {
             ...mapGetters([
                 'getUserAffiliateDetails'
             ])
         },
+
         created() {
             var id = this.$route.params.id
             this.$store.dispatch('GET_USER_DETAIL_SPANS', id);
