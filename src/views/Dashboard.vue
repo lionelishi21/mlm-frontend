@@ -279,7 +279,7 @@ export default {
 		this.$store.dispatch('GET_USER_DETAILS')
 		this.$store.dispatch('USER_GROUP_SALES')
 		this.$store.dispatch('GET_AFFILIATE_LINK')
-		this.$store.dispatch('GET_TOTAL_GROUP_SALES')
+		// this.$store.dispatch('GET_TOTAL_GROUP_SALES')
 		this.$store.dispatch('USER_DASHBOARD')
 		this.canCopy = !!navigator.clipboard;
 	},

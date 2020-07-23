@@ -1,5 +1,11 @@
 <template>
 	<div class="container" style="padding-top: 10.5%; background: #ececec;">
+		<loading
+				:active.sync="isLoading"
+				:can-cancel="true"
+				:on-cancel="onCancel"
+				:is-full-page="fullPage">
+		</loading>
 			<div class="">
 				<div class="alert alert-danger" role="alert" v-if="msg.email">
 					<strong><i class="fas fa-exclamation-triangle"></i>Oh snap!</strong> Please enter all require fields
@@ -290,6 +296,26 @@
 								</div>
 							</div>
 						</div>
+						<div class="card card-default" v-if="step == 2">
+							<div class="card-header">
+								<h4 class="card-title m-0">
+									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+										Coupon Code
+									</a>
+								</h4>
+							</div>
+							<div id="collapseThr" class="collapse show">
+								<div class="card-body">
+									<div class="form-row">
+										<label >Coupon Code</label>
+										<input v-model="form.code" type="text" class="form-control">
+									</div>
+									<div class="form-row">
+										<button class="btn btn-primary mt-3" @click="SubmitCoupon()">Submit</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="col-lg-3">
@@ -361,6 +387,7 @@ export default {
 	},
   data() {
     return {
+		fullpage: true,
 		isLoading: false,
 	    card: {},
 	    step: 1,
@@ -380,7 +407,8 @@ export default {
 	        address: null,
 			address1: null,
 	        city: null,
-			zip: null
+			zip: null,
+			code: null
 	      },
 	      validationErrors: "",
 	      errors: {
@@ -437,6 +465,26 @@ export default {
 		  this.$refs.observer.validate().then(() => {
 			  console.log(this.$refs.observer);
 		  })
+	  },
+
+	  SubmitCoupon() {
+		  this.isLoading = true
+		  this.form.payment_type = 'coupon';
+
+		  let form = {
+			  user: this.form
+		  }
+
+		  this.$store.dispatch('MAKE_PAYMENT', form)
+				  .then( response => {
+					  this.isLoading = false
+					   this.$router.push('/order-completed')
+					  console.log(response)
+				  }).catch( error => {
+			  this.isLoading = false
+			  console.log(error.response)
+		  })
+
 	  },
 
 	  goToPayment() {

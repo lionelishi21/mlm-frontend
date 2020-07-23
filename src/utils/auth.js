@@ -38,10 +38,9 @@ function getTokenExpirationDate(encodedToken) {
     if (!token.exp) {
         return null
     }
-  
     let date = new Date(0)
     date.setUTCSeconds(token.exp)
-  
+
     return date
 }
   
