@@ -454,6 +454,7 @@ export default {
 	      cancelUrl: 'https://magesticares.com',
 	    }
   },
+
   created() {
       if (this.$route.query.referral_id != undefined ) {
          this.form.referral_id = this.$route.query.referral_id

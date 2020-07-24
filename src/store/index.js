@@ -8,6 +8,7 @@ import cashbonus from './modules/cash-bonus.js';
 import payment from './modules/payment';
 import country from "./modules/country";
 import ebook from './modules/ebook';
+import escrow from "./modules/escrow";
 
 Vue.use(Vuex)
 Vue.config.debug = true
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     	cashbonus,
 		payment,
 		country,
-		ebook
+		ebook,
+		escrow
     },
 });

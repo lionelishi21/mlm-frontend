@@ -120,7 +120,11 @@ export default {
 
     fetchUserAffiliateDetails(id) {
 	    return Api.get('/users/details/'+ id)
-    }
+    },
+
+	fetchEscrow() {
+		return Api().get('/escrow');
+	}
 }
 
 

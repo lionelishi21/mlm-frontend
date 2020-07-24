@@ -14,18 +14,32 @@
 						<thead>
 						<tr>
 							<th>Avilable On</th>
-							<th>Name</th>
-							<th>Status</th>
-							<th>Total</th>
+<!--							<th>Name</th>-->
+<!--							<th>Status</th>-->
+							<th>Tier</th>
+							<th>Pay it Forwad</th>
+							<th>Group Sales</th>
+							<th>Amount Recieved</th>
+							<th>Escrow</th>
+							<th>Cash Bonus</th>
 							<th>Actions</th>
 						</tr>
 						</thead>
+
 						<tbody>
-						<tr class="custom-table"  v-for="cash in userCashBonues">
+						<tr class="custom-table"  v-for="cash in escrow.escrow">
 							<td><p class="text-4"><b>{{cash.created_at}}</b></p></td>
-							<td><p class="text-4"><b>{{cash.user.first_name}} {{cash.user.last_name}}</b></p></td>
-							<td><p class="text-4"><span class="badge badge-primary text-4"><strong>{{cash.status}}</strong></span></p></td>
-							<td><p class="text-4"><b>{{cash.cash_bonus_amount | currency}}</b></p></td>
+<!--							<td><p class="text-4"><b>{{cash.user.first_name}} {{cash.user.last_name}}</b></p></td>-->
+<!--							<td><p class="text-4"><span class="badge badge-primary text-4"><strong>{{cash.status}}</strong></span></p></td>-->
+
+
+
+							<td><p class="text-4"><b>{{cash.tier}}</b></p></td>
+							<td><p class="text-4"><b>{{cash.pf}}</b></p></td>
+							<td><p class="text-4"><b>{{cash.sales}}</b></p></td>
+							<td><p class="text-4"><b>{{cash.amount_recieved | currency}}</b></p></td>
+							<td><p class="text-4"><b>{{cash.escrow | currency}}</b></p></td>
+							<td><p class="text-4"><b>{{cash.cash_bonus | currency}}</b></p></td>
 							<td><p class="text-4"><button @click="payoutModal(cash.id)" class="btn btn-primary"><i class="fa fa-dollar-sign"></i></button></p></td>
 						</tr>
 						</tbody>
@@ -68,13 +82,15 @@ export default {
 		...mapGetters([
 		    'userCashBonues',
 		    'userAccounts',
-		    'walletSummary'
+		    'walletSummary',
+			'escrow'
 		])	
 	},
 	created() {
 		this.$store.dispatch('FETCH_CASH_BONUSES')
 		this.$store.dispatch('FETCH_USER_ACCOUNTS')
 		this.$store.dispatch('FETCH_WALLET_SUMMARY')
+		this.$store.dispatch('GET_ESCROW')
 	},
 	methods: {
 	   showConfirmPayout() {	
