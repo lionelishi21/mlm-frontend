@@ -58,8 +58,8 @@
 							<div class="w-content">
 								<div class="text-center mt-3">
 									<h1>{{getUserDetails.purchase.length}} </h1>
-									<h2 class="task-hight-priority text-danger text-4" v-if="getUserDetails.purchase.length < 3"> Personal Sales ( Inactive )</h2>
-									<h2 class="text-success text-6" v-else><strong> </strong> Personal Sales ( Active )</h2>
+									<h2 class="task-hight-priority text-danger text-4" v-if="getUserDetails.purchase.length < 3"> Personal Sales </h2>
+									<h2 class="text-success text-6" v-else><strong> </strong> Personal Sales </h2>
 								</div>
 							</div>
 						</div>
@@ -113,7 +113,7 @@
 
 							<div class="w-content">
 								<div class="text-center mt-3">
-									<h1>{{userDasboard.countries}} </h1>
+<!--									<h1>{{userDasboard.countries}} </h1>-->
 									<h2 class="text-success text-6" ><strong>Countries</strong></h2>
 								</div>
 							</div>

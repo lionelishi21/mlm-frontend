@@ -70,7 +70,7 @@
 				<div class="card ">
 					<div class="card-body">
 						<div class="text-center mt-4">
-							<p class="value text-success">Select Account you want to recieve your cash bonus with</p>
+							<p class="value text-success">Select Account you want to receive your cash bonus with</p>
 						</div>
 						<button class="btn btn-primary mb-3 btn-lg"
 								@click="addAccount()" >Payout Account</button>
@@ -122,7 +122,7 @@
 				<div class="widget widget-table-two">
 
 					<div class="widget-heading">
-						<h5 class="">Recent Orders</h5>
+						<h5 class="">Cash Bonuses</h5>
 					</div>
 
 					<div class="widget-content">
@@ -130,7 +130,7 @@
 							<table class="table">
 								<thead>
 								<tr>
-									<th><div class="th-content">Avilable On</div></th>
+									<th><div class="th-content">Available On</div></th>
 									<th><div class="th-content">Tier</div></th>
 									<th><div class="th-content">Group Sales</div></th>
 									<th><div class="th-content th-heading">Cash Bonus</div></th>
