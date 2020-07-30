@@ -120,7 +120,7 @@
 <!--                                        </div>-->
                                     </li>
                                     <li class="list-group-item list-group-item-action text-center">
-                                         <button class="btn btn-outline-success mt-5 mb-5" @click="showAccountModal()"><i class="fa fa-plus"></i> Add Account</button>
+                                         <button class="btn btn-primary mt-5 mb-5" @click="showAccountModal()"><i class="fa fa-plus"></i> Add Account</button>
                                     </li>
                                 </ul>
                             </div>
