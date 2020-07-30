@@ -28,5 +28,9 @@ export default {
 
 	makePayout(params) {
 		return Api().post('/wallet/make-payout', params)
+	},
+
+	fetchCustomerDetails() {
+		return Api().get('/customers')
 	}
 }

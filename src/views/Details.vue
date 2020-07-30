@@ -92,7 +92,7 @@
 
 					<div class="work-experience layout-spacing ">
 						<div class="widget-content widget-content-area">
-							<h3 class="">Persons</h3>
+							<h3 class="">Affiliates</h3>
 							<div class="timeline-alter">
 
 								<div class="item-timeline" v-for="sale in getAffiliateDetails.personal_sales">
@@ -121,8 +121,8 @@
 								<div class="widget-content">
 									<div class="w-content">
 										<div class="w-info">
-											<p class="text-6 text-danger" v-if="getAffiliateDetails.personal_sales.length < 3">Personal Sales Status <b>( Inactive )</b></p>
-											<p class="text-6 text-success" v-else>Personal Sales Status <b>( Active )</b></p>
+											<p class="text-6 text-danger" v-if="getAffiliateDetails.personal_sales.length < 3">Personal Sales Status</b></p>
+											<p class="text-6 text-success" v-else>Personal Sales Status</p>
 											<hr>
 										</div>
 
@@ -159,7 +159,7 @@
 								<div class="widget-content">
 									<div class="w-content">
 										<div class="w-info">
-											<p class="text-6 text-danger">Group Sales Status <b>( Bronze )</b></p>
+											<p class="text-6 text-danger">Bronze Group Sales</p>
 											<hr>
 										</div>
 
@@ -191,7 +191,7 @@
 								<div class="widget-content">
 									<div class="w-content">
 										<div class="w-info">
-											<p class="text-6 text-white">Group Sales Status <b>( Silver )</b></p>
+											<p class="text-6 text-white">Silver Group Sales</p>
 											<hr>
 										</div>
 
@@ -227,7 +227,7 @@
 								<div class="widget-content">
 									<div class="w-content">
 										<div class="w-info">
-											<p class="text-6 text-dark">Group Sales Status <b>( Gold )</b></p>
+											<p class="text-6 text-dark">Gold Group Sales</p>
 											<hr>
 										</div>
 									</div>
@@ -257,7 +257,7 @@
 								<div class="widget-content">
 									<div class="w-content">
 										<div class="w-info">
-											<p class="text-6 text-white">Group Sales Status <b>( Ruby )</b></p>
+											<p class="text-6 text-white">Ruby Group Sales</p>
 											<hr>
 										</div>
 									</div>
@@ -291,7 +291,7 @@
 								<div class="widget-content">
 									<div class="w-content">
 										<div class="w-info">
-											<p class="text-6 text-dark">Group Sales Status <b>( Diamond )</b></p>
+											<p class="text-6 text-dark">Diamond Group Sales</p>
 											<hr>
 										</div>
 									</div>

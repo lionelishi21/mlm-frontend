@@ -124,6 +124,10 @@ export default {
 
 	fetchEscrow() {
 		return Api().get('/escrow');
+	},
+
+	addAccount() {
+		return Api().get('/customers/account');
 	}
 }
 

@@ -23,10 +23,10 @@ Vue.use(PrettyCheckbox);
 Vue.use(ModalPlugin)
 Vue.use(VueCurrencyFilter,
 {
-  symbol : 'USD $',
-  thousandsSeparator: '.',
+  symbol : '$',
+  thousandsSeparator: ',',
   fractionCount: 2,
-  fractionSeparator: ',',
+  fractionSeparator: '.',
   symbolPosition: 'front',
   symbolSpacing: true
 })

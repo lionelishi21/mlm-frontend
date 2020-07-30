@@ -22,9 +22,11 @@
     @import '../cork/css/widgets/modules-widgets.css';
     @import '../cork/css/components/cards/card.css';
     @import '../cork/css/components/custom-modal.css';
+    @import '../cork/css/elements/miscellaneous.css';
     @import '../cork/plugins/animate/animate.css';
     @import '../cork/plugins/loaders/custom-loader.css';
     @import '../cork/css/users/user-profile.css';
+    @import '../cork/css/components/custom-list-group.css';
     @import '../cork/css/apps/notes.css';
     @import '../cork/css/forms/theme-checkbox-radio.css';
     @import '../cork/css/components/custom-counter.css';
@@ -38,6 +40,9 @@
     @import '../cork/plugins/bootstrap-select/bootstrap-select.min.css';
     @import '../cork/plugins/font-icons/fontawesome/css/regular.css';
     @import '../cork/plugins/font-icons/fontawesome/css/fontawesome.css';
+
+    @import '../cork/css/elements/miscellaneous.css';
+    @import '../cork/css/elements/breadcrumb.css';
 
     @import '../cork/css/apps/contacts.css';
     @import '../cork/plugins/jquery-ui/jquery-ui.min.css';

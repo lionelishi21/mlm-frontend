@@ -6,6 +6,24 @@
 <!--			<div class="row">-->
 <!--				<pre>{{userDasboard}}</pre>-->
 <!--			</div>-->
+
+			<div class="modal fade" id="payoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-body text-center">
+							<!-- Images -->
+							<p>Are you sure you want to request a payout?</p>
+							<button class="btn btn-primary" @click="request()">Confirm Payout</button>
+							<hr>
+							<small>Connect Account: </small>
+						</div>
+						<div class="modal-footer">
+							<button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="row layout-top-spacing">
 				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 					<div class="widget widget-five">
@@ -65,20 +83,15 @@
 							<div class="card-bottom-section">
 								<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
 
-									<li v-show="getGroupSales.response > 10" class="list-inline-item chat-online-usr" v-for="sale in 10">
-										<img alt="avatar" src="@/assets/img/90x90.jpg">
-									</li>
-									<li v-show="getGroupSales.response > 10" class="list-inline-item badge-notify mr-0">
-										<div class="notification">
-											<span class="badge badge-info badge-pill">+{{ groupMore}} more</span>
-										</div>
-									</li>
-
-									<li v-show="getGroupSales.response <= 10" class="list-inline-item chat-online-usr" v-for="sale in getGroupSales.response">
+									<li v-show="getGroupSales.response > 20" class="list-inline-item chat-online-usr" v-for="sale in 10">
 										<img alt="avatar" src="@/assets/img/90x90.jpg">
 									</li>
 
-									<p class="text-4 mt-1 text-white"><strong>{{getGroupSales.response}} Members Going</strong></p>
+									<li v-show="getGroupSales.response <= 20" class="list-inline-item chat-online-usr" v-for="sale in getGroupSales.response">
+										<img alt="avatar" src="@/assets/img/90x90.jpg">
+									</li>
+
+									<p class="text-4 mt-1 text-white"><strong>{{getGroupSales.response}} Affiliates Going</strong></p>
 								</ul>
 								<a @click="goToDetails()" href="javascript:void(0);" class="btn">View Details</a>
 							</div>
@@ -113,14 +126,14 @@
 
 							<div class="header">
 								<div class="header-body">
-									<h6>Total Members</h6>
+									<h6>Total Affiliates</h6>
 								</div>
 							</div>
 
 							<div class="w-content">
 								<div class="text-center mt-3">
 									<h1>{{userDasboard.all_members}} </h1>
-									<h2 class="text-success text-6" ><strong>Members </strong></h2>
+									<h2 class="text-success text-6" ><strong>Affiliates </strong></h2>
 								</div>
 							</div>
 						</div>
@@ -139,7 +152,7 @@
 
 								<div class="acc-total-info">
 									<h5>Balance</h5>
-									<p class="acc-amount">{{userDasboard.cashbouns}}</p>
+									<p class="acc-amount">{{totalItem}}</p>
 								</div>
 
 <!--								<div class="inv-detail" style="max-height: 100px; overflow: auto;" >-->
@@ -158,8 +171,8 @@
 <!--								</div>-->
 
 								<div class="inv-action">
-									<a href="" class="btn btn-outline-dark">Summary</a>
-									<a href="" class="btn btn-success">Withdraw</a>
+									<a href="#" class="btn btn-outline-dark" @click="goToSummary()">Summary</a>
+									<a href="#" class="btn btn-success" @click="payoutModal">Withdraw</a>
 								</div>
 							</div>
 						</div>
@@ -249,9 +262,17 @@ export default {
 		 	'getGroupSales',
 			'fetchLink',
 			'groupSales',
-			'userDasboard'
+			'userDasboard',
+			'escrow'
 
 		]),
+		totalItem: function(){
+			let sum = 0;
+			for(let i = 0; i < this.escrow.escrow.length; i++){
+				sum += parseFloat(this.escrow.escrow[i].cash_bonus);
+			}
+			return sum;
+		},
 
 		cashBonus: function() {
 			if ( this.getGroupSales.response == 12 ) {
@@ -282,6 +303,7 @@ export default {
 		// this.$store.dispatch('GET_TOTAL_GROUP_SALES')
 		this.$store.dispatch('USER_DASHBOARD')
 		this.canCopy = !!navigator.clipboard;
+		this.$store.dispatch('GET_ESCROW')
 	},
 	methods:{
 		async copy(s) {
@@ -290,7 +312,29 @@ export default {
 		goToDetails() {
 			var url = '/dashboard/affiliates/'+this.getUserDetails.id
 			this.$router.push(url);
-		}
+		},
+
+		goToSummary() {
+			this.$router.push('/dashboard/wallet')
+		},
+
+		payoutModal() {
+			$('#payoutModal').modal('show')
+		},
+
+		request() {
+			let transfer = {
+				transfer: this.totalItem
+			}
+				this.$store.dispatch('TRANSFER_FUNDS',transfer)
+					.then( response => {
+						console.log(response)
+					})
+					.catch( error => {
+						console.log(error.response)
+					})
+		},
+
 	}
 }
 </script>

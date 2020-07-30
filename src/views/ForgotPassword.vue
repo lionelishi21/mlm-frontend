@@ -25,9 +25,6 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <a href="/" class="logos">
-                        <img src="@/assets/logo.png" height="150" alt="MCC" />
-                    </a>
                     <div class="card-body" style="margin-top: 10%; background: white">
 
                         <div class="alert alert-danger" role="alert" v-if="error.message">

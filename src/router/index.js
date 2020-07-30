@@ -24,6 +24,7 @@ import Matrix from '../views/Matix'
 import UserAffiliateDetails from '../views/UserDetails'
 import { isLoggedIn } from '../utils/auth.js'
 import PasswordReset from "../views/PasswordReset";
+import Settings from "../views/Settings";
 
 Vue.use(VueRouter)
 
@@ -73,7 +74,11 @@ Vue.use(VueRouter)
       {
         path: 'ebook',
         component: Ebook,
-
+      },
+      {
+        path: 'settings',
+        name: 'Setting',
+        component: Settings
       }
    ]
   },

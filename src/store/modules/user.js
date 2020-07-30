@@ -274,6 +274,19 @@ const actions = {
               }).catch( error => {
                     console.log(error.response)
           })
+    },
+
+    ADD_USER_BANKACCOUNT() {
+
+          return new Promise((resolve, reject) =>{
+              api.addAccount()
+                  .then(response => {
+                      resolve(response.data)
+                  })
+                  .catch( error => {
+                      reject(error.response)
+                  })
+          })
     }
 
 }

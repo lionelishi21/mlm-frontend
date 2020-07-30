@@ -1,49 +1,155 @@
 <template>
 <div id="content" class="main-content">
 	<div class="vld-parent">
-		<loading :active.sync="isLoading"
-				 :can-cancel="true"
-				 :on-cancel="onCancel"
-				 :is-full-page="fullPage"></loading>
+<!--		<loading :active.sync="isLoading"-->
+<!--				 :can-cancel="true"-->
+<!--				 :on-cancel="onCancel"-->
+<!--				 :is-full-page="fullPage"></loading>-->
 	</div>
+
+	<div class="modal fade" id="payoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<i class="fa fa-times"></i>
+					</button>
+				</div>
+				<div class="modal-body text-center">
+					<!-- Images -->
+					<p>Are you sure you want to request a payout?</p>
+					<button class="btn btn-primary" @click="request()">Confirm Payout</button>
+					<hr>
+					<small>Connect Account: </small>
+				</div>
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="layout-px-spacing">
-		<div class="col-lg-12">
-			<div class="widget-content widget-content-area">
-				<div class="table-responsive mb-4">
-					<table id="style-3" class="table style-3 table-hover">
-						<thead>
-						<tr>
-							<th>Avilable On</th>
-<!--							<th>Name</th>-->
-<!--							<th>Status</th>-->
-							<th>Tier</th>
-							<th>Pay it Forwad</th>
-							<th>Group Sales</th>
-							<th>Amount Recieved</th>
-							<th>Escrow</th>
-							<th>Cash Bonus</th>
-							<th>Actions</th>
-						</tr>
-						</thead>
+		<div class="breadcrumb-five">
+			<ul class="breadcrumb">
+				<li class="mb-2"><a href="javscript:void(0);">Home</a>
+				</li>
+				<li class="active mb-2"><a href="javscript:void(0);">Wallet</a></li>
+			</ul>
+		</div>
+		<div class="row mt-5">
+			<div class="col-md-10"></div>
+			<div class="col-md-2">
 
-						<tbody>
-						<tr class="custom-table"  v-for="cash in escrow.escrow">
-							<td><p class="text-4"><b>{{cash.created_at}}</b></p></td>
-<!--							<td><p class="text-4"><b>{{cash.user.first_name}} {{cash.user.last_name}}</b></p></td>-->
-<!--							<td><p class="text-4"><span class="badge badge-primary text-4"><strong>{{cash.status}}</strong></span></p></td>-->
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+				<div class="widget widget-card-four">
+					<div class="widget-content">
+						<div class="text-center mt-4">
+							<h1 class="value text-success">{{totalItem | currency }}</h1>
+							<h3>Wallet</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+				<div class="widget widget-card-four">
+					<div class="widget-content">
+						<div class="text-center mt-4">
+							<h1 class="value text-success">$0.00</h1>
+							<h3>Payout</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+				<div class="card ">
+					<div class="card-body">
+						<div class="text-center mt-4">
+							<p class="value text-success">Select Account you want to recieve your cash bonus with</p>
+						</div>
+						<button class="btn btn-primary mb-3 btn-lg"
+								@click="addAccount()" >Payout Account</button>
+
+						<button class="btn btn-primary mb-3 btn-lg"
+								@click="payoutModal()" >Withdraw</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
 
-							<td><p class="text-4"><b>{{cash.tier}}</b></p></td>
-							<td><p class="text-4"><b>{{cash.pf}}</b></p></td>
-							<td><p class="text-4"><b>{{cash.sales}}</b></p></td>
-							<td><p class="text-4"><b>{{cash.amount_recieved | currency}}</b></p></td>
-							<td><p class="text-4"><b>{{cash.escrow | currency}}</b></p></td>
-							<td><p class="text-4"><b>{{cash.cash_bonus | currency}}</b></p></td>
-							<td><p class="text-4"><button @click="payoutModal(cash.id)" class="btn btn-primary"><i class="fa fa-dollar-sign"></i></button></p></td>
-						</tr>
-						</tbody>
-					</table>
+<!--		<div class="row">-->
+<!--			<div class="col-lg-12">-->
+<!--				<div class="widget-content widget-content-area">-->
+<!--					<div class="table-responsive mb-4">-->
+<!--						<table id="style-3" class="table style-3 table-hover">-->
+<!--							<thead>-->
+<!--							<tr>-->
+<!--								<th>Avilable On</th>-->
+<!--								<th>Tier</th>-->
+<!--								<th>Group Sales</th>-->
+<!--								<th>Cash Bonus</th>-->
+<!--								<th>Status</th>-->
+<!--								<th>Actions</th>-->
+<!--							</tr>-->
+<!--							</thead>-->
+
+<!--							<tbody>-->
+<!--							<tr class="custom-table"  v-for="cash in escrow.escrow">-->
+
+<!--								<td><p class="text-4"><b>{{cash.created_at}}</b></p></td>-->
+<!--								<td><p class="text-4"><b>{{cash.tier}}</b></p></td>-->
+<!--								<td><p class="text-4"><b>{{cash.sales}}</b></p></td>-->
+<!--								<td><p class="text-4"><b>{{cash.cash_bonus | currency}}</b></p></td>-->
+<!--								<td><span class="badge badge-primary text-5">{{cash.status}}</span></td>-->
+<!--								<td><p class="text-4"><button @click="payoutModal(cash.id)" class="btn btn-primary"><i class="fa fa-dollar-sign"></i></button></p></td>-->
+<!--							</tr>-->
+<!--							</tbody>-->
+<!--						</table>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="widget widget-table-two">
+
+					<div class="widget-heading">
+						<h5 class="">Recent Orders</h5>
+					</div>
+
+					<div class="widget-content">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+								<tr>
+									<th><div class="th-content">Avilable On</div></th>
+									<th><div class="th-content">Tier</div></th>
+									<th><div class="th-content">Group Sales</div></th>
+									<th><div class="th-content th-heading">Cash Bonus</div></th>
+									<th><div class="th-content">Status</div></th>
+								</tr>
+								</thead>
+								<tbody>
+									<tr v-for="cash in escrow.escrow">
+										<td><div class="td-content customer-name">{{cash.created_at}}</div></td>
+										<td><div class="td-content product-brand">{{cash.tier}}</div></td>
+										<td><div class="td-content">{{cash.sales}}</div></td>
+										<td><div class="td-content pricing"><span class="">{{cash.cash_bonus | currency}}</span></div></td>
+										<td><div class="td-content"><span class="badge outline-badge-primary">{{cash.status}}</span></div></td>
+<!--										<td><div class="td-content">{{cash.status}}</div></td>-->
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -84,7 +190,14 @@ export default {
 		    'userAccounts',
 		    'walletSummary',
 			'escrow'
-		])	
+		]),
+		totalItem: function(){
+			let sum = 0;
+			for(let i = 0; i < this.escrow.escrow.length; i++){
+				sum += parseFloat(this.escrow.escrow[i].cash_bonus);
+			}
+			return sum;
+		}
 	},
 	created() {
 		this.$store.dispatch('FETCH_CASH_BONUSES')
@@ -93,6 +206,26 @@ export default {
 		this.$store.dispatch('GET_ESCROW')
 	},
 	methods: {
+
+		request() {
+
+			let transfer = {
+				transfer: this.totalItem
+			}
+
+			this.$store.dispatch('TRANSFER_FUNDS',transfer)
+				.then( response => {
+					console.log(response)
+				})
+			.catch( error => {
+				console.log(error.response)
+			})
+		},
+
+		addAccount(){
+			this.$router.push('/dashboard/settings')
+		},
+
 	   showConfirmPayout() {	
 
 	   		this.$store.dispatch('CONFRIM_PAYMENT')
@@ -103,9 +236,8 @@ export default {
 	   hideModal() {
          this.$refs['my-modal'].hide()
        },
-       payoutModal(id) {
-          this.selected_payout = id
-          this.$refs['payout-modal'].show()
+       payoutModal() {
+          $('#payoutModal').modal('show')
        },
        hidePayoutModal() {
        	  this.$refs['payout-modal'].hide()
