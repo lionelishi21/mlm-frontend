@@ -117,211 +117,13 @@
 
 					<div class="row mb-5" >
 						<div class="col-md-6">
-							<div class="widget widget-card-four" >
-								<div class="widget-content">
-									<div class="w-content">
-										<div class="w-info">
-											<p class="text-6 text-danger" v-if="getAffiliateDetails.personal_sales.length < 3">Personal Sales Status</b></p>
-											<p class="text-6 text-success" v-else>Personal Sales Status</p>
-											<hr>
-										</div>
-
-									</div>
-									<div class="progress-order-body">
-										<div class="row mt-1">
-											<div class="col-md-12">
-												<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-													<li class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.personal_sales.length">
-														<img alt="avatar" src="@/assets/img/90x90.jpg">
-													</li>
-													<p class="text-4 mt-1"><strong>{{getAffiliateDetails.personal_sales.length}} Personal Sales</strong></p>
-												</ul>
-											</div>
-											<div class="col-md-12 text-right">
-												<div class="progress p-o-progress mt-2">
-													<div  v-if="getAffiliateDetails.personal_sales.length < 3" class="progress-bar bg-danger"
-														 role="progressbar" :style="'width:'+qSalesPercentage+'%'"
-														 :aria-valuenow="qSalesPercentage" aria-valuemin="0" aria-valuemax="100">
-													</div>
-													<div  v-else class="progress-bar bg-success"
-														  role="progressbar" :style="'width:'+qSalesPercentage+'%'"
-														  :aria-valuenow="qSalesPercentage" aria-valuemin="0" aria-valuemax="100">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							<personal-sales :sales="getAffiliateDetails.personal_sales"></personal-sales>
 						</div>
+
 						<div class="col-md-6">
-							<div v-if="bronze()" class="widget widget-card-four" >
-								<div class="widget-content">
-									<div class="w-content">
-										<div class="w-info">
-											<p class="text-6 text-danger">Bronze Group Sales</p>
-											<hr>
-										</div>
-
-									</div>
-									<div class="progress-order-body">
-										<div class="row mt-1">
-											<div class="col-md-12">
-												<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-
-													<li class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.group_sales_counts">
-														<img alt="avatar" src="@/assets/img/90x90.jpg">
-													</li>
-													</ul>
-											</div>
-											<div class="col-md-12 text-right">
-												<div class="progress p-o-progress mt-2">
-
-													<div class="progress-bar bg-danger"
-														 role="progressbar" :style="'width:'+bronzePercentage+'%'"
-														 :aria-valuenow="bronzePercentage" aria-valuemin="0" aria-valuemax="100">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div v-if="silver()" class=" silver widget widget-card-four" >
-								<div class="widget-content">
-									<div class="w-content">
-										<div class="w-info">
-											<p class="text-6 text-white">Silver Group Sales</p>
-											<hr>
-										</div>
-
-									</div>
-									<div class="progress-order-body">
-										<div class="row mt-1">
-											<div class="col-md-12">
-												<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-
-													    <li v-show="getAffiliateDetails.group_sales_counts > 10" class="list-inline-item chat-online-usr" v-for="sale in 10">
-															<img alt="avatar" src="@/assets/img/90x90.jpg">
-														</li>
-														<li v-show="getAffiliateDetails.group_sales_counts <= 10" class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.group_sales_counts">
-															<img alt="avatar" src="@/assets/img/90x90.jpg">
-														</li>
-
-													<p class="text-4 mt-1 text-white"><strong>{{getAffiliateDetails.group_sales_counts}} Group Sales</strong></p>
-												</ul>
-											</div>
-											<div class="col-md-12 text-right">
-												<div class="progress p-o-progress mt-2">
-													<div class="progress-bar bg-danger"
-														 role="progressbar" :style="'width:'+goldPercentage+'%'"
-														 :aria-valuenow="goldPercentage" aria-valuemin="0" aria-valuemax="100">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div v-if="gold()" class=" gold widget widget-card-four" >
-								<div class="widget-content">
-									<div class="w-content">
-										<div class="w-info">
-											<p class="text-6 text-dark">Gold Group Sales</p>
-											<hr>
-										</div>
-									</div>
-									<div class="progress-order-body">
-										<div class="row mt-1">
-											<div class="col-md-12">
-												<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-													<li v-show="getAffiliateDetails.group_sales_counts > 20" class="list-inline-item chat-online-usr" v-for="sale in 10">
-														<img alt="avatar" src="@/assets/img/90x90.jpg">
-													</li>
-													<p class="text-4 mt-1 text-dark"><strong>{{getAffiliateDetails.group_sales_counts}} Group Sales</strong></p>
-												</ul>
-											</div>
-											<div class="col-md-12 text-right">
-												<div class="progress p-o-progress mt-2">
-													<div class="progress-bar bg-danger"
-														 role="progressbar" :style="'width:'+silverPercentage+'%'"
-														 :aria-valuenow="silverPercentage" aria-valuemin="0" aria-valuemax="100">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div v-if="ruby()" class="ruby widget widget-card-four" >
-								<div class="widget-content">
-									<div class="w-content">
-										<div class="w-info">
-											<p class="text-6 text-white">Ruby Group Sales</p>
-											<hr>
-										</div>
-									</div>
-									<div class="progress-order-body">
-										<div class="row mt-1">
-											<div class="col-md-12">
-												<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-
-													<li v-show="getAffiliateDetails.group_sales_counts > 20" class="list-inline-item chat-online-usr" v-for="sale in 10">
-														<img alt="avatar" src="@/assets/img/90x90.jpg">
-													</li>
-													<li v-show="getAffiliateDetails.group_sales_counts <= 20" class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.group_sales_counts">
-														<img alt="avatar" src="@/assets/img/90x90.jpg">
-													</li>
-													<p class="text-4 mt-1 text-white"><strong>{{getAffiliateDetails.group_sales_counts}} Group Sales</strong></p>
-												</ul>
-											</div>
-											<div class="col-md-12 text-right">
-												<div class="progress p-o-progress mt-2">
-													<div class="progress-bar bg-danger"
-														 role="progressbar" :style="'width:'+rubyPercentage+'%'"
-														 :aria-valuenow="rubyPercentage" aria-valuemin="0" aria-valuemax="100">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div v-if="diamond()" class=" diamond widget widget-card-four" >
-								<div class="widget-content">
-									<div class="w-content">
-										<div class="w-info">
-											<p class="text-6 text-dark">Diamond Group Sales</p>
-											<hr>
-										</div>
-									</div>
-									<div class="progress-order-body">
-										<div class="row mt-1">
-											<div class="col-md-12">
-												<ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-
-													<li v-show="getAffiliateDetails.group_sales_counts > 20" class="list-inline-item chat-online-usr" v-for="sale in 10">
-														<img alt="avatar" src="@/assets/img/90x90.jpg">
-													</li>
-													<li v-show="getAffiliateDetails.group_sales_counts <= 15" class="list-inline-item chat-online-usr" v-for="sale in getAffiliateDetails.group_sales_counts">
-														<img alt="avatar" src="@/assets/img/90x90.jpg">
-													</li>
-													<p class="text-4 mt-1 text-dark"><strong>{{getAffiliateDetails.group_sales_counts}} Group Sales</strong></p>
-												</ul>
-											</div>
-											<div class="col-md-12 text-right">
-												<div class="progress p-o-progress mt-2">
-													<div class="progress-bar bg-danger"
-														 role="progressbar" :style="'width:'+diamondPercentage+'%'"
-														 :aria-valuenow="diamondPercentage" aria-valuemin="0" aria-valuemax="100">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							<group-sales :sales="getAffiliateDetails.group_sales_counts"></group-sales>
 						</div>
+
 					</div>
 
 					<div class="bio layout-spacing ">
@@ -335,12 +137,28 @@
 									<div class="col-md-4">
 
 									</div>
+									<div class="col-md-4" v-if="getAffiliateDetails.parent">
+										<div class="d-flex b-skills text-center mb-5" @click.prevent="replaceRoute(getAffiliateDetails.parent.affiliate.affiliate_id)">
+											<div class="text-center">
+												<h5>{{getAffiliateDetails.parent.user.first_name}} {{getAffiliateDetails.parent.user.last_name}} <small>Parent Affiliate</small></h5>
+											</div>
+										</div>
+
+									</div>
+									<div class="col-md-4">
+
+									</div>
+
+								</div>
+
+								<div class="row">
+
+									<div class="col-md-4">
+
+									</div>
 
 									<div class="col-md-4 ">
-
-										<div class="d-flex b-skills text-center" @click="$router.go(-1)">
-											<div>
-											</div>
+										<div class="d-flex b-skills text-center">
 											<div class="text-center">
 												<h5>{{getAffiliateDetails.user.first_name}} {{getAffiliateDetails.user.last_name}}</h5>
 											</div>
@@ -354,7 +172,7 @@
 								</div>
 								<div class="row">
 									<div class="col-md-4" v-for="af in getAffiliateDetails.affiliate">
-											<div class="card mt-5" @click.prevent="replaceRoute(af.user_id)" style="cursor: pointer">
+											<div class="card mt-5" @click.prevent="replaceRoute(af.affiliateId)" style="cursor: pointer">
 											<div class="card-body text-center">
 												<h5>{{af.username}}</h5>
 											</div>
@@ -375,7 +193,15 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import GroupSales from "../components/GroupSales";
+import PersonalSales from "../components/PersonalSales";
 export default {
+
+	components: {
+		GroupSales,
+		PersonalSales
+	},
+
 	data() {
 		return{
 			title:' Affiliates Details',
@@ -385,6 +211,7 @@ export default {
 	created() {
 		this.init()
 	},
+
 	computed: {
 		...mapGetters([
 			'getAffiliateDetails',
@@ -394,48 +221,20 @@ export default {
 		groupMore() {
 			return this.getAffiliateDetails.group_sales_counts - 10
 		},
-		qSalesPercentage() {
-			let num = this.getAffiliateDetails.personal_sales.length
-			let per = 3
-			return num / (per / 100);
-		},
-		bronzePercentage() {
 
-			let num = this.getAffiliateDetails.group_sales_counts
-			let per = 12
-			return num / (per / 100);
-		},
-		silverPercentage() {
-			let num = this.getAffiliateDetails.group_sales_counts
-			let per = 36
-			return num / (per / 100);
-		},
-		goldPercentage() {
-			let num = this.getAffiliateDetails.group_sales_counts
-			let per = 108
-			return num / (per / 100);
-		},
-		rubyPercentage() {
-			let num = this.getAffiliateDetails.group_sales_counts
-			let per = 324
-			return num / (per / 100);
-		},
-		diamondPercentage() {
-			let num = this.getAffiliateDetails.group_sales_counts
-			let per = 972
-			return num / (per / 100);
-		}
-		
 	},
+
 	 beforeRouteUpdate(to, from, next) {
 	    this.name = to.params.name
 	    next()
 	    this.init()
 	  },
+
 	methods: {
 	    percentage(num, per) {
 	      return (num/100)*per;
         },
+
 		init() {
 			var affiliateId = this.$route.params.id
 			this.$store.dispatch('AFFILIATE_DETAILS', affiliateId)
@@ -450,123 +249,12 @@ export default {
 			var url = '/dashboard/affiliates/'+value
 			this.$router.push(url);
 		},
-		updateInformation(value) {
 
-		},
-		bronze() {
-			if (this.getAffiliateDetails.group_sales_counts < 12) {
-				return true
-			}
-			return false
-		},
-		silver() {
-			if (this.getAffiliateDetails.group_sales_counts < 36 && this.getAffiliateDetails.group_sales_counts >= 12) {
-				return true
-			}
-			return false
-		},
-		gold() {
-			if (this.getAffiliateDetails.group_sales_counts < 108 && this.getAffiliateDetails.group_sales_counts >= 36) {
-				return true
-			}
-			return false
-		},
-		ruby() {
-			if (this.getAffiliateDetails.group_sales_counts < 324 && this.getAffiliateDetails.group_sales_counts >= 108) {
-				return true
-			}
-			return false
-		},
-		diamond() {
-
-			if (this.getAffiliateDetails.group_sales_counts < 972  && this.getAffiliateDetails.group_sales_counts >= 324) {
-				return true
-			}
-
-			return false
-		},
-		diamondRepeat() {
-			if (this.getAffiliateDetails.group_sales_counts >= 972) {
-				return true
-			}
-			return false
-		},
 		percentage(partialValue, totalValue) {
-		   return (100 * partialValue) / totalValue;
-		},
-		goBack() {
-
+			return (100 * partialValue) / totalValue;
 		}
 
 	}
 }
 </script>
-<style lang="scss">
-
-$silver: #bfbfbf !important;
-$bronze: #cd7f32 !important;
-$gold: #FFD700 !important;
-$ruby: #e0115f !important;
-$diamond:  #b9f2ff !important;
-
-
-.silver {
-	background:  $silver;
-}
-.bronze {
-	background: $bronze;
-}
-.gold {
-	background: $gold;
-}
-.ruby {
-	background: $ruby;
-}
-.diamond {
-	background: $diamond;
-}
-
-ul.simple-bullet-list li.diamond-dot:before {
-	border-color: $diamond;
-}
-
-ul.simple-bullet-list li.ruby-dot:before {
-	border-color: $ruby;
-}
-
-ul.simple-bullet-list li.gold-dot:before {
-	border-color: $gold;
-}
-
-ul.simple-bullet-list li.silver-dot:before {
-	border-color: $silver;
-}
-
-ul.simple-bullet-list li.bronze-dot:before {
-	border-color: $bronze;
-}
-
-.card-status {
-	border: 3px solid #f03434;
-}
-
-.h2 {
-	font-size: 20px !important;
-	font-weight: bold;
-	color: #3498db;
-}
-
-.h1 {
-	font-size: 20px !important;
-	font-weight: bold;
-	color: #ffffff !important;
-}
-
-.hdescriprion {
-	font-size: 19px !important;
-	color: #000000;
-}
-
-
-</style>
 

@@ -15,7 +15,7 @@
                 <a href="/dashboard" data-active="false" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons">
-                            <i class="text-white-50 fa fa-home fa-2x"></i>
+                            <i class="text-white fa fa-home fa-1x" width="24" height="24"></i>
                         </div>
                     </div>
                 </a>
@@ -26,7 +26,7 @@
                 <a href="#app" data-active="false" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons">
-                            <i class="text-white fa fa-users fa-2x"></i>
+                            <i class="text-white fa fa-users fa-1x" width="24" height="24"></i>
                         </div>
                     </div>
                 </a>
@@ -36,28 +36,18 @@
                 <a href="#app" data-active="false" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons">
-                            <i class="text-white fa fa-user fa-2x"></i>
+                            <i class="text-white fa fa-user fa-1x" width="24" height="24"></i>
                         </div>
                     </div>
                 </a>
                 <div class="tooltip"><span>Users</span></div>
             </router-link>
 
-<!--            <router-link  v-if="user.role_id == 1" to="/dashboard/matrix" tag="li" active-class="active" class="menu">-->
-<!--                <a href="#app" data-active="false" class="menu-toggle">-->
-<!--                    <div class="base-menu">-->
-<!--                        <div class="base-icons">-->
-<!--                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--                <div class="tooltip"><span>The Matrix</span></div>-->
-<!--            </router-link>-->
             <router-link to="/dashboard/wallet" tag="li" active-class="active" class="menu">
                 <a href="#app" data-active="false" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons">
-                            <i class="fa-2x text-white fa fa-wallet" aria-hidden="true"></i>
+                            <i class="fa-1x text-white fa fa-wallet" aria-hidden="true" width="24" height="24"></i>
                         </div>
                     </div>
                 </a>
@@ -68,30 +58,26 @@
                 <a href="#app" data-active="false" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons">
-                            <i class="fa-2x text-white fa fa-book" aria-hidden="true"></i>
+                            <i class="fa-1x text-white fa fa-book" aria-hidden="true" width="24" height="24"></i>
                         </div>
                     </div>
                 </a>
                 <div class="tooltip"><span>Ebook</span></div>
             </router-link>
+        </ul>
 
+        <div class="external-links">
             <router-link to="/dashboard/settings" tag="li" active-class="active" class="menu">
-                <a href="#app" data-active="false" class="menu-toggle">
+                <a href="#" data-active="false" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons">
-                            <i class="text-white fa fa-cogs fa-2x"></i>
+                            <i class="text-white fa fa-cogs fa-1x" width="24" height="24"></i>
                         </div>
                     </div>
                 </a>
                 <div class="tooltip"><span>Settings</span></div>
             </router-link>
-        </ul>
-
-<!--        <div class="external-links">-->
-<!--            <a href="../../documentation/index.html" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>-->
-<!--                <div class="tooltip"><span>Documentation</span></div>-->
-<!--            </a>-->
-<!--        </div>-->
+        </div>
     </nav>
 
     <div id="compact_submenuSidebar" class="submenu-sidebar">

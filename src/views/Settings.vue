@@ -44,7 +44,7 @@
                     </ul>
 
                     <p v-if="bankIsActive" class="text-center mt-5">
-                        <button class="btn btn-primary" @click="addAccount()">Set Up Account</button>
+                        <button class="btn btn-primary" @click="addAccount()">Connect with Stripe</button>
                     </p>
 
                 </div>
@@ -91,8 +91,8 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="btn-group pull-right">
-                                                            <button class="btn btn-default">Edit</button>
-                                                            <button class="btn btn-default">Del</button>
+                                                            <button class="btn btn-default" @click="editAccount()">Edit</button>
+                                                            <button class="btn btn-default" @click="deleteAccount()">Del</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -171,6 +171,12 @@
                         this.isLoading = false
                         console.log(error)
                     })
+            },
+            editAccount() {
+
+            },
+            deleteAccount() {
+
             },
             showAccountModal() {
 

@@ -53,15 +53,18 @@
 											<table id="style-3" class="table style-3 table-hover">
 												<thead>
 												<tr>
-														<th>Record Id</th>
+													<th>Id</th>
 													<th>Name</th>
 													<th>Affiliate Id</th>
 													<th>Email</th>
 													<th>Sales.</th>
+													<th>Country</th>
+													<th>Sponsor</th>
 													<th class="text-center">Status</th>
 													<th class="text-center">Action</th>
 												</tr>
 												</thead>
+
 												<tbody>
 												<tr v-for="affiliate in getAffiliates.response" class="items">
 													<th>{{affiliate.user_id}}</th>
@@ -69,13 +72,16 @@
 													<td>{{affiliate.affiliate_id}}</td>
 													<td>{{affiliate.email}}</td>
 													<td>{{affiliate.sales}}</td>
+
+													<td>{{affiliate.details.country}}</td>
+													<td>{{affiliate.sponsor.first_name}} {{affiliate.sponsor.last_name}} </td>
 													<td class="text-center">
 														<span v-if="affiliate.sales >= 3" class="shadow-none badge outline-badge-success">Active</span>
 														<span v-else class="shadow-none badge badge-danger">Inactive</span>
 													</td>
 													<td class="text-center">
-														<button  @click="goToDetails(affiliate.user_id)" class="btn btn-outline-primary">view</button>
-														<button  @click="showDeleteConfirmationModal(affiliate.affiliate_id)" class="btn btn-outline-danger">Delete</button>
+														<button  @click="goToDetails(affiliate.affiliate_id)" class="btn btn-outline-primary">view</button>
+<!--														<button  @click="showDeleteConfirmationModal(affiliate.affiliate_id)" class="btn btn-outline-danger">Delete</button>-->
 													</td>
 											    	</tr>
 

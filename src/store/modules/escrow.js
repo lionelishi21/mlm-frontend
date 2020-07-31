@@ -18,7 +18,6 @@ const actions = {
             })
             .catch( error => {
                 console.log(error.response)
-                console.log(error.response)
             })
     }
 }
