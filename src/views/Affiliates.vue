@@ -2,8 +2,7 @@
 	<div id="content" class="main-content">
 		<div class="vld-parent">
 			<loading :active.sync="isLoading"
-					 :can-cancel="true"
-					 :on-cancel="onCancel"
+					 :can-cancel="false"
 					 :is-full-page="fullPage"></loading>
 		</div>
 		<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -113,7 +112,8 @@ export default {
 			password: 'Majesticares1234',
 			form: {
 				affiliate_id: null
-			}
+			},
+			onCancel: false,
 		}
 	},
 	computed: {

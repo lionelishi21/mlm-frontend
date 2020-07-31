@@ -2,7 +2,7 @@
 <!--  BEGIN SIDEBAR  -->
 <div class="sidebar-wrapper sidebar-theme">
 
-    <nav id="compactSidebar">
+    <nav id="compactSidebar" ref="compactSidebar" >
 
         <div class="">
             <a href="/dashboard">
@@ -91,29 +91,6 @@
                 <h5>Menu 1</h5>
                 <p>This menu consist of Different Icons.</p>
             </div>
-
-            <ul class="submenu-list" data-parent-element="#dashboard">
-                <li>
-                    <a href="javascript:void(0)">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             width="24"
-                             height="24"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="2"
-                             stroke-linecap="round"
-                             stroke-linejoin="round"
-                             class="feather feather-grid">
-                            <rect x="3" y="3" width="7" height="7"></rect>
-                            <rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect>
-                            <rect x="3" y="14" width="7" height="7"></rect></svg> Submenu 1
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> Submenu 2 </a>
-                </li>
-            </ul>
         </div>
 
         <div class="submenu" id="app">

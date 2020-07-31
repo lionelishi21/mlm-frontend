@@ -432,61 +432,6 @@ try {
     
 
 
-    /*
-        ==============================
-        |    @Render Charts Script    |
-        ==============================
-    */
-
-
-    /*
-        ======================================
-            Visitor Statistics | Script
-        ======================================
-    */
-
-    // Total Visits
-    d_1C_1 = new ApexCharts(document.querySelector("#total-users"), spark1);
-    d_1C_1.render();
-
-    // Paid Visits
-    d_1C_2 = new ApexCharts(document.querySelector("#paid-visits"), spark2);
-    d_1C_2.render();
-
-    /*
-        ===================================
-            Unique Visitors | Script
-        ===================================
-    */
-
-    var d_1C_3 = new ApexCharts(
-        document.querySelector("#uniqueVisits"),
-        d_1options1
-    );
-    d_1C_3.render();
-
-    /*
-        ==============================
-            Statistics | Script
-        ==============================
-    */
-
-
-    // Followers
-
-    var d_1C_5 = new ApexCharts(document.querySelector("#hybrid_followers"), d_1options3);
-    d_1C_5.render()
-
-    // Referral
-
-    var d_1C_6 = new ApexCharts(document.querySelector("#hybrid_followers1"), d_1options4);
-    d_1C_6.render()
-
-    // Engagement Rate
-
-    var d_1C_7 = new ApexCharts(document.querySelector("#hybrid_followers3"), d_1options5);
-    d_1C_7.render()
-
 
 
   /*

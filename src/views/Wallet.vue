@@ -81,42 +81,6 @@
 				</div>
 			</div>
 		</div>
-
-
-
-<!--		<div class="row">-->
-<!--			<div class="col-lg-12">-->
-<!--				<div class="widget-content widget-content-area">-->
-<!--					<div class="table-responsive mb-4">-->
-<!--						<table id="style-3" class="table style-3 table-hover">-->
-<!--							<thead>-->
-<!--							<tr>-->
-<!--								<th>Avilable On</th>-->
-<!--								<th>Tier</th>-->
-<!--								<th>Group Sales</th>-->
-<!--								<th>Cash Bonus</th>-->
-<!--								<th>Status</th>-->
-<!--								<th>Actions</th>-->
-<!--							</tr>-->
-<!--							</thead>-->
-
-<!--							<tbody>-->
-<!--							<tr class="custom-table"  v-for="cash in escrow.escrow">-->
-
-<!--								<td><p class="text-4"><b>{{cash.created_at}}</b></p></td>-->
-<!--								<td><p class="text-4"><b>{{cash.tier}}</b></p></td>-->
-<!--								<td><p class="text-4"><b>{{cash.sales}}</b></p></td>-->
-<!--								<td><p class="text-4"><b>{{cash.cash_bonus | currency}}</b></p></td>-->
-<!--								<td><span class="badge badge-primary text-5">{{cash.status}}</span></td>-->
-<!--								<td><p class="text-4"><button @click="payoutModal(cash.id)" class="btn btn-primary"><i class="fa fa-dollar-sign"></i></button></p></td>-->
-<!--							</tr>-->
-<!--							</tbody>-->
-<!--						</table>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-
 		<div class="row">
 			<div class="col-md-12">
 				<div class="widget widget-table-two">
@@ -138,7 +102,7 @@
 								</tr>
 								</thead>
 								<tbody>
-									<tr v-for="cash in escrow.escrow">
+									<tr v-for="cash in escrow">
 										<td><div class="td-content customer-name">{{cash.created_at}}</div></td>
 										<td><div class="td-content product-brand">{{cash.tier}}</div></td>
 										<td><div class="td-content">{{cash.sales}}</div></td>
@@ -193,8 +157,8 @@ export default {
 		]),
 		totalItem: function(){
 			let sum = 0;
-			for(let i = 0; i < this.escrow.escrow.length; i++){
-				sum += parseFloat(this.escrow.escrow[i].cash_bonus);
+			for(let i = 0; i < this.escrow.length; i++){
+				sum += parseFloat(this.escrow[i].cash_bonus);
 			}
 			return sum;
 		}

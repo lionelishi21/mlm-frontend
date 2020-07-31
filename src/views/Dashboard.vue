@@ -2,6 +2,14 @@
 	<!--  BEGIN CONTENT AREA  -->
 	<div id="content" class="main-content">
 		<div class="layout-px-spacing">
+
+<!--			<div class="vld-parent">-->
+<!--				<loading :active.sync="isLoading"-->
+<!--						 :can-cancel="false"-->
+<!--						 :is-full-page="fullPage"></loading>-->
+<!--			</div>-->
+
+
 			<!-- CONTENT AREA -->
 			<div class="modal fade" id="payoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered" role="document">
@@ -123,7 +131,9 @@ export default {
 		return {
 			tilte: 'Dashbord',
 			cash: 0,
-			canCopy:false
+			canCopy:false,
+			fullPage: true,
+			isLoading: false
 		}
 	},
 

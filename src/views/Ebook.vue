@@ -1,8 +1,8 @@
 <template>
 
     <div id="content" class="main-content">
-        <div class="layout-px-spacing">
-            <div class="row layout-spacing">
+        <div class="">
+            <div class="row">
                 <div class="col-md-12">
 
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
@@ -19,25 +19,26 @@
                                         <tr>
                                             <th><div class="th-content">Product</div></th>
                                             <th><div class="th-content th-heading">Price</div></th>
-                                            <th><div class="th-content th-heading">Download</div></th>
                                             <th><div class="th-content">Source</div></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <div class="td-content product-name"><img src="@/assets/img/90x90.jpg" alt="product">
+                                                    <div class="">
+                                                         <img src="@/assets/ebook.png" alt="product" width="54px;">
                                                          Ebooks
                                                     </div>
                                                 </td>
                                                 <td><div class="td-content">
                                                     <span class="pricing">$34.95</span></div>
                                                 </td>
-                                                <td><div class="td-content">
-                                                    <span class="pricing">0</span></div>
-                                                </td>
-                                                <td><div class="td-content">
-                                                    <a @click="downloadEbook()" href="javascript:void(0);" class="">Download</a></div>
+                                                <td>
+                                                    <div class="td-content">
+                                                        <button @click="downloadEbook()" class="btn btn-sm btn-primary">
+                                                            Download
+                                                        </button>
+                                                   </div>
                                                 </td>
                                             </tr>
                                         </tbody>
