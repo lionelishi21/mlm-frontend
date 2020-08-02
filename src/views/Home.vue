@@ -81,11 +81,7 @@ export default {
     created() {
       this.$store.dispatch('GET_LOGIN_USER')
     },
-    mounted: function () {
-        this.$nextTick(function () {
-            // App.init();
-        })
-    },
+
     methods: {
       logOut() {
 

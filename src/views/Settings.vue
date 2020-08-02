@@ -13,39 +13,81 @@
 
     <!-- Modal -->
     <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <!-- Images -->
-                    <ul class="list-group list-group-media">
-                        <li class="list-group-item list-group-item-action" @click="selecAcount('bank')" :class="{ active: bankIsActive }">
-                            <div class="media">
-                                <div class="mr-3">
-                                    <img src="@/assets/svg/005-credit-card.svg"  alt="" width="40px">
+                    <div class="row" v-if="step == 1">
+                        <div class="col-md-12">
+                            <ul class="list-group list-group-media">
+                                <li class="list-group-item list-group-item-action" @click="selecAcount('bank')" :class="{ active: bankIsActive }">
+                                    <div class="media">
+                                        <div class="mr-3">
+                                            <img src="@/assets/svg/005-credit-card.svg"  alt="" width="40px">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="tx-inverse">Bank Account</h6>
+                                            <p class="mg-b-0">Click Connect your back account</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item list-group-item-action " @click="selecAcount('paypal')"  :class="{ active: paypalIsActive }">
+                                    <div class="media">
+                                        <div class="mr-3">
+                                            <img src="@/assets/svg/001-paypal.svg"  alt="" width="40px">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="tx-inverse">Paypal</h6>
+                                            <p class="mg-b-0">Connect Your paypal account</p>
+                                        </div>
+                                    </div>
+                                </li>
+                              </ul>
+                        </div>
+                        <div class="col-md-12 text-center mt-5" v-if="paypalIsActive != false || bankIsActive != false">
+                            <button class="btn btn-primary" @click="next()">Continue</button>
+                        </div>
+                    </div>
+                    <div class="row" v-if="step == 2">
+                        <div class="col-md-12">
+                            <h4>Account Information</h4>
+                            <hr>
+                            <form v-if="bankIsActive">
+                                <div class="form">
+                                    <label for=""></label>
+                                    <select name="" id="" class="form-control">
+                                        <option value="">Country</option>
+                                    </select>
                                 </div>
-                                <div class="media-body">
-                                    <h6 class="tx-inverse">Bank Account</h6>
-                                    <p class="mg-b-0">Click Connect your back account</p>
+                                <div class="form-group">
+                                    <label for="">Routing Number:</label>
+                                    <input type="text" v-model="bank.routing_number" class="form-control">
                                 </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item list-group-item-action " @click="selecAcount('paypal')"  :class="{ active: paypalIsActive }">
-                            <div class="media">
-                                <div class="mr-3">
-                                    <img src="@/assets/svg/001-paypal.svg"  alt="" width="40px">
+                                <div class="form-group">
+                                    <label>Account Number</label>
+                                    <input type="text" class="form-control" v-model="bank.account_number" >
                                 </div>
-                                <div class="media-body">
-                                    <span class="badge badge-danger">Comming soon</span>
-                                    <h6 class="tx-inverse">Paypal</h6>
-                                    <p class="mg-b-0">Connect Your paypal account</p>
+                                <div class="form-group">
+                                    <label for="">Account Holder Name</label>
+                                    <input type="text" v-model="bank.account_holder_name" class="form-control">
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
+                                <div class="form-group">
+                                    <label for="">Account Holder Type</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-12">
+                            <form v-if="paypalIsActive">
+                                <div class="form-group">
+                                    <label for="">PayPal Email</label>
+                                    <input type="text" class="form-control" placeholder="Enter your paypal email">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
 
-                    <p v-if="bankIsActive" class="text-center mt-5">
-                        <button class="btn btn-primary" @click="addAccount()">Connect with Stripe</button>
-                    </p>
+<!--                    <div  class="text-center mt-5">-->
+<!--                        <button class="btn btn-primary" @click="addAccount()">Connect with Stripe</button>-->
+<!--                    </div>-->
 
                 </div>
                 <div class="modal-footer">
@@ -56,9 +98,7 @@
     </div>
 
 
-<!--    <div class="row">-->
-<!--        <pre>{{CustomerDetails}}</pre>-->
-<!--    </div>-->
+
     <div class="layout-px-spacing">
         <div class="col-lg-12">
             <div class="widget-content searchable-container list">
@@ -133,6 +173,7 @@
         name: "Settings.vue",
         data() {
             return {
+                step: 1,
                 type: {
                     bank: null,
                     paypal: null
@@ -141,7 +182,9 @@
                 paypalIsActive: false,
                 isLoading: false,
                 fullPage: true,
-                onCancel: true
+                onCancel: true,
+                bank: {},
+                type: null
 
             }
         },
@@ -187,6 +230,8 @@
             },
             selecAcount(type) {
 
+                this.type = type
+
                 if (type == 'bank') {
                     this.bankIsActive = true
                     this.paypalIsActive = false
@@ -196,6 +241,10 @@
                     this.paypalIsActive = true
                     this.bankIsActive = false
                 }
+
+            },
+            next() {
+                this.step = 2
             }
         }
     }

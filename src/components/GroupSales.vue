@@ -253,7 +253,7 @@
 
             diamond() {
 
-                if (this.sales < 972  && this.sales >= 324) {
+                if (this.sales >= 324) {
                     return true
                 }
 

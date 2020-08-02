@@ -201,24 +201,24 @@ const actions = {
 
     },
     PASSWORD_RESET( context, params) {
-      return new Promise( (resolve, reject) => {
 
+      return new Promise( (resolve, reject) => {
           api.changePassword( params )
               .then( response => {
-
                   console.log(response)
                   resolve(response)
               })
               .catch( error => {
-
                   console.log(error.response)
                   reject(error)
               })
       })
     },
+
     PASSWORD_POST(context, params) {
 
       return new Promise(( resolve, reject) => {
+
           api.PostPassword( params )
               .then( response => {
                   console.log(response)

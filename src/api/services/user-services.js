@@ -2,6 +2,10 @@ import Api from '../index.js';
 
 export default {
 
+	changePassword(payload) {
+		return Api().post('/password/email', payload)
+	},
+
 	saveUserFilter(filters) {
 		return Api().post('/user/save-userfilter', filters)
 	},
@@ -94,9 +98,6 @@ export default {
 		return Api().get('/link')
 	},
 
-	changePassword(payload) {
-		return Api().post('/password/email', payload)
-	},
 
 	changeUserPassword(payload) {
 		return Api().post('/change-password', payload)
