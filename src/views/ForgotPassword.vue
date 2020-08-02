@@ -114,7 +114,7 @@
                 this.error.message = ''
 
                 this.isLoading = true
-                this.$store.dispatch('PASSWORD_RESET', user)
+                this.$store.dispatch('SENT_PASSWORD_RESET_LINK', user)
                     .then( response => {
                         this.isLoading = false
                         this.complete = true

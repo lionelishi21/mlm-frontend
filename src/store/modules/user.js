@@ -186,6 +186,9 @@ const actions = {
           })
     },
 
+
+
+
     CHANGE_PASSWORD(context, payload) {
 
        return new Promise((resolve, reject) => {
@@ -200,6 +203,22 @@ const actions = {
        })
 
     },
+
+    SENT_PASSWORD_RESET_LINK( context, params) {
+
+        return new Promise( (resolve, reject) => {
+            api.changePassword( params )
+                .then( response => {
+                    console.log(response)
+                    resolve(response)
+                })
+                .catch( error => {
+                    console.log(error.response)
+                    reject(error)
+                })
+        })
+    },
+
     PASSWORD_RESET( context, params) {
 
       return new Promise( (resolve, reject) => {
