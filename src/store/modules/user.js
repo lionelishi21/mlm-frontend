@@ -17,7 +17,11 @@ const state = {
     links: {},
     dashboard: {},
     allusers: {},
-    serDetailsAffiliates: {}
+    serDetailsAffiliates: {},
+    stripe_account: {},
+    paypal_account: [],
+    transactions: {},
+    payout_accounts: {}
 }
 
 const actions = {
@@ -299,8 +303,7 @@ const actions = {
           })
     },
 
-    ADD_USER_BANKACCOUNT() {
-
+    ADD_USER_ACCOUNT() {
           return new Promise((resolve, reject) =>{
               api.addAccount()
                   .then(response => {
@@ -310,12 +313,136 @@ const actions = {
                       reject(error.response)
                   })
           })
+    },
+
+    ADD_USER_BANK(context, params) {
+
+          return new Promise((resolve, reject) => {
+              api.addBankAccount(params)
+                  .then( response => {
+                      console.log( response )
+                      resolve(response.data)
+                  })
+
+                  .catch( error => {
+                      console.log(error.response)
+                      reject(error.response)
+                  })
+          })
+
+    },
+
+    ADD_PAYPAL_ACCOUNT(context, params) {
+          return new Promise ((resolve, reject) => {
+
+              api.storePaypalAccont(params)
+                  .then( response => {
+                      console.log(response)
+                      resolve(response)
+                  })
+                  .catch( error => {
+                      console.log(error)
+                      reject(error.response)
+                  })
+          })
+    },
+
+    ADD_DEBIT_CARD(context, params) {
+          return new Promise (( resolve, reject ) => {
+
+              api.storeDebitCard(params)
+                  .then( response => {
+                      console.log(response)
+                      resolve(response)
+                  })
+                  .catch( error => {
+                      console.log(error)
+                      reject(error.response)
+                  })
+          })
+    },
+
+    ADD_MCC_CARD(context, params) {
+        return new Promise (( resolve, reject ) => {
+            api.storeMccCard(params)
+                .then( response => {
+                    console.log(response)
+                    resolve(response)
+                })
+                .catch( error => {
+                    console.log(error)
+                    reject(error.response)
+                })
+        })
+    },
+
+    FETCH_USER_PAYPAL_ACCOUNT( {commit} ) {
+
+          api.getPaypalAccount()
+              .then( response => {
+                  commit('SET_USER_PAYPAL_ACCOUNT', response.data.account)
+              })
+              .catch( error => {
+                  console.log(error.response)
+              })
+    },
+
+    STRIPE_ACCOUNT ({commit}) {
+
+          api.stripAccount()
+              .then( response => {
+                  console.log(response)
+                  commit('SET_STRIPE_ACCOUNT', response.data)
+              })
+              .catch( error => {
+                  console.log(error.reponse)
+              })
+    },
+
+    GET_TRANSACTIONS( {commit} ) {
+          api.fetchTransaction()
+              .then( response => {
+                  console.log(response)
+                  commit('SET_TRANSACTIONS', response.data)
+              })
+              .catch( error => {
+                  console.log(error.response)
+              })
+    },
+
+    GET_USER_PAYOUT_ACCOUNT({commit}) {
+          api.fetchUserAccount()
+              .then( response => {
+                  console.log(response.data)
+                  commit('SET_USER_PAYOUT_ACCOUNT', response.data)
+              })
+              .catch( error => {
+                  console.log(error.response)
+              })
     }
+
+
 
 }
 
 
 const mutations = {
+
+    SET_USER_PAYOUT_ACCOUNT(state, account) {
+        state.payout_accounts = account
+    },
+
+    SET_TRANSACTIONS(state, trans) {
+        state.transactions = trans
+    },
+
+    SET_USER_PAYPAL_ACCOUNT(state, account) {
+        state.paypal_account = account
+    },
+
+    SET_STRIPE_ACCOUNT(state, account) {
+        state.stripe_account = account
+    },
 
     SET_ALL_USERS(state, user) {
         state.allusers = user
@@ -369,6 +496,7 @@ const getters = {
     getUserDetails(state) {
       return state.userDetails 
     },
+
     getLoginUser: state => state.user,
     getGroupSales: state => state.group_sales,
     getAdminDashboard: state => state.adminDashboard,
@@ -376,7 +504,11 @@ const getters = {
     fetchLink: state => state.links,
     userDasboard: state => state.dashboard,
     getAllUser: state => state.allusers,
-    getUserAffiliateDetails: state => state.userDetailsAffiliates
+    getUserAffiliateDetails: state => state.userDetailsAffiliates,
+    getStripeAccount: state => state.stripe_account,
+    GetPaypalAccount: state => state.paypal_account,
+    getTransactions: state => state.transactions,
+    getPayoutAccount: state => state.payout_accounts
 }
 
 export default {

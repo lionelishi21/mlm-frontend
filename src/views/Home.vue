@@ -26,6 +26,7 @@
     @import '../cork/plugins/animate/animate.css';
     @import '../cork/plugins/loaders/custom-loader.css';
     @import '../cork/css/users/user-profile.css';
+    @import '../cork/css/authentication/form-2.css';
     @import '../cork/css/components/custom-list-group.css';
     @import '../cork/css/apps/notes.css';
     @import '../cork/css/forms/theme-checkbox-radio.css';

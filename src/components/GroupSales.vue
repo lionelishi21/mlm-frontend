@@ -21,15 +21,6 @@
                                 <p class="text-4 mt-1 text-danger"><strong>{{sales}} Group Sales of {{bronze_status}}</strong></p>
                             </ul>
                         </div>
-                        <div class="col-md-12 text-right">
-                            <div class="progress p-o-progress mt-2">
-
-                                <div class="progress-bar bg-danger"
-                                     role="progressbar" :style="'width:'+bronzePercentage+'%'"
-                                     :aria-valuenow="bronzePercentage" aria-valuemin="0" aria-valuemax="100">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -59,12 +50,6 @@
                             </ul>
                         </div>
                         <div class="col-md-12 text-right">
-                            <div class="progress p-o-progress mt-2">
-                                <div class="progress-bar bg-danger"
-                                     role="progressbar" :style="'width:'+goldPercentage+'%'"
-                                     :aria-valuenow="goldPercentage" aria-valuemin="0" aria-valuemax="100">
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -87,14 +72,6 @@
                                 </li>
                                 <p class="text-4 mt-1 text-dark"><strong>{{sales}} Group Sales of {{gold_status}}</strong></p>
                             </ul>
-                        </div>
-                        <div class="col-md-12 text-right">
-                            <div class="progress p-o-progress mt-2">
-                                <div class="progress-bar bg-danger"
-                                     role="progressbar" :style="'width:'+silverPercentage+'%'"
-                                     :aria-valuenow="silverPercentage" aria-valuemin="0" aria-valuemax="100">
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -122,14 +99,6 @@
                                 <p class="text-4 mt-1 text-white"><strong>{{sales}} Group Sales of {{ruby_status}}</strong></p>
                             </ul>
                         </div>
-                        <div class="col-md-12 text-right">
-                            <div class="progress p-o-progress mt-2">
-                                <div class="progress-bar bg-danger"
-                                     role="progressbar" :style="'width:'+rubyPercentage+'%'"
-                                     :aria-valuenow="rubyPercentage" aria-valuemin="0" aria-valuemax="100">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -156,14 +125,6 @@
                                 <p class="text-4 mt-1 text-dark"><strong>{{sales}} Group Sales {{diamond_status}}</strong></p>
                             </ul>
                         </div>
-                        <div class="col-md-12 text-right">
-                            <div class="progress p-o-progress mt-2">
-                                <div class="progress-bar bg-danger"
-                                     role="progressbar" :style="'width:'+diamondPercentage+'%'"
-                                     :aria-valuenow="diamondPercentage" aria-valuemin="0" aria-valuemax="100">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -180,7 +141,7 @@
                 bronze_status: 12,
                 silver_status: 36,
                 gold_status: 108,
-                ruby_status: 326,
+                ruby_status: 324,
                 diamond_status: 972
             }
         },

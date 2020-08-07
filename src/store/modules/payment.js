@@ -37,6 +37,7 @@ const actions = {
                 })
         })
     },
+
     FETCH_CUSTOMER_DETAILS({commit}) {
 
         api.fetchCustomerDetails()
@@ -47,7 +48,21 @@ const actions = {
             .catch( error => {
                 console.log(error.response)
             })
+    },
+
+
+    WITH_DRAW_WITH_PAYPAL(context) {
+        return new Promise((resolve, reject) => {
+            api.paypalWithdraw()
+                .then( response => {
+                    resolve(response.data)
+                })
+                .catch( error => {
+                    reject(error.response)
+                })
+        })
     }
+
 }
 
  const mutations = {

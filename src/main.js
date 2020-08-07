@@ -30,6 +30,9 @@ Vue.use(VueCurrencyFilter,
   symbolPosition: 'front',
   symbolSpacing: true
 })
+
+
+Vue.component('notification-component', require('./components/Notification').default);
 Vue.filter('str_limit', function (value, size) {
   if (!value) return '';
   value = value.toString();

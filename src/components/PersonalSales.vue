@@ -20,18 +20,6 @@
                             <p class="text-4 mt-1"><strong>{{sales.length}} Personal Sales</strong></p>
                         </ul>
                     </div>
-                    <div class="col-md-12 text-right">
-                        <div class="progress p-o-progress mt-2">
-                            <div  v-if="sales.length < 3" class="progress-bar bg-danger"
-                                  role="progressbar" :style="'width:'+qSalesPercentage+'%'"
-                                  :aria-valuenow="qSalesPercentage" aria-valuemin="0" aria-valuemax="100">
-                            </div>
-                            <div  v-else class="progress-bar bg-success"
-                                  role="progressbar" :style="'width:'+qSalesPercentage+'%'"
-                                  :aria-valuenow="qSalesPercentage" aria-valuemin="0" aria-valuemax="100">
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

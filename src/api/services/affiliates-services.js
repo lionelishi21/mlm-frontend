@@ -12,5 +12,9 @@ export default {
 
 	deleteAffiliate(id) {
 		return Api().get('/affiliates/delete-affailiate/'+id)
+	},
+
+	fetchPersonalSales() {
+		return Api().get('/affiliates/personal-sales')
 	}
 }

@@ -3,7 +3,8 @@ import api from '../../api/services/affiliates-services.js';
 
 const state = {
 	affiliates: {},
-	details: {}
+	details: {},
+	personal_sales: 0
 }
 
 const actions = {
@@ -55,6 +56,17 @@ const actions = {
 					reject(error.response)
 				})
 		})
+	},
+
+	PERSONAL_SALES( { commit } ) {
+
+		api.fetchPersonalSales()
+			.then( response => {
+				console.log(response.data)
+				commit('SET_PERSONAL_SALES', response.data)
+			}).catch( error => {
+				console.log(error.response)
+		})
 	}
 }
 
@@ -64,12 +76,17 @@ const mutations = {
 	},
 	SET_AFFILIATE_DETAILS(state, detail) {
 		state.details = detail
+	},
+
+	SET_PERSONAL_SALES(state, personal) {
+		state.personal_sales = personal
 	}
 }
 
 const getters = {
 	getAffiliates: state => state.affiliates,
-	getAffiliateDetails: state => state.details
+	getAffiliateDetails: state => state.details,
+	getPersonalSales: state => state.personal_sales
 }
 
 export default {

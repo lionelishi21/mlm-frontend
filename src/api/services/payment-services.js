@@ -11,5 +11,9 @@ export default {
 
     fetchCustomerDetails() {
         return Api().get('/customers')
+    },
+
+    paypalWithdraw() {
+        return Api().post('/customers/paypal-withdrawal')
     }
 }

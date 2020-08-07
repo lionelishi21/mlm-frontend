@@ -129,6 +129,37 @@ export default {
 
 	addAccount() {
 		return Api().get('/customers/account');
+	},
+
+	addBankAccount(params) {
+		return Api().post('/customers/bank', params)
+	},
+	stripAccount() {
+		return Api().get('/customers/account')
+	},
+
+	storePaypalAccont(params) {
+		return Api().post('/customers/add-paypal', params)
+	},
+
+	storeDebitCard( params ) {
+		return Api().post('/customers/add-debit-card', params)
+	},
+
+	storeMccCard( params ) {
+		return Api().post('/customers/add-mcc-card', params);
+	},
+
+	getPaypalAccount() {
+		return Api().get('/customers/get-paypal')
+	},
+
+	fetchTransaction() {
+		return Api().get('/customers/transactions');
+	},
+
+	fetchUserAccount() {
+		return Api().get('/customers/payout-accounts');
 	}
 }
 

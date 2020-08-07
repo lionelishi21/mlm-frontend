@@ -9,7 +9,7 @@
 <!--				</div>-->
 <!--			</li>-->
 <!--		</ul>-->
-		<a href="#" class="sidebarCollapse" @click="toggleSidebar()">
+		<a href="#" class="sidebarCollapse"  @click="toggleSidebar()">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24"
 				 height="24" viewBox="0 0 24 24" fill="none"
 				 stroke="currentColor" stroke-width="2"
@@ -72,7 +72,7 @@
 	</header>
 </template>
 <script>
-export default {
+	export default {
 	data() {
 		return{
 			title: 'Header Component'
@@ -81,7 +81,10 @@ export default {
 	props:['user'],
 	mounted() {
 		$('.dropdown-toggle').dropdown();
+		$(".main-container").toggleClass('sbar-open')
 	},
+
+
 	watch:{
 		$route (to, from){
 			$(".main-container").toggleClass('sbar-open')
@@ -102,6 +105,10 @@ export default {
 
 		toggleSidebar() {
 			$(".main-container").toggleClass('sbar-open')
+		},
+
+		hide() {
+			// $(".main-container").toggleClass('sbar-open')
 		}
     }
 }

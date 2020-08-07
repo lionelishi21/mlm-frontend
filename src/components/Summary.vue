@@ -12,7 +12,6 @@
                     <h5>Balance</h5>
                     <p class="acc-amount">{{totalCashbonus | currency}}</p>
                 </div>
-
                 <div class="inv-action">
                     <a href="#" class="btn btn-outline-dark" @click="goToSummary()">Summary</a>
                     <a href="#" class="btn btn-success" @click="payoutModal()">Withdraw</a>
@@ -31,13 +30,10 @@
         created() {
             this.$store.dispatch('GET_ESCROW')
         },
-
         computed: {
-
             ...mapGetters([
                 'escrow'
             ]),
-
             totalCashbonus: function(){
                 let sum = 0;
 
@@ -48,17 +44,14 @@
 
                 return sum;
             },
-
-            methods: {
-                goToSummary() {
-                    this.$router.push('/dashboard/wallet')
-                },
-
-                payoutModal() {
-                    $('#payoutModal').modal('show')
-                },
-            }
-
+        },
+        methods: {
+            goToSummary() {
+                this.$router.push('/dashboard/wallet')
+            },
+            payoutModal() {
+                $('#payoutModal').modal('show')
+            },
         }
     }
 </script>

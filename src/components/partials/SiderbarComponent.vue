@@ -1,7 +1,6 @@
 <template>
 <!--  BEGIN SIDEBAR  -->
-<div class="sidebar-wrapper sidebar-theme">
-
+<div class="sidebar-wrapper sidebar-theme" v-click-outside="hide" >
     <nav id="compactSidebar" ref="compactSidebar" >
 
         <div class="">
@@ -79,7 +78,6 @@
             </router-link>
         </div>
     </nav>
-
     <div id="compact_submenuSidebar" class="submenu-sidebar">
 
         <div class="theme-brand-name">
@@ -156,16 +154,26 @@
         </div>
 
     </div>
-
 </div>
 <!--  END SIDEBAR  -->
 </template>
 <script>
+    import ClickOutside from 'vue-click-outside'
     export default  {
         props:['user'],
         data() {
             return {
                 name: 'SiderBar Component'
+            }
+        },
+
+        directives: {
+            ClickOutside
+        },
+        methods: {
+
+            hide() {
+                $(".main-container").removeClass('sbar-open')
             }
         }
     }

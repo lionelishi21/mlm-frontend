@@ -27,15 +27,15 @@
 <!--                                    <legend><small>MCC Back Office Login Information</small></legend>-->
 <!--                                </div>-->
 
-                                <validation-provider rules="required|email" v-slot="{ errors }">
-                                    <div class="form-group mb-3">
-                                        <label class="text-dark">Email Address</label>
-                                        <div class="input-group">
-                                            <input v-model="user.email" name="username" placeholder="Email address" type="text" class="form-control form-control-lg" />
-                                        </div>
-                                        <span class="help-block text-danger">{{errors[0]}}</span>
-                                    </div>
-                                </validation-provider>
+<!--                                <validation-provider rules="required|email" v-slot="{ errors }">-->
+<!--                                    <div class="form-group mb-3">-->
+<!--                                        <label class="text-dark">Email Address</label>-->
+<!--                                        <div class="input-group">-->
+<!--                                            <input v-model="user.email" name="username" placeholder="Email address" type="text" class="form-control form-control-lg" />-->
+<!--                                        </div>-->
+<!--                                        <span class="help-block text-danger">{{errors[0]}}</span>-->
+<!--                                    </div>-->
+<!--                                </validation-provider>-->
 
                                 <validation-provider name="confirm" rules="required" v-slot="{ errors }">
                                     <div class="form-group mb-3">
@@ -57,7 +57,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-12  text-right">
-                                        <button :disabled="invalid" type="submit" class="btn pull-right btn-primary mt-2">Sign In</button>
+                                        <button :disabled="invalid" type="submit" class="btn pull-right btn-primary mt-2">Update</button>
                                     </div>
                                 </div>
                             </form>
