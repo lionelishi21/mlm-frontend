@@ -21,7 +21,8 @@ const state = {
     stripe_account: {},
     paypal_account: [],
     transactions: {},
-    payout_accounts: {}
+    payout_accounts: {},
+    account: {}
 }
 
 const actions = {
@@ -419,7 +420,46 @@ const actions = {
               .catch( error => {
                   console.log(error.response)
               })
+    },
+
+    ADD_CUSTOMER_DEBIT(context, params) {
+
+          return new Promise((resolve, reject) => {
+
+              api.addDebitCard(params)
+                  .then( response => {
+                      resolve(response.data)
+                  })
+                  .catch( error => {
+                      reject(error.response)
+                  })
+          })
+    },
+
+
+    FETCH_STRIPE_ACCOUNT({commit}) {
+      api.getUserStripeAccount()
+          .then( response => {
+              commit('SET_USER_STRIPE_ACCOUNT', response.data)
+          })
+          .catch(error => {
+              console.log(error.response);
+          })
+    },
+
+    GET_ACCOUNT_LINK(context) {
+      return new Promise((resolve, reject) => {
+          api.fetchAccountLink()
+              .then( response => {
+                resolve(response.data)
+              })
+              .catch( error => {
+                  reject(error.response)
+              })
+      })
     }
+
+
 
 
 
@@ -427,6 +467,10 @@ const actions = {
 
 
 const mutations = {
+
+    SET_USER_STRIPE_ACCOUNT(state, account) {
+        state.account = account
+    },
 
     SET_USER_PAYOUT_ACCOUNT(state, account) {
         state.payout_accounts = account
@@ -508,7 +552,8 @@ const getters = {
     getStripeAccount: state => state.stripe_account,
     GetPaypalAccount: state => state.paypal_account,
     getTransactions: state => state.transactions,
-    getPayoutAccount: state => state.payout_accounts
+    getPayoutAccount: state => state.payout_accounts,
+    getUserStripeAccount: state => state.account
 }
 
 export default {

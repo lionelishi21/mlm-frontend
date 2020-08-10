@@ -85,7 +85,9 @@
                 }
             }
         },
+
         mounted: function () {
+
             cardNumber = elements.create('cardNumber', style);
             cardExpiry = elements.create('cardExpiry', style);
             cardCvc = elements.create('cardCvc', style);
@@ -94,6 +96,7 @@
             cardExpiry.mount(this.$refs.cardExpiry)
             cardCvc.mount(this.$refs.cardCvc)
         },
+
         methods: {
             submit () {
                 this.$refs.elementsRef.submit();

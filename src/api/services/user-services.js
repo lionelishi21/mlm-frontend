@@ -160,6 +160,18 @@ export default {
 
 	fetchUserAccount() {
 		return Api().get('/customers/payout-accounts');
+	},
+
+	addDebitCard(params) {
+		return Api().post('/customers/add-debitcard', params);
+	},
+
+	getUserStripeAccount() {
+		return Api().get('/customers/stripe-account')
+	},
+
+	fetchAccountLink() {
+		return Api().get('/customers/account-link')
 	}
 }
 

@@ -13,8 +13,7 @@
                     <p class="acc-amount">{{totalCashbonus | currency}}</p>
                 </div>
                 <div class="inv-action">
-                    <a href="#" class="btn btn-outline-dark" @click="goToSummary()">Summary</a>
-                    <a href="#" class="btn btn-success" @click="payoutModal()">Withdraw</a>
+                    <a href="#" class="btn btn-success"@click="goToSummary()">Withdraw</a>
                 </div>
             </div>
         </div>

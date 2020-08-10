@@ -1,14 +1,33 @@
 <template>
 <div id="content" class="main-content">
 	<div class="vld-parent">
-		   <loading
-				   :active.sync="isLoading"
+		   <loading :active.sync="isLoading"
 			  :can-cancel="true"
-			  :on-cancel="onCancel"
 			  :is-full-page="fullPage">
 		  </loading>
 	</div>
 	<notification-component :msg="message"></notification-component>
+
+    <!-- Error Messages	-->
+	<div class="col-md-12">
+		<div v-if="payout.errors.error" class="alert alert-danger mb-4" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<i class="fa fa-times"></i>
+			</button>
+			<strong>Error Message!</strong> {{payout.errors.mesg}}</button>
+		</div>
+	</div>
+    <!--End Error Message -->
+
+	<div class="col-md-12">
+		<div v-if="payout.success.succuss" class="alert alert-success mb-4" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<i class="fa fa-times"></i>
+			</button>
+			<strong>Error Message!</strong> {{payout.success.mesg}}</button>
+		</div>
+	</div>
+
 	<div class="modal fade" id="payoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
@@ -21,12 +40,12 @@
 				<div class="modal-body text-center">
 					<!-- Images -->
 					<p>Are you sure you want to request a payout?</p>
+
 <!--					<button class="btn btn-primary"  @click="request()">Confirm Withdrawal</button>-->
 					<button  v-for="type in getPayoutAccount"
-							 class="btn btn-primary"
+							 class="btn btn-success mt-3 btn-lg"
 							 @click="payouts(type.type)">Confirm {{type.type}} Withdrawal</button>
 					<hr>
-					<small>Connect Account: </small>
 				</div>
 				<div class="modal-footer">
 					<button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
@@ -66,13 +85,9 @@
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="card ">
 					<div class="card-body">
-						<div class="text-center mt-4">
-							<p class="value text-success">Select Account you want to receive your cash bonus with</p>
-						</div>
-						<button class="btn btn-primary mb-3 btn-lg"
-								@click="addAccount()" >Payout Account</button>
-
-						<button class="btn btn-primary mb-3 btn-lg"
+						<button class="btn btn-primary btn-block mb-3 btn-lg"
+								@click="addAccount()" >Payout Accounts</button>
+						<button class="btn btn-primary btn-block mb-3 btn-lg"
 								@click="payoutModal()" >Withdraw</button>
 					</div>
 				</div>
@@ -80,6 +95,7 @@
 		</div>
 
 		<div class="row">
+
 			<div class="col-md-6">
 				<div class="widget widget-table-two">
 
@@ -142,19 +158,20 @@
 		   </div>
 	</div>
     </div>
+
 	<div v-else class="outer">
 		<div class="form-form">
 			<div class="form-form-wrap">
 				<div class="form-container">
 					<div class="form-content">
 						<div class="user-meta text-center">
-							<h4 class="">You Have only <span class="text-success">{{getPersonalSales}}</span> Personal Sales</h4>
-							<h4 >Get
-								<span v-if="getPersonalSales == 0" class="text-success">3</span>
-								<span v-if="getPersonalSales == 1" class="text-success">2</span>
-								<span v-if="getPersonalSales == 2" class="text-success">1</span>
-								more to start recieving cash bonuses<br>
-
+							<h4 class=""><strong>You Have only {{getPersonalSales}} Personal Sales</strong></h4>
+							<h4 ><strong>Get
+								<span v-if="getPersonalSales == 0" class="text-dark">3</span>
+								<span v-if="getPersonalSales == 1" class="text-dark">2</span>
+								<span v-if="getPersonalSales == 2" class="text-dark">1</span>
+								more to start receiving cash bonuses<br>
+							</strong>
 							</h4>
 							<hr>
 							<input type="text" class=" text-center form-control input-lg" :value="fetchLink.link">
@@ -172,6 +189,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import Loading from 'vue-loading-overlay';
+
 
 export default {
 	components: {
@@ -202,10 +220,23 @@ export default {
 				account_number: '',
 				account_routing_number: ''
 			},
-			message: ''
+			message: '',
+			payout: {
+
+				errors: {
+					mesg: '',
+					error: false
+				},
+
+				success: {
+					mesg: '',
+					succuss: false
+				}
+			}
 		}
 	},
 	computed: {
+
 		...mapGetters([
 		    'userCashBonues',
 		    'userAccounts',
@@ -216,6 +247,7 @@ export default {
 			'getPersonalSales',
 			'fetchLink'
 		]),
+
 		totalItem: function(){
 			let sum = 0;
 			for(let i = 0; i < this.escrow.length; i++){
@@ -223,6 +255,7 @@ export default {
 			}
 			return sum;
 		},
+
 		payoutTotal: function() {
 			let sum = 0;
 			for(let i = 0; i < this.getTransactions.length; i++){
@@ -233,13 +266,16 @@ export default {
 
 	},
 	created() {
+
 		this.$store.dispatch('PERSONAL_SALES')
 		this.init()
+
 	},
 	mounted() {
 		this.$store.dispatch('GET_USER_PAYOUT_ACCOUNT')
 	},
 	methods: {
+
 		init() {
 
 			this.$store.dispatch('FETCH_CASH_BONUSES')
@@ -253,6 +289,8 @@ export default {
 		},
 		request() {
 
+			this.isLoading = true;
+
 			let transfer = {
 				transfer: this.totalItem
 			}
@@ -260,10 +298,23 @@ export default {
 			this.$store.dispatch('TRANSFER_FUNDS', transfer)
 				.then( response => {
 					console.log(response)
+
+					this.success.success = true
+					this.success.mesg = 'Withdraw was successful'
+					this.isLoading = false
 				})
 			.catch( error => {
-				console.log(error.response)
+				this.payout.errors.error = true
+				if (error.data.message) {
+					this.payout.errors.mesg = 'Something wrong with your account information please contact administrator'
+				}
+
+				$('#payoutModal').modal('hide')
+				console.log(error.data)
+
+				this.isLoading = false
 			})
+
 		},
 
 		paypalWithdrawal() {
@@ -282,8 +333,11 @@ export default {
 				this.paypalWithdrawal()
 			}
 
-			if ( params == 'Bank') {
+			if ( params == 'Stripe') {
 				this.request()
+			}
+			if (params == "MCC") {
+
 			}
 		},
 
@@ -320,9 +374,11 @@ export default {
 	   hideModal() {
          this.$refs['my-modal'].hide()
        },
+
        payoutModal() {
           $('#payoutModal').modal('show')
        },
+
        hidePayoutModal() {
        	  this.$refs['payout-modal'].hide()
        },

@@ -4,8 +4,6 @@
     <div class="vld-parent">
         <loading
              :active.sync="isLoading"
-             :can-cancel="true"
-             :on-cancel="onCancel"
              :is-full-page="fullPage">
         </loading>
     </div>
@@ -74,12 +72,12 @@
                         <div class="col-md-12 text-center mt-5" v-if="paypalIsActive != false || bankIsActive != false">
                         </div>
                     </div>
+
                     <div class="row" v-if="step == 2">
-                        <div class="col-md-12">
+                        <div class="col-md-12" v-if="bankIsActive">
                             <h4>Account Information</h4>
                             <hr>
-                            <form v-if="bankIsActive">
-
+                            <form >
                                 <ValidationProvider name="country" rules="required" v-slot="{ errors }">
 
                                     <div class="form-group">
@@ -169,24 +167,84 @@
                                     <button class="btn btn-block btn-primary" @click.prevent="saveBankInformation()">Submit</button>
                                 </div>
                             </form>
-
                         </div>
-<!--                        <div class="col-md-12">-->
-<!--                            <form>-->
-<!--                                <ValidationProvider name="email" rules="required" v-slot="{ errors }">-->
-<!--                                    <div class="form-group">-->
-<!--                                        <label for="">Account Holder Name</label>-->
-<!--                                        <input type="text" v-model="bank.account_holder_name" class="form-control">-->
-<!--                                        <span class="text-danger">{{ errors[0] }}</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="form-group">-->
-<!--                                        <button class="btn btn-block btn-primary" @click.prevent="savePaypalAccount()">Submit</button>-->
-<!--                                    </div>-->
-<!--                                </ValidationProvider>-->
-<!--                            </form>-->
-<!--                        </div>-->
-                        <div class="col-md-12">
-                            <form v-if="paypalIsActive">
+                        <div class="col-md-12" v-if="debitIsActive">
+                            <h4>Debit Card Information</h4>
+
+                            <div v-if="alerts.debit.isAlert" class="alert alert-danger mb-4" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                                <strong>Card Error!</strong> {{alerts.debit.message}}.</button>
+                            </div>
+                            <hr>
+                            <form>
+                                <ValidationProvider name="name" rules="required" v-slot="{ errors }">
+                                    <div class="form-group">
+                                        <label for="">Card Holder Name</label>
+                                        <input type="text" v-model="debit.name" class="form-control">
+                                        <span class="text-danger">{{ errors[0] }}</span>
+                                    </div>
+                                </ValidationProvider>
+                                <ValidationProvider name="name" rules="required" v-slot="{ errors }">
+                                    <div class="form-group">
+                                        <label for="">Currency</label>
+                                        <select v-model="debit.currency" class="form-control">
+                                            <option value="usd">US</option>
+                                            <option value="can">CA</option>
+                                            <option value="gbp">GB</option>
+                                            <option value="sek">SE</option>
+                                            <option value="chf">CH</option>
+                                        </select>
+                                        <span class="text-danger">{{ errors[0] }}</span>
+                                    </div>
+                                </ValidationProvider>
+                                <ValidationProvider name="name" rules="required" v-slot="{ errors }">
+                                    <div class="form-group">
+                                        <label for="">Card Number</label>
+                                        <input type="text"  v-mask="'####-####-####-####'" v-model="debit.number" class="form-control">
+                                        <span class="text-danger">{{ errors[0] }}</span>
+                                    </div>
+                                </ValidationProvider>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <ValidationProvider name="name" rules="required" v-slot="{ errors }">
+                                            <div class="form-group ">
+                                                <label for="">Expiry Date</label>
+                                                <input type="number" v-mask="'##'" v-model="debit.exp_month" class="form-control">
+                                                <span class="text-danger">{{ errors[0] }}</span>
+                                            </div>
+                                        </ValidationProvider>
+                                    </div>
+                                    <div class="col-md-4">
+                                    <ValidationProvider name="name" rules="required" v-slot="{ errors }">
+                                        <div class="form-group">
+                                            <label for="">Expiry Year</label>
+                                            <input type="number" v-mask="'####'" v-model="debit.exp_year" class="form-control">
+                                            <span class="text-danger">{{ errors[0] }}</span>
+                                        </div>
+                                    </ValidationProvider>
+                                    </div>
+                                    <div class="col-md-4">
+                                    <ValidationProvider name="name" rules="required" v-slot="{ errors }">
+                                        <div class="form-group">
+                                            <label for="">CVC</label>
+                                            <input type="text" v-model="debit.cvc" class="form-control">
+                                            <span class="text-danger">{{ errors[0] }}</span>
+                                        </div>
+                                    </ValidationProvider>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-block btn-primary" @click.prevent="saveDebitCard()">Save</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="col-md-12" v-if="paypalIsActive">
+                            <form >
                                 <div class="form-group">
                                     <label for="">PayPal Email</label>
                                     <input type="text" v-model="paypal.email" class="form-control" placeholder="Enter your paypal email">
@@ -201,7 +259,7 @@
                 </div>
                 <div class="modal-footer" v-if="step == 1">
                     <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
-                    <button v-if="paypalIsActive != false || bankIsActive != false" class="btn btn-primary" @click="next()"><i class="fa fa-arrow-circle-o-right"></i> Next</button>
+                    <button v-if="paypalIsActive != false || bankIsActive != false || debitIsActive != false" class="btn btn-primary" @click="next()"><i class="fa fa-arrow-circle-o-right"></i> Next</button>
                 </div>
                 <div class="modal-footer" v-if="step == 2">
                     <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
@@ -211,6 +269,10 @@
         </div>
     </div>
     <!-- End Account Modal-->
+
+    <div class="row">
+        <pre></pre>
+    </div>
 
     <!-- Main Content -->
     <div class="layout-px-spacing">
@@ -240,26 +302,39 @@
                                             </div>
                                             <div class="media-body mt-2">
                                                 <div class="row">
-                                                    <div class="col-md-10">
-                                                        <h6 class="tx-inverse">{{acc.account_holder_name}}</h6>
+
+                                                    <div class="col-md-10" v-if="acc.object == 'card'">
+                                                        <h6 class="tx-inverse">{{acc.brand}} {{acc.funding}}
+                                                            <span class="badge-success badge" v-if="getUserStripeAccount['payouts_enabled']">Active</span>
+                                                            <span class="badge-danger badge" v-else>Inactive</span>
+                                                        </h6>
                                                         <p class="mg-b-0">{{acc.bank_name}}</p>
-                                                        <p class="mg-b-0">*** {{acc.last4}}</p>
+                                                        <p class="mg-b-0">**** **** **** {{acc.last4}}</p>
                                                     </div>
+
+                                                    <div class="col-md-10" v-if="acc.object == 'bank_account'">
+                                                        <h6 class="tx-inverse">{{acc.account_holder_name}}
+                                                            <span class="badge-success badge" v-if="getUserStripeAccount['payouts_enabled']">Active</span>
+                                                            <span class="badge-danger badge" v-else>Inactive</span>
+                                                        </h6>
+                                                        <p class="mg-b-0">{{acc.bank_name}}</p>
+                                                        <p class="mg-b-0">**** **** **** {{acc.last4}}</p>
+                                                    </div>
+
                                                     <div class="col-md-2">
                                                         <div class="btn-group pull-right">
-                                                            <button class="btn btn-default" @click="showBankModal()">Edit</button>
-                                                            <button class="btn btn-default" @click="deleteAccount()">Del</button>
+                                                            <button class="btn btn-default" v-if="getUserStripeAccount['payouts_enabled']">Transfer Active</button>
+                                                            <button class="btn btn-danger" v-else @click="accountOnboarding()">
+                                                                Update
+                                                            </button>
+<!--                                                            <button class="btn btn-default" @click="deleteAccount()">Del</button>-->
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </li>
-                                    <div>
-
-
-                                    </div>
-                            </div>
+                                     </li>
+                                  </div>
                                     <li class="list-group-item list-group-item-action" v-for="cash in GetPaypalAccount">
                                         <div class="media">
                                             <div class="mr-3 mt-3">
@@ -309,6 +384,7 @@
         message: 'This field is required'
     });
 
+
     export default {
 
         name: "Settings.vue",
@@ -349,7 +425,24 @@
                     account_number: null
                 },
 
-                type: null
+                debit: {
+                    name: null,
+                    currency: null,
+                    cvc: null,
+                    exp_year: null,
+                    exp_month: null,
+                    number: null,
+                    object: 'card'
+                },
+
+                type: null,
+
+                alerts: {
+                    debit: {
+                        isAlert: false,
+                        message: null
+                    }
+                }
 
             }
         },
@@ -359,10 +452,12 @@
         },
 
         computed: {
+
             ...mapGetters([
                 'CustomerDetails',
                 'getStripeAccount',
-                'GetPaypalAccount'
+                'GetPaypalAccount',
+                'getUserStripeAccount'
             ])
         },
 
@@ -372,9 +467,11 @@
                 this.$store.dispatch('FETCH_CUSTOMER_DETAILS')
                 this.$store.dispatch('STRIPE_ACCOUNT')
                 this.$store.dispatch('FETCH_USER_PAYPAL_ACCOUNT')
+                this.$store.dispatch('FETCH_STRIPE_ACCOUNT')
             },
 
             addAccount(){
+
                 this.isLoading = true
                 this.$store.dispatch('ADD_USER_ACCOUNT')
                     .then( response => {
@@ -387,9 +484,11 @@
                         this.init()
                     })
                     .catch( error => {
+
                         this.isLoading = false
                         this.init()
                         console.log(error)
+
                     })
             },
 
@@ -404,7 +503,18 @@
                 })
             },
 
+            getAccountLink() {
+
+                this.$store.dispatch('GET_ACCOUNT_LINK')
+                    .then( response => {
+                        console.log(response)
+                        let url = response.link
+                        alert(url)
+                    })
+            },
+
             savePaypalAccount() {
+
                 this.$store.dispatch('ADD_PAYPAL_ACCOUNT', this.paypal)
                     .then( response => {
                         this.init()
@@ -420,6 +530,7 @@
 
                 this.$store.dispatch('ADD_USER_BANK', this.bank)
                     .then( response => {
+
                         this.init()
                         var url = response.link
                         window.location.href = url;
@@ -431,7 +542,42 @@
 
             },
 
+            saveDebitCard() {
+
+                this.isLoading = true
+
+                this.alerts.debit.isALert = false
+                this.alerts.debit.message = ''
+
+                //TODO add loaifng
+                this.$store.dispatch('ADD_CUSTOMER_DEBIT', this.debit)
+                    .then( response => {
+                        console.log(response)
+                        debugger;
+                        this.isLoading = false
+                        $('#accountModal').modal('hide')
+                        this.init()
+                        // //Todo: show notification
+
+                        var msg = 'Card Added successfully';
+                        this.showSweetAlert(msg)
+
+                    })
+                .catch( error => {
+                    console.log(error.data)
+
+                    this.isLoading = false
+
+                    this.alerts.debit.isAlert = true
+                    this.alerts.debit.message = error.data.message
+                })
+
+            },
+
+
             deleteAccount() {},
+
+
             showAccountModal() {
 
                 this.bankIsActive = false
@@ -483,6 +629,40 @@
             },
             prev() {
                 this.step = 1
+            },
+
+            showSweetAlert(msg) {
+
+                $('.widget-content .mixin').on('click', function () {
+                    const toast = swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        padding: '2em'
+                    });
+
+                    toast({
+                        type: 'success',
+                        title: msg,
+                        padding: '2em',
+                    })
+
+                })
+            },
+
+            accountOnboarding() {
+
+                this.isLoading = true
+                this.$store.dispatch('GET_ACCOUNT_LINK')
+                    .then( response => {
+                        console.log(response)
+                        let url = response
+                        window.location.href = url
+                    })
+                .catch( error => {
+                    console.log(error)
+                })
             }
         }
     }

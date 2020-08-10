@@ -13,6 +13,17 @@ import PrettyCheckbox from 'pretty-checkbox-vue';
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 
+// As a plugin
+import VueMask from 'v-mask'
+Vue.use(VueMask);
+
+// Or as a directive
+import { VueMaskDirective } from 'v-mask'
+Vue.directive('mask', VueMaskDirective);
+
+// Or only as a filter
+import { VueMaskFilter } from 'v-mask'
+Vue.filter('VMask', VueMaskFilter)
 
 // Import Interfaces`
 import { ICountry, IState, ICity } from 'country-state-city'
