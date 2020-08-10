@@ -32,17 +32,17 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Confrim Payout</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Confirm Payout</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<i class="fa fa-times"></i>
 					</button>
 				</div>
+
 				<div class="modal-body text-center">
 					<!-- Images -->
 					<p>Are you sure you want to request a payout?</p>
-
-<!--					<button class="btn btn-primary"  @click="request()">Confirm Withdrawal</button>-->
-					<button  v-for="type in getPayoutAccount"
+<!--				<button class="btn btn-primary"  @click="request()">Confirm Withdrawal</button>-->
+					<button v-for="type in getPayoutAccount"
 							 class="btn btn-success mt-3 btn-lg"
 							 @click="payouts(type.type)">Confirm {{type.type}} Withdrawal</button>
 					<hr>
