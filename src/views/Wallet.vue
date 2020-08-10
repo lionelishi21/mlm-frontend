@@ -304,15 +304,17 @@ export default {
 					this.isLoading = false
 				})
 			.catch( error => {
+				this.isLoading = false
+				$('#payoutModal').modal('hide')
+
 				this.payout.errors.error = true
 				if (error.data.message) {
 					this.payout.errors.mesg = 'Something wrong with your account information please contact administrator'
 				}
 
-				$('#payoutModal').modal('hide')
 				console.log(error.data)
 
-				this.isLoading = false
+
 			})
 
 		},
