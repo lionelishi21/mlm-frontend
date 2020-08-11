@@ -302,21 +302,20 @@ export default {
 					this.success.success = true
 					this.success.mesg = 'Withdraw was successful'
 					this.isLoading = false
+
+					this.init();
 				})
 			.catch( error => {
 				this.isLoading = false
 				$('#payoutModal').modal('hide')
-
+				this.init()
 				this.payout.errors.error = true
-				if (error.data.message) {
+				if (error.data) {
 					this.payout.errors.mesg = 'Something wrong with your account information please contact administrator'
 				}
 
 				console.log(error.data)
-
-
 			})
-
 		},
 
 		paypalWithdrawal() {

@@ -84,7 +84,7 @@
                                         <label for="">Country</label>
                                         <select v-model="bank.country" class="form-control">
                                             <option value="us">United States</option>
-<!--                                            <option value="gb">United Kingdom</option>-->
+                                            <option value="gb">United Kingdom</option>
 <!--                                            <option value="ch">Switzerland</option>-->
 <!--                                            <option value="se">Sweden</option>-->
 <!--                                            <option value="ca">Canada</option>-->
@@ -99,10 +99,10 @@
                                         <label for="">Currency</label>
                                         <select v-model="bank.currency" class="form-control">
                                             <option value="usd">US</option>
-                                            <option value="can">CA</option>
                                             <option value="gbp">GB</option>
-                                            <option value="sek">SE</option>
-                                            <option value="chf">CH</option>
+<!--                                            <option value="can">CA</option>-->
+<!--                                            <option value="sek">SE</option>-->
+<!--                                            <option value="chf">CH</option>-->
                                         </select>
                                     </div>
                                 </ValidationProvider>
