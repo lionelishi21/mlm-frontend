@@ -396,7 +396,7 @@ const actions = {
                   commit('SET_STRIPE_ACCOUNT', response.data)
               })
               .catch( error => {
-                  console.log(error.reponse)
+                  console.log(error.response)
               })
     },
 
@@ -440,6 +440,7 @@ const actions = {
     FETCH_STRIPE_ACCOUNT({commit}) {
       api.getUserStripeAccount()
           .then( response => {
+
               commit('SET_USER_STRIPE_ACCOUNT', response.data)
           })
           .catch(error => {
