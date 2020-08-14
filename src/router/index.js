@@ -25,7 +25,7 @@ import UserAffiliateDetails from '../views/UserDetails'
 import { isLoggedIn } from '../utils/auth.js'
 import PasswordReset from "../views/PasswordReset";
 import Settings from "../views/Settings";
-
+import Accounts from '../views/Accounts';
 Vue.use(VueRouter)
 
   const routes = [
@@ -37,6 +37,10 @@ Vue.use(VueRouter)
       {
         path: '',
         component: Dashboard
+      },
+      {
+        path: 'accounts',
+        component: Accounts
       },
       {
         path: 'admin', 

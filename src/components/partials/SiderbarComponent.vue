@@ -63,6 +63,17 @@
                 </a>
                 <div class="tooltip"><span>Ebook</span></div>
             </router-link>
+
+            <router-link v-if="user.role_id == 1" to="/dashboard/accounts" tag="li" active-class="active" class="menu">
+                <a href="#app" data-active="false" class="menu-toggle">
+                    <div class="base-menu">
+                        <div class="base-icons">
+                            <i class="fa-1x text-white fa fa-book" aria-hidden="true" width="24" height="24"></i>
+                        </div>
+                    </div>
+                </a>
+                <div class="tooltip"><span>Accounts</span></div>
+            </router-link>
         </ul>
 
         <div class="external-links">

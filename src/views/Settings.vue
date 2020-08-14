@@ -127,7 +127,7 @@
 
                                 <div class="form-group" v-if="bank.country == 'gb'">
                                     <label for="">Sort Code:</label>
-                                    <input type="text" v-model="bank.sort_code" class="form-control">
+                                    <input type="text" v-model="bank.routing_number" class="form-control">
                                 </div>
 
                                 <div class="form-group" v-if="bank.country == 'ch'">
@@ -422,7 +422,8 @@
                     account_holder_name: null,
                     account_holder_type: null,
                     routing_number: null,
-                    account_number: null
+                    account_number: null,
+                    sort_code: null
                 },
 
                 debit: {
