@@ -42,9 +42,9 @@
 
 							<div class="w-content">
 								<div class="input-group mt-2">
-									<input type="text" class="form-control" :value="fetchLink.link">
+									<input ref="mylink" type="text" class="form-control" :value="fetchLink.link">
 								</div>
-								<a @click="copy(fetchLink.link)" class="mt-2 btn btn-primary" href="#"><svg> ... </svg> Copy from Input</a>
+								<a @click="copy(fetchLink.link)" class="mt-2 btn btn-primary" href="#">Copy from Input</a>
 							</div>
 						</div>
 					</div>
@@ -163,7 +163,11 @@ export default {
 	methods:{
 
 		async copy(s) {
-			await navigator.clipboard.writeText(s);
+			var Url = this.$refs.mylink;
+			Url.innerHTML = window.location.href;
+			console.log(Url.innerHTML)
+			Url.select();
+			document.execCommand("copy");
 		},
 
 		goToDetails() {
