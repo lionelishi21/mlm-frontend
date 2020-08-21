@@ -1,6 +1,14 @@
 <template>
 	<!--  BEGIN CONTENT AREA  -->
 	<div id="content" class="main-content">
+
+<!--		<snackbar ref="snackbar"-->
+<!--				  baseSize="100px"-->
+<!--				  :wrapClass="'snackky'"-->
+<!--				   colors=""-->
+<!--				  :holdTime="3000"-->
+<!--				  :multiple="true"/>-->
+
 		<div class="layout-px-spacing">
 			<div class="row layout-top-spacing mb-3">
 				<div class="col-md-12">
@@ -136,6 +144,8 @@ export default {
 			console.log(Url.innerHTML)
 			Url.select();
 			document.execCommand("copy");
+
+			this.notify()
 		},
 
 		goToDetails() {
@@ -155,6 +165,10 @@ export default {
 						console.log(error.response)
 					})
 		},
+
+		notify() {
+			this.$refs.snackbar.info('Link copy successfully');
+		}
 
 	}
 }
@@ -194,6 +208,10 @@ export default {
 		will-change: opacity, transform;
 		transition: all 0.3s ease-out;
 		-webkit-transition: all 0.3s ease-out;
+	},
+
+	.snackky {
+		background: red;
 	}
 </style>
 

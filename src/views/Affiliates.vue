@@ -66,6 +66,7 @@
 
 												<tbody>
 												<tr v-for="affiliate in getAffiliates.response" class="items">
+
 													<th>{{affiliate.order}}</th>
 													<td>{{affiliate.name}}</td>
 													<td>{{affiliate.affiliate_id}}</td>

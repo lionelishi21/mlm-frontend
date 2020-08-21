@@ -53,7 +53,6 @@
     @import '../cork/plugins/sweetalerts/sweetalert.css';
     @import '../cork/css/components/custom-sweetalert.css';
 
-    @import '../cork/plugins/notification/snackbar/snackbar.min.css';
     @import '../cork/css/main.css';
 
     .content-body {

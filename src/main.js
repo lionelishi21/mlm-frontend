@@ -11,18 +11,18 @@ window.$ = $
 import { ModalPlugin } from 'bootstrap-vue'
 import PrettyCheckbox from 'pretty-checkbox-vue';
 import VuePhoneNumberInput from 'vue-phone-number-input';
+import Snackbar from 'vuejs-snackbar';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
-
-// As a plugin
 import VueMask from 'v-mask'
-Vue.use(VueMask);
-
-// Or as a directive
 import { VueMaskDirective } from 'v-mask'
-Vue.directive('mask', VueMaskDirective);
 
 // Or only as a filter
 import { VueMaskFilter } from 'v-mask'
+
+// Global register
+Vue.component('snackbar', Snackbar);
+Vue.use(VueMask);
+Vue.directive('mask', VueMaskDirective);
 Vue.filter('VMask', VueMaskFilter)
 
 // Import Interfaces`
