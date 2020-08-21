@@ -2,33 +2,14 @@
 	<!--  BEGIN CONTENT AREA  -->
 	<div id="content" class="main-content">
 		<div class="layout-px-spacing">
-
-<!--			<div class="vld-parent">-->
-<!--				<loading :active.sync="isLoading"-->
-<!--						 :can-cancel="false"-->
-<!--						 :is-full-page="fullPage"></loading>-->
-<!--			</div>-->
-
-
-			<!-- CONTENT AREA -->
-			<div class="modal fade" id="payoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-					<div class="modal-content">
-						<div class="modal-body text-center">
-							<!-- Images -->
-							<p>Are you sure you want to request a payout?</p>
-							<button class="btn btn-primary" @click="request()">Confirm Payout</button>
-							<hr>
-							<small>Connect Account: </small>
-						</div>
-						<div class="modal-footer">
-							<button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
-						</div>
-					</div>
+			<div class="row layout-top-spacing mb-3">
+				<div class="col-md-12">
+					<h6><i>Welcome:</i> <strong>{{getUserDetails.first_name}}  {{getUserDetails.last_name}}</strong></h6>
 				</div>
 			</div>
-
-			<div class="row layout-top-spacing">
+<!--			<pre>{{getUserDetails.affiliate.affiliate_id}}</pre>-->
+			<!-- CONTENT AREA -->
+			<div class="row ">
 				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 					<div class="widget widget-five">
 						<div class="widget-content">
@@ -55,7 +36,8 @@
 				</div>
 
 				<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-					<group-sales :sales="getGroupSales.response"></group-sales>
+
+					<group-sales :sales="getGroupSales.response" ></group-sales>
 				</div>
 
 			</div>
@@ -80,24 +62,9 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-					<div class="widget widget-five">
-						<div class="widget-content">
-
-							<div class="header">
-								<div class="header-body">
-									<h6>Weekly Sales</h6>
-								</div>
-							</div>
-
-							<div class="w-content">
-								<div class="text-center">
-									<h1>{{userDasboard.all_members}} </h1>
-									<h2 class="text-success text-6" ><strong>Sales </strong></h2>
-								</div>
-							</div>
-						</div>
-					</div>
+					<sales-components :sales="userDasboard.all_members" :link="getUserDetails.affiliate.affiliate_id"></sales-components>
 				</div>
 				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
 					<summary-component></summary-component>
@@ -120,9 +87,10 @@
  import SummaryComponent from "../components/Summary";
  import PersonalSales from "../components/PersonalSales";
  import GroupSales from "../components/GroupSales";
-
+ import SalesComponents from "../components/SalesComponents";
 export default {
 	components: {
+		SalesComponents,
 		SummaryComponent,
 		PersonalSales,
 		GroupSales

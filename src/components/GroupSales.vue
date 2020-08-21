@@ -15,7 +15,7 @@
                             <ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
 
                                 <li class="list-inline-item chat-online-usr" v-for="sale in sales">
-                                    <img alt="avatar" src="@/assets/img/90x90.jpg">
+                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
                                 </li>
 
                                 <p class="text-4 mt-1 text-danger"><strong>{{sales}} Group Sales of {{bronze_status}}</strong></p>
@@ -40,10 +40,10 @@
                             <ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
 
                                 <li v-show="sales > 10" class="list-inline-item chat-online-usr" v-for="sale in 10">
-                                    <img alt="avatar" src="@/assets/img/90x90.jpg">
+                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
                                 </li>
                                 <li v-show="sales <= 10" class="list-inline-item chat-online-usr" v-for="sale in sales">
-                                    <img alt="avatar" src="@/assets/img/90x90.jpg">
+                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
                                 </li>
 
                                 <p class="text-4 mt-1 text-white"><strong>{{sales}} Group Sales of {{silver_status}}</strong></p>
@@ -68,7 +68,7 @@
                         <div class="col-md-12">
                             <ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
                                 <li v-show="sales > 20" class="list-inline-item chat-online-usr" v-for="sale in 10">
-                                    <img alt="avatar" src="@/assets/img/90x90.jpg">
+                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
                                 </li>
                                 <p class="text-4 mt-1 text-dark"><strong>{{sales}} Group Sales of {{gold_status}}</strong></p>
                             </ul>
@@ -91,10 +91,10 @@
                             <ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
 
                                 <li v-show="sales > 20" class="list-inline-item chat-online-usr" v-for="sale in 10">
-                                    <img alt="avatar" src="@/assets/img/90x90.jpg">
+                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
                                 </li>
                                 <li v-show="sales <= 20" class="list-inline-item chat-online-usr" v-for="sale in sales">
-                                    <img alt="avatar" src="@/assets/img/90x90.jpg">
+                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
                                 </li>
                                 <p class="text-4 mt-1 text-white"><strong>{{sales}} Group Sales of {{ruby_status}}</strong></p>
                             </ul>
@@ -117,10 +117,10 @@
                             <ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
 
                                 <li v-show="sales > 20" class="list-inline-item chat-online-usr" v-for="sale in 10">
-                                    <img alt="avatar" src="@/assets/img/90x90.jpg">
+                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
                                 </li>
                                 <li v-show="sales <= 15" class="list-inline-item chat-online-usr" v-for="sale in sales">
-                                    <img alt="avatar" src="@/assets/img/90x90.jpg">
+                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
                                 </li>
                                 <p class="text-4 mt-1 text-dark"><strong>{{sales}} Group Sales {{diamond_status}}</strong></p>
                             </ul>

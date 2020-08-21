@@ -14,8 +14,8 @@
                 <div class="row mt-1">
                     <div class="col-md-12">
                         <ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-                            <li class="list-inline-item chat-online-usr" v-for="sale in sales.length">
-                                <img alt="avatar" src="@/assets/img/90x90.jpg">
+                            <li class="list-inline-item chat-online-usr" v-for="(index, sale) in sales.length">
+                                <img alt="avatar" src="@/assets/avatar/img12.jpg">
                             </li>
                             <p class="text-4 mt-1"><strong>{{sales.length}} Personal Sales</strong></p>
                         </ul>

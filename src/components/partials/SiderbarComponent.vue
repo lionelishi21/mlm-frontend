@@ -74,9 +74,7 @@
                 </a>
                 <div class="tooltip"><span>Accounts</span></div>
             </router-link>
-        </ul>
 
-        <div class="external-links">
             <router-link to="/dashboard/settings" tag="li" active-class="active" class="menu">
                 <a href="#" data-active="false" class="menu-toggle">
                     <div class="base-menu">
@@ -87,7 +85,7 @@
                 </a>
                 <div class="tooltip"><span>Settings</span></div>
             </router-link>
-        </div>
+        </ul>
     </nav>
     <div id="compact_submenuSidebar" class="submenu-sidebar">
 
