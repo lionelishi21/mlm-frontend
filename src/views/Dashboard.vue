@@ -73,7 +73,7 @@
 
 							<div class="w-content">
 								<div class="text-center">
-<!--									<h1>{{userDasboard.countries}} </h1>-->
+									<h1>22</h1>
 									<h2 class="text-success text-6" ><strong>Countries</strong></h2>
 								</div>
 							</div>
@@ -86,14 +86,14 @@
 
 							<div class="header">
 								<div class="header-body">
-									<h6>Total Affiliates</h6>
+									<h6>Weekly Sales</h6>
 								</div>
 							</div>
 
 							<div class="w-content">
 								<div class="text-center">
 									<h1>{{userDasboard.all_members}} </h1>
-									<h2 class="text-success text-6" ><strong>Affiliates </strong></h2>
+									<h2 class="text-success text-6" ><strong>Sales </strong></h2>
 								</div>
 							</div>
 						</div>
