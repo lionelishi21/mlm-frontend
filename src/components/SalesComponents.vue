@@ -28,7 +28,6 @@
         props: ['sales', 'link'],
         methods: {
             goToPersonalSales() {
-                alert(this.link)
                 var url = '/dashboard/affiliates/'+this.link
                 this.$router.push(url);
             }
