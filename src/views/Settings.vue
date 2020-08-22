@@ -361,7 +361,7 @@
 
                                             <div class="row mt-4">
                                                 <div class="col-md-12 text-center">
-                                                    <h6><i>Support Debit Card</i></h6>
+                                                    <h6><i>Supported Debit Card</i></h6>
                                                     <p>US, Canada and Singapore Only</p>
                                                 </div>
                                                 <hr>
