@@ -15,7 +15,7 @@
 					<h6><i>Welcome:</i> <strong>{{getUserDetails.first_name}}  {{getUserDetails.last_name}}</strong></h6>
 				</div>
 			</div>
-<!--			<pre>{{getUserDetails.affiliate.affiliate_id}}</pre>-->
+
 			<!-- CONTENT AREA -->
 			<div class="row ">
 				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
@@ -33,7 +33,7 @@
 								<div class="input-group mt-2">
 									<input ref="mylink" type="text" class="form-control" :value="fetchLink.link">
 								</div>
-								<a @click="copy(fetchLink.link)" class="mt-2 btn btn-primary" href="#">Copy from Input</a>
+								<a @click="copy(fetchLink.link)" class="mt-2 btn btn-primary" href="#">Copy Referral ID</a>
 							</div>
 						</div>
 					</div>

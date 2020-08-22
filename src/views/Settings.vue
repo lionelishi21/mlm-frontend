@@ -338,7 +338,7 @@
                                         <div class="mt-5">
                                              <h5 class="pb-4">Add your bank account or debit card to recieve your cash bonuses</h5>
                                              <button id="v-step-0" class="btn btn-primary mb-5" @click="showAccountModal()"><i class="fa fa-plus"></i> Add Account/Debit Card</button>
-                                             <button class="btn btn-primary mb-5"><i class="fa fa-plus"></i> MCC Debit Card <span class="badge badge-success">Coming Soon</span></button>
+<!--                                             <button class="btn btn-primary mb-5"><i class="fa fa-plus"></i> MCC Debit Card <span class="badge badge-success">Coming Soon</span></button>-->
 
                                             <div class="row">
                                                 <div class="col-md-4"></div>
