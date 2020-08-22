@@ -67,7 +67,8 @@
 					<div class="widget-content">
 						<div class="text-center mt-4">
 							<h1 class="value text-success">{{totalItem | currency }}</h1>
-							<h3>Wallet</h3>
+							<h6 class="text-6 text-bold">Wallet</h6>
+							<small class="test-dark">Availble cash bonus</small>
 						</div>
 					</div>
 				</div>
@@ -77,7 +78,8 @@
 					<div class="widget-content">
 						<div class="text-center mt-4">
 							<h1 class="value text-success">{{ payoutTotal | currency }}</h1>
-							<h3>Payout</h3>
+							<h6 class="text-6 text-bold">Paid Out</h6>
+							<small class="text-dark">The total amount that was paid out</small>
 						</div>
 					</div>
 				</div>

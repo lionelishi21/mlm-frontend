@@ -12,14 +12,13 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <div class="row" v-if="step == 1">
+                    <div class="row" v-if="step == 1" >
                         <div class="col-md-12">
                             <h4>Select Account</h4>
                             <small>Account you want to recieve your cash bonuses</small>
                             <hr>
-
-                            <ul class="list-group list-group-media">
-                                <li class="list-group-item list-group-item-action" @click="selecAcount('bank')" :class="{ active: bankIsActive }">
+                            <ul class="list-group list-group-media" >
+                                <li id="v-step-1" class="list-group-item list-group-item-action" @click="selecAcount('bank')" :class="{ active: bankIsActive }">
                                     <div class="media">
                                         <div class="mr-3">
                                             <img src="@/assets/svg/005-credit-card.svg"  alt="" width="40px">
@@ -31,41 +30,31 @@
                                     </div>
                                 </li>
 
-                                <li class="list-group-item list-group-item-action " @click="selecAcount('paypal')"  :class="{ active: paypalIsActive }">
-                                    <div class="media">
-                                        <div class="mr-3">
-                                            <img src="@/assets/svg/001-paypal.svg"  alt="" width="40px">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="tx-inverse">Paypal</h6>
-                                            <p class="mg-b-0">Connect Your paypal account</p>
-                                        </div>
-                                    </div>
-                                </li>
+
 
                                 <li class="list-group-item list-group-item-action " @click="selecAcount('debit')"  :class="{ active: debitIsActive }">
                                     <div class="media">
                                         <div class="mr-3">
-                                            <img src="@/assets/svg/006-mastercard.svg"  alt="" width="40px">
+                                            <img src="@/assets/svg/006-credit-card-1.svg"  alt="" width="40px">
                                         </div>
                                         <div class="media-body">
-                                            <h6 class="tx-inverse">Debit Card</h6>
+                                            <h6 class="tx-inverse">Debit Card ( Payoneer supported )</h6>
                                             <p class="mg-b-0">Connect you debit card</p>
                                         </div>
                                     </div>
                                 </li>
 
-                                <li class="list-group-item list-group-item-action " @click="selecAcount('mcc')"  :class="{ active: mccIsActive }">
-                                    <div class="media">
-                                        <div class="mr-3">
-                                            <img src="@/assets/svg/007-money.svg"  alt="" width="40px">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="tx-inverse">MCC Debit & Virtual Card</h6>
-                                            <p class="mg-b-0">Get you own mcc card</p>
-                                        </div>
-                                    </div>
-                                </li>
+<!--                                <li class="list-group-item list-group-item-action " @click="selecAcount('mcc')"  :class="{ active: mccIsActive }">-->
+<!--                                    <div class="media">-->
+<!--                                        <div class="mr-3">-->
+<!--                                            <img src="@/assets/svg/007-money.svg"  alt="" width="40px">-->
+<!--                                        </div>-->
+<!--                                        <div class="media-body">-->
+<!--                                            <h6 class="tx-inverse">MCC Debit & Virtual Card</h6>-->
+<!--                                            <p class="mg-b-0">Get you own mcc card</p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </li>-->
 
                               </ul>
                         </div>
@@ -77,7 +66,7 @@
                         <div class="col-md-12" v-if="bankIsActive">
                             <h4>Account Information</h4>
                             <hr>
-                            <form >
+                            <form>
                                 <ValidationProvider name="country" rules="required" v-slot="{ errors }">
 
                                     <div class="form-group">
@@ -243,17 +232,6 @@
 
                             </form>
                         </div>
-                        <div class="col-md-12" v-if="paypalIsActive">
-                            <form >
-                                <div class="form-group">
-                                    <label for="">PayPal Email</label>
-                                    <input type="text" v-model="paypal.email" class="form-control" placeholder="Enter your paypal email">
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-block btn-primary" @click.prevent="savePaypalAccount()">Submit</button>
-                                </div>
-                            </form>
-                        </div>
                     </div>
 
                 </div>
@@ -357,7 +335,44 @@
                                         </div>
                                     </li>
                                     <li class="list-group-item list-group-item-action text-center">
-                                         <button class="btn btn-primary mt-5 mb-5" @click="showAccountModal()"><i class="fa fa-plus"></i> Add Account</button>
+                                        <div class="mt-5">
+                                             <h5 class="pb-4">Add your bank account or debit card to recieve your cash bonuses</h5>
+                                             <button id="v-step-0" class="btn btn-primary mb-5" @click="showAccountModal()"><i class="fa fa-plus"></i> Add Account/Debit Card</button>
+                                             <button class="btn btn-primary mb-5"><i class="fa fa-plus"></i> MCC Debit Card <span class="badge badge-success">Coming Soon</span></button>
+
+                                            <div class="row">
+                                                <div class="col-md-4"></div>
+
+                                                <div class="col-md-1">
+                                                    <img width="50px" src="@/assets/svg/006-mastercard.svg" alt="">
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <img width="50px" src="@/assets/svg/007-discover.svg" alt="">
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <img width="50px" src="@/assets/svg/005-visa.svg" alt="">
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <img width="50px" src="@/assets/img/payoneer.png" alt="">
+                                                </div>
+
+                                                <div class="col-md-4"></div>
+                                            </div>
+
+                                            <div class="row mt-4">
+                                                <div class="col-md-12 text-center">
+                                                    <h6><i>Support Debit Card</i></h6>
+                                                    <p>US, Canada and Singapore Only</p>
+                                                </div>
+                                                <hr>
+                                                <div class="col-md-12 text-center mt-3">
+                                                    <h6><i>Payoneer</i></h6>
+                                                    <a href="https://www.payoneer.com/accounts/">Signup</a>
+                                                </div>
+                                            </div>
+
+<!--                                         <v-tour name="myTour" :steps="steps"></v-tour>-->
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -443,13 +458,37 @@
                         isAlert: false,
                         message: null
                     }
-                }
+                },
+                steps: [
+                    {
+                        target: '#v-step-0',  // We're using document.querySelector() under the hood
+                        header: {
+                            title: 'Get Started',
+                        },
+                        content: `Add account information to recieve your cash bonuses`
+                    },
+                    {
+                        target: '#v-step-1',
+                        content: 'Select Bank Account to recieve your cash bonus directly to ur ACH account',
+                    },
+                    {
+                        target: '[data-v-step="2"]',
+                        content: 'Try it, you\'ll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.',
+                        params: {
+                            placement: 'top' // Any valid Popper.js placement. See https://popper.js.org/popper-documentation.html#Popper.placements
+                        }
+                    }
+                ]
 
             }
         },
 
         created() {
            this.init()
+        },
+
+        mounted() {
+            this.$tours['myTour'].start()
         },
 
         computed: {

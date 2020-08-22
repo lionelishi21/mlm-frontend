@@ -63,7 +63,7 @@
 
 							<div class="w-content">
 								<div class="text-center">
-									<h1>22</h1>
+									<h1>24</h1>
 									<h2 class="text-success text-6" ><strong>Countries</strong></h2>
 								</div>
 							</div>
