@@ -439,7 +439,7 @@ try {
           Perfect Scrollbar | Notifications
       =============================================
   */
-  const ps = new PerfectScrollbar(document.querySelector('.mt-container'));
+  // const ps = new PerfectScrollbar(document.querySelector('.mt-container'));
 
 
 } catch(e) {

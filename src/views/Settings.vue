@@ -1,259 +1,32 @@
 <template>
 <div id="content" class="main-content">
 
-    <div class="vld-parent">
-        <loading
-             :active.sync="isLoading"
-             :is-full-page="fullPage">
-        </loading>
-    </div>
-    <!-- Account Modal -->
-    <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="row" v-if="step == 1" >
-                        <div class="col-md-12">
-                            <h4>Select Account</h4>
-                            <small>Account you want to recieve your cash bonuses</small>
-                            <hr>
-                            <ul class="list-group list-group-media" >
-                                <li id="v-step-1" class="list-group-item list-group-item-action" @click="selecAcount('bank')" :class="{ active: bankIsActive }">
-                                    <div class="media">
-                                        <div class="mr-3">
-                                            <img src="@/assets/svg/005-credit-card.svg"  alt="" width="40px">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="tx-inverse">Bank Account</h6>
-                                            <p class="mg-b-0">Click Connect your back account</p>
-                                        </div>
-                                    </div>
-                                </li>
 
 
+     <!--  User Modal Popup -->
+    <user-account :country="getDetail.country"></user-account>
+     <!--  End User Modal Popup -->
 
-                                <li class="list-group-item list-group-item-action " @click="selecAcount('debit')"  :class="{ active: debitIsActive }">
-                                    <div class="media">
-                                        <div class="mr-3">
-                                            <img src="@/assets/svg/006-credit-card-1.svg"  alt="" width="40px">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="tx-inverse">Debit Card ( Payoneer supported )</h6>
-                                            <p class="mg-b-0">Connect you debit card</p>
-                                        </div>
-                                    </div>
-                                </li>
-
-<!--                                <li class="list-group-item list-group-item-action " @click="selecAcount('mcc')"  :class="{ active: mccIsActive }">-->
-<!--                                    <div class="media">-->
-<!--                                        <div class="mr-3">-->
-<!--                                            <img src="@/assets/svg/007-money.svg"  alt="" width="40px">-->
-<!--                                        </div>-->
-<!--                                        <div class="media-body">-->
-<!--                                            <h6 class="tx-inverse">MCC Debit & Virtual Card</h6>-->
-<!--                                            <p class="mg-b-0">Get you own mcc card</p>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </li>-->
-
-                              </ul>
-                        </div>
-                        <div class="col-md-12 text-center mt-5" v-if="paypalIsActive != false || bankIsActive != false">
-                        </div>
-                    </div>
-
-                    <div class="row" v-if="step == 2">
-                        <div class="col-md-12" v-if="bankIsActive">
-                            <h4>Account Information</h4>
-                            <hr>
-                            <form>
-                                <ValidationProvider name="country" rules="required" v-slot="{ errors }">
-
-                                    <div class="form-group">
-                                        <label for="">Country</label>
-                                        <select v-model="bank.country" class="form-control">
-                                            <option value="us">United States</option>
-                                            <option value="gb">United Kingdom</option>
-<!--                                            <option value="ch">Switzerland</option>-->
-<!--                                            <option value="se">Sweden</option>-->
-<!--                                            <option value="ca">Canada</option>-->
-                                        </select>
-                                        <span class="help-block"> More countries comming soon </span>
-                                    </div>
-
-                                </ValidationProvider>
-
-                                <ValidationProvider name="currency" rules="required" v-slot="{ errors }">
-                                    <div class="form-group">
-                                        <label for="">Currency</label>
-                                        <select v-model="bank.currency" class="form-control">
-                                            <option value="usd">US</option>
-                                            <option value="gbp">GB</option>
-<!--                                            <option value="can">CA</option>-->
-<!--                                            <option value="sek">SE</option>-->
-<!--                                            <option value="chf">CH</option>-->
-                                        </select>
-                                    </div>
-                                </ValidationProvider>
-
-                                <div class="form-group" v-if="bank.country == 'us'">
-                                    <ValidationProvider name="account_number" rules="required" v-slot="{ errors }">
-                                        <label for="">Routing Number:</label>
-                                        <input type="text" v-model="bank.routing_number" class="form-control">
-                                        <span class="text-danger">{{ errors[0] }}</span>
-                                    </ValidationProvider>
-                                </div>
-
-                                <div class="form-group" v-if="bank.country == 'ca'">
-                                    <label for="">Transit Number:</label>
-                                    <input type="text" v-model="bank.transit_number" class="form-control">
-                                </div>
-
-                                <div class="form-group" v-if="bank.country == 'ca'">
-                                    <label for="">Insitution Number:</label>
-                                    <input type="text" v-model="bank.institution_number" class="form-control">
-                                </div>
-
-                                <div class="form-group" v-if="bank.country == 'gb'">
-                                    <label for="">Sort Code:</label>
-                                    <input type="text" v-model="bank.routing_number" class="form-control">
-                                </div>
-
-                                <div class="form-group" v-if="bank.country == 'ch'">
-                                    <label for="">IBAN:</label>
-                                    <input type="text" v-model="bank.iban" class="form-control">
-                                </div>
-
-
-                                <ValidationProvider name="account_number" rules="required" v-slot="{ errors }">
-                                    <div class="form-group">
-                                        <label>Account Number</label>
-                                        <input type="text" class="form-control" v-model="bank.account_number" >
-                                        <span class="text-danger">{{ errors[0] }}</span>
-                                    </div>
-                                </ValidationProvider>
-
-                                <ValidationProvider name="email" rules="required" v-slot="{ errors }">
-                                    <div class="form-group">
-                                        <label for="">Account Holder Name</label>
-                                        <input type="text" v-model="bank.account_holder_name" class="form-control">
-                                        <span class="text-danger">{{ errors[0] }}</span>
-                                    </div>
-                                </ValidationProvider>
-
-                                <ValidationProvider name="email" rules="required" v-slot="{ errors }">
-                                    <div class="form-group">
-                                        <label for="">Account Holder Type</label>
-                                        <select class="form-control" v-model="bank.account_holder_type">
-                                            <option value="individual">Individual</option>
-                                            <option value="company">Company</option>
-                                        </select>
-                                        <span class="text-danger">{{ errors[0] }}</span>
-                                    </div>
-                                </ValidationProvider>
-
-                                <div class="form-group">
-                                    <button class="btn btn-block btn-primary" @click.prevent="saveBankInformation()">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-md-12" v-if="debitIsActive">
-                            <h4>Debit Card Information</h4>
-
-                            <div v-if="alerts.debit.isAlert" class="alert alert-danger mb-4" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                                <strong>Card Error!</strong> {{alerts.debit.message}}.</button>
-                            </div>
-                            <hr>
-                            <form>
-                                <ValidationProvider name="name" rules="required" v-slot="{ errors }">
-                                    <div class="form-group">
-                                        <label for="">Card Holder Name</label>
-                                        <input type="text" v-model="debit.name" class="form-control">
-                                        <span class="text-danger">{{ errors[0] }}</span>
-                                    </div>
-                                </ValidationProvider>
-                                <ValidationProvider name="name" rules="required" v-slot="{ errors }">
-                                    <div class="form-group">
-                                        <label for="">Currency</label>
-                                        <select v-model="debit.currency" class="form-control">
-                                            <option value="usd">US</option>
-                                            <option value="can">CA</option>
-                                            <option value="gbp">GB</option>
-                                            <option value="sek">SE</option>
-                                            <option value="chf">CH</option>
-                                        </select>
-                                        <span class="text-danger">{{ errors[0] }}</span>
-                                    </div>
-                                </ValidationProvider>
-                                <ValidationProvider name="name" rules="required" v-slot="{ errors }">
-                                    <div class="form-group">
-                                        <label for="">Card Number</label>
-                                        <input type="text"  v-mask="'####-####-####-####'" v-model="debit.number" class="form-control">
-                                        <span class="text-danger">{{ errors[0] }}</span>
-                                    </div>
-                                </ValidationProvider>
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <ValidationProvider name="name" rules="required" v-slot="{ errors }">
-                                            <div class="form-group ">
-                                                <label for="">Expiry Date</label>
-                                                <input type="number" v-mask="'##'" v-model="debit.exp_month" class="form-control">
-                                                <span class="text-danger">{{ errors[0] }}</span>
-                                            </div>
-                                        </ValidationProvider>
-                                    </div>
-                                    <div class="col-md-4">
-                                    <ValidationProvider name="name" rules="required" v-slot="{ errors }">
-                                        <div class="form-group">
-                                            <label for="">Expiry Year</label>
-                                            <input type="number" v-mask="'####'" v-model="debit.exp_year" class="form-control">
-                                            <span class="text-danger">{{ errors[0] }}</span>
-                                        </div>
-                                    </ValidationProvider>
-                                    </div>
-                                    <div class="col-md-4">
-                                    <ValidationProvider name="name" rules="required" v-slot="{ errors }">
-                                        <div class="form-group">
-                                            <label for="">CVC</label>
-                                            <input type="text" v-model="debit.cvc" class="form-control">
-                                            <span class="text-danger">{{ errors[0] }}</span>
-                                        </div>
-                                    </ValidationProvider>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <button class="btn btn-block btn-primary" @click.prevent="saveDebitCard()">Save</button>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer" v-if="step == 1">
-                    <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
-                    <button v-if="paypalIsActive != false || bankIsActive != false || debitIsActive != false" class="btn btn-primary" @click="next()"><i class="fa fa-arrow-circle-o-right"></i> Next</button>
-                </div>
-                <div class="modal-footer" v-if="step == 2">
-                    <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
-                    <button v-if="step == 2" class="btn btn-primary" @click="prev()"><i class="fa fa-arrow-circle-o-right"></i> Back</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Account Modal-->
-
-    <div class="row">
-        <pre></pre>
-    </div>
 
     <!-- Main Content -->
     <div class="layout-px-spacing">
+        <div class="col-md-12">
+
+            <!-- Page Header -->
+            <div class="breadcrumb-five">
+                <ul class="breadcrumb">
+                    <li class="mb-2"><a href="javscript:void(0);">Home</a></li>
+                    <li class="active mb-2"><a href="javscript:void(0);"> Settings</a></li>
+                </ul>
+            </div>
+            <!-- End Page Header -->
+
+            <div v-if="getUserStripeAccount.transfer  != 'active'" class="alert alert-light-danger mb-4" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
+                <strong>Alert!</strong> Complete your transfer account in order to enable automatic payouts.</button>
+            </div>
+
+        </div>
         <div class="col-lg-12">
             <div class="widget-content searchable-container list">
                 <div class="row layout-top-spacing layout-spacing">
@@ -269,112 +42,186 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="widget-content widget-content-area">
-                                <!-- Icons -->
-                                <div class="list-group list-group-icons-meta">
-                                    <li class="list-group-item list-group-item-action" v-for="acc in getStripeAccount">
-                                        <div class="media">
-                                            <div class="mr-3 mt-3">
-                                                <img src="@/assets/svg/005-credit-card.svg"  alt="" width="40px">
-                                            </div>
-                                            <div class="media-body mt-2">
-                                                <div class="row">
+                                <div class="list-group list-group-icons-meta" >
 
-                                                    <div class="col-md-10" v-if="acc.object == 'card'">
-                                                        <h6 class="tx-inverse">{{acc.brand}} {{acc.funding}}
-                                                            <span class="badge-success badge" v-if="getUserStripeAccount['payouts_enabled']">Active</span>
-                                                            <span class="badge-danger badge" v-else>Inactive</span>
-                                                        </h6>
-                                                        <p class="mg-b-0">{{acc.bank_name}}</p>
-                                                        <p class="mg-b-0">**** **** **** {{acc.last4}}</p>
-                                                    </div>
-
-                                                    <div class="col-md-10" v-if="acc.object == 'bank_account'">
-                                                        <h6 class="tx-inverse">{{acc.account_holder_name}}
-                                                            <span class="badge-success badge" v-if="getUserStripeAccount['payouts_enabled']">Active</span>
-                                                            <span class="badge-danger badge" v-else>Inactive</span>
-                                                        </h6>
-                                                        <p class="mg-b-0">{{acc.bank_name}}</p>
-                                                        <p class="mg-b-0">**** **** **** {{acc.last4}}</p>
-                                                    </div>
-
-                                                    <div class="col-md-2">
-                                                        <div class="btn-group pull-right">
-                                                            <button class="btn btn-default" v-if="getUserStripeAccount['payouts_enabled']">Transfer Active</button>
-                                                            <button class="btn btn-danger" v-else @click="accountOnboarding()">
-                                                                Update
-                                                            </button>
-<!--                                                            <button class="btn btn-default" @click="deleteAccount()">Del</button>-->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                     </li>
-                                  </div>
-                                    <li class="list-group-item list-group-item-action" v-for="cash in GetPaypalAccount">
-                                        <div class="media">
-                                            <div class="mr-3 mt-3">
-                                                <img src="@/assets/svg/005-credit-card.svg"  alt="" width="40px">
-                                            </div>
-                                            <div class="media-body mt-2">
-                                                <div class="row">
-                                                    <div class="col-md-10">
-                                                        <h6 class="tx-inverse">PayPal Account</h6>
-                                                        <p class="mg-b-0">{{cash.customer_id}}</p>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <div class="btn-group pull-right">
-                                                            <button class="btn btn-default" @click="showBankModal()">Edit</button>
-                                                            <button class="btn btn-default" @click="deleteAccount()">Del</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
                                     <li class="list-group-item list-group-item-action text-center">
-                                        <div class="mt-5">
-                                             <h5 class="pb-4">Add your bank account or debit card to recieve your cash bonuses</h5>
-                                             <button id="v-step-0" class="btn btn-primary mb-5" @click="showAccountModal()"><i class="fa fa-plus"></i> Add Account/Debit Card</button>
-<!--                                             <button class="btn btn-primary mb-5"><i class="fa fa-plus"></i> MCC Debit Card <span class="badge badge-success">Coming Soon</span></button>-->
+                                        <div class="mt-5" v-if="getUserStripeAccount">
+                                            <div class="user-profile">
+                                                <div class="widget-content widget-content-area">
+                                                    <div class="text-center">
+                                                        <img src="@/assets/avatar/img12.jpg" alt="avatar">
+                                                        <h5 class="">{{getUserStripeAccount.name}}</h5>
+                                                        <p>Country: {{getUserStripeAccount.country}}</p>
+                                                        <p>Payout Status:
+                                                            <span class="badge badge-danger text-3" v-if="getUserStripeAccount.transfer  == 'inactive'">{{getUserStripeAccount.transfer}}</span>
+                                                            <span class="badge badge-success text-3" v-else>{{getUserStripeAccount.transfer}}</span>
 
+                                                        </p>
+                                                        <button class="btn btn-danger btn-sm" @click="accountUpdate()">
+                                                            Update
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-5" v-else>
+                                            <h5 class="pb-4">Verify your identity with stripe will enable automatic payout for supported debit card and bank account</h5>
+                                            <button class="btn btn-primary mb-5" @click="accountOnboarding()"><i class="fa fa-user-alt-slash"></i> Verify Identity </button>
+                                        </div>
+
+                                    </li>
+
+                                    <div class="list-group list-group-icons-meta" v-if="getStripeAccount">
+                                        <li class="list-group-item list-group-item-action" v-for="acc in getStripeAccount">
+                                            <div class="media">
+                                                <div class="mr-3 mt-3">
+                                                    <img src="@/assets/svg/005-credit-card.svg"  alt="" width="40px">
+                                                </div>
+                                                <div class="media-body mt-2">
+                                                    <div class="row">
+
+                                                        <div class="col-md-10" v-if="acc.object == 'card'">
+                                                            <h6 class="tx-inverse">{{acc.brand}} {{acc.funding}}</h6>
+                                                            <p class="mg-b-0">{{acc.bank_name}}</p>
+                                                            <p class="mg-b-0">**** **** **** {{acc.last4}}</p>
+                                                        </div>
+
+                                                        <div class="col-md-10" v-if="acc.object == 'bank_account'">
+                                                            <h6 class="tx-inverse">{{acc.account_holder_name}}</h6>
+                                                            <p class="mg-b-0">{{acc.bank_name}}</p>
+                                                            <p class="mg-b-0">**** **** **** {{acc.last4}}</p>
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <div class="btn-group pull-right">
+                                                                <router-link to="/dashboard/wallet" tag="a" class="btn btn-primary" v-if="getUserStripeAccount['payouts_enabled']" >Transfer Active</router-link>
+                                                                <button class="btn btn-warning" @click="deleteAccount(acc.id, acc.object, acc.account)"><i class="fa fa-trash-alt"></i> Remove</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </div>
+
+                                    <li class="list-group-item list-group-item-action text-center" v-if="supportedCountry(getDetail.country)">
+                                        <div class="mt-5">
+                                            <h5 class="">Add bank account or debit card</h5>
+                                            <h6 class="text-danger pb-2">Bank Transfer takes 1-3 business days while Debit Card Transfer takes up 30 mins </h6>
+
+                                            <button class="btn btn-primary mb-5" @click="modalBankAccount()"><i class="fa fa-plus"></i> Add Bank Account </button>
+                                            <button class="btn btn-primary mb-5" @click="modalDebitCard()"><i class="fa fa-plus"></i> Add Debit Card <span class="badge badge-success">Recommended</span></button>
                                             <div class="row">
                                                 <div class="col-md-4"></div>
+                                                <div class="col-md-1">
+                                                    <img width="50px" src="@/assets/svg/004-mastercard.svg" alt="">
+                                                </div>
 
-                                                <div class="col-md-1">
-                                                    <img width="50px" src="@/assets/svg/006-mastercard.svg" alt="">
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <img width="50px" src="@/assets/svg/007-discover.svg" alt="">
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <img width="50px" src="@/assets/svg/005-visa.svg" alt="">
-                                                </div>
                                                 <div class="col-md-1">
                                                     <img width="50px" src="@/assets/img/payoneer.png" alt="">
                                                 </div>
 
+                                                <div class="col-md-1">
+                                                    <img width="50px" src="@/assets/svg/007-discover.svg" alt="">
+                                                </div>
+
+                                                <div class="col-md-1">
+                                                    <img width="50px" src="@/assets/svg/005-visa.svg" alt="">
+                                                </div>
                                                 <div class="col-md-4"></div>
                                             </div>
-
-                                            <div class="row mt-4">
-                                                <div class="col-md-12 text-center">
-                                                    <h6><i>Supported Debit Card</i></h6>
-                                                    <p>US, Canada and Singapore Only</p>
-                                                </div>
-                                                <hr>
-                                                <div class="col-md-12 text-center mt-3">
-                                                    <h6><i>Payoneer</i></h6>
+                                            <div class="row mt-2 mb-3">
+                                                <div class="col-md-12 text-center mb-3">
+                                                    <h5><i>Payoneer</i></h5>
                                                     <a href="https://www.payoneer.com/accounts/">Signup</a>
                                                 </div>
                                             </div>
+                                         </div>
+                                    </li>
 
-<!--                                         <v-tour name="myTour" :steps="steps"></v-tour>-->
+                                    <!-- Great Britain account -->
+                                    <li class="list-group-item list-group-item-action text-center" v-if="supportedCountryBankOnly(getDetail.country)">
+                                        <div class="mt-5">
+                                            <h5 class="pb-4">Add your bank account</h5>
+                                            <button class="btn btn-primary mb-5" @click="showAccountModal()"><i class="fa fa-plus"></i> Add Bank </button>
+                                            <div class="row">
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-1"></div>
+
+                                                <div class="col-md-2">
+                                                    <img width="50px" src="@/assets/img/payoneer.png" alt="">
+                                                </div>
+
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-4"></div>
+                                            </div>
+                                            <div class="row mt-2 mb-3">
+                                                <div class="col-md-12 text-center mb-3">
+                                                    <h5><i>Payoneer</i></h5>
+                                                    <a href="https://www.payoneer.com/accounts/">Signup</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </li>
-                                </ul>
+                                    <!-- Japan Bank Account-->
+
+                                    <li class="list-group-item list-group-item-action text-center" v-if="checkIfCountry(getDetail.country)">
+                                        <div class="mt-5">
+                                            <h5 class="pb-4">Add bank account or debit card</h5>
+                                            <button class="btn btn-primary mb-5" @click="showPayoneerBankAccountModal()"><i class="fa fa-plus"></i> Add Payoneer Bank Account </button>
+                                            <button class="btn btn-primary mb-5" @click="showPayoneerDebitCardModal()"><i class="fa fa-plus"></i> Add Payoneer Debit Card </button>
+                                            <div class="row">
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-1"></div>
+
+                                                <div class="col-md-2">
+                                                    <img width="50px" src="@/assets/img/payoneer.png" alt="">
+                                                </div>
+
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-4"></div>
+                                            </div>
+                                            <div class="row mt-2 mb-3">
+                                                <div class="col-md-12 text-center mb-3">
+                                                    <h5><i>Payoneer</i></h5>
+                                                    <p>Payoneer Global Payment Service</p>
+<!--                                                    <a href="https://www.payoneer.com/accounts/">Signup</a>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </div>
+                                <!-- Icons -->
+
+<!--                                <div class="list-group list-group-icons-meta">-->
+<!--                                    <li class="list-group-item list-group-item-action" v-for="cash in GetPaypalAccount">-->
+<!--                                        <div class="media">-->
+<!--                                            <div class="mr-3 mt-3">-->
+<!--                                                <img src="@/assets/svg/005-credit-card.svg"  alt="" width="40px">-->
+<!--                                            </div>-->
+<!--                                            <div class="media-body mt-2">-->
+<!--                                                <div class="row">-->
+<!--                                                    <div class="col-md-10">-->
+<!--                                                        <h6 class="tx-inverse">PayPal Account</h6>-->
+<!--                                                        <p class="mg-b-0">{{cash.customer_id}}</p>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="col-md-2">-->
+<!--                                                        <div class="btn-group pull-right">-->
+<!--                                                            <button class="btn btn-default" @click="showBankModal()">Edit</button>-->
+<!--                                                            <button class="btn btn-default" @click="deleteAccount()">Del</button>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+
+
+<!--                                </div>-->
+
+
                             </div>
                         </div>
 
@@ -393,6 +240,7 @@
     import Loading from 'vue-loading-overlay';
     import { ValidationProvider, extend, ValidationObserver } from 'vee-validate';
     import { required } from "vee-validate/dist/rules";
+    import UserAccount from '../components/UserAccount';
 
     extend('required', {
         ...required,
@@ -407,7 +255,8 @@
         components: {
             Loading,
             ValidationProvider,
-            ValidationObserver
+            ValidationObserver,
+            UserAccount
         },
 
         data() {
@@ -459,36 +308,18 @@
                         message: null
                     }
                 },
-                steps: [
-                    {
-                        target: '#v-step-0',  // We're using document.querySelector() under the hood
-                        header: {
-                            title: 'Get Started',
-                        },
-                        content: `Add account information to recieve your cash bonuses`
-                    },
-                    {
-                        target: '#v-step-1',
-                        content: 'Select Bank Account to recieve your cash bonus directly to ur ACH account',
-                    },
-                    {
-                        target: '[data-v-step="2"]',
-                        content: 'Try it, you\'ll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.',
-                        params: {
-                            placement: 'top' // Any valid Popper.js placement. See https://popper.js.org/popper-documentation.html#Popper.placements
-                        }
-                    }
-                ]
+                countries: ['US', 'GB', 'CA'],
+                countries2: [ 'AU','AT', 'BE', 'BG', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR',
+                    'HK', 'IE', 'IT', 'JP', 'LV', 'LT', 'LU', 'MT', 'MX', 'NL', 'NZ', 'NO', 'PL',
+                    'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'CH', 'GB']
 
             }
         },
 
+
+
         created() {
            this.init()
-        },
-
-        mounted() {
-            this.$tours['myTour'].start()
         },
 
         computed: {
@@ -497,13 +328,16 @@
                 'CustomerDetails',
                 'getStripeAccount',
                 'GetPaypalAccount',
-                'getUserStripeAccount'
-            ])
+                'getUserStripeAccount',
+                'getLoginUser',
+                'getDetail'
+            ]),
         },
 
         methods: {
 
             init() {
+                this.$store.dispatch('FETCH_DETAIL')
                 this.$store.dispatch('FETCH_CUSTOMER_DETAILS')
                 this.$store.dispatch('STRIPE_ACCOUNT')
                 this.$store.dispatch('FETCH_USER_PAYPAL_ACCOUNT')
@@ -549,7 +383,6 @@
                     .then( response => {
                         console.log(response)
                         let url = response.link
-                        alert(url)
                     })
             },
 
@@ -615,7 +448,25 @@
             },
 
 
-            deleteAccount() {},
+            deleteAccount(id, object, account) {
+                this.isLoading = true
+                var params = {}
+                params.id = id,
+                    params.object = object
+                params.account_id = account
+
+                this.$store.dispatch('REMOVE_EXTERNAL_ACCOUNT', params)
+                .then(response => {
+                    console.log(response)
+                    this.init()
+                    this.isLoading = false
+                })
+                .catch( error => {
+                    console.log(error);
+                    this.init()
+                    this.isLoading = false
+                })
+            },
 
 
             showAccountModal() {
@@ -627,49 +478,27 @@
                 $('#accountModal').modal('show')
             },
 
+            modalBankAccount() {
+                $('#bankAccountModal').modal('show')
+            },
+
+            modalDebitCard() {
+
+                $('#debitCardModal').modal('show')
+            },
+
             showBankModal() {
                 $('#bankModal').modal('show')
             },
 
-            selecAcount(type) {
-
-                this.type = type
-
-                if (type == 'bank') {
-                    this.bankIsActive = true
-                    this.paypalIsActive = false
-                    this.debitIsActive = false
-                    this.mccIsActive = false
-                }
-
-                if ( type == 'paypal') {
-                    this.paypalIsActive = true
-                    this.bankIsActive = false
-                    this.debitIsActive = false
-                    this.mccIsActive = false
-                }
-
-                if (type == 'debit') {
-                    this.paypalIsActive = false
-                    this.bankIsActive = false
-                    this.debitIsActive = true
-                    this.mccIsActive = false
-                }
-
-                if (type == 'mcc') {
-                    this.paypalIsActive = false
-                    this.bankIsActive = false
-                    this.debitIsActive = false
-                    this.mccIsActive = true
-                }
-
+            showPayoneerDebitCardModal() {
+                $('#payoneerDebitCardModal').modal('show')
             },
-            next() {
-                this.step = 2
+
+            showPayoneerBankAccountModal() {
+                $('#payoneerBankAccountModal').modal('show')
             },
-            prev() {
-                this.step = 1
-            },
+
 
             showSweetAlert(msg) {
 
@@ -703,6 +532,47 @@
                 .catch( error => {
                     console.log(error)
                 })
+            },
+
+            accountUpdate() {
+                this.isLoading = true
+                this.$store.dispatch('UPDATE_ACCOUNT_LINK')
+                    .then( response => {
+                        console.log(response)
+                        let url = response
+                        window.location.href = url
+                    })
+                    .catch( error => {
+                        console.log(error)
+                    })
+            },
+
+            checkIfCountry(country) {
+
+                var countries = this.countries2.length
+                for (var i = 0; i < countries.length; i++) {
+                    if (countries[i] === country) {
+                        return false;
+                    }
+                }
+                return true;
+            },
+
+            supportedCountry( country ) {
+                if (country === 'US' || country === 'CA' || country === 'SG') {
+                    return true
+                }
+                return false
+            },
+
+            supportedCountryBankOnly( country ) {
+                var countries = this.countries2.length
+                for (var i = 0; i < countries.length; i++) {
+                    if (countries[i] === country) {
+                        return true;
+                    }
+                }
+                return false;
             }
         }
     }

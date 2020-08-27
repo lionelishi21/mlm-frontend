@@ -165,11 +165,6 @@ export default {
 	},
 	methods: {
 
-
-		resetPsswordFeield() {
-
-		},
-
 		changePassword() {
 
 			this.password.email = this.getLoginUser.email

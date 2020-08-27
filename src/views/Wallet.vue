@@ -18,6 +18,13 @@
 		</div>
 	</div>
     <!--End Error Message -->
+	<div class="col-md-12" v-if="!getUserStripeAccount">
+		<div class="alert alert-light-danger mb-4" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
+			<strong>Alert!</strong> Complete your transfer account in order to enable automatic payouts.</button>
+		</div>
+	</div>
+
 
 	<div class="col-md-12">
 		<div v-if="payout.success.succuss" class="alert alert-success mb-4" role="alert">
@@ -39,20 +46,60 @@
 				</div>
 
 				<div class="modal-body text-center">
+					<div class="widget-account-invoice-one">
+
+						<div class="widget-heading">
+							<h5 class="">Wallet</h5>
+						</div>
+
+						<div class="widget-content">
+							<div class="invoice-box">
+
+								<div class="acc-total-info">
+									<h5>Balance</h5>
+									<p class="acc-amount">{{totalItem | currency }}</p>
+								</div>
+
+								<div class="inv-detail">
+									<div class="info-detail-1" v-for="cash in escrow">
+										<p>{{cash.tier}}</p>
+										<p>{{cash.cash_bonus | currency}}</p>
+									</div>
+									<div class="info-detail-3 info-sub">
+										<div class="info-detail">
+											<p>Transfer Fee</p>
+											<p>-{{percentage | currency}}</p>
+										</div>
+									</div>
+									<hr>
+									<div class="info-detail-3 info-sub">
+										<div class="info-detail">
+											<p>Total</p>
+											<p class="text-dark"><strong>{{totalTransfer | currency}}</strong></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="inv-action">
+									<button v-for="type in getPayoutAccount"
+											class="btn btn-primary mt-3 btn-lg"
+											@click="payouts(type.type)"><i class="fa fa-money-check"></i>
+										Confirm
+									</button>
+									<button class="btn  mt-3 btn-lg" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
 					<!-- Images -->
-					<p>Are you sure you want to request a payout?</p>
-<!--				<button class="btn btn-primary"  @click="request()">Confirm Withdrawal</button>-->
-					<button v-for="type in getPayoutAccount"
-							 class="btn btn-success mt-3 btn-lg"
-							 @click="payouts(type.type)">Confirm {{type.type}} Withdrawal</button>
-					<hr>
-				</div>
-				<div class="modal-footer">
-					<button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
+
+
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<div v-if="getPersonalSales > 2" class="layout-px-spacing">
 		<div class="breadcrumb-five">
 			<ul class="breadcrumb">
@@ -85,12 +132,21 @@
 				</div>
 			</div>
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-				<div class="card ">
+				<div class="card">
 					<div class="card-body">
-						<button class="btn btn-primary btn-block mb-3 btn-lg"
-								@click="addAccount()" >Payout Accounts</button>
-						<button class="btn btn-primary btn-block mb-3 btn-lg"
-								@click="payoutModal()" >Withdraw</button>
+						<div class="text-center" v-if="getUserStripeAccount">
+							<h6>Payout Account</h6>
+							<h5 class="pt-3">{{getUserStripeAccount.name}}</h5>
+							<p>Country: {{getUserStripeAccount.country}}</p>
+							<span class="badge badge-danger text-3" v-if="getUserStripeAccount.transfer  == 'inactive'">{{getUserStripeAccount.transfer}}</span>
+							<span class="badge badge-success text-3" v-else>{{getUserStripeAccount.transfer}}</span>
+						</div>
+						<div class="text-center" v-else>
+							<h4>Payout Account</h4>
+							<h6 class="pt-3">No Payout Account</h6>
+							<br>
+							<button class="btn btn-primary" @click="addAccount()">Add Account</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -102,7 +158,10 @@
 				<div class="widget widget-table-two">
 
 					<div class="widget-heading">
-						<h5 class="">Cash Bonuses</h5>
+						<h5 class="">Cash Bonuses
+
+						</h5>
+
 					</div>
 					<div class="widget-content">
 						<div class="table-responsive">
@@ -122,11 +181,16 @@
 									<td><div class="td-content product-brand">{{cash.tier}}</div></td>
 									<td><div class="td-content">{{cash.sales}}</div></td>
 									<td><div class="td-content pricing"><span class="">{{cash.cash_bonus | currency}}</span></div></td>
-									<td><div class="td-content"><span class="badge outline-badge-primary">{{cash.status}}</span></div></td>
+									<td><div class="td-content"><span>{{cash.status}}</span></div></td>
 									<!--										<td><div class="td-content">{{cash.status}}</div></td>-->
 								</tr>
 								</tbody>
 							</table>
+							<div class="row">
+								<div class="col-md-12">
+									<button class="btn btn-success mb-3 btn-lg pull-right btn-block" @click="payoutModal()">Withdraw</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -247,7 +311,8 @@ export default {
 			'getTransactions',
 			'getPayoutAccount',
 			'getPersonalSales',
-			'fetchLink'
+			'fetchLink',
+			'getUserStripeAccount',
 		]),
 
 		totalItem: function(){
@@ -264,6 +329,12 @@ export default {
 				sum += parseFloat(this.getTransactions[i].amount);
 			}
 			return sum;
+		},
+		percentage() {
+			return ((5/ 100) * this.totalItem).toFixed(2)
+		},
+		totalTransfer() {
+			return this.totalItem - this.percentage
 		}
 
 	},
@@ -287,6 +358,7 @@ export default {
 			this.$store.dispatch('GET_TRANSACTIONS')
 			this.$store.dispatch('GET_USER_PAYOUT_ACCOUNT')
 			this.$store.dispatch('GET_AFFILIATE_LINK')
+			this.$store.dispatch('FETCH_STRIPE_ACCOUNT')
 
 		},
 		request() {
@@ -302,10 +374,10 @@ export default {
 					console.log(response)
 
 					this.success.success = true
-					this.success.mesg = 'Withdraw was successful'
+					this.payout.success.mesg = 'Withdraw was successful'
 					this.isLoading = false
-
 					this.init();
+					$('#payoutModal').modal('hide')
 				})
 			.catch( error => {
 				this.isLoading = false

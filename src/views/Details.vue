@@ -16,6 +16,7 @@
 							<div class="user-info-list">
 								<div class="">
 									<ul class="contacts-block list-unstyled text-center" style="max-width: 100%;">
+
 										<li class="contacts-block__item">
 											<svg xmlns="http://www.w3.org/2000/svg"
 												 width="24" height="24"
@@ -27,6 +28,7 @@
 												<line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
 											{{getAffiliateDetails.user.created_at}}
 										</li>
+
 										<li class="contacts-block__item">
 											<svg xmlns="http://www.w3.org/2000/svg"
 												 width="24" height="24"

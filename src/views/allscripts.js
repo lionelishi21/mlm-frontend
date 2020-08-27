@@ -1,7 +1,6 @@
 import '../cork/js/libs/jquery-3.1.1.min.js';
 import '../cork/bootstrap/js/popper.min.js';
 import '../cork/bootstrap/js/bootstrap.js';
-import '../cork/plugins/perfect-scrollbar/perfect-scrollbar.min.js';
 
 import '../cork/js/clipboard/clipboard.min.js';
 import '../cork/plugins/perfect-scrollbar/perfect-scrollbar.min.js';

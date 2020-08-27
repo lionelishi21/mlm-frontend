@@ -172,6 +172,18 @@ export default {
 
 	fetchAccountLink() {
 		return Api().get('/customers/account-link')
+	},
+
+	updateAccount() {
+		return Api().get('/customers/update-account-link')
+	},
+
+	fetchDetail() {
+		return Api().get('/users/detail')
+	},
+
+	removeExternalAccount(params) {
+		return Api().post('/customers/remove-account', params)
 	}
 }
 

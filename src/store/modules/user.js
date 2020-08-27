@@ -22,10 +22,12 @@ const state = {
     paypal_account: [],
     transactions: {},
     payout_accounts: {},
-    account: {}
+    account: {},
+    detail: {}
 }
 
 const actions = {
+
       login( context, user) {
          return new Promise((resolve, reject) => {
 
@@ -47,22 +49,6 @@ const actions = {
          })
       },
 
-      AUTH_REGISTER(context, user) {
-
-        return new Promise((resolve, reject) => {
-
-           api.registerUser(user).then(response => {
-
-              let responseData = response.data
-              let now = Date.now()
-
-              responseData.expires_in = responseData.expires_in + now
-              context.commit('updateTokens', responseData.token)
-
-              resolve(response)
-            }).catch( err => { reject(err)})
-         })
-      },
       AUTH_LOGOUT({commit, dispatch}){
 
         let token = localStorage.getItem('access_token')
@@ -129,6 +115,7 @@ const actions = {
             })
         })
       },
+
       FETCH_USER_USERNAME( context, username) {
          return new Promise((resolve, reject) => {
               api.fetchUsername(username)
@@ -192,8 +179,6 @@ const actions = {
     },
 
 
-
-
     CHANGE_PASSWORD(context, payload) {
 
        return new Promise((resolve, reject) => {
@@ -224,21 +209,6 @@ const actions = {
         })
     },
 
-    PASSWORD_RESET( context, params) {
-
-      return new Promise( (resolve, reject) => {
-          api.changePassword( params )
-              .then( response => {
-                  console.log(response)
-                  resolve(response)
-              })
-              .catch( error => {
-                  console.log(error.response)
-                  reject(error)
-              })
-      })
-    },
-
     PASSWORD_POST(context, params) {
 
       return new Promise(( resolve, reject) => {
@@ -253,6 +223,8 @@ const actions = {
               })
       })
     },
+
+
     USER_DASHBOARD({commit}) {
 
       api.fetchUserDashboard()
@@ -264,20 +236,11 @@ const actions = {
                console.log(error)
           })
     },
+
     FETCH_USER() {
 
     },
-    GET_ALL_USER({commit}) {
 
-      api.fetchAllUser()
-          .then( response => {
-              console.log(response)
-              commit('SET_ALL_USERS', response.data)
-          })
-          .catch( error => {
-              console.log(error.response)
-          })
-    },
     ADD_AFFILIATE(context, params) {
           return new Promise((resolve, reject) => {
 
@@ -424,8 +387,7 @@ const actions = {
 
     ADD_CUSTOMER_DEBIT(context, params) {
 
-          return new Promise((resolve, reject) => {
-
+        return new Promise (( resolve, reject ) => {
               api.addDebitCard(params)
                   .then( response => {
                       resolve(response.data)
@@ -440,7 +402,7 @@ const actions = {
     FETCH_STRIPE_ACCOUNT({commit}) {
       api.getUserStripeAccount()
           .then( response => {
-
+              console.log(response)
               commit('SET_USER_STRIPE_ACCOUNT', response.data)
           })
           .catch(error => {
@@ -458,6 +420,48 @@ const actions = {
                   reject(error.response)
               })
       })
+    },
+
+    UPDATE_ACCOUNT_LINK(context) {
+          return new Promise((resolve, reject) => {
+              api.updateAccount()
+                  .then( response => {
+                      console.log(response)
+                      resolve(response.data)
+                  })
+                  .catch( error => {
+                      reject( error.response)
+                  })
+          })
+    },
+
+    FETCH_DETAIL ({commit}) {
+
+          api.fetchDetail()
+              .then( response => {
+                  console.log(response)
+                  commit('SET_DETAIL' ,response.data)
+              })
+              .catch( error => {
+                  console.log(error)
+              })
+    },
+
+    REMOVE_EXTERNAL_ACCOUNT({ commit }, params) {
+
+          return new Promise((resolve, reject) => {
+              api.removeExternalAccount(params)
+                  .then( response => {
+                        console.log(response)
+                        resolve(response.data)
+                  })
+                  .catch( error => {
+                      console.log( error)
+                      reject(error.response)
+                  })
+          });
+
+
     }
 
 
@@ -468,6 +472,10 @@ const actions = {
 
 
 const mutations = {
+
+    SET_DETAIL(state, detail) {
+        state.detail = detail
+    },
 
     SET_USER_STRIPE_ACCOUNT(state, account) {
         state.account = account
@@ -554,7 +562,8 @@ const getters = {
     GetPaypalAccount: state => state.paypal_account,
     getTransactions: state => state.transactions,
     getPayoutAccount: state => state.payout_accounts,
-    getUserStripeAccount: state => state.account
+    getUserStripeAccount: state => state.account,
+    getDetail: state => state.detail
 }
 
 export default {

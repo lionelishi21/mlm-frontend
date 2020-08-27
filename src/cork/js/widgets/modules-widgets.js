@@ -490,12 +490,12 @@ try {
     */
 
     // Total Visits
-    d_1C_1 = new ApexCharts(document.querySelector("#total-users"), spark1);
-    d_1C_1.render();
+    // d_1C_1 = new ApexCharts(document.querySelector("#total-users"), spark1);
+    // d_1C_1.render();
 
     // Paid Visits
-    d_1C_2 = new ApexCharts(document.querySelector("#paid-visits"), spark2);
-    d_1C_2.render();
+    // d_1C_2 = new ApexCharts(document.querySelector("#paid-visits"), spark2);
+    // d_1C_2.render();
 
     /*
         ===================================
@@ -503,11 +503,11 @@ try {
         ===================================
     */
 
-    var d_1C_3 = new ApexCharts(
-        document.querySelector("#uniqueVisits"),
-        d_1options1
-    );
-    d_1C_3.render();
+    // var d_1C_3 = new ApexCharts(
+    //     document.querySelector("#uniqueVisits"),
+    //     d_1options1
+    // );
+    // d_1C_3.render();
 
     /*
         ====================================
@@ -515,8 +515,8 @@ try {
         ====================================
     */
 
-    var d_1C_4 = new ApexCharts(document.querySelector("#orgaincDirect"), d_1options2);
-    d_1C_4.render();
+    // var d_1C_4 = new ApexCharts(document.querySelector("#orgaincDirect"), d_1options2);
+    // d_1C_4.render();
 
 
     /*
@@ -528,18 +528,18 @@ try {
 
     // Followers
 
-    var d_1C_5 = new ApexCharts(document.querySelector("#hybrid_followers"), d_1options3);
-    d_1C_5.render()
+    // var d_1C_5 = new ApexCharts(document.querySelector("#hybrid_followers"), d_1options3);
+    // d_1C_5.render()
 
     // Referral
 
-    var d_1C_6 = new ApexCharts(document.querySelector("#hybrid_followers1"), d_1options4);
-    d_1C_6.render()
+    // var d_1C_6 = new ApexCharts(document.querySelector("#hybrid_followers1"), d_1options4);
+    // d_1C_6.render()
 
     // Engagement Rate
 
-    var d_1C_7 = new ApexCharts(document.querySelector("#hybrid_followers3"), d_1options5);
-    d_1C_7.render()
+    // var d_1C_7 = new ApexCharts(document.querySelector("#hybrid_followers3"), d_1options5);
+    // d_1C_7.render()
 
 
 
@@ -1036,40 +1036,40 @@ var options = {
         Daily Sales | Render
     ============================
 */
-var d_2C_1 = new ApexCharts(document.querySelector("#daily-sales"), d_2options1);
-d_2C_1.render();
+// var d_2C_1 = new ApexCharts(document.querySelector("#daily-sales"), d_2options1);
+// d_2C_1.render();
 
 /*
     ============================
         Total Orders | Render
     ============================
 */
-var d_2C_2 = new ApexCharts(document.querySelector("#total-orders"), d_2options2);
-d_2C_2.render();
+// var d_2C_2 = new ApexCharts(document.querySelector("#total-orders"), d_2options2);
+// d_2C_2.render();
 
 /*
     ================================
         Revenue Monthly | Render
     ================================
 */
-var chart1 = new ApexCharts(
-    document.querySelector("#revenueMonthly"),
-    options1
-);
+// var chart1 = new ApexCharts(
+//     document.querySelector("#revenueMonthly"),
+//     options1
+// );
 
-chart1.render();
+// chart1.render();
 
 /*
     =================================
         Sales By Category | Render
     =================================
 */
-var chart = new ApexCharts(
-    document.querySelector("#chart-2"),
-    options
-);
-
-chart.render();
+// var chart = new ApexCharts(
+//     document.querySelector("#chart-2"),
+//     options
+// );
+//
+// chart.render();
 
 
 /*
@@ -1078,7 +1078,7 @@ chart.render();
     =============================================
 */
 // const ps = new PerfectScrollbar(document.querySelector('.mt-container'));
-$('.mt-container').each(function(){ const ps = new PerfectScrollbar($(this)[0]); });
+// $('.mt-container').each(function(){ const ps = new PerfectScrollbar($(this)[0]); });
 
 
 } catch(e) {
