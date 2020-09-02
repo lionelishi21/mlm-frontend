@@ -1,14 +1,6 @@
 <template>
 	<!--  BEGIN CONTENT AREA  -->
 	<div id="content" class="main-content">
-
-<!--		<snackbar ref="snackbar"-->
-<!--				  baseSize="100px"-->
-<!--				  :wrapClass="'snackky'"-->
-<!--				   colors=""-->
-<!--				  :holdTime="3000"-->
-<!--				  :multiple="true"/>-->
-
 		<div class="layout-px-spacing">
 			<div class="row layout-top-spacing mb-3">
 				<div class="col-md-12">
@@ -44,7 +36,6 @@
 				</div>
 
 				<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-
 					<group-sales :sales="getGroupSales.response" ></group-sales>
 				</div>
 
@@ -63,7 +54,7 @@
 
 							<div class="w-content">
 								<div class="text-center">
-									<h1>24</h1>
+									<h1>{{userDasboard.countries}}</h1>
 									<h2 class="text-success text-6" ><strong>Countries</strong></h2>
 								</div>
 							</div>
@@ -77,6 +68,13 @@
 				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
 					<summary-component></summary-component>
 				</div>
+			</div>
+
+			<div class="row layout-top-spacing">
+				<div class="row">
+<!--					<apexchart type="line" height="212" :options="options"></apexchart>-->
+				</div>
+
 			</div>
 		</div>
 
@@ -109,7 +107,14 @@ export default {
 			cash: 0,
 			canCopy:false,
 			fullPage: true,
-			isLoading: false
+			isLoading: false,
+			options: {
+				series: [{
+					name: 'TEAM A',
+					type: 'column',
+					data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
+				}]
+			}
 		}
 	},
 

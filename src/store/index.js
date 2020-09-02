@@ -9,6 +9,7 @@ import payment from './modules/payment';
 import country from "./modules/country";
 import ebook from './modules/ebook';
 import escrow from "./modules/escrow";
+import account from "./modules/account";
 
 Vue.use(Vuex)
 Vue.config.debug = true
@@ -21,6 +22,7 @@ export default new Vuex.Store({
 		payment,
 		country,
 		ebook,
-		escrow
+		escrow,
+		account
     },
 });

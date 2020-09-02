@@ -10,6 +10,18 @@
         </div>
 
         <ul class="menu-categories">
+
+            <router-link tag="li" active-class="active" to="/dashboard/admin-dashboard" class="menu" exact>
+                <a href="/dashboard/admin-dashboard" data-active="false" class="menu-toggle">
+                    <div class="base-menu">
+                        <div class="base-icons">
+                            <i class="text-white fa fa-chart-line fa-1x" width="24" height="24"></i>
+                        </div>
+                    </div>
+                </a>
+                <div class="tooltip"><span>Analytics</span></div>
+            </router-link>
+
             <router-link tag="li" active-class="active" to="/dashboard" class="menu" exact>
                 <a href="/dashboard" data-active="false" class="menu-toggle">
                     <div class="base-menu">

@@ -15,6 +15,8 @@ import Snackbar from 'vuejs-snackbar';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 import VueMask from 'v-mask'
 import { VueMaskDirective } from 'v-mask'
+import ApexCharts from 'apexcharts'
+
 // Or only as a filter
 import { VueMaskFilter } from 'v-mask'
 import VueTour from 'vue-tour'

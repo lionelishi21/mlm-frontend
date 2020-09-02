@@ -1,18 +1,21 @@
 <template>
+
 <div class="container">
+
 	<div class="vld-parent">
 		<loading :active.sync="isLoading"
 				 :can-cancel="true"
 				 :on-cancel="onCancel"
 				 :is-full-page="fullPage"></loading>
 	</div>
+
 	<section  style="padding-top: 20%;">
 		<div class="row">
 			<div class="col-md-3"></div>
-			<div class="col-md-6">
-					<a href="/" class="logos">
-				    	<img src="@/assets/logo.png" height="150" alt="MCC" />
-				    </a>
+			<div class="col-md-6 center-block">
+
+				    <img class="logos" src="@/assets/logo.png" height="100" alt="MCC" />
+
 					<div class="card-body" style="margin-top: 10%; background: white">
 					
 					<div class="alert alert-danger" role="alert" v-if="error.message">
@@ -23,52 +26,54 @@
 						<ValidationObserver ref="observer" v-slot="{ invalid }">
 					      <form @submit.prevent="login(user)">
 
-						<div class="form-group mb-3 text-center">
-							<legend><small>MCC Back Office Login Information</small></legend>
-						</div>
-
-						<validation-provider rules="required|email" v-slot="{ errors }">
-							<div class="form-group mb-3">
-								<label class="text-dark">Email Address</label>
-								<div class="input-group">
-									<input v-model="user.email" name="username" type="text" class="form-control form-control-lg" />
+								<div class="form-group mb-3 text-center">
+									<legend><small>MCC Back Office Login Information</small></legend>
 								</div>
-								<span class="help-block text-danger">{{errors[0]}}</span>
-							</div>
-						</validation-provider>
 
-						<validation-provider rules="required" v-slot="{ errors }">
-						<div class="form-group mb-3">
-							<div class="clearfix">
-								<label class="float-left text-dark">Password</label>
-								<a href="#" @click="goToForgotPassword()" class="float-right">Lost Password?</a>
-							</div>
-							<div class="input-group">
-								<input v-model="user.password" name="pwd" type="password" class="form-control text-dark form-control-lg" />
-							</div>
-							<span class="help-block text-danger">{{errors[0]}}</span>
-						</div>
-						</validation-provider>
+								<validation-provider rules="required|email" v-slot="{ errors }">
+									<div class="form-group mb-3">
+										<label class="text-dark">Email Address</label>
+										<div class="input-group">
+											<input v-model="user.email" name="username" type="text" class="form-control form-control-lg" />
+										</div>
+										<span class="help-block text-danger">{{errors[0]}}</span>
+									</div>
+								</validation-provider>
 
-						<div class="row">
-							<div class="col-sm-8">
-								<div class="checkbox-custom checkbox-default">
-									<input value="true" v-model="user.rememberme" id="RememberMe" name="rememberme" type="checkbox"/>
-									<label for="RememberMe"> Remember Me</label>
+								<validation-provider rules="required" v-slot="{ errors }">
+									<div class="form-group mb-3">
+										<div class="clearfix">
+											<label class="float-left text-dark">Password</label>
+											<a href="#" @click="goToForgotPassword()" class="float-right">Lost Password?</a>
+										</div>
+										<div class="input-group">
+											<input v-model="user.password" name="pwd" type="password" class="form-control text-dark form-control-lg" />
+										</div>
+										<span class="help-block text-danger">{{errors[0]}}</span>
+									</div>
+								</validation-provider>
+
+								<div class="row">
+									<div class="col-sm-8">
+										<div class="checkbox-custom checkbox-default">
+											<input value="true" v-model="user.rememberme" id="RememberMe" name="rememberme" type="checkbox"/>
+											<label for="RememberMe"> Remember Me</label>
+										</div>
+									</div>
+									<div class="col-sm-4 text-right">
+										<button :disabled="invalid" type="submit" class="btn btn-primary mt-2">Sign In</button>
+									</div>
 								</div>
-							</div>
-							<div class="col-sm-4 text-right">
-								<button :disabled="invalid" type="submit" class="btn btn-primary mt-2">Sign In</button>
-							</div>
-						</div>
-					</form>
+						  </form>
 						</ValidationObserver>
 				</div>
 			</div>
 			<div class="col-md-3"></div>
 		</div>
 	</section>
+
 </div>
+
 </template>
 <script>
 import Loading from 'vue-loading-overlay';
@@ -159,10 +164,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.logos {
-	padding: 9%;
-	margin: 100px;
-}
+  .logos {
+	display:block;
+	margin:auto;
+   }
 	body {
 		color: white !important;
 	}

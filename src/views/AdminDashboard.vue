@@ -1,95 +1,134 @@
 <template>
+
 	<div id="content" class="main-content">
-		<div class="vld-parent">
-			<loading :active.sync="isLoading"
-					 :can-cancel="true"
-					 :on-cancel="onCancel"
-					 :is-full-page="fullPage"></loading>
-		</div>
+		<div class="row ">
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+				<div class="widget widget-five">
+					<div class="widget-content">
 
-		<div class="row">
-			<div class="col-md-8">
-					<div class="row">
-						<div class="col-md-4">
-						   <section class="card">
-								<div class="card-body">
-									<div class="small-chart float-right" id="sparklineBarDash"></div>
-									<div class="h4 font-weight-bold mb-0"> ${{getAdminDashboard.total_ebook_purchase}} USD</div>
-									<p class="text-3 text-muted mb-0">Total eBook Amount Purchase</p>
-								</div>
-							</section>
-						</div>
-						<div class="col-md-4">
-							 <section class="card">
-								<div class="card-body">
-									<div class="small-chart float-right" id="sparklineBarDash"></div>
-									<div class="h4 font-weight-bold mb-0">${{getAdminDashboard.available_payouts}} USD</div>
-									<p class="text-3 text-muted mb-0">Available Payouts</p>
-								</div>
-							</section>
+						<div class="header">
+							<div class="header-body">
+								<h6>Total eBook Amount Purchase</h6>
+							</div>
 						</div>
 
-					    <div class="col-md-4">
-							 <section class="card">
-								<div class="card-body">
-									<div class="small-chart float-right" id="sparklineBarDash"></div>
-									<div class="h4 font-weight-bold mb-0"> {{getAdminDashboard.payouts}}</div>
-									<p class="text-3 text-muted mb-0">Total Payouts</p>
-								</div>
-							</section>
+						<div class="w-content">
+							<div class="text-center">
+								<h1>${{getAdminDashboard.total_ebook_purchase}} USD</h1>
+								<h2 class="text-success text-6" ><strong>Sales</strong></h2>
+							</div>
 						</div>
-					
-			        </div>
-			        <div class="row mt-3">
-			        	 <div class="col-md-4">
-							 <section class="card">
-								<div class="card-body">
-									<div class="small-chart float-right" id="sparklineBarDash"></div>
-									<div class="h4 font-weight-bold mb-0"> {{getAdminDashboard.all_affiliates}}</div>
-									<p class="text-3 text-muted mb-0">All Affliliates</p>
-								</div>
-							</section>
-						</div>
-						<div class="col-md-4">
-							<section class="card">
-								<div class="card-body">
-									<div class="small-chart float-right" id="sparklineBarDash"></div>
-									<div class="h4 font-weight-bold mb-0"> {{getAdminDashboard.inactive_affiliate}}</div>
-									<p class="text-3 text-muted mb-0">Inactive Affiliates</p>
-								</div>
-							</section>
-					     </div>
-					   	<div class="col-md-4">
-							<section class="card">
-								<div class="card-body">
-									<div class="small-chart float-right" id="sparklineBarDash"></div>
-									<div class="h4 font-weight-bold mb-0"> {{getAdminDashboard.active_affiliate}}</div>
-									<p class="text-3 text-muted mb-0">Active Affliates</p>
-								</div>
-							</section>
-					   </div>
-			        </div>
-			</div>
-			<div class="col-md-4">
-				<div class="row">
-						<div class="col-md-12">
-							<section class="card mb-4">
-								<header class="card-header card-header-transparent">
-									<h2 class="card-title">Activity Stream</h2>
 
-									</header>
-								<div class="card-body">
-									Content.
-								</div>
-							</section>
-						</div>
 					</div>
-		    	</div>
-		</div>
-		
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+				<div class="widget widget-five">
+					<div class="widget-content">
+
+						<div class="header">
+							<div class="header-body">
+								<h6>Available Payout</h6>
+							</div>
+						</div>
+
+						<div class="w-content">
+							<div class="text-center">
+								<h1>${{getAdminDashboard.available_payouts}} USD</h1>
+								<h2 class="text-success text-6" ><strong>Payouts available</strong></h2>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+				<div class="widget widget-five">
+					<div class="widget-content">
+
+						<div class="header">
+							<div class="header-body">
+								<h6>Total Payout</h6>
+							</div>
+						</div>
+
+						<div class="w-content">
+							<div class="text-center">
+								<h1>${{getAdminDashboard.payouts}} USD</h1>
+								<h2 class="text-success text-6" ><strong>Payouts</strong></h2>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+	</div>
 
 		<div class="row">
-		
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+				<div class="widget widget-five">
+					<div class="widget-content">
+
+						<div class="header">
+							<div class="header-body">
+								<h6>All Affiliates</h6>
+							</div>
+						</div>
+
+						<div class="w-content">
+							<div class="text-center">
+								<h1> {{getAdminDashboard.all_affiliates}}</h1>
+								<h2 class="text-success text-6" ><strong>All Affiliates</strong></h2>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+				<div class="widget widget-five">
+					<div class="widget-content">
+
+						<div class="header">
+							<div class="header-body">
+								<h6>Inactive</h6>
+							</div>
+						</div>
+
+						<div class="w-content">
+							<div class="text-center">
+								<h1> {{getAdminDashboard.inactive_affiliate}}</h1>
+								<h2 class="text-success text-6" ><strong>Inactive Affiliates</strong></h2>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+				<div class="widget widget-five">
+					<div class="widget-content">
+
+						<div class="header">
+							<div class="header-body">
+								<h6>Active</h6>
+							</div>
+						</div>
+
+						<div class="w-content">
+							<div class="text-center">
+								<h1> {{getAdminDashboard.active_affiliate}}</h1>
+								<h2 class="text-success text-6" ><strong>Active Affiliates</strong></h2>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </template>

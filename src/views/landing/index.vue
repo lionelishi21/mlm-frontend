@@ -1,9 +1,8 @@
 <template>
 <div>
-
-
 	<!--  Slider  -->
-	<section  class="section section-concept tp-opacity-overlay section-no-border section-dark pt-5 m-0" id="section-concept" style="background-size: cover; background-position: center; animation-duration: 750ms; animation-delay: 300ms; animation-fill-mode: forwards; height: 100vh;" data-plugin-lazyload data-plugin-options="{'threshold': 500}" data-original="img/landing/slider_02.png">
+	<section  class="section section-concept tp-opacity-overlay section-no-border section-dark pt-5 m-0" id="section-concept">
+
 			<div class="container pt-5" style="margin-top: 10%">
 			<div class="row align-items-center pt-3">
 				<div class="col-lg-12 mb-5 nt-5">
@@ -24,19 +23,19 @@
 		<div class="container py-5 my-5">
 			<div class="row align-items-center my-5">
 				<div class="col-md-7">
-					<h2 class="font-weight-bold text-9 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200" data-appear-animation-duration="750">THIS PUBLICATION WILL CHANGE YOUR FINANCIAL LIFE FOR THE BETTER OR YOUR MONEY BACK!</h2>
+					<h2 class="font-weight-bold text-9 mb-0">THIS PUBLICATION WILL CHANGE YOUR FINANCIAL LIFE FOR THE BETTER OR YOUR MONEY BACK!</h2>
 
-					<p class="pb-2 mb-4 appear-animation mt-5" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800" data-appear-animation-duration="750">
+					<p class="pb-2 mb-4  mt-5">
 						Our Future Is Very Sensitive And Highly Dependent On Current Events That May Seem Insignificant, Yet, What Happens Today, May Completely Transform Our Future. What We Do Today, Will Have A Profound Effect On What Could Happen To Us Tomorrow And For Many Years To Come!
 				    </p>
 
-				    <p class="pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800" data-appear-animation-duration="750">
+				    <p class="pb-2 mb-4">
 						The Sole Objective Of Majestic Cares Community (MCC), Is To Liberate And Empower Our Family, Friends And Neighbors, Beginning With The Purchase And Sale Of This Dynamic Publication, AND Through Our PROPRIETARY AUTOMATED CASH BONUS SYSTEM! This Powerful And Unique Publication Will Enrich Your Life, As Well as The Lives Of Others – Or Your Money Back!
 				    </p>
 				</div>
 
 				<div class="col-md-5">
-					<div class="appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="500">
+					<div>
 						<img class="porto-lz"src="@/assets/onsale.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="@/assets/onsale.png" alt="" width="140" height="140" style="position: absolute; top: -60px; right: -8%;">
 					</div>
 
@@ -62,33 +61,21 @@
 	<!-- End Section One -->
 
 	<!-- Section Two -->
-	<section class="border-0 position-relative overflow-visible"  
-	style="background-image: url(img/lazy.png); background-size: 100%; background-position: center; background-repeat: no-repeat; height: 100vh; background-size: 100% 100%;" 
-	data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/secdondbg_03.png">
-		
+	<section class="border-0 position-relative overflow-visible"
+	style="background-size: 100%; background-position: center; background-repeat: no-repeat; height: 60vh; background-size: 100% 100%;"
+	data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}">
+
 		<div class="container text-center py-5 mb-5" >
 			<div class="row justify-content-center">
 				<div class="col-md-7 pb-md-5 mb-md-5" style="margin-top: 200px;">
-					<h5 class="font-weight-semibold positive-ls-2 text-4 text-primary mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250" data-appear-animation-duration="750"></h5>
-					<h2 class="font-weight-bold text-9 mb-2 text-white appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600" data-appear-animation-duration="750">MAJESTIC CARES COMMUNITY – MCC</h2>
+					<h5 class="font-weight-semibold positive-ls-2 text-4 text-primary mb-0"></h5>
+					<h2 class="font-weight-bold text-9 mb-2 text-white appear-animation">MAJESTIC CARES COMMUNITY – MCC</h2>
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="d-flex col-sm-6 col-md-6 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200" data-appear-animation-duration="750">
-					<div class="bg-color-dark-scale-2 rounded p-5">
-						<i class="icon-bg icon-feature-1 mt-2"></i>
-						<h2 class="mb-2 text-white font-weight-bold">MAJESTIC CARES COMMUNITY – MCC</h2>
-					</div>
-				</div>
-
-			    <div class="d-flex col-sm-6 col-md-6 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200" data-appear-animation-duration="750">
-					<div class="bg-color-dark-scale-2 rounded p-5">
-						<i class="icon-bg icon-feature-13 mt-2"></i>
-						<h2 class="mb-2 text-white font-weight-bold">MCC’S POWERFUL AND COOPERATIVE COMMUNITY</h2>
-					</div>
-				</div>
 			</div>
+
 		</div>
 	</section>
 	<!-- End Section Two -->
@@ -126,7 +113,8 @@
 				   </div>
 				</div>
 				<div class="col-md-4">
-					<img alt="Majestic Cares" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/top_book.png" class="img-fluid ml-5 appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="200" style="width: 390px; max-width: none;">
+					<img alt="Majestic Cares" src="img/top_book.png"  class="img-fluid ml-5"
+						  style="width: 390px; max-width: none;">
 				</div>
 			</div>
 
@@ -140,12 +128,12 @@
 
 			<div class="text-center mb-5">
 				<h5 class="font-weight-semibold positive-ls-2 text-5 text-primary mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250" data-appear-animation-duration="750">YOU HAVE THE POWER TO IMPACT YOUR FUTURE – TODAY!</h5>
-				<h2 class="font-weight-bold text-9 mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600" data-appear-animation-duration="750">
+				<h2 class="font-weight-bold text-9 mb-2">
 				   WHY NOT START DOING SOMETHING ABOUT IT – NOW?
 			    </h2>
 			</div>
 			<div class="row pb-2">
-				<div class="col-md-8 mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700" data-appear-animation-duration="750">
+				<div class="col-md-8 mb-2">
 					<div class="rounded">
 						<p class="custom-text-color-1 text-5 color-inherit mb-0">Majestic Cares Community’s Noble Endeavor To Help Change Lives Around The World, Has Resulted In A Breakthrough Initiative: The Majestic Cares International Affiliate Online Community.
 							</p>
@@ -172,12 +160,14 @@
 					</div>
 				</div>
 				<div class="col-md-4">
-					<img alt="Majestic Cares" src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/helpsada.png" 
-					class="img-fluid rounded box-shadow-3 ml-5 mt-5 appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="200" style="width: 12                                               0%; max-width: none;">
+					<img alt="Majestic Cares" src="img/helpsada.png"
+						 class="img-fluid rounded box-shadow-3 ml-5 mt-5"
+						 style="width: 12 0%; max-width: none;"
+					>
 				</div>
 			</div>
 			<div class="row">
-				<a @click="" href="/howitworks" class="btn btn-success btn-modern btn-rounded text-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1800" data-appear-animation-duration="750" target="_blank">How it works</a>
+				<a @click="" href="/howitworks" class="btn btn-success btn-modern btn-rounded text-4" target="_blank">How it works</a>
 			</div>
 		</div>
 	</section>
@@ -195,8 +185,8 @@
 						<p class="text-4"></p>
 					</div>
 				</div>
-				<div class="image-wrapper position-relative z-index-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-appear-animation-duration="750" style="height: 0; padding-bottom: 16%;">
-					<img src="img/lazy.png" data-plugin-lazyload data-plugin-options="{'threshold': 500, 'effect':'fadeIn'}" data-original="img/distaesrbg.png" class="img-fluid" alt="The Most Customizable Template">
+				<div class="image-wrapper position-relative z-index-3" style="height: 0; padding-bottom: 16%;">
+					<img src="img/distaesrbg.png" class="img-fluid" alt="The Most Customizable Template">
 				</div>
 		</div>
     </section>
@@ -205,18 +195,8 @@
 	<!-- Section Six -->
 	 <section class="section section-dark border-0 pb-0 m-0" style="background-size: 100%; background-position: top;" data-plugin-lazyload data-plugin-options="{'threshold': 500}" data-original="img/landing/build_bg.jpg">
 		<div class="container text-center my-5 py-5">
-			<h2 class="font-weight-bold line-height-3 text-12 mt-5 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="250" data-appear-animation-duration="750">MAJESTIC CARES COMMUNITY – MCC
+			<h2 class="font-weight-bold line-height-3 text-12 mt-5 mb-3 appear-animation">MAJESTIC CARES COMMUNITY – MCC
 			</h2>
-			<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900" data-appear-animation-duration="750">
-				<h4 class="font-weight-light text-6 col-lg-12 px-0 fw-400 mb-5 opacity-8">
-			
-				</h4>
-			</div>
-			<div class="col-12 px-0 pb-2 mb-4">
-				<div class="row flex-column flex-lg-row justify-content-center">
-				</div>
-			</div>
-			
 		</div>
 	</section>
 	<!-- End Section Six -->
@@ -229,9 +209,20 @@
 				title: 'Home Page"'
 			}
 		},
+
+		// beforeRouteEnter (to, from, next) {
+		// 	next(vm => {
+		// 		vm.dashboard();
+		// 		next();
+		// 	})
+		// },
+
 		methods: {
 			goToCheckout() {
 				this.$router.push('/checkout')
+			},
+			dashboard() {
+				this.$router.push('/dashboard');
 			}
 		}
 	}

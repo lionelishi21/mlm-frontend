@@ -1,16 +1,21 @@
 <template>
-    <div id="content" class="main-content">
-        <h1>User Stripe Account</h1>
-        <div class="layout-px-spacing">
+<!--  BEGIN CONTENT AREA  -->
+<div id="content" class="main-content">
+    <div class="layout-px-spacing">
+        <div class="row layout-top-spacing mb-3">
             <div class="col-md-12">
-                <div class="widget-content searchable-container list">
-                    <div class="row layout-top-spacing layout-spacing">
-
-                    </div>
-                </div>
+                <h6><i>Users Stripe Accounts</i></h6>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <pre>{{getAllAccounts}}</pre>
+            </div>
+        </div>
+
     </div>
+</div>
 </template>
 
 <script>

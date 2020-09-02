@@ -14,7 +14,7 @@
                     <p class="acc-amount">{{sales}}</p>
                 </div>
                 <div class="inv-action">
-                    <a href="#" class="btn btn-success"@click="goToPersonalSales()">View Personal Sales</a>
+                    <a href="#" class="btn btn-success"@click="goToPersonalSales()">View Sales</a>
                 </div>
             </div>
         </div>

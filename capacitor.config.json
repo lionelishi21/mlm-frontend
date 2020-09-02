@@ -1,0 +1,14 @@
+{
+  "appId": "com.majesticares.app",
+  "appName": "mcc",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "version": "2",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

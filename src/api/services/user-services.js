@@ -134,6 +134,7 @@ export default {
 	addBankAccount(params) {
 		return Api().post('/customers/bank', params)
 	},
+
 	stripAccount() {
 		return Api().get('/customers/account')
 	},

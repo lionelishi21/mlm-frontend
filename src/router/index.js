@@ -26,6 +26,8 @@ import { isLoggedIn } from '../utils/auth.js'
 import PasswordReset from "../views/PasswordReset";
 import Settings from "../views/Settings";
 import Accounts from '../views/Accounts';
+import PrivatePolicy from "../views/PrivatePolicy";
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -43,7 +45,7 @@ Vue.use(VueRouter)
         component: Accounts
       },
       {
-        path: 'admin', 
+        path: 'admin-dashboard',
         component: AdminDashboard
       },
       {
@@ -103,6 +105,14 @@ Vue.use(VueRouter)
     name: 'Landing',
     component: Landing,
     children: [
+      {
+        path: 'private-policy',
+        name: 'Private Policy',
+        component: PrivatePolicy,
+        meta: {
+          allowAnonymous: true
+        }
+      },
       {
         path: '',
         component: LandingPage,
