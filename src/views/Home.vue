@@ -31,6 +31,7 @@
     @import '../cork/css/apps/notes.css';
     @import '../cork/css/forms/theme-checkbox-radio.css';
     @import '../cork/css/components/custom-counter.css';
+    @import '../cork/css/components/tabs-accordian/custom-tabs.css';
     @import '../cork/css/elements/miscellaneous.css';
     @import '../cork/css/users/account-setting.css';
     @import '../cork/css/elements/infobox.css';

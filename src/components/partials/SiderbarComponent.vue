@@ -43,6 +43,19 @@
                 </a>
                 <div class="tooltip"><span>Affiliates</span></div>
             </router-link>
+
+            <router-link v-if="user.role_id == 1" to="/dashboard/payouts" tag="li" active-class="active" class="menu">
+                <a href="" data-active="false" class="menu-toggle">
+                    <div class="base-menu">
+                        <div class="base-icons">
+                            <i class="text-white fa fa-file fa-1x" width="24" height="24"></i>
+                        </div>
+                    </div>
+                </a>
+                <div class="tooltip"> <span> Payouts </span></div>
+            </router-link>
+
+
             <router-link v-if="user.role_id == 1" to="/dashboard/users" tag="li" active-class="active" class="menu">
                 <a href="#app" data-active="false" class="menu-toggle">
                     <div class="base-menu">

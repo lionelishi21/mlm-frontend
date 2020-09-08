@@ -185,6 +185,14 @@ export default {
 
 	removeExternalAccount(params) {
 		return Api().post('/customers/remove-account', params)
+	},
+
+	getAllUserEscrow(filter, page) {
+		return Api().get('/escrow/all?page='+page+'&filter='+filter)
+	},
+
+	postEscrowPayout() {
+		return Api().post('/escrow/manual-transfer')
 	}
 }
 

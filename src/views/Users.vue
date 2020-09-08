@@ -123,20 +123,22 @@
                 form: {}
             }
         },
+
         mounted() {
             this.getResults()
-
-            // $('.selectpicker').selectpicker('refresh')
         },
+
         created() {
             this.$store.dispatch('FETCH_AFFILIATES')
         },
+
         computed: {
             ...mapGetters([
                 'getAllUser',
                 'getAffiliates'
             ])
         },
+
         watch: {
             filter: function(value) {
                 var params = '&filter='+value+'&offset='+this.offset
@@ -150,6 +152,7 @@
             }
         },
         methods: {
+
             // Our method to GET results from a Laravel endpoint
             getResults(page = 1) {
                 this.page = page

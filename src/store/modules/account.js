@@ -1,12 +1,12 @@
 import axios from 'axios';
-// import api from '../../api/services/account-services.js';
+import api from '../../api/services/account-service.js';
 
 const state = {
     stripe_account: {}
 }
 
 const getters = {
-    getUserStripeAccounts: state => state.stripe_account
+    getAllAccounts: state => state.stripe_account
 }
 
 const actions = {
@@ -27,7 +27,7 @@ const actions = {
 
 const mutations = {
 
-    SET_USER_STRIPE_ACCOUNT(state, acc) {
+    SET_USER_STRIPE_ACCOUNTS(state, acc) {
         state.stripe_account = acc;
     }
 }

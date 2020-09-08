@@ -27,8 +27,9 @@ import PasswordReset from "../views/PasswordReset";
 import Settings from "../views/Settings";
 import Accounts from '../views/Accounts';
 import PrivatePolicy from "../views/PrivatePolicy";
+import Payouts from "../views/Payouts";
 
-Vue.use(VueRouter)
+  Vue.use(VueRouter)
 
   const routes = [
   {
@@ -39,6 +40,10 @@ Vue.use(VueRouter)
       {
         path: '',
         component: Dashboard
+      },
+      {
+        path: 'payouts',
+        component: Payouts
       },
       {
         path: 'accounts',
