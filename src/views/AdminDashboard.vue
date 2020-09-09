@@ -2,7 +2,7 @@
 
 	<div id="content" class="main-content">
 		<div class="row">
-			<pre>getAdminDashboard</pre>
+			<pre>{{getAdminDashboard}}</pre>
 		</div>
 		<div class="row ">
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
