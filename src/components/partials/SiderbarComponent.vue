@@ -11,7 +11,7 @@
 
         <ul class="menu-categories">
 
-            <router-link tag="li" active-class="active" to="/dashboard/admin-dashboard" class="menu" exact>
+            <router-link  v-if="user.role_id == 1" tag="li" active-class="active" to="/dashboard/admin-dashboard" class="menu" exact>
                 <a href="/dashboard/admin-dashboard" data-active="false" class="menu-toggle">
                     <div class="base-menu">
                         <div class="base-icons">
