@@ -1,6 +1,13 @@
 <template>
 	<div id="content" class="main-content">
 		<div class="layout-px-spacing">
+			<div class="row">
+				<loading :active.sync="isLoading"
+						 :can-cancel="true"
+						 :is-full-page="fullpage"></loading>
+
+				<snackbar ref="snackbar" baseSize="100px" :wrapClass="''" :colors="null" :holdTime="3000" :multiple="true"/>
+			</div>
 			<div class="row layout-spacing">
 				<!-- Content -->
 				<div class="col-xl-3 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
@@ -75,7 +82,11 @@
 											No Number
 										</li>
 										<li class="contacts-block__item">
-											<a>{{ getAffiliateDetails.bitly_link.link }}</a>
+
+											<div class="input-group mt-2">
+												<input ref="mylink" type="text" class="form-control" :value="getAffiliateDetails.bitly_link.link">
+											</div>
+											<a @click="copy()" class="mt-2 btn btn-primary" href="#">Copy Referral ID</a>
 										</li>
 									</ul>
 								</div>
@@ -86,23 +97,20 @@
 
 					<div class="work-experience layout-spacing ">
 						<div class="widget-content widget-content-area">
-							<h3 class="">Sales</h3>
-							<div class="timeline-alter">
+							<p class="text-5 text-dark">Personal Sales</p>
+							<hr>
+							<div class="row pb-2" v-for="sale in getAffiliateDetails.personal_sales">
 
-								<div class="item-timeline" v-for="sale in getAffiliateDetails.personal_sales">
-									<div class="t-meta-date">
-										<p class="">{{sale.date}}</p>
-									</div>
-									<div class="t-dot">
-									</div>
-									<div class="t-text">
-										<p>{{sale.purchaser_name}}</p>
+								<div class="col-md-12">
+									<div class="card" @click="replaceRoute(sale.affiliate_id)">
+										<div class="p-2 text-center">
+											<p><a class="text-dark" href="#">{{sale.purchaser_name}}</a></p>
+											<a href="#" class="text-primary">{{sale.link.link}}</a>
+										</div>
 									</div>
 								</div>
-
 							</div>
 						</div>
-
 					</div>
 
 				</div>
@@ -181,17 +189,21 @@
 import { mapGetters } from 'vuex';
 import GroupSales from "../components/GroupSales";
 import PersonalSales from "../components/PersonalSales";
+import Loading from 'vue-loading-overlay';
 export default {
 
 	components: {
 		GroupSales,
-		PersonalSales
+		PersonalSales,
+		Loading
 	},
 
 	data() {
 		return{
 			title:' Affiliates Details',
-		    name: this.$route.params.name
+		    name: this.$route.params.name,
+			fullpage: true,
+			isLoading: false
 		}
 	},
 	created() {
@@ -225,12 +237,23 @@ export default {
 			var affiliateId = this.$route.params.id
 			this.$store.dispatch('AFFILIATE_DETAILS', affiliateId)
 			this.$store.dispatch('GET_USER_DETAILS')
-			this.$store.dispatch('GET_USER_CASHBONUS', affiliateId)
+			// this.$store.dispatch('GET_USER_CASHBONUS', affiliateId)
 		},
+
 		replaceRoute(value) {
-			var url = '/dashboard/affiliates/'+value
-			this.$router.push(url);
+
+	    	this.isLoading = true
+			this.$nextTick(() => {
+
+				this.$store.dispatch('AFFILIATE_DETAILS', value)
+				.then( response => {
+					this.isLoading = false
+				})
+				this.$store.dispatch('GET_USER_DETAILS')
+			});
+
 		},
+
 		goToDetails(value) {
 			var url = '/dashboard/affiliates/'+value
 			this.$router.push(url);
@@ -238,6 +261,24 @@ export default {
 
 		percentage(partialValue, totalValue) {
 			return (100 * partialValue) / totalValue;
+		},
+
+		async copy() {
+			var Url = this.$refs.mylink;
+			Url.innerHTML = window.location.href;
+			console.log(Url.innerHTML)
+			Url.select();
+			document.execCommand("copy");
+
+			this.notify()
+		},
+
+		notify() {
+			this.$snack.success({
+				text: 'Link copy succssefully',
+				button: 'close',
+				action: this.clickAction
+			})
 		}
 
 	}

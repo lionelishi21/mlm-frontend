@@ -7,7 +7,7 @@
 					<h6><i>Welcome:</i> <strong>{{getUserDetails.first_name}}  {{getUserDetails.last_name}}</strong></h6>
 				</div>
 			</div>
-
+			<snackbar ref="snackbar" baseSize="100px" :wrapClass="''" :colors="null" :holdTime="3000" :multiple="true"/>
 			<!-- CONTENT AREA -->
 			<div class="row ">
 				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
@@ -172,7 +172,11 @@ export default {
 		},
 
 		notify() {
-			this.$refs.snackbar.info('Link copy successfully');
+			this.$snack.success({
+				text: 'Link copy succssefully',
+				button: 'close',
+				action: this.clickAction
+			})
 		}
 
 	}

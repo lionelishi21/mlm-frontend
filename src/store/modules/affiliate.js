@@ -28,19 +28,25 @@ const actions = {
 
 
 	},
-	AFFILIATE_DETAILS({commit}, affiliateId) {
+	AFFILIATE_DETAILS(content, affiliateId) {
 
-		let token = localStorage.getItem('access_token')
-		axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+		return new Promise((resolve, reject) => {
 
-		api.fetchAffiliateDetails(affiliateId)
-			.then( response => {
-				console.log(response.data) 
-				commit('SET_AFFILIATE_DETAILS', response.data)
-			})
-			.catch( error => {
-				console.log(error.response)
-			})
+			let token = localStorage.getItem('access_token')
+			axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+
+			api.fetchAffiliateDetails(affiliateId)
+				.then( response => {
+					console.log(response.data)
+					content.commit('SET_AFFILIATE_DETAILS', response.data)
+					resolve(response.data)
+				})
+				.catch( error => {
+					console.log(error.response)
+					reject(error.response)
+				})
+		})
+
 	},
 
 	DELETE_AFILIATE(context, id) {

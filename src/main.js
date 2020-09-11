@@ -16,6 +16,9 @@ import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 import VueMask from 'v-mask'
 import { VueMaskDirective } from 'v-mask'
 import ApexCharts from 'apexcharts'
+import VueSnackbar from 'vue-snack'
+import 'vue-snack/dist/vue-snack.min.css'
+Vue.use(VueSnackbar, { position: 'bottom-right', time: 3000 })
 
 // Or only as a filter
 import { VueMaskFilter } from 'v-mask'
@@ -24,7 +27,7 @@ require('vue-tour/dist/vue-tour.css')
 Vue.use(VueTour)
 
 // Global register
-Vue.component('snackbar', Snackbar);
+
 Vue.use(VueMask);
 Vue.directive('mask', VueMaskDirective);
 Vue.filter('VMask', VueMaskFilter)
