@@ -16,5 +16,13 @@ export default {
 
 	fetchPersonalSales() {
 		return Api().get('/affiliates/personal-sales')
+	},
+
+	fetchRayofhopes() {
+		return Api().get('/rayofhopes')
+	},
+
+	fetchRayofhopeDetails(id) {
+		return Api().get('/rayofhopes/'+ id );
 	}
 }

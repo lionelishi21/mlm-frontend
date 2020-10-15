@@ -1,25 +1,21 @@
 <template>
 	<div id="content" class="main-content">
 		<div class="layout-px-spacing">
-			<div class="row">
-				<loading :active.sync="isLoading"
-						 :can-cancel="true"
-						 :is-full-page="fullpage"></loading>
 
+			<div class="row">
+				<loading :active.sync="isLoading" :can-cancel="true" :is-full-page="fullpage"></loading>
 				<snackbar ref="snackbar" baseSize="100px" :wrapClass="''" :colors="null" :holdTime="3000" :multiple="true"/>
 			</div>
+
 			<div class="row layout-spacing">
 				<!-- Content -->
 				<div class="col-xl-3 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
-
 					<div class="user-profile">
 						<div class="widget-content widget-content-area">
-
 							<div class="text-center user-info">
 								<img src="@/assets/avatar/img12.jpg" alt="avatar">
 								<p class="">{{getAffiliateDetails.user.first_name}} {{getAffiliateDetails.user.last_name}}</p>
 							</div>
-
 							<div class="user-info-list">
 								<div class="">
 									<ul class="contacts-block list-unstyled text-center" style="max-width: 100%;">
@@ -93,8 +89,6 @@
 							</div>
 						</div>
 					</div>
-
-
 					<div class="work-experience layout-spacing ">
 						<div class="widget-content widget-content-area">
 							<p class="text-5 text-dark">Personal Sales</p>
@@ -105,25 +99,43 @@
 									<div class="card" @click="replaceRoute(sale.affiliate_id)">
 										<div class="p-2 text-center">
 											<p><a class="text-dark" href="#">{{sale.purchaser_name}}</a></p>
-											<a href="#" class="text-primary">{{sale.link.link}}</a>
+<!--											<a href="#" class="text-primary">{{sale.link.link}}</a>-->
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
-
 				<div class="col-xl-9 col-lg-6 col-md-7 col-sm-12 layout-top-spacing">
-
 					<div class="row mb-5" >
+<!--						<div class="col-md-4">-->
+<!--							<div class="widget widget-card-four" >-->
+<!--								<div class="widget-content">-->
+<!--									<div class="w-content">-->
+<!--										<div class="w-info">-->
+<!--											<p class="text-6 text-danger">Escrow Amount</p>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--									<div class="progress-order-body">-->
+<!--										<div class="row mt-1">-->
+<!--											<div class="col-md-12">-->
+<!--												<h1 class="text-primary">{{getAffiliateDetails.escrow}}</h1>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+
 						<div class="col-md-6">
-							<personal-sales :sales="getAffiliateDetails.personal_sales"></personal-sales>
+							<personal-sales :sales="getAffiliateDetails.personal_sales"
+											:personalsales="getAffiliateDetails.boosters">
+							</personal-sales>
 						</div>
 
 						<div class="col-md-6">
-							<group-sales :sales="getAffiliateDetails.group_sales_counts"></group-sales>
+							<group-sales :user_id="getAffiliateDetails.user.id"></group-sales>
 						</div>
 
 					</div>
@@ -133,26 +145,18 @@
 							<h3 class="">Affiliates</h3>
 
 							<div class="bio-skill-box">
-
-
 								<div class="row">
-
 									<div class="col-md-4">
-
 									</div>
-
 									<div class="col-md-4 ">
 										<div class="d-flex b-skills text-center">
 											<div class="text-center">
 												<h5>{{getAffiliateDetails.user.first_name}} {{getAffiliateDetails.user.last_name}}</h5>
 											</div>
 										</div>
-
 									</div>
 									<div class="col-md-4">
-
 									</div>
-
 								</div>
 								<div class="row">
 									<div class="col-md-4" v-for="af in getAffiliateDetails.affiliate">
@@ -178,11 +182,10 @@
 
 						</div>
 					</div>
-
 				</div>
-
 			</div>
 		</div>
+
 	</div>
 </template>
 <script>
@@ -206,6 +209,8 @@ export default {
 			isLoading: false
 		}
 	},
+
+
 	created() {
 		this.init()
 	},
@@ -222,11 +227,16 @@ export default {
 
 	},
 
-	 beforeRouteUpdate(to, from, next) {
-	    this.name = to.params.name
-	    next()
-	    this.init()
-	  },
+	watch: {
+		// call again the method if the route changes
+		'$route': 'init'
+	},
+
+	beforeRouteUpdate(to, from, next) {
+		this.name = to.params.name
+		next()
+		this.init()
+	},
 
 	methods: {
 	    percentage(num, per) {

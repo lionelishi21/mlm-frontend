@@ -18,6 +18,9 @@ import { VueMaskDirective } from 'v-mask'
 import ApexCharts from 'apexcharts'
 import VueSnackbar from 'vue-snack'
 import 'vue-snack/dist/vue-snack.min.css'
+import VueApexCharts from 'vue-apexcharts'
+Vue.component('apexchart', VueApexCharts)
+Vue.use(VueApexCharts)
 Vue.use(VueSnackbar, { position: 'bottom-right', time: 3000 })
 
 // Or only as a filter

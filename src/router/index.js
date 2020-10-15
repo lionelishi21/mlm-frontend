@@ -28,8 +28,12 @@ import Settings from "../views/Settings";
 import Accounts from '../views/Accounts';
 import PrivatePolicy from "../views/PrivatePolicy";
 import Payouts from "../views/Payouts";
+import Rayofhope from "../views/Rayofhope";
+import BoosterPackages from "../views/BoosterPackages";
+import RayofhopeDetails from "../views/RayofhopeDetails";
+import MakePayment from "../views/MakePayment";
 
-  Vue.use(VueRouter)
+Vue.use(VueRouter)
 
   const routes = [
   {
@@ -42,13 +46,30 @@ import Payouts from "../views/Payouts";
         component: Dashboard
       },
       {
+        path: 'make-payment/:id',
+        component: MakePayment
+      },
+      {
         path: 'payouts',
         component: Payouts
+      },
+      {
+        path: 'booster-package',
+        component: BoosterPackages
       },
       {
         path: 'accounts',
         component: Accounts
       },
+      {
+        path: 'rayofhope',
+        component: Rayofhope
+      },
+      {
+        path: "rayofhope-details/:id",
+        component: RayofhopeDetails
+      },
+
       {
         path: 'admin-dashboard',
         component: AdminDashboard

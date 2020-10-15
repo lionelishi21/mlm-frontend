@@ -1,8 +1,10 @@
 <template>
     <div class="widget widget-account-invoice-one">
 
-        <div class="widget-heading">
-            <h5 class="">Wallet</h5>
+        <div class="header">
+            <div class="header-body">
+                <h6><b>Wallet</b></h6>
+            </div>
         </div>
 
         <div class="widget-content">

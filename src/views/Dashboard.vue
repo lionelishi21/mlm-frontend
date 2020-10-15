@@ -2,79 +2,92 @@
 	<!--  BEGIN CONTENT AREA  -->
 	<div id="content" class="main-content">
 		<div class="layout-px-spacing">
+
 			<div class="row layout-top-spacing mb-3">
 				<div class="col-md-12">
 					<h6><i>Welcome:</i> <strong>{{getUserDetails.first_name}}  {{getUserDetails.last_name}}</strong></h6>
 				</div>
 			</div>
+
 			<snackbar ref="snackbar" baseSize="100px" :wrapClass="''" :colors="null" :holdTime="3000" :multiple="true"/>
 			<!-- CONTENT AREA -->
-			<div class="row ">
-				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-					<div class="widget widget-five">
-						<div class="widget-content">
 
-							<div class="header">
-								<div class="header-body">
-									<h6>Your Affiliate Link</h6>
-									<p class="meta-date"></p>
+			<div class="row">
+				<div class="col-md-9">
+					<div class="row">
+						 <div class="col-md-4 layout-spacing">
+								<div class="widget widget-five">
+									<div class="widget-content">
+										<div class="header">
+											<div class="header-body">
+												<h6>Your Affiliate Link</h6>
+											</div>
+										</div>
+										<div class="w-content">
+											<div class="input-group">
+												<input ref="mylink" type="text" class="form-control input-group-lg input-lg" :value="fetchLink.link">
+											</div>
+											<a @click="copy(fetchLink.link)" class="btn mt-1 btn-primary btn-lg" href="#">Copy Referral ID</a>
+										</div>
+									</div>
 								</div>
 							</div>
-
-							<div class="w-content">
-								<div class="input-group mt-2">
-									<input ref="mylink" type="text" class="form-control" :value="fetchLink.link">
-								</div>
-								<a @click="copy(fetchLink.link)" class="mt-2 btn btn-primary" href="#">Copy Referral ID</a>
+							<div class="col-md-4 ">
+								<sales-components :sales="userDasboard.all_members" :link="getUserDetails.affiliate.affiliate_id"></sales-components>
 							</div>
+							<div class="col-md-4">
+								<summary-component></summary-component>
+							</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 layout-spacing">
+							<booster-package></booster-package>
+						</div>
+						<div class="col-md-4 layout-spacing">
+							<div class="widget widget-five">
+								<div class="widget-content">
+
+									<div class="header">
+										<div class="header-body">
+											<h6>Countries</h6>
+										</div>
+									</div>
+
+									<div class="w-content">
+										<div class="text-center">
+											<h1>{{userDasboard.countries}}</h1>
+											<h2 class="text-success text-6" ><strong>Countries</strong></h2>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="row">
+						<div class="col-12">-->
+							<personal-sales :sales="getUserDetails.purchase"></personal-sales>
+						</div>
+						<div class="col-12">
+							<group-sales :sales="getGroupSales.response" ></group-sales>
 						</div>
 					</div>
 				</div>
-
-				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-					<personal-sales :sales="getUserDetails.purchase"></personal-sales>
-				</div>
-
-				<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-<!--					<group-sales :sales="getGroupSales.response" ></group-sales>-->
-				</div>
-
 			</div>
 
+
 			<div class="row layout-top-spacing">
-				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-					<div class="widget widget-five">
-						<div class="widget-content">
 
-							<div class="header">
-								<div class="header-body">
-									<h6>Countries</h6>
-								</div>
-							</div>
 
-							<div class="w-content">
-								<div class="text-center">
-									<h1>{{userDasboard.countries}}</h1>
-									<h2 class="text-success text-6" ><strong>Countries</strong></h2>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-					<sales-components :sales="userDasboard.all_members" :link="getUserDetails.affiliate.affiliate_id"></sales-components>
-				</div>
-				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-					<summary-component></summary-component>
-				</div>
 			</div>
 
 			<div class="row layout-top-spacing">
 				<div class="row">
-<!--					<apexchart type="line" height="212" :options="options"></apexchart>-->
+<!--				<apexchart type="line" height="212" :options="options"></apexchart>-->
 				</div>
-
 			</div>
 		</div>
 
@@ -94,12 +107,14 @@
  import PersonalSales from "../components/PersonalSales";
  import GroupSales from "../components/GroupSales";
  import SalesComponents from "../components/SalesComponents";
+ import BoosterPackage from "../components/BoosterPackage";
 export default {
 	components: {
 		SalesComponents,
 		SummaryComponent,
 		PersonalSales,
-		GroupSales
+		GroupSales,
+		BoosterPackage
 	},
 	data() {
 		return {
@@ -119,11 +134,11 @@ export default {
 	},
 
 	computed: {
+
 		...mapGetters([
 		 	'getUserDetails',
-		 	'getGroupSales',
 			'fetchLink',
-			'groupSales',
+			'getGroupSales',
 			'userDasboard'
 		]),
 
@@ -136,7 +151,6 @@ export default {
 	created() {
 		this.$store.dispatch('USER_DASHBOARD')
 		this.$store.dispatch('GET_USER_DETAILS')
-		this.$store.dispatch('USER_GROUP_SALES')
 		this.$store.dispatch('GET_AFFILIATE_LINK')
 		this.canCopy = !!navigator.clipboard;
 

@@ -437,13 +437,13 @@ export default {
 	        },
 	      },
 
-
 	      myStyle: {
 	          label: 'checkout',
 	          size:  'responsive',
 	          shape: 'rect',
 	          color: 'blue'
 	      },
+
 		  loading: false,
 	      email: false,
 	      publishableKey: 'pk_test_Yfe8V58F3Kw8aZUWqLtXqNnl00Bv7eXD7P',

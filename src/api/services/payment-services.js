@@ -15,5 +15,9 @@ export default {
 
     paypalWithdraw() {
         return Api().post('/customers/paypal-withdrawal')
+    },
+
+    purcahseBoosterPackages( params) {
+       return Api().post('/purchase/booster-packages', params)
     }
 }

@@ -1,12 +1,5 @@
 <template>
     <div>
-        <loading
-                :active.sync="isLoading"
-                 :can-cancel="true"
-                 :on-cancel="onCancel"
-                 :is-full-page="fullPage">
-        </loading>
-
         <div class="form-row" v-if="api_error">
             <span class="alert alert-danger">{{api_error_message}}</span>
         </div>
@@ -28,11 +21,12 @@
             <div class="col-md-6">
                 <label>Card CVC</label>
                 <div ref="cardCvc" class="form-control""></div>
-            </div>
         </div>
-        <div class="form-row mt-5">
-            <button  :disabled='isDisabled' class="btn pull-right btn-primary" @click.prevent="purchase">Purchase with card</button>
-        </div>
+    </div>
+    <div class="row mt-5">
+        <button class="btn btn-default" @click="cancel()">Cancel</button>
+        <button  :disabled='isDisabled' class="btn pull-right btn-primary" @click.prevent="purchase">Submit</button>
+    </div>
     </div>
 </template>
 
@@ -40,10 +34,10 @@
     import {ValidationObserver, ValidationProvider} from "vee-validate";
 
     let stripe = Stripe(`pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5`),
-    elements = stripe.elements(),
-    cardNumber = undefined,
-    cardExpiry = undefined,
-    cardCvc = undefined;
+        elements = stripe.elements(),
+        cardNumber = undefined,
+        cardExpiry = undefined,
+        cardCvc = undefined;
 
     let style = {
         style: {
@@ -58,11 +52,7 @@
         },
     }
 
-    import Loading from 'vue-loading-overlay';
     export default {
-        components: {
-            Loading,
-        },
         props:['form'],
         data () {
             return {
@@ -120,48 +110,30 @@
                         self.$forceUpdate(); // Forcing the DOM to update so the Stripe Element can update.
                         return;
                     }
-                    var tokenId = result.token.id
 
-                    self.sendPaymentInformation(tokenId);
+                    var token = result.token
+                    self.charge = {
+                        tokenId: token.id,
+                        amount: self.amount,
+                        description: self.description // optional description that will show up on stripe when looking at payments
+                    }
+
+                    self.sendPaymentInformation(self.charge);
                 })
-                .catch(error => {
-
-                      console.log(error)
-                      this.isLoading = false
-                      this.isDisabled = false
-                });
-
-            },
-
-
-            sendPaymentInformation(charge) {
-
-                this.api_error = false
-                this.form.payment_type = 'stripe';
-
-                let form = {
-                    charge: charge,
-                    user: this.form
-                }
-
-                this.$store.dispatch('BUY_BOOK', form)
-                    .then( response => {
-
-                        console.log(response)
-                        this.isDisabled = false
-                        this.$router.push('/order-completed')
-                        this.isLoading = false
-
-                    }).catch( error => {
-
+                    .catch(error => {
                         console.log(error)
                         this.isLoading = false
                         this.isDisabled = false
-                        this.emailInvalid = true
-                        this.error.message = error.data.message.email
-                        this.loading = false
-                })
+                    });
 
+            },
+
+            sendPaymentInformation(charge) {
+                this.$emit('send-payment', charge)
+            },
+
+            cancel() {
+                $('#card_method').modal('hide')
             }
         }
     }

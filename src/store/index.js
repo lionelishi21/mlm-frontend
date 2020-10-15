@@ -10,6 +10,7 @@ import country from "./modules/country";
 import ebook from './modules/ebook';
 import escrow from "./modules/escrow";
 import account from "./modules/account";
+import rayofhope from "./modules/rayofhope";
 
 Vue.use(Vuex)
 Vue.config.debug = true
@@ -23,6 +24,7 @@ export default new Vuex.Store({
 		country,
 		ebook,
 		escrow,
-		account
+		account,
+		rayofhope
     },
 });

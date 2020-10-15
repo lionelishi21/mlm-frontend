@@ -1,129 +1,33 @@
 <template>
     <div>
-        <div v-if="bronze()" class="widget widget-card-four" >
-            <div class="widget-content">
+        <div class="widget widget-card-four" >
+            <div class="">
                 <div class="w-content">
-                    <div class="w-info">
+                    <div class="w-info" v-if="getGroupSales.status == 'bronze'" >
                         <p class="text-6 text-danger">Bronze Group Sales</p>
                         <hr>
                     </div>
-
-                </div>
-                <div class="progress-order-body">
-                    <div class="row mt-1">
-                        <div class="col-md-12">
-                            <ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-
-                                <li class="list-inline-item chat-online-usr" v-for="sale in sales">
-                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
-                                </li>
-
-                                <p class="text-4 mt-1 text-danger"><strong>{{sales}} Group Sales of {{bronze_status}}</strong></p>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div v-if="silver()" class=" silver widget widget-card-four" >
-            <div class="widget-content">
-                <div class="w-content">
-                    <div class="w-info">
-                        <p class="text-6 text-white">Silver Group Sales</p>
+                    <div class="w-info" v-if="getGroupSales.status == 'silver'" >
+                        <p class="text-6 text-danger">Silver Group Sales</p>
                         <hr>
                     </div>
-
-                </div>
-                <div class="progress-order-body">
-                    <div class="row mt-1">
-                        <div class="col-md-12">
-                            <ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-
-                                <li v-show="sales > 10" class="list-inline-item chat-online-usr" v-for="sale in 10">
-                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
-                                </li>
-                                <li v-show="sales <= 10" class="list-inline-item chat-online-usr" v-for="sale in sales">
-                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
-                                </li>
-
-                                <p class="text-4 mt-1 text-white"><strong>{{sales}} Group Sales of {{silver_status}}</strong></p>
-                            </ul>
-                        </div>
-                        <div class="col-md-12 text-right">
-                        </div>
+                    <div class="w-info" v-if="getGroupSales.status == 'gold'" >
+                        <p class="text-6 text-danger">Gold Group Sales</p>
+                        <hr>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div v-if="gold()" class=" gold widget widget-card-four" >
-            <div class="widget-content">
-                <div class="w-content">
-                    <div class="w-info">
-                        <p class="text-6 text-dark">Gold Group Sales</p>
+                    <div class="w-info" v-if="getGroupSales.status == 'ruby'" >
+                        <p class="text-6 text-danger">Ruby Group Sales</p>
+                        <hr>
+                    </div>
+                    <div class="w-info" v-if="getGroupSales.status == 'diamond'" >
+                        <p class="text-6 text-danger">Diamond Group Sales</p>
                         <hr>
                     </div>
                 </div>
-                <div class="progress-order-body">
-                    <div class="row mt-1">
+                <div class="">
+                    <div class="row">
                         <div class="col-md-12">
-                            <ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-                                <li v-show="sales > 20" class="list-inline-item chat-online-usr" v-for="sale in 10">
-                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
-                                </li>
-                                <p class="text-4 mt-1 text-dark"><strong>{{sales}} Group Sales of {{gold_status}}</strong></p>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div v-if="ruby()" class="ruby widget widget-card-four" >
-            <div class="widget-content">
-                <div class="w-content">
-                    <div class="w-info">
-                        <p class="text-6 text-white">Ruby Group Sales</p>
-                        <hr>
-                    </div>
-                </div>
-                <div class="progress-order-body">
-                    <div class="row mt-1">
-                        <div class="col-md-12">
-                            <ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-
-                                <li v-show="sales > 20" class="list-inline-item chat-online-usr" v-for="sale in 10">
-                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
-                                </li>
-                                <li v-show="sales <= 20" class="list-inline-item chat-online-usr" v-for="sale in sales">
-                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
-                                </li>
-                                <p class="text-4 mt-1 text-white"><strong>{{sales}} Group Sales of {{ruby_status}}</strong></p>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div v-if="diamond()" class=" diamond widget widget-card-four" >
-            <div class="widget-content">
-                <div class="w-content">
-                    <div class="w-info">
-                        <p class="text-6 text-dark">Diamond Group Sales</p>
-                        <hr>
-                    </div>
-                </div>
-                <div class="progress-order-body">
-                    <div class="row mt-1">
-                        <div class="col-md-12">
-                            <ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-
-                                <li v-show="sales > 20" class="list-inline-item chat-online-usr" v-for="sale in 10">
-                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
-                                </li>
-                                <li v-show="sales <= 15" class="list-inline-item chat-online-usr" v-for="sale in sales">
-                                    <img alt="avatar" src="@/assets/avatar/img12.jpg">
-                                </li>
-                                <p class="text-4 mt-1 text-dark"><strong>{{sales}} Group Sales {{diamond_status}}</strong></p>
-                            </ul>
+                            <sales-chart :sales="getGroupSales.position"></sales-chart>
                         </div>
                     </div>
                 </div>
@@ -133,9 +37,15 @@
 </template>
 
 <script>
+    import SalesChart from './charts/radial.vue';
+    import { mapGetters } from 'vuex';
     export default {
+        props: ['user_id'],
         name: "GroupSales.vue",
-        props: ['sales'],
+        components: {
+            SalesChart
+        },
+
         data() {
             return {
                 bronze_status: 12,
@@ -146,14 +56,27 @@
             }
         },
 
+        created() {
+
+            if (this.user_id) {
+                this.$store.dispatch('USER_GROUP_SALE', this.user_id)
+            } else {
+                this.$store.dispatch('USER_GROUP_SALES')
+            }
+
+        },
+
         computed: {
+            ...mapGetters([
+                'getGroupSales'
+            ]),
+
+            calculateDept() {},
 
             bronzePercentage() {
-
                 let num = this.sales
                 let per = 12
                 return num / (per / 100);
-
             },
 
             silverPercentage() {
@@ -244,22 +167,11 @@
     $ruby: #e0115f !important;
     $diamond:  #b9f2ff !important;
 
-
-    .silver {
-        background:  $silver;
-    }
-    .bronze {
-        background: $bronze;
-    }
-    .gold {
-        background: $gold;
-    }
-    .ruby {
-        background: $ruby;
-    }
-    .diamond {
-        background: $diamond;
-    }
+    .silver { background:  $silver;}
+    .bronze { background: $bronze;}
+    .gold { background: $gold; }
+    .ruby { background: $ruby; }
+    .diamond { background: $diamond; }
 
     ul.simple-bullet-list li.diamond-dot:before {
         border-color: $diamond;

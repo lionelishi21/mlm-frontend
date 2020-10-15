@@ -130,16 +130,26 @@ const actions = {
       },
 
       USER_GROUP_SALES({commit, dispatch}) {
-
           api.fetchUserGroupSales()
             .then( response => {
-              console.log( response )
-              commit('SET_GROUP_SALES', response.data)
+                console.log('..fetch group sales')
+                commit('SET_GROUP_SALES', response.data)
             })
             .catch( error => {
               console.log(error.response)
             })
       },
+
+     USER_GROUP_SALE({commit}, id) {
+        api.fetchUsersGroupSale(id)
+            .then( response => {
+                console.log('..fetch group sales')
+                commit('SET_GROUP_SALES', response.data)
+            })
+            .catch( error => {
+                console.log(error.response)
+            })
+     },
 
       ADMIN_DASHBOARD({commit}) {
 

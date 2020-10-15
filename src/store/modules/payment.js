@@ -62,7 +62,23 @@ const actions = {
                     reject(error.response)
                 })
         })
-    }
+    },
+
+    BUY_BOOSTER_PACKAGES( context, params ) {
+        return new Promise( (resolve, reject ) => {
+             api.purcahseBoosterPackages(params)
+                 .then( response => {
+                     console.log( response)
+                     resolve(response.data)
+                 })
+                 .catch( error => {
+                     console.log(error)
+                     reject(error)
+                 })
+        })
+    },
+
+
 
 }
 

@@ -2,24 +2,26 @@
     <div>
         <loading
                 :active.sync="isLoading"
-                 :can-cancel="true"
-                 :on-cancel="onCancel"
-                 :is-full-page="fullPage">
+                :can-cancel="true"
+                :on-cancel="onCancel"
+                :is-full-page="fullPage">
         </loading>
 
         <div class="form-row" v-if="api_error">
             <span class="alert alert-danger">{{api_error_message}}</span>
         </div>
+
         <div class="form-row" v-if="emailInvalid">
             <span class="alert alert-danger">{{error.message}}</span>
         </div>
+
         <div class="form-row" style="margin-top: 30px;">
             <div class="col-md-12">
                 <label>Card Number</label>
                 <div ref="cardNumber" class="form-control"></div>
-
             </div>
         </div>
+
         <div class="form-row" style="margin-top: 30px;">
             <div class="col-md-6">
                 <label>Card Expiry Date</label>
@@ -28,22 +30,22 @@
             <div class="col-md-6">
                 <label>Card CVC</label>
                 <div ref="cardCvc" class="form-control""></div>
-            </div>
         </div>
-        <div class="form-row mt-5">
-            <button  :disabled='isDisabled' class="btn pull-right btn-primary" @click.prevent="purchase">Purchase with card</button>
-        </div>
+    </div>
+    <div class="form-row mt-5">
+        <button  :disabled='isDisabled' class="btn pull-right btn-primary" @click.prevent="purchase">Purchase with card</button>
+    </div>
     </div>
 </template>
 
 <script>
     import {ValidationObserver, ValidationProvider} from "vee-validate";
 
-    let stripe = Stripe(`pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5`),
-    elements = stripe.elements(),
-    cardNumber = undefined,
-    cardExpiry = undefined,
-    cardCvc = undefined;
+    let stripe = Stripe(`pk_test_Yfe8V58F3Kw8aZUWqLtXqNnl00Bv7eXD7P`),
+        elements = stripe.elements(),
+        cardNumber = undefined,
+        cardExpiry = undefined,
+        cardCvc = undefined;
 
     let style = {
         style: {
@@ -62,8 +64,9 @@
     export default {
         components: {
             Loading,
+
         },
-        props:['form'],
+        props:['billing'],
         data () {
             return {
                 fullpage: true,
@@ -73,12 +76,13 @@
                 email: false,
                 publishableKey: 'pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5',
                 publishableKeyTest: 'sk_test_Yha4F4mAhvGfsvZSvvCDgbBy00nMLLAhkJ',
-                amount: 34.95,
+                // amount: 25.00,
                 token: null,
                 charge: null,
                 hasCardErrors: false,
                 api_error: false,
                 emailInvalid: false,
+                description: 'MCC Booster packages',
                 api_error_message: '',
                 error: {
                     message: ''
@@ -120,16 +124,23 @@
                         self.$forceUpdate(); // Forcing the DOM to update so the Stripe Element can update.
                         return;
                     }
-                    var tokenId = result.token.id
 
-                    self.sendPaymentInformation(tokenId);
+                    var token = result.token
+
+                    self.charge = {
+                        tokenId: token.id,
+                        payment_type: 'stripe',
+                        billing: self.billing, // the amount you want to charge the customer in cents. $100 is 1000 (it is strongly recommended you use a product id and quantity and get calculate this on the backend to avoid people manipulating the cost)
+                        description: self.description // optional description that will show up on stripe when looking at payments
+                    }
+
+                    self.sendPaymentInformation(self.charge);
                 })
-                .catch(error => {
-
-                      console.log(error)
-                      this.isLoading = false
-                      this.isDisabled = false
-                });
+                    .catch(error => {
+                        console.log(error)
+                        this.isLoading = false
+                        this.isDisabled = false
+                    });
 
             },
 
@@ -137,29 +148,26 @@
             sendPaymentInformation(charge) {
 
                 this.api_error = false
-                this.form.payment_type = 'stripe';
-
                 let form = {
                     charge: charge,
-                    user: this.form
                 }
 
-                this.$store.dispatch('BUY_BOOK', form)
+                this.$store.dispatch('BUY_BOOSTER_PACKAGES', form)
                     .then( response => {
 
                         console.log(response)
                         this.isDisabled = false
-                        this.$router.push('/order-completed')
+                        // this.$router.push('/order-completed')
                         this.isLoading = false
 
                     }).catch( error => {
 
-                        console.log(error)
-                        this.isLoading = false
-                        this.isDisabled = false
-                        this.emailInvalid = true
-                        this.error.message = error.data.message.email
-                        this.loading = false
+                    console.log(error)
+                    this.isLoading = false
+                    this.isDisabled = false
+                    this.emailInvalid = true
+                    this.error.message = error.data.message.email
+                    this.loading = false
                 })
 
             }

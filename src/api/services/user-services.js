@@ -70,6 +70,10 @@ export default {
 		return Api().get('/affiliates/group-sales')
 	},
 
+	fetchUsersGroupSale(id) {
+		return Api().get('/affiliates/group-sales/'+id)
+	},
+
 	fetchAdminDashboard() {
 		return Api().get('/admin/dashboard')
 	},

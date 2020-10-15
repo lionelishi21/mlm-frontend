@@ -13,11 +13,16 @@
             <div class="progress-order-body">
                 <div class="row mt-1">
                     <div class="col-md-12">
-                        <ul class="list-inline badge-collapsed-img mb-0 mb-3 text-center">
-                            <li class="list-inline-item chat-online-usr" v-for="(index, sale) in sales.length">
-                                <img alt="avatar" src="@/assets/avatar/img12.jpg">
-                            </li>
-                            <p class="text-4 mt-1"><strong>{{sales.length}} Personal Sales</strong></p>
+                        <ul class="list-inline badge-collapsed-img mb-3 text-center">
+                            <p class="text-6 mt-4">
+                                <strong>Personal Sales <br>{{sales.length}}</strong>
+                            </p>
+                            <a href="#"><small>Whats is this <i class="fa fa-question-circle" @click="goToBoosterPackage()"></i></small></a>
+                            <hr>
+                            <p class="text-6 mt-3 text-success"><strong>Booster Package(s) <br>
+                                {{personalsales}}
+                            </strong></p>
+                            <a href="#"><small>Whats is this <i class="fa fa-question-circle" @click="goToBoosterPackage()"></i></small></a>
                         </ul>
                     </div>
                 </div>
@@ -29,13 +34,19 @@
 <script>
     export default {
         name: "PersonalSales.vue",
-        props: ['sales'],
+        props: ['sales', 'personalsales'],
         computed: {
             qSalesPercentage() {
                 let num = this.sales.length
                 let per = 3
                 return num / (per / 100);
             },
+        },
+
+        methods: {
+            goToBoosterPackage() {
+                this.$router.push('/booster-package-infromation')
+            }
         }
     }
 </script>
