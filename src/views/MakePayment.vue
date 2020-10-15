@@ -46,11 +46,14 @@
                         <div class="modal-body">
                             <div id="app">
                                 <PayPal
-                                        amount="10.00"
                                         currency="USD"
                                         :client="credentials"
-                                        env="sandbox"
-                                        :button-style="myStyle">
+                                        :amount="display_total"
+                                        :button-style="myStyle",
+                                         :experience="experience"
+                                        v-on:payment-authorized="paymentAuthorized"
+                                        v-on:payment-completed="paymentCompleted"
+                                        v-on:payment-cancelled="paymentCancelled">
                                 </PayPal>
                             </div>
                         </div>
@@ -148,7 +151,7 @@
             },
 
             experience: {
-
+x
                 input_fields: {
                     no_shipping: 1,
                 },
@@ -157,7 +160,8 @@
             billing: {
                 amount: 2500,
                 qty: 1,
-                tokenId: ''
+                tokenId: '',
+                method: ''
             }
 
         }),
@@ -199,6 +203,7 @@
 
                 this.billing.amount = this.total
                 this.billing.tokenId = params.tokenId
+                this.billing.method = 'stripe'
                 this.isLoading = true
                 this.$store.dispatch('BUY_BOOSTER_PACKAGES', this.billing)
                     .then( response => {
@@ -213,6 +218,41 @@
 
                         this.isLoading = false
                         console.log(error.response)
+                })
+            },
+
+            paymentAuthorized: function( data ) {
+                this.paypalPayment( data )
+            },
+
+            paymentCompleted: function (data) {
+
+            },
+
+            paymentCancelled: function (data) {
+
+            },
+
+            paypalPayment( params ) {
+
+                this.billing.amount = this.total
+                this.billing.tokenId = params.tokenId
+                this.billing.method = 'paypal'
+
+                this.isLoading = true
+                this.$store.dispatch('BUY_BOOSTER_PACKAGES', this.billing)
+                    .then( response => {
+
+                        this.isLoading = false
+                        $('#card_method').modal('hide')
+                        this.isComplete = true
+
+                        console.log(response)
+
+                    }).catch( error => {
+
+                    this.isLoading = false
+                    console.log(error.response)
                 })
             }
         }

@@ -37,8 +37,10 @@
                                             <option value="20">20</option>
                                         </select>
                                     </h3>
-                                    <h3><strong>${{total}}.00</strong></h3>
                                 </div>
+                            </div>
+                            <div class="inv-action">
+                                <h3><strong>${{total}}.00</strong></h3>
                             </div>
                             <div class="inv-action">
                                 <a href="#" @click="goToPayment()" class="btn btn-block btn-primary">Purchase Booster ${{total}}.00</a>

@@ -43,7 +43,7 @@
 						<div class="col-md-4 layout-spacing">
 							<booster-package></booster-package>
 						</div>
-						<div class="col-md-4 layout-spacing">
+						<div class="col-md-4">
 							<div class="widget widget-five">
 								<div class="widget-content">
 
@@ -68,7 +68,7 @@
 				</div>
 				<div class="col-md-3">
 					<div class="row">
-						<div class="col-12">-->
+						<div class="col-12">
 							<personal-sales :sales="getUserDetails.purchase"></personal-sales>
 						</div>
 						<div class="col-12">
