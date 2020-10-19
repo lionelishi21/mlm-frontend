@@ -1,22 +1,22 @@
 import api from '../../api/services/affiliates-services.js';
 
 const state = {
-    rayofhope: {},
+    boosters: [],
     rayofhopedetails: {}
 }
 
 const getters = {
-    getHope: state => state.rayofhope,
+    getHope: state => state.boosters,
     getHopeDetails: state => state.rayofhopedetails
 }
 
 const actions = {
 
     FETCH_RAYOFHOPE_AFFILIATES( {commit} ) {
+
         return new Promise((resolve, reject) => {
             api.fetchRayofhopes()
                 .then( response => {
-                    console.log( response )
                     commit('SET_RAYOFHOPE_AFFILIATE', response.data)
                     resolve( response.data )
                 })
@@ -42,8 +42,9 @@ const actions = {
 
  const mutations = {
 
-     SET_RAYOFHOPE_AFFILIATE (state, ray) {
-        state.rayofhope = ray
+     SET_RAYOFHOPE_AFFILIATE (state, booster) {
+         console.log(booster)
+        state.boosters = booster
      },
 
      SET_RAYOFHOPE_DETAILS( state, detail) {

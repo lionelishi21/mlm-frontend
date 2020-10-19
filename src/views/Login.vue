@@ -9,12 +9,12 @@
 				 :is-full-page="fullPage"></loading>
 	</div>
 
-	<section  style="padding-top: 20%;">
+	<section  style="padding-top: 20%; overflow:scroll;">
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="col-md-6 center-block">
 
-				    <img class="logos" src="@/assets/logo.png" height="100" alt="MCC" />
+<!--				    <img class="logos" src="@/assets/logo.png" height="100" alt="MCC" />-->
 
 					<div class="card-body" style="margin-top: 10%; background: white">
 					

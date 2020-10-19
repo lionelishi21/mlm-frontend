@@ -19,6 +19,13 @@ import ApexCharts from 'apexcharts'
 import VueSnackbar from 'vue-snack'
 import 'vue-snack/dist/vue-snack.min.css'
 import VueApexCharts from 'vue-apexcharts'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
+
 Vue.component('apexchart', VueApexCharts)
 Vue.use(VueApexCharts)
 Vue.use(VueSnackbar, { position: 'bottom-right', time: 3000 })

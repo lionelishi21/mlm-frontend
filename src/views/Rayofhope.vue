@@ -4,6 +4,7 @@
             <div class="col-lg-12">
                 <div class="widget-content searchable-container list">
 
+
                     <div class="row layout-top-spacing layout-spacing">
 
                         <div class="col-lg-12">
@@ -32,15 +33,15 @@
                                             </thead>
                                             <tbody>
                                           <tr v-for="affiliate in getHope" class="items">
-                                                <td><h4 class="text-primary">{{affiliate.id}}</h4></td>
-                                              <td><h4 class="text-primary">{{affiliate.user.first_name}} {{affiliate.user.last_name}}</h4> </td>
-                                              <td><h4 class="text-primary">{{affiliate.user.email}}</h4> </td>
-                                              <td><h4 class="text-primary">Escrow</h4> </td>
-                                              <td><h4 class="text-primary"> Tiers </h4> </td>
-                                              <td><h4 class="text-primary">${{affiliate.cost}}.00</h4></td>
+
+                                                  <td><h4 class="text-primary">{{ affiliate.id}}</h4></td>
+                                                  <td><h4 class="text-primary">{{ affiliate.name}}</h4> </td>
+                                                  <td><h4 class="text-primary">{{ affiliate.email}}</h4> </td>
+                                                  <td><h4 class="text-primary">{{ affiliate.escrow }}</h4> </td>
+                                                  <td><h4 class="text-primary"> Tiers </h4> </td>
+                                                  <td><h4 class="text-primary">${{affiliate.cost}}.00</h4></td>
                                                 <td class="text-center">
                                                     <button  @click="goToDetails(affiliate.id)" class="btn btn-outline-primary">view</button>
-<!--                                                    <button  @click="showDeleteConfirmationModal(affiliate.affiliate_id)" class="btn btn-outline-danger">Delete</button>-->
                                                 </td>
                                             </tr>
 

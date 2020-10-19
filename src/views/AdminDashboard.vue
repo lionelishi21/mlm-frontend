@@ -1,9 +1,11 @@
 <template>
 
 	<div id="content" class="main-content">
-<!--		<div class="row">-->
-<!--			<pre>{{getAdminDashboard}}</pre>-->
-<!--		</div>-->
+
+		<div class="row">
+			<pre>{{getAdminDashboard}}</pre>
+		</div>
+
 		<div class="row ">
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="widget widget-five">
@@ -25,6 +27,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="widget widget-five">
 					<div class="widget-content">
@@ -45,6 +48,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="widget widget-five">
 					<div class="widget-content">
@@ -57,17 +61,20 @@
 
 						<div class="w-content">
 							<div class="text-center">
+
 								<h1>${{getAdminDashboard.payouts}} USD</h1>
 								<h2 class="text-success text-6" ><strong>Payouts</strong></h2>
+
 							</div>
 						</div>
 
 					</div>
 				</div>
 			</div>
-	</div>
+	   </div>
 
 		<div class="row">
+
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="widget widget-five">
 					<div class="widget-content">
@@ -88,7 +95,6 @@
 					</div>
 				</div>
 			</div>
-
 
 			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="widget widget-five">

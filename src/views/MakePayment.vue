@@ -151,7 +151,7 @@
             },
 
             experience: {
-x
+
                 input_fields: {
                     no_shipping: 1,
                 },
