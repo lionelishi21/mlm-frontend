@@ -49,7 +49,7 @@
                                         currency="USD"
                                         :client="credentials"
                                         :amount="display_total"
-                                        :button-style="myStyle",
+                                        :button-style="myStyle"
                                          :experience="experience"
                                         v-on:payment-authorized="paymentAuthorized"
                                         v-on:payment-completed="paymentCompleted"
@@ -173,7 +173,7 @@
             },
 
             display_total() {
-                return this.billing.qty * '25.00';
+                return this.billing.qty * '25';
             }
         },
 
