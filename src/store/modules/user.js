@@ -243,7 +243,7 @@ const actions = {
               commit('SET_USER_DASHBOARD',response.data)
           })
           .catch( error => {
-               console.log(error)
+               console.log(error.response)
           })
     },
 

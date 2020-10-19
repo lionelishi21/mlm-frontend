@@ -2,7 +2,6 @@
 	<!--  BEGIN CONTENT AREA  -->
 	<div id="content" class="main-content">
 		<div class="layout-px-spacing">
-
 			<div class="row layout-top-spacing mb-3">
 				<div class="col-md-12">
 					<h6><i>Welcome:</i> <strong>{{getUserDetails.first_name}}  {{getUserDetails.last_name}}</strong></h6>
@@ -13,7 +12,7 @@
 			<!-- CONTENT AREA -->
 
 			<div class="row">
-				<div class="col-md-9">
+				<div class="col-md-8">
 					<div class="row">
 						 <div class="col-md-4 layout-spacing">
 								<div class="widget widget-five">
@@ -43,33 +42,33 @@
 						<div class="col-md-4 layout-spacing">
 							<booster-package></booster-package>
 						</div>
-						<div class="col-md-4">
-							<div class="widget widget-five">
-								<div class="widget-content">
+<!--						<div class="col-md-4">-->
+<!--							<div class="widget widget-five">-->
+<!--								<div class="widget-content">-->
 
-									<div class="header">
-										<div class="header-body">
-											<h6>Countries</h6>
-										</div>
-									</div>
+<!--									<div class="header">-->
+<!--										<div class="header-body">-->
+<!--											<h6>Countries</h6>-->
+<!--										</div>-->
+<!--									</div>-->
 
-									<div class="w-content">
-										<div class="text-center">
-											<h1>{{userDasboard.countries}}</h1>
-											<h2 class="text-success text-6" ><strong>Countries</strong></h2>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+<!--									<div class="w-content">-->
+<!--										<div class="text-center">-->
+<!--											<h1>{{userDasboard.countries}}</h1>-->
+<!--											<h2 class="text-success text-6" ><strong>Countries</strong></h2>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
 
 
 					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="row">
 						<div class="col-12">
-							<personal-sales :sales="getUserDetails.purchase"></personal-sales>
+							<personal-sales  :boosters="userDasboard.boosters" :sales="getUserDetails.purchase"></personal-sales>
 						</div>
 						<div class="col-12">
 							<group-sales :sales="getGroupSales.response" ></group-sales>

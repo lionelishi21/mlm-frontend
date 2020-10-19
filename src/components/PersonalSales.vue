@@ -20,7 +20,7 @@
                             <a href="#"><small>Whats is this <i class="fa fa-question-circle" @click="goToBoosterPackage()"></i></small></a>
                             <hr>
                             <p class="text-6 mt-3 text-success"><strong>Booster Package(s) <br>
-                                {{personalsales}}
+                                {{boosters}}
                             </strong></p>
                             <a href="#"><small>Whats is this <i class="fa fa-question-circle" @click="goToBoosterPackage()"></i></small></a>
                         </ul>
@@ -34,7 +34,7 @@
 <script>
     export default {
         name: "PersonalSales.vue",
-        props: ['sales', 'personalsales'],
+        props: ['sales', 'boosters'],
         computed: {
             qSalesPercentage() {
                 let num = this.sales.length
