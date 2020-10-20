@@ -38,9 +38,9 @@
 
 <script>
     import {ValidationObserver, ValidationProvider} from "vee-validate";
-    // let stripe = Stripe(`pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5`),
+
     let stripe = Stripe(`pk_live_4qziF8NxRPkFZLYgqzEAZMKv00zMDbCPB5`),
-    elements = stripe.elements(),
+Z    elements = stripe.elements(),
     cardNumber = undefined,
     cardExpiry = undefined,
     cardCvc = undefined;
@@ -134,13 +134,13 @@
             },
 
 
-            sendPaymentInformation(charge) {
+            sendPaymentInformation(tokenId) {
 
                 this.api_error = false
                 this.form.payment_type = 'stripe';
 
                 let form = {
-                    charge: charge,
+                    charge: { amount: 3495, tokenId: tokenId },
                     user: this.form
                 }
 
