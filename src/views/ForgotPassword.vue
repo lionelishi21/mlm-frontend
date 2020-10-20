@@ -91,17 +91,21 @@
         },
         data() {
             return {
+
                 complete: false,
                 name: 'Forgot Password',
                 title: 'Login Page',
                 isLoading: false,
                 fullPage: true,
+
                 user: {
                     email: '',
                 },
+
                 successMsg: false,
                 validationErr: '',
                 is_valid: '',
+
                 error: {
                     message: ''
                 }
@@ -112,19 +116,19 @@
             sendLink(user) {
 
                 this.error.message = ''
-
                 this.isLoading = true
+
                 this.$store.dispatch('SENT_PASSWORD_RESET_LINK', user)
                     .then( response => {
                         this.isLoading = false
                         this.complete = true
                         console.log(response)
                     })
-                .catch( error => {
-                    this.isLoading = false
-                    this.error.message = 'Email address is incorrect'
-                    console.log(error.response)
-                })
+                    .catch( error => {
+                        this.isLoading = false
+                        this.error.message = 'Email address is incorrect'
+                        console.log(error.response)
+                    })
             }
         }
 
