@@ -284,7 +284,7 @@
 												class="form-control"
 												currency="USD"
 												:button-style="myStyle"
-												amount="34.95"
+												 amount="34.95"
 												:client="paypal"
 												:experience="experience"
 												v-on:payment-authorized="paymentAuthorized"

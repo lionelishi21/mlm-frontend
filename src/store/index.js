@@ -11,6 +11,7 @@ import ebook from './modules/ebook';
 import escrow from "./modules/escrow";
 import account from "./modules/account";
 import rayofhope from "./modules/rayofhope";
+import boosters from "./modules/boosters";
 
 Vue.use(Vuex)
 Vue.config.debug = true
@@ -25,6 +26,7 @@ export default new Vuex.Store({
 		ebook,
 		escrow,
 		account,
-		rayofhope
+		rayofhope,
+		boosters
     },
 });

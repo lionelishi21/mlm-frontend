@@ -27,20 +27,20 @@
                                                 <th>Email</th>
                                                 <th>Escrow</th>
                                                 <th>Tiers</th>
-                                                <th>Cost</th>
+                                                <th>Boosters</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                           <tr v-for="affiliate in getHope" class="items">
-
                                                   <td><h4 class="text-primary">{{ affiliate.id}}</h4></td>
                                                   <td><h4 class="text-primary">{{ affiliate.name}}</h4> </td>
                                                   <td><h4 class="text-primary">{{ affiliate.email}}</h4> </td>
                                                   <td><h4 class="text-primary">{{ affiliate.escrow }}</h4> </td>
-                                                  <td><h4 class="text-primary"> Tiers </h4> </td>
-                                                  <td><h4 class="text-primary">${{affiliate.cost}}.00</h4></td>
+                                                  <td><h4 class="text-primary">  </h4> </td>
+                                                  <td><h4 class="text-primary"> {{affiliate.boosters}} </h4></td>
                                                 <td class="text-center">
+                                                    <button  @click="transfer(affiliate.user_id)" class="btn btn-primary">Transfer</button>
                                                     <button  @click="goToDetails(affiliate.id)" class="btn btn-outline-primary">view</button>
                                                 </td>
                                             </tr>
@@ -75,20 +75,33 @@
         },
 
         created() {
-
-            this.$store.dispatch('FETCH_RAYOFHOPE_AFFILIATES')
-                .then( response => {
-                    this.datatable()
-                })
-            .catch( error => {
-                console.log(error)
-            })
+            this.init();
         },
 
         methods: {
 
+            init() {
+
+                this.$store.dispatch('FETCH_RAYOFHOPE_AFFILIATES')
+                    .then( response => {
+                        console.log( response )
+                        this.datatable()
+                    })
+                    .catch( error => {
+                        console.log(error)
+                    })
+            },
+
             goToDetails(id) {
                 this.$router.push('/dashboard/rayofhope-details/'+id)
+            },
+
+            transfer(userId) {
+                this.$store.dispatch('BOOSTER_TRANSFER', userId)
+                    .then( response => {
+                        this.init();
+                        console.log( response )
+                    })
             },
 
             datatable() {

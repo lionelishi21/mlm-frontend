@@ -1,11 +1,70 @@
 <template>
     <div id="content" class="main-content">
+
         <div class="vld-parent">
-            <loading :active.sync="isLoading"
-                     :can-cancel="true"
-                     :on-cancel="onCancel"
-                     :is-full-page="fullPage"></loading>
+
+<!--            <loading :active.sync="isLoading"-->
+<!--                     :can-cancel="true"-->
+<!--                     :on-cancel="onCancel"-->
+<!--                     :is-full-page="fullPage"></loading>-->
         </div>
+
+        <div class="modal fade slide-up disable-scroll"  id="booster_modal"
+             tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+            <div class="modal-dialog ">
+
+                <div class="modal-content-wrapper">
+                    <div class="modal-content">
+                        <div class="modal-header clearfix text-left">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <i class="pg-close fs-14"></i>
+                            </button>
+                            <h5>Booster</h5>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+
+                                <label class="text-dark" >Select Amount of Booster Packages</label>
+                                <select class="form-control" name="" v-model="packages.qty">
+                                    <option value="1">1 Package</option>
+                                    <option value="2">2 Packages</option>
+                                    <option value="3">3 Packages</option>
+                                    <option value="4">4 Packages</option>
+                                    <option value="5">5 Packages</option>
+                                    <option value="6">6 Packages</option>
+                                    <option value="7">7 Packages</option>
+                                    <option value="8">8 Packages</option>
+                                    <option value="9">9 Packages</option>
+                                    <option value="10">10 Packages</option>
+                                    <option value="11">11 Packages</option>
+                                    <option value="12">12 Packages</option>
+                                    <option value="13">13 Packages</option>
+                                    <option value="14">14 Packages</option>
+                                    <option value="15">15 Packages</option>
+                                    <option value="16">16 Packages</option>
+                                    <option value="17">17 Packages</option>
+                                    <option value="18">18 Packages</option>
+                                    <option value="19">19 Packages</option>
+                                    <option value="20">20 Packages</option>
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <button class="btn btn-primary" @click="createBoosters()">Submit</button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+        </div>
+
+
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -75,10 +134,11 @@
                                                         <td v-else="user.affiliate"><strong class="text-danger">No Affiliate Id</strong></td>
                                                         <td class="text-center">
                                                             <butto  v-if="user.affiliate" class="btn btn">Added</butto>
-                                                            <button v-else @click="showModal(user.id)" class="btn btn-danger">Add Affiliate</button>
+<!--                                                            <button v-else @click="showModal(user.id)" class="btn btn-danger">Add Affiliate</button>-->
 <!--                                                            <button class="btn btn-primary">View Details</button>-->
-
+                                                                <button class="btn btn-primary" @click="showBoostersModal(user.id)"> Add Booster </button>
                                                         </td>
+
                                                     </tr>
 
                                                     </tbody>
@@ -120,7 +180,12 @@
                 isLoading: false,
                 filter: '',
                 page: 1,
-                form: {}
+                form: {},
+                packages: {
+                    qty: null,
+                    user_id: null,
+                    method: 'manual',
+                },
             }
         },
 
@@ -144,6 +209,7 @@
                 var params = '&filter='+value+'&offset='+this.offset
                 api.fetchAllUser(this.page, params)
                     .then(response => {
+                        console.log(response)
                         this.users = response.data;
                     })
                     .catch( error => {
@@ -152,6 +218,11 @@
             }
         },
         methods: {
+
+            showBoostersModal(userId) {
+                this.packages.user_id = userId
+                $('#booster_modal').modal('show')
+            },
 
             // Our method to GET results from a Laravel endpoint
             getResults(page = 1) {
@@ -165,10 +236,12 @@
                     console.log(error.resonse)
                 })
             },
+
             showModal(id) {
                 this.form.affiliate_id = id
                 $('#exampleModal').modal('show')
             },
+
             save() {
                 this.$store.dispatch('ADD_AFFILIATE', this.form)
                     .then( response => {
@@ -176,6 +249,22 @@
                     })
                 .catch( error => {
                     console.log(error.response)
+                })
+            },
+
+            createBoosters() {
+
+                this.isLoading = true
+                this.$store.dispatch('BUY_BOOSTER_PACKAGES', this.packages)
+                    .then( response => {
+
+                        this.isLoading = false
+                        $('#booster_modal').modal('hide')
+                        console.log(response)
+
+                    }).catch( error => {
+                        this.isLoading = false
+                        console.log(error.response)
                 })
             }
         }

@@ -51,6 +51,7 @@
                                         :amount="display_total"
                                         :button-style="myStyle"
                                          :experience="experience"
+                                        env="sandbox"
                                         v-on:payment-authorized="paymentAuthorized"
                                         v-on:payment-completed="paymentCompleted"
                                         v-on:payment-cancelled="paymentCancelled">
@@ -254,6 +255,22 @@
                     this.isLoading = false
                     console.log(error.response)
                 })
+            },
+
+            couponCode() {
+
+                this.billing.amount = this.total
+                this.billing.tokenId = params.tokenId
+                this.billing.methods = 'coupon'
+
+                this.isLoading = true
+                this.$store.dispatch('BUY_BOOSTER_PACKAGES', this.billing)
+                    .then( response => {
+                        console.log( response)
+                    })
+                    .catch( error => {
+                        console.log( response )
+                    })
             }
         }
     }

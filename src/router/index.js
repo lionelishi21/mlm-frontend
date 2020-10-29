@@ -32,6 +32,8 @@ import Rayofhope from "../views/Rayofhope";
 import BoosterPackages from "../views/BoosterPackages";
 import RayofhopeDetails from "../views/RayofhopeDetails";
 import MakePayment from "../views/MakePayment";
+import Boosters from "../views/Boosters";
+import BoosterDetails from "../views/BoosterDetails";
 
 Vue.use(VueRouter)
 
@@ -53,6 +55,15 @@ Vue.use(VueRouter)
         path: 'payouts',
         component: Payouts
       },
+      {
+        path: 'boosters',
+        component: Boosters
+      },
+      {
+        path: 'booster-details/:id',
+        component: BoosterDetails
+      },
+
       {
         path: 'booster-package',
         component: BoosterPackages

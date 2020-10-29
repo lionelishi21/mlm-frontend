@@ -24,5 +24,17 @@ export default {
 
 	fetchRayofhopeDetails(id) {
 		return Api().get('/rayofhopes/'+ id );
+	},
+
+	getBoosterPackages() {
+		return Api().get('/boosters')
+	},
+
+	transferPackage(userId) {
+		return Api().get('/transfer/booster-packages/'+userId )
+	},
+
+	fetchBoosterDetails(affiliate_id) {
+		return Api().get('/boosters/details/'+affiliate_id)
 	}
 }
