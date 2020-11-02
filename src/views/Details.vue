@@ -1,7 +1,9 @@
 <template>
 	<div id="content" class="main-content">
 		<div class="layout-px-spacing">
-
+			<div class="row">
+				<pre>{{getAffiliateDetails.boosters}}</pre>
+			</div>
 			<div class="row">
 				<loading :active.sync="isLoading" :can-cancel="true" :is-full-page="fullpage"></loading>
 				<snackbar ref="snackbar" baseSize="100px" :wrapClass="''" :colors="null" :holdTime="3000" :multiple="true"/>
@@ -130,7 +132,7 @@
 
 						<div class="col-md-6">
 							<personal-sales :sales="getAffiliateDetails.personal_sales"
-											:personalsales="getAffiliateDetails.boosters">
+											:boosters="getAffiliateDetails.boosters">
 							</personal-sales>
 						</div>
 
