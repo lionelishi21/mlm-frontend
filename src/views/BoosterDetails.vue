@@ -26,6 +26,15 @@
                         </div>
                         <radial-component :sales="boosterDetails.percentage.position"></radial-component>
                     </div>
+
+                    <div class="widget widget-card-four" >
+                        <div class="w-content text-center">
+
+                            <h3> {{boosterDetails.payitfor}}.00 USD</h3>
+                            <small>Pay it Forwad Amount</small>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="col-xl-9 col-lg-6 col-md-7 col-sm-12 layout-top-spacing">

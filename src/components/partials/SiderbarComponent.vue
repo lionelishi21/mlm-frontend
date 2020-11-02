@@ -41,18 +41,7 @@
                         </div>
                     </div>
                 </a>
-                <div class="tooltip"><span>Boosters 3 * 9</span></div>
-            </router-link>
-
-            <router-link v-if="user.role_id == 1" tag="li" active-class="active" to="/dashboard/rayofhope" class="menu" exact>
-                <a href="/rayofhope" data-active="false" class="menu-toggle">
-                    <div class="base-menu">
-                        <div class="base-icons">
-                            <i class="text-white fa fa-angle-double-down fa-1x" width="24" height="24"></i>
-                        </div>
-                    </div>
-                </a>
-                <div class="tooltip"><span>Boosters 2 * 4</span></div>
+                <div class="tooltip"><span>Boosters</span></div>
             </router-link>
 
             <router-link v-if="user.role_id == 1" to="/dashboard/affiliates" tag="li" active-class="active" class="menu">

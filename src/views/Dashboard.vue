@@ -68,6 +68,7 @@
 				<div class="col-md-4">
 					<div class="row">
 						<div class="col-12">
+<!--							<pre>{{userDasboard}}</pre>-->
 							<personal-sales  :boosters="userDasboard.boosters" :sales="getUserDetails.purchase"></personal-sales>
 						</div>
 						<div class="col-12">
