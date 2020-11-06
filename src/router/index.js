@@ -34,10 +34,36 @@ import RayofhopeDetails from "../views/RayofhopeDetails";
 import MakePayment from "../views/MakePayment";
 import Boosters from "../views/Boosters";
 import BoosterDetails from "../views/BoosterDetails";
+import UserBoosterDetails from "../views/UserBoosterDetails";
+import Authentication from  "../layouts/Authentication";
+import NewLogin from '../layouts/Login';
+import ResetPassword from '../layouts/ForgotPassword';
 
 Vue.use(VueRouter)
 
   const routes = [
+  {
+    path: '/auth',
+    component: Authentication,
+    children: [
+
+      {
+        path: 'login',
+        component: NewLogin,
+        meta: {
+          allowAnonymous: true
+        }
+      },
+
+      {
+        path: 'password-reset',
+        component: ResetPassword,
+        meta: {
+          allowAnonymous: true
+        }
+      }
+    ]
+  },
   {
     path: '/dashboard',
     name: 'Home',
@@ -47,6 +73,14 @@ Vue.use(VueRouter)
         path: '',
         component: Dashboard
       },
+      {
+        path: 'signin',
+        component: NewLogin,
+        meta: {
+          allowAnonymous: true
+        }
+      },
+
       {
         path: 'make-payment/:id',
         component: MakePayment
@@ -62,6 +96,11 @@ Vue.use(VueRouter)
       {
         path: 'booster-details/:id',
         component: BoosterDetails
+      },
+
+      {
+        path: 'user-boosters/:id',
+        component: UserBoosterDetails,
       },
 
       {
@@ -232,7 +271,7 @@ router.beforeEach((to, from, next) => {
 
   } else if (!to.meta.allowAnonymous && !isLoggedIn()) {
     next({
-      path: '/login',
+      path: '/auth/login',
       query: { redirect: to.fullPath }
     })
   } else if (to.name == 'register' && isLoggedIn()) {

@@ -39,7 +39,7 @@
 											</li>
 
 											<li class="dropdown">
-												<router-link to="/login" tag="a" class="dropdown-item dropdown-toggle" href="index.html">
+												<router-link to="/auth/login" tag="a" class="dropdown-item dropdown-toggle" href="index.html">
 													Affiliate Login
 												</router-link>
 											</li>

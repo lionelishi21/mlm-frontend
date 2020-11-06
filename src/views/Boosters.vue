@@ -90,7 +90,7 @@
                                                 <th>Id</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
-                                                <th>Escrow</th>
+<!--                                                <th>Escrow</th>-->
                                                 <th>Tiers</th>
                                                 <th>Boosters</th>
                                                 <th class="text-center">Action</th>
@@ -110,10 +110,11 @@
                                                     </h4>
                                                 </td>
                                                 <td><h4 class="text-primary">{{ affiliate.email}}</h4> </td>
-                                                <td>
-                                                    <h4 class="text-primary" v-if="affiliate.escrow">{{ affiliate.escrow.amount }}</h4>
-                                                    <h4 class="text-primary" v-else>Pending</h4>
-                                                </td>
+<!--                                                <td>-->
+<!--                                                    <h4 class="text-primary" v-if="affiliate.escrow">{{ affiliate.escrow.amount }}</h4>-->
+<!--                                                    <h4 class="text-primary" v-else>Pending</h4>-->
+<!--                                                </td>-->
+
                                                 <td><h4 class="text-primary">  </h4> </td>
                                                 <td><h4 class="text-primary"> {{affiliate.boosters}} </h4></td>
                                                 <td class="text-center">
@@ -156,9 +157,7 @@
 
         computed: {
             ...mapGetters([
-
                 'boosterAll',
-
             ])
         },
 
@@ -182,7 +181,7 @@
             },
 
             goToDetails(id) {
-                this.$router.push('/dashboard/booster-details/'+id)
+                this.$router.push('/dashboard/user-boosters/'+id)
             },
 
             acceptPayment(params) {
@@ -215,7 +214,8 @@
                     },
                     "stripeClasses": [],
                     "lengthMenu": [5, 10, 20, 50],
-                    "pageLength": 50
+                    "pageLength": 50,
+                    "order": [[ 3, "desc" ]]
                 });
                 multiCheck(c3);
             }

@@ -36,5 +36,9 @@ export default {
 
 	fetchBoosterDetails(affiliate_id) {
 		return Api().get('/boosters/details/'+affiliate_id)
+	},
+
+	fetchUserBoosters( user_id ) {
+		return Api().get('/boosters/user-boosters/'+ user_id)
 	}
 }

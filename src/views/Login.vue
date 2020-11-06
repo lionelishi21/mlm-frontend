@@ -34,7 +34,7 @@
 									<div class="form-group mb-3">
 										<label class="text-dark">Email Address</label>
 										<div class="input-group">
-											<input v-model="user.email" name="username" type="text" class="form-control form-control-lg" />
+											<input v-model="user.email" type="email" class="form-control form-control-lg" />
 										</div>
 										<span class="help-block text-danger">{{errors[0]}}</span>
 									</div>
