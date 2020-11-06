@@ -22,6 +22,7 @@ export default {
 		return Api().get('/bodystyles')
 	},
 
+
 	loginUser(params) {
 		return Api().post('login', params)
 	},
