@@ -25,6 +25,15 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="user-profile">
+                        <div class="widget-content widget-content-area">
+                            <div class="text-center user-info">
+                                <h1>{{boosterUser.sys_boosters.length}}</h1>
+                                <p class="">System Packages</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-8">

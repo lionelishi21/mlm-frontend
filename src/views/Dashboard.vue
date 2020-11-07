@@ -35,7 +35,7 @@
 							</div>
 
 							<div class="col-md-6">
-								<summary-component></summary-component>
+								<summary-component :affiliateid="getUserDetails.affiliate.affiliate_id"></summary-component>
 							</div>
 
 					</div>
@@ -48,9 +48,10 @@
 				<div class="col-md-4">
 					<div class="row">
 						<div class="col-12 ">
-							<personal-sales  :boosters="userDasboard.boosters" :sales="getUserDetails.purchase"></personal-sales>
+							<personal-sales :userid="getUserDetails.id"  :boosters="userDasboard.boosters" :sales="getUserDetails.purchase"></personal-sales>
+<!--							<button class="btn btn-primary">View Personal</button>-->
 						</div>
-						<div class="col-12 mt-5">
+						<div class="col-12 mt-2">
 							<group-sales :sales="getGroupSales.response" ></group-sales>
 						</div>
 					</div>

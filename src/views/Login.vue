@@ -1,174 +1,159 @@
 <template>
+	<div class="form-container outer">
+		<a href="#" @click="back()">
+			<h4 class="p-2 text-success">
+				<i class="fa fa-arrow-circle-left"></i> Back
+			</h4>
+		</a>
+		<div class="form-form">
+			<div class="form-form-wrap">
 
-<div class="container">
 
-	<div class="vld-parent">
-		<loading :active.sync="isLoading"
-				 :can-cancel="true"
-				 :on-cancel="onCancel"
-				 :is-full-page="fullPage"></loading>
-	</div>
+				<div class="form-container" >
 
-	<section  style="padding-top: 20%; overflow:scroll;">
-		<div class="row">
-			<div class="col-md-3"></div>
-			<div class="col-md-6 center-block">
+					<div class="form-content">
 
-<!--				    <img class="logos" src="@/assets/logo.png" height="100" alt="MCC" />-->
+						<img class="logos mt-2 mb-5" src="@/assets/logo.png" height="100" alt="MCC" />
 
-					<div class="card-body" style="margin-top: 10%; background: white">
-					
-					<div class="alert alert-danger" role="alert" v-if="error.message">
-					  <h4 class="alert-heading">Error!</h4>
-					  <p class="text-white">{{error.message}}</p>
-					</div>
-					        <!-- Form Group -->
+						<h1 class="">Sign In</h1>
+						<p class="">Log in to your backoffice to continue.</p>
+
 						<ValidationObserver ref="observer" v-slot="{ invalid }">
-					      <form @submit.prevent="login(user)">
+							<form class="text-left" @submit.prevent="login(user)">
+								<div class="form">
 
-								<div class="form-group mb-3 text-center">
-									<legend><small>MCC Back Office Login Information</small></legend>
-								</div>
-
-								<validation-provider rules="required|email" v-slot="{ errors }">
-									<div class="form-group mb-3">
-										<label class="text-dark">Email Address</label>
-										<div class="input-group">
-											<input v-model="user.email" type="email" class="form-control form-control-lg" />
-										</div>
-										<span class="help-block text-danger">{{errors[0]}}</span>
+									<div class="alert alert-danger" role="alert" v-if="error.message">
+										<h4 class="alert-heading">Error!</h4>
+										<p class="text-white">{{error.message}}</p>
 									</div>
-								</validation-provider>
 
-								<validation-provider rules="required" v-slot="{ errors }">
-									<div class="form-group mb-3">
-										<div class="clearfix">
-											<label class="float-left text-dark">Password</label>
-											<a href="#" @click="goToForgotPassword()" class="float-right">Lost Password?</a>
+									<validation-provider rules="required|email" v-slot="{ errors }">
+										<div id="username-field" class="field-wrapper input">
+											<label for="username">Email Address</label>
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+											<input id="username" v-model="user.email" type="text" class="form-control" placeholder="e.g johndoe@email.com">
+											<span class="help-block text-danger">{{errors[0]}}</span>
 										</div>
-										<div class="input-group">
-											<input v-model="user.password" name="pwd" type="password" class="form-control text-dark form-control-lg" />
-										</div>
-										<span class="help-block text-danger">{{errors[0]}}</span>
-									</div>
-								</validation-provider>
+									</validation-provider>
 
-								<div class="row">
-									<div class="col-sm-8">
-										<div class="checkbox-custom checkbox-default">
-											<input value="true" v-model="user.rememberme" id="RememberMe" name="rememberme" type="checkbox"/>
-											<label for="RememberMe"> Remember Me</label>
+									<validation-provider rules="required" v-slot="{ errors }">
+										<div id="password-field" class="field-wrapper input mb-2">
+											<div class="d-flex justify-content-between">
+												<label for="password">PASSWORD</label>
+												<a @click="goToForgotPassword()" href="#" class="forgot-pass-link">Forgot Password?</a>
+											</div>
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+											<input v-model="user.password" type="password" class="form-control" placeholder="Password">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="toggle-password" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+											<span class="help-block text-danger">{{errors[0]}}</span>
 										</div>
-									</div>
-									<div class="col-sm-4 text-right">
-										<button :disabled="invalid" type="submit" class="btn btn-primary mt-2">Sign In</button>
+									</validation-provider>
+									<div class="d-sm-flex justify-content-between">
+										<div class="field-wrapper">
+											<button :disabled="invalid" type="submit" class="btn btn-primary" value="">Log In</button>
+										</div>
 									</div>
 								</div>
-						  </form>
+							</form>
 						</ValidationObserver>
+					</div>
 				</div>
 			</div>
-			<div class="col-md-3"></div>
 		</div>
-	</section>
-
-</div>
-
+	</div>
 </template>
+
 <script>
-import Loading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
-import { ValidationProvider, extend, ValidationObserver } from 'vee-validate';
-import { required, email } from 'vee-validate/dist/rules';
+	import Loading from 'vue-loading-overlay';
+	import 'vue-loading-overlay/dist/vue-loading.css';
+	import { ValidationProvider, extend, ValidationObserver } from 'vee-validate';
+	import { required, email } from 'vee-validate/dist/rules';
 
-extend('required', {
-	...required,
-	message: 'This field is required'
-});
+	extend('required', {
+		...required,
+		message: 'This field is required'
+	});
 
-extend('email', {
-	...email,
-	message: 'The E-mail field must be a valid email'
-});
+	extend('email', {
+		...email,
+		message: 'The E-mail field must be a valid email'
+	});
 
 
-export default {
-	components: {
-		Loading,
-		ValidationObserver,
-		ValidationProvider
-	},
-	data() {
-		return {
-			title: 'Login Page',
-			isLoading: false,
-			fullPage: true,
-			user: {
-				email: '',
-				password: '',
-				rememberme: false,
-			},
-			successMsg: false,
-	        validationErr: '',
-	        is_valid: '',
-	        error: {
-	          message: ''
-	        }
-		}
-	},
-
-	created() {
-		this.successMsg = false
-		if ( this.$route.query.user != undefined ) {
-			this.successMsg = true
-		}
-	},
-	mounted() {
-
-	},
-	methods: {
-		goToForgotPassword(){
-			this.$router.push('passwordreset')
+	export default {
+		components: {
+			Loading,
+			ValidationObserver,
+			ValidationProvider
 		},
-		login(user) {
-			this.isLoading = true
+		data() {
+			return {
+				title: 'Login Page',
+				isLoading: false,
+				fullPage: true,
+				user: {
+					email: '',
+					password: '',
+					rememberme: false,
+				},
+				successMsg: false,
+				validationErr: '',
+				is_valid: '',
+				error: {
+					message: ''
+				}
+			}
+		},
 
-			this.is_valid = '',
-			this.error.message = ''
+		created() {
+			this.successMsg = false
+			if ( this.$route.query.user != undefined ) {
+				this.successMsg = true
+			}
+		},
+		mounted() {
+
+		},
+		methods: {
+			back() {
+				this.$router.push('/')
+			},
+			goToForgotPassword(){
+				this.$router.push('/auth/password-reset')
+			},
+			login(user) {
+				this.isLoading = true
+
+				this.is_valid = '',
+						this.error.message = ''
 
 
-			this.$store.dispatch('login', user)
-				.then( response => {
-					console.log( response )
-					console.log('logging user in...')
+				this.$store.dispatch('login', user)
+						.then( response => {
+							console.log( response )
+							console.log('logging user in...')
 
-					this.$store.dispatch('FETCH_USER')
-						.then ( resp => {
-							this.isLoading = false
-							this.$router.push('/dashboard')
-						})
-						.catch(err => {
-							this.isLoading = false
-							console.log( err.response )
-						})
+							this.$store.dispatch('FETCH_USER')
+									.then ( resp => {
+										this.isLoading = false
+										this.$router.push('/dashboard')
+									})
+									.catch(err => {
+										this.isLoading = false
+										console.log( err.response )
+									})
 
-				}).catch ( ( error ) => {
-				   this.isLoading = false
+						}).catch ( ( error ) => {
+					this.isLoading = false
 					console.log(error.response)
 					this.is_valid = 'is-invalid'
 					this.error.message = error.response.data
 					this.loading = false
 				})
-		}	
+			}
+		}
 	}
-}
 </script>
-<style lang="scss" scoped>
-  .logos {
-	display:block;
-	margin:auto;
-   }
-	body {
-		color: white !important;
-	}
+<style scoped>
+
 </style>

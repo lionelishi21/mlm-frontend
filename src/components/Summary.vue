@@ -16,6 +16,7 @@
                 </div>
                 <div class="inv-action">
                     <a href="#" class="btn btn-success"@click="goToSummary()">Withdraw</a>
+                    <a href="#" class="btn btn-success"@click="goToPersonalSales()">Personal Sales</a>
                 </div>
             </div>
         </div>
@@ -27,7 +28,7 @@
     import {mapGetters} from 'vuex';
     export default {
         name: "Summary.vue",
-
+        props: ['affiliateid'],
         created() {
             this.$store.dispatch('GET_ESCROW')
         },
@@ -50,6 +51,11 @@
             goToSummary() {
                 this.$router.push('/dashboard/wallet')
             },
+            goToPersonalSales() {
+                var url = '/dashboard/affiliates/'+this.affiliateid
+                this.$router.push(url);
+            },
+
             payoutModal() {
                 $('#payoutModal').modal('show')
             },

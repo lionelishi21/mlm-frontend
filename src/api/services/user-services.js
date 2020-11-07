@@ -24,7 +24,7 @@ export default {
 
 
 	loginUser(params) {
-		return Api().post('login', params)
+		return Api().post('/login', params)
 	},
 
 	fetchCurrentUser() {
