@@ -49,7 +49,7 @@
 		</div>
 	</section>
 	<div class="col-lg-12">
-		<div class="container appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
+		<div class="container">
 			<div class="row pt-5 my-5">
 				<div class="col-md-12 order-2 order-md-1 text-center text-md-left">
 					<div class="owl-carousel owl-theme nav-style-1 nav-center-images-only stage-margin mb-0" data-plugin-options="{
