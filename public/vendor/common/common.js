@@ -1,7 +1,7 @@
 /*
 Plugin Name: 	BrowserSelector
 Written by: 	Okler Themes - (http://www.okler.net)
-Theme Version:	7.0.0
+Theme Version:	8.0.0
 */
 
 (function($) {
@@ -184,11 +184,22 @@ if( !$('html').hasClass('disable-onload-scroll') && window.location.hash && !['#
 (function($) {
 	var $noticeTopBar = {
 		$wrapper: $('.notice-top-bar'),
+		$closeBtn: $('.notice-top-bar-close'),
+		$header: $('#header'),
 		$body: $('.body'),
 		init: function() {
 			var self = this;
 
-			self.build();
+			if( !$.cookie('portoNoticeTopBarClose') ) {
+				self
+					.build()
+					.events();
+			} else {
+				self.$wrapper.parent().prepend( '<!-- Notice Top Bar removed by cookie -->' );
+				self.$wrapper.remove();
+			}
+
+			return this;
 		},
 		build: function(){
 			var self = this;
@@ -205,8 +216,68 @@ if( !$('html').hasClass('disable-onload-scroll') && window.location.hash && !['#
 						pauseSpeed: 5000
 					});
 
+					if( ['absolute', 'fixed'].includes( self.$header.css('position') ) ) {
+						self.$header.css({
+							'top': self.$wrapper.outerHeight(),
+							'transition': 'ease top 300ms'
+						});
+					}
+
+					$(window).trigger('notice.top.bar.opened');
+
 				}, 1000);
 			});
+
+			return this;
+		},
+		events: function() {
+			var self = this;
+
+			self.$closeBtn.on('click', function(e){
+				e.preventDefault();
+
+				self.$body.animate({
+					'margin-top': 0,
+				}, 300, function(){
+					self.$wrapper.remove();
+					self.saveCookie();
+				});
+
+				if( ['absolute', 'fixed'].includes( self.$header.css('position') ) ) {
+					self.$header.animate({
+						top: 0
+					}, 300);
+				}
+
+				// When header has shrink effect
+				if( self.$header.hasClass('header-effect-shrink') ) {
+					self.$header.find('.header-body').animate({
+						top: 0
+					}, 300);
+				}
+
+				$(window).trigger('notice.top.bar.closed');
+			});
+
+			return this;
+		},
+		checkCookie: function(){
+			var self = this;
+
+			if( $.cookie('portoNoticeTopBarClose') ) {
+				return true;
+			} else {
+				return false;
+			}
+
+			return this;
+		},
+		saveCookie: function() {
+			var self = this;
+
+			$.cookie('portoNoticeTopBarClose', true);
+
+			return this;
 		}
 	}
 
@@ -280,10 +351,12 @@ if( !$('html').hasClass('disable-onload-scroll') && window.location.hash && !['#
 		});
 
 		$(window).on("beforeunload", function(e) {
-			var href = link_click.attr('href');
+			if( typeof link_click === 'object' ) {
+				var href = link_click.attr('href');
 
-			if( href.indexOf('mailto:') != 0 && href.indexOf('tel:') != 0 && !link_click.data('rm-from-transition') ) {
-				$('body').addClass('page-transition-active');
+				if( href.indexOf('mailto:') != 0 && href.indexOf('tel:') != 0 && !link_click.data('rm-from-transition') ) {
+					$('body').addClass('page-transition-active');
+				}
 			}
 		});
 
@@ -364,7 +437,7 @@ function scrollAndFocus($this, scrollTarget, focusTarget, scrollOffset, scrollAg
 }
 
 /*
-* Scroll and Focus
+* Toggle Text Click
 */
 (function($) {
 	$('[data-toggle-text-click]').on('click', function () {
@@ -372,6 +445,90 @@ function scrollAndFocus($this, scrollTarget, focusTarget, scrollOffset, scrollAg
 			return text === $(this).attr('data-toggle-text-click') ? $(this).attr('data-toggle-text-click-alt') : $(this).attr('data-toggle-text-click');
 		});
 	});
+})(jQuery);
+
+/*
+* Shape Divider - SVG Aspect Ratio
+*/
+function aspectRatioSVG() {
+	(function($) {
+		if( $(window).width() < 1950 ) {
+			$('.shape-divider svg[preserveAspectRatio]').each(function(){
+				$(this).attr('preserveAspectRatio', 'xMinYMin');
+			});
+		} else {
+			$('.shape-divider svg[preserveAspectRatio]').each(function(){
+				$(this).attr('preserveAspectRatio', 'none');
+			});
+		}
+	})(jQuery);
+}
+
+(function($) {
+	if( $('.shape-divider').get(0) ) {
+		aspectRatioSVG();
+		$(window).on('resize', function(){
+			aspectRatioSVG();
+		});
+	}
+})(jQuery);
+
+/*
+* Toggle Class
+*/
+(function($) {
+	$('[data-porto-toggle-class]').on('click', function (e) {
+		e.preventDefault();
+
+		$(this).toggleClass( $(this).data('porto-toggle-class') );
+	});
+})(jQuery);
+
+/*
+* Dynamic Height
+*/
+(function($) {
+	var $window = $(window);
+
+	$window.on('resize', function(){
+
+		$('[data-dynamic-height]').each(function(){
+			var $this = $(this),
+				values = JSON.parse($this.data('dynamic-height').replace(/'/g,'"').replace(';',''))
+
+			// XS
+			if( $window.width() < 576 ) {
+				$this.height( values[4] );
+			}
+
+			// SM
+			if( $window.width() > 575 && $window.width() < 768 ) {
+				$this.height( values[3] );
+			}
+
+			// MD
+			if( $window.width() > 767 && $window.width() < 992 ) {
+				$this.height( values[2] );
+			}
+
+			// LG
+			if( $window.width() > 991 && $window.width() < 1200 ) {
+				$this.height( values[1] );
+			}
+
+			// XS
+			if( $window.width() > 1199 ) {
+				$this.height( values[0] );
+			}
+		});
+
+	});
+
+	// Mobile First Load
+	if( $window.width() < 992 ) {
+		$window.trigger('resize');
+	}
+
 })(jQuery);
 
 (function (factory) {
@@ -1654,6 +1811,8 @@ jQuery(document).ready(function($) {
 						hideWord($word)
 					}, revealAnimationDelay);
 				});
+
+				console.log(123);
 			} else {
 				$word.parents('.word-rotator-words').stop( true, true ).css('width', $word.outerWidth() + 10);
 				hideWord($word);

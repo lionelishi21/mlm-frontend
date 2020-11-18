@@ -5,7 +5,6 @@
 
                 <div class="w-info">
                     <p class="text-6 text-danger" v-if="sales.length < 3">Personal Sales Status
-                        <button class="btn btn-success">View Personal Sales</button>
                         </b></p>
                     <p class="text-6 text-success" v-else>Personal Sales
 
