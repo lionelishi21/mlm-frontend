@@ -67,7 +67,7 @@
 						</div>
 						<div>
 							<img class="img-fluid rounded-0 mb-4" src="@/assets/rose.jpg" alt="" />
-							<h3 class="font-weight-bold text-color-dark text-4 mb-0">Rosalinda Burton</h3>
+							<h3 class="font-weight-bold text-color-dark text-4 mb-0">Rosalinda Burton<
 						</div>
 						<div>
 							<img class="img-fluid rounded-0 mb-4" src="@/assets/lionel.jpg" alt="" />

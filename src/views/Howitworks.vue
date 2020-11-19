@@ -31,9 +31,9 @@
 			<div class="col-lg-12">
 				<div class="overflow-hidden">
 					<p class="lead mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">
-						Inspired by Ordinary People Nationwide, And Soon to Be Worldwide, The Majestic Cares Online Community, or “MCC”, was created so that ALL of its affiliate/Members can receive a residual income for any worthwhile purpose, such as, business start-up, paying off debts, buying a new car or home, or to be able to travel abroad, to visit with your family and friends!
-					</p>
+						Welcome to The Majestic Cares Community!  “MCC” is an online community inspired by Ordinary People Worldwide. It was created so that ALL of its Affiliate/Members can receive a residual income for any worthwhile purpose, such as: business start-up, paying off debts, buying a new car or home, or travelling abroad to any desired destination!Welcome to The Majestic Cares Community!  “MCC” is an online community inspired by Ordinary People Worldwide. It was created so that ALL of its Affiliate/Members can receive a residual income for any worthwhile purpose, such as: business start-up, paying off debts, buying a new car or home, or travelling abroad to any desired destination!zz
 					<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
+
 						No Matter what your current financial needs are, The Majestic Cares Online Community (MCC), is the answer to helping you and your love ones, to fulfill your financial hopes and dreams!
 					</p>
 
@@ -45,18 +45,13 @@
 					</p>
 
 					<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
-						There are no Enrollment, or Administration Fees. There are No Recruiting or Sponsoring Required to Become an MCC Sales Affiliate. However, in order to
-						start receiving Community Shared Cash Bonuses, an Affiliate must make no less
-						than 3 sales, selling MCC’S Self-Help Publication entitled, “Stop Working for Money, and Let Your Money Work for you”, which sells for $34.95, and comes with a 30-day Money Back Guarantee.
-
+						There are no Enrollment or Administration Fees. There is No Recruiting or Sponsoring Required to Become an MCC Sales Affiliate. However, in order to start receiving Community Shared Cash Bonuses, an Affiliate must make no less than 3 personal sales of MCC’S Self-Help Publication entitled, “Learn How to Stop Working for Money, and Let Your Money Work for You” which sells for $34.95, and comes with a 30-day Money Back Guarantee.
 					</p>
 
 					<h4 class="lead mb-0 mt-3"><strong>Here Is an Example of How This Works:</strong></h4>
 
 					<p class="lead mb-0 appear-animation mt-0" data-appear-animation="maskUp" data-appear-animation-delay="200">
-						When you, as an MCC Sales Affiliate, make a minimum of 3 Personal Sales, you
-						will qualify to receive Community Shared Cash Bonuses and be positioned within
-						an MCC Group of 12 other qualifiers and begin to receive Community Shared Cash Bonuses as per MCC’S Automated Compensation Plan.
+						When an MCC Sales Affiliate makes a minimum of 3 Personal Sales, the Affiliate qualifies to receive Community Shared Cash Bonuses and is positioned within an MCC Group of 12 other qualifiers who begin to receive Community Shared Cash Bonuses as per MCC’S Automated Compensation Plan.
 					</p>
 
 
@@ -66,8 +61,8 @@
 		</div>
 
 		<div class="row">
-			<div class="col-md-12 mt-5 text-center">
-				<h4><strong>Each Sales Affiliate Begins Their MCC Cash Bonus Journey As A:</strong></h4>
+			<div class="col-md-12 mt-5">
+				<h4><strong>Each Sales Affiliate Begins at the Bronze level:</strong></h4>
 			</div>
 		</div>
 			<div class="row">
@@ -113,10 +108,8 @@
 
 			<div class="row">
 				<div class="col-md-12 text-center mt-5">
-					<h4><strong>MCC’S Ad Booster Package Option</strong></h4>
-					<hr>
-					<p class="text-dark text-5">When you elect to purchase an MCC Ad Booster Package for $25 each
-						(Limit of 20 packages), it will all be done for you!
+					<h4><strong>MCC’S Ad Booster Package Option
+					<p class="text-dark text-5">When you elect to purchase an MCC Booster Pkg for $25 each (Limit of 20 pkgs), you will be instantly qualified for All MCC Cash Bonuses!
 					</p>
 
 					<p class="text-dark text-5">Each Booster Package will enter you into MCC’S
@@ -124,10 +117,10 @@
 						In Which You Will Receive Your 3 Qualifying Sales AND Boost
 						Your Total Group Sales With Over 100 Sales Per Package!
 					</p>
-					<p class="text-dark text-5">You Will Receive Up To $15,000 In Cash Bonuses
+					<p class="text-dark text-5">
 						Per Ad Booster Package (Limit of 20 Packages)
 					</p>
-
+						<h4><strong>MCC’S Ad Booster</strong></h4>
 					<p class="text-dark text-5">Your Own Personal Self-Help eBook (22-yrs in the making)
 						Entitled, “Awaken to Gentle Whispers”
 						And Our Anti-Aging, Immune System Boosting Health Product
@@ -137,17 +130,29 @@
 					</p>
 				</div>
 			</div>
+		<div class="row">
+				<p>As the Community Sales Grow…</p>
+		</div>
+		<div class="">
+		</div>
+	   </div>
 			<div class="row mt-3">
+
 			  <p class="lead mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">
-						CONGRATULATIONS ON BECOMING OUR NEXT MCC-er! YOU NOW QUALIFY TO RECEIVE UP-TO 90% PLUS OF YOUR TOTAL GROUP SALES VOLUME FOR LIFE!!
+				   CONGRATULATIONS ON BECOMING OUR NEXT MCC-er! YOU NOW QUALIFY TO RECEIVE UP-TO 90% PLUS OF YOUR TOTAL GROUP SALES VOLUME FOR LIFE!!
 			  </p>
+
 			</div>
 			<div class="row">
 				<p class="lead mb-0 appear-animation mt-3" data-appear-animation="maskUp" data-appear-animation-delay="200">
 					<small>
 						<i>
 							Disclaimer: The MAJESTIC CARES COMMUNITY, OR MCC AND ITS AFFILIATES, is an online
-Sales Affiliate Community. This information, as well as the information contained in our publications, is for illustration purposes only, with no promises or guarantees of income. Neither the administrators, subsidiaries, nor the Affiliate/Members of the Majestic Cares Community, make no income guarantees.
+                            Sales Affiliate Community. This information,
+							as well as the information contained in our publications,
+							is for illustration purposes only, with no promises or guarantees of income.
+							Neither the administrators, subsidiaries, nor the
+							Affiliate/Members of the Majestic Cares Community, make no income guarantees.
 				        </i>
 				   </small>
 				</p>
