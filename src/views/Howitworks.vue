@@ -287,7 +287,7 @@
 				<div class="row py-3">
 					<div class="col-md-9 col-lg-9">
 						<div class="call-to-action-content">
-							<h2 class="font-weight-normal text-7 mb-0">Majestic Cares your <strong>Humanitarian</strong> Gateway</h2>
+							<h2 class="font-weight-normal text-7 mb-0">Majestic Cares is your <strong>Humanitarian</strong> Gateway</h2>
 						</div>
 					</div>
 					<div class="col-md-3 col-lg-3">
