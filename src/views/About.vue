@@ -52,12 +52,7 @@
 		<div class="container">
 			<div class="row pt-5 my-5">
 				<div class="col-md-12 order-2 order-md-1 text-center text-md-left">
-					<div class="owl-carousel owl-theme nav-style-1 nav-center-images-only stage-margin mb-0" data-plugin-options="{
-									'responsive': {'992':
-									 {'items': 1}, '992':
-									  {'items': 1}, '992':
-									  {'items': 5}, '1200':
-									  {'items': 5}}, 'margin': 25, 'loop': false, 'nav': true, 'dots': false, 'stagePadding': 40}">
+					<div class="owl-carousel owl-theme nav-style-1 nav-center-images-only stage-margin mb-0"">
 						<div>
 							<img class="img-fluid rounded-0 mb-4" src="@/assets/bob.jpg" alt="" />
 							<h3 class="font-weight-bold text-color-dark text-4 mb-0">Bob Donald</h3>
