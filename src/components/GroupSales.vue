@@ -2,32 +2,10 @@
     <div>
         <div class="widget widget-card-four" >
             <div class="">
-                <div class="w-content">
-                    <div class="w-info" v-if="getGroupSales.status == 'bronze'" >
-                        <p class="text-6 text-danger">Bronze Group Sales</p>
-                        <hr>
-                    </div>
-                    <div class="w-info" v-if="getGroupSales.status == 'silver'" >
-                        <p class="text-6 text-danger">Silver Group Sales</p>
-                        <hr>
-                    </div>
-                    <div class="w-info" v-if="getGroupSales.status == 'gold'" >
-                        <p class="text-6 text-danger">Gold Group Sales</p>
-                        <hr>
-                    </div>
-                    <div class="w-info" v-if="getGroupSales.status == 'ruby'" >
-                        <p class="text-6 text-danger">Ruby Group Sales</p>
-                        <hr>
-                    </div>
-                    <div class="w-info" v-if="getGroupSales.status == 'diamond'" >
-                        <p class="text-6 text-danger">Diamond Group Sales</p>
-                        <hr>
-                    </div>
-                </div>
                 <div class="">
                     <div class="row">
                         <div class="col-md-12">
-                            <sales-chart :sales="getGroupSales.position"></sales-chart>
+                            <sales-chart :sales="stats.percentage" :name="stats.current_status"></sales-chart>
                         </div>
                     </div>
                 </div>
@@ -40,7 +18,7 @@
     import SalesChart from './charts/radial.vue';
     import { mapGetters } from 'vuex';
     export default {
-        props: ['user_id'],
+        props: ['user_id', 'stats'],
         name: "GroupSales.vue",
         components: {
             SalesChart

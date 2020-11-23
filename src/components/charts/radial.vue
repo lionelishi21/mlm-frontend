@@ -5,7 +5,7 @@
 </template>
 <script>
     export default {
-        props:['sales'],
+        props:['sales', 'name'],
         computed: {
 
             readings: function(value) {
@@ -44,7 +44,7 @@
                                     offsetY: -10,
                                     show: true,
                                     color: "#888",
-                                    fontSize: "13px"
+                                    fontSize: "20px"
                                 },
 
                                 value: {
@@ -64,7 +64,7 @@
                     stroke: {
                         lineCap: 'round'
                     },
-                    labels: ['Sales'],
+                    labels: [this.name],
                 },
             }
         }

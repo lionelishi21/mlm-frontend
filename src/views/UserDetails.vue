@@ -1,8 +1,8 @@
 <template>
     <div class="layout-px-spacing">
-        <div class="row">
-            <pre>{{getUserAffiliateDetails}}</pre>
-        </div>
+<!--        <div class="row">-->
+<!--            <pre>{{getUserAffiliateDetails}}</pre>-->
+<!--        </div>-->
         <div class="row layout-spacing">
             <div class="col-md-4">
                 <div class="card">

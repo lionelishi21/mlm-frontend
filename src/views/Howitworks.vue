@@ -309,30 +309,42 @@ export default {
 			title: 'How it Works'
 		}
 	},
-	mounted() {
-		// Animate
-		(function($) {
 
-			'use strict';
 
-			if ($.isFunction($.fn['themePluginAnimate'])) {
-
-				$(function() {
-					$('[data-appear-animation]').each(function() {
-						var $this = $(this),
-							opts;
-
-						var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-						if (pluginOptions)
-							opts = pluginOptions;
-
-						$this.themePluginAnimate(opts);
-					});
-				});
-
-			}
-
-		}).apply(this, [jQuery]);
+	watch: {
+		// call again the method if the route changes
+		'$route': 'loadAnimation'
 	},
+
+
+	created() {},
+	mounted() {},
+	methods: {
+		loadAnimation() {
+			// Animate
+			(function($) {
+
+				'use strict';
+
+				if ($.isFunction($.fn['themePluginAnimate'])) {
+
+					$(function() {
+						$('[data-appear-animation]').each(function() {
+							var $this = $(this),
+									opts;
+
+							var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
+							if (pluginOptions)
+								opts = pluginOptions;
+
+							$this.themePluginAnimate(opts);
+						});
+					});
+
+				}
+
+			}).apply(this, [jQuery]);
+		}
+	}
 }
 </script>
