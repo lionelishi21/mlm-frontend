@@ -64,7 +64,7 @@
                     stroke: {
                         lineCap: 'round'
                     },
-                    labels: [this.name],
+                    labels: ['Sales'],
                 },
             }
         }

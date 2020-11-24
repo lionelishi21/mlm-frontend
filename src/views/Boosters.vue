@@ -98,6 +98,7 @@
                                             </thead>
                                             <tbody>
                                             <tr v-for="affiliate in boosterAll" class="items">
+
                                                 <td><h4 class="text-primary">{{ affiliate.id}}</h4></td>
                                                 <td>
                                                     <h4 v-if="affiliate.is_system" style="color: darkolivegreen;" >
@@ -118,7 +119,7 @@
                                                 <td><h4 class="text-primary">  </h4> </td>
                                                 <td><h4 class="text-primary"> {{affiliate.boosters}} </h4></td>
                                                 <td class="text-center">
-                                                    <button  @click="goToDetails(affiliate.id)" class="btn btn-outline-primary">view</button>
+                                                    <button  @click="goToDetails(affiliate.affiliate_id)" class="btn btn-outline-primary">view</button>
                                                 </td>
                                             </tr>
 
@@ -181,7 +182,7 @@
             },
 
             goToDetails(id) {
-                this.$router.push('/dashboard/user-boosters/'+id)
+                this.$router.push('/dashboard/booster-details/'+id)
             },
 
             acceptPayment(params) {

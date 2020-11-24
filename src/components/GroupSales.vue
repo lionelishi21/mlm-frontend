@@ -5,7 +5,47 @@
                 <div class="">
                     <div class="row">
                         <div class="col-md-12">
-                            <sales-chart :sales="stats.percentage" :name="stats.current_status"></sales-chart>
+                            <div v-if="stats.current_status == 'Ruby'" class="card-header ruby" >
+                                <h4 class="text-white text-6 pt-2">
+                                    <b>
+                                        {{stats.current_status}}
+                                    </b>
+                                </h4>
+                            </div>
+
+                            <div v-if="stats.current_status == 'Bronze'" class="card-header bronze" >
+                                <h4 class="text-white text-6 pt-2">
+                                    <b>
+                                        {{stats.current_status}}
+                                    </b>
+                                </h4>
+                            </div>
+
+                            <div v-if="stats.current_status == 'Silver'" class="card-header silver" >
+                                <h4 class="text-dard text-6 pt-2">
+                                    <b>
+                                        {{stats.current_status}}
+                                    </b>
+                                </h4>
+                            </div>
+
+                            <div v-if="stats.current_status == 'Gold'" class="card-header gold" >
+                                <h4 class="text-white text-6 pt-2">
+                                    <b>
+                                        {{stats.current_status}}
+                                    </b>
+                                </h4>
+                            </div>
+
+                            <div v-if="stats.current_status == 'Diamond'" class="card-header diamond" >
+                                <h4 class="text-dark text-6 pt-2">
+                                    <b>
+                                        {{stats.current_status}}
+                                    </b>
+                                </h4>
+                            </div>
+
+                            <sales-chart :sales="stats.percentage""></sales-chart>
                         </div>
                     </div>
                 </div>
