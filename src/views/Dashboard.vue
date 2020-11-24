@@ -59,7 +59,7 @@
 					<div class="">
 						<group-sales :user_id="getUserDetails.id" :stats="getGroupSales"></group-sales>
 					</div>
-					<div class="widget-four" style="height: 80%; overflow-y: scroll;">
+					<div class="widget-four" style="max-height: 80%; overflow-y: scroll;">
 						<div class="widget-heading">
 							<h5 class="">Booster Packages</h5>
 						</div>
@@ -74,6 +74,7 @@
 										<div class="w-browser-info">
 											<h4><strong> Booster {{index + 1}} </strong></h4>
 											<p class="browser-count text-dark"><strong>{{boost.stats.tiers}} | {{boost.stats.percentage}}%</strong></p>
+
 										</div>
 
 										<div class="w-browser-stats">
