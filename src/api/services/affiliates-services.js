@@ -40,5 +40,9 @@ export default {
 
 	fetchUserBoosters( user_id ) {
 		return Api().get('/boosters/user-boosters/'+ user_id)
+	},
+
+	fetchUserSummary() {
+		return Api().get('/boosters/summary')
 	}
 }

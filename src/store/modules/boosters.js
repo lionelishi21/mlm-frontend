@@ -2,6 +2,7 @@ import api from '../../api/services/affiliates-services.js';
 
 const state = {
     boosters: {},
+    summary: {},
     details: {},
     user_boosters: {}
 }
@@ -9,7 +10,8 @@ const state = {
 const getters = {
     boosterAll: state => state.boosters,
     boosterDetails: state => state.details,
-    boosterUser: state => state.user_boosters
+    boosterUser: state => state.user_boosters,
+    boosterSummary: state => state.summary
 }
 
 const actions = {
@@ -66,6 +68,17 @@ const actions = {
             .catch( error => {
                 console.log( error.response )
             })
+    },
+
+    BOOSTER_SUMMARY({ commit }) {
+        api.fetchUserSummary()
+            .then( response => {
+                console.log('---------summary', response )
+                commit( 'SET_BOOSTER_SUMMARY', response.data)
+            })
+            .catch( error => {
+                console.log( error.response )
+            })
     }
 }
 
@@ -81,6 +94,10 @@ const mutations = {
 
     SET_USER_BOOSTERS(state, boost) {
         state.user_boosters = boost
+    },
+
+    SET_BOOSTER_SUMMARY( state, summar ) {
+        state.summary = summar
     }
 }
 
