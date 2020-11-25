@@ -3,7 +3,7 @@ import Api from '../index.js';
 export default {
 
 	changePassword(payload) {
-		return Api().post('/password/email', payload)
+		return Api().post('/password/email-link', payload)
 	},
 
 	saveUserFilter(filters) {
