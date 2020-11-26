@@ -24,19 +24,19 @@
                         <ValidationObserver ref="observer" v-slot="{ invalid }">
                             <form @submit.prevent="password(user)">
 
-<!--                                <div class="form-group mb-3 text-center">x`-->
-<!--                                    <legend><small>MCC Back Office Login Information</small></legend>-->
-<!--                                </div>-->
+                                <div class="form-group mb-3 text-center">x`
+                                    <legend><small>Reset your password</small></legend>
+                                </div>
 
-<!--                                <validation-provider rules="required|email" v-slot="{ errors }">-->
-<!--                                    <div class="form-group mb-3">-->
-<!--                                        <label class="text-dark">Email Address</label>-->
-<!--                                        <div class="input-group">-->
-<!--                                            <input v-model="user.email" name="username" placeholder="Email address" type="text" class="form-control form-control-lg" />-->
-<!--                                        </div>-->
-<!--                                        <span class="help-block text-danger">{{errors[0]}}</span>-->
-<!--                                    </div>-->
-<!--                                </validation-provider>-->
+                                <validation-provider rules="required|email" v-slot="{ errors }">
+                                    <div class="form-group mb-3">
+                                        <label class="text-dark">Email Address</label>
+                                        <div class="input-group">
+                                            <input v-model="user.email" name="username" placeholder="Email address" type="text" class="form-control form-control-lg" />
+                                        </div>
+                                        <span class="help-block text-danger">{{errors[0]}}</span>
+                                    </div>
+                                </validation-provider>
 
                                 <validation-provider name="confirm" rules="required" v-slot="{ errors }">
                                     <div class="form-group mb-3">
