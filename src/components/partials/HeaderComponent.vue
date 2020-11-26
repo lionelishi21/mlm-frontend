@@ -110,6 +110,7 @@
 		hide() {
 			// $(".main-container").toggleClass('sbar-open')
 		}
+
     }
 }
 </script>

@@ -74,7 +74,11 @@ Vue.filter('str_limit', function (value, size) {
 Vue.use(vueCountryRegionSelect)
 Vue.config.productionTip = false
 
+// importing the helper
+import interceptorsSetup from './helpers/interceptors'
 
+// and running it somewhere here
+interceptorsSetup()
 
 new Vue({
   router,
