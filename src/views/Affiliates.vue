@@ -76,7 +76,7 @@
 													<td>{{affiliate.details.country}}</td>
 													<td>{{affiliate.sponsor.first_name}} {{affiliate.sponsor.last_name}} </td>
 													<td class="text-center">
-														<span v-if="affiliate.sales >= 3" class="shadow-none badge outline-badge-success">Active</span>
+														<span v-if="affiliate.sales >= 3 || affiliate.booster > 0" class="shadow-none badge outline-badge-success">Active</span>
 														<span v-else class="shadow-none badge badge-danger">Inactive</span>
 													</td>
 													<td class="text-center">
