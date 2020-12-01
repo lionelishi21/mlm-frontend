@@ -45,16 +45,7 @@
                         </div>
                         <div class="modal-body">
                             <div id="app">
-                                <PayPal
-                                        currency="USD"
-                                        :client="credentials"
-                                        :amount="display_total"
-                                        :button-style="myStyle"
-                                         :experience="experience"
-                                        v-on:payment-authorized="paymentAuthorized"
-                                        v-on:payment-completed="paymentCompleted"
-                                        v-on:payment-cancelled="paymentCancelled">
-                                </PayPal>
+                           
                             </div>
                         </div>
                     </div>
