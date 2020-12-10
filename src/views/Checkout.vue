@@ -275,26 +275,6 @@
 									</a>
 								</h4>
 							</div>
-							<div id="collapseThr" class="collapse show">
-								<div class="card-body">
-									<div class="form-row">
-										<div class="col-md-4">
-											<label >Paypal Checkout </label>
-										   <PayPal
-												class="form-control"
-												currency="USD"
-												:button-style="myStyle"
-												 amount="34.95"
-												:client="paypal"
-												:experience="experience"
-												v-on:payment-authorized="paymentAuthorized"
-												v-on:payment-completed="paymentCompleted"
-												v-on:payment-cancelled="paymentCancelled">
-										</PayPal>
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
 						<div class="card card-default" v-if="step == 2">
 							<div class="card-header">
