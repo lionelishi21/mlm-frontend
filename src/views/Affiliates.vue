@@ -107,7 +107,6 @@
 													size="sm"
 											></b-pagination>
 
-
 										</div>
 									</div>
 								</div>
