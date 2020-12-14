@@ -12,6 +12,8 @@ import escrow from "./modules/escrow";
 import account from "./modules/account";
 import rayofhope from "./modules/rayofhope";
 import boosters from "./modules/boosters";
+import system from "./modules/systems";
+import transferwise from "./modules/transferwise";
 
 Vue.use(Vuex)
 Vue.config.debug = true
@@ -27,6 +29,8 @@ export default new Vuex.Store({
 		escrow,
 		account,
 		rayofhope,
-		boosters
+		boosters,
+		system,
+		transferwise
     },
 });

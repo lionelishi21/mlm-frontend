@@ -5,36 +5,38 @@
 					 :can-cancel="false"
 					 :is-full-page="fullPage"></loading>
 		</div>
-		<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalCenterTitle">Delete Affiliate (only admin)</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-						</button>
-					</div>
-					<div class="modal-body">
-						<h4 class="modal-heading mb-4 mt-2">Are Sure yuo want to delete this Affiliates</h4>
-						<p class="modal-text">
-							Delete an Affiliate may cause conflict within the application, please make sure you contact administrator
-							before you click delete
-						</p>
-						<div class="form-group">
-							<textarea class="form-control" id="" cols="30" rows="5" placeholder="descrine the reason for delete this affiliate"></textarea>
-						</div>
-						<div class="form-group">
-							<input class="form-control" type="password" placeholder="Enter Administrator password id or to delete"></input>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
-						<button type="button" class="btn btn-primary" @click="deleteAffiliate()">Confirm</button>
-					</div>
+
+		<b-modal  v-model="compressModal" title="Booster" modal-footer centered hide-footer="true">
+			<label class="text-dark" >Select Affiliates you want to exchange position with </label>
+			<hr>
+
+			<div class="card">
+				<div class="card-body">
+					<h6>{{compression.affiliate_name}} ({{compression.selectedAffiliate }}) =>  {{compression.exchange_id}}</h6>
 				</div>
 			</div>
-		</div>
+
+			<select class="form-control mt-3" name="" v-model="compression.exchange_id">
+				<option v-for="affil in getAffiliates.response" :value="affil.order">{{affil.name}} - Postion: {{affil.order}}</option>
+			</select>
+			<hr>
+
+			<div class="form-group">
+				<button class="btn btn-primary pull-right" @click="compress()">Compress</button>
+			</div>
+		</b-modal>
+
 		<div class="layout-px-spacing">
+			<div class="row layout-top-spacing">
+				<div class="col-md-12">
+					<nav class="breadcrumb-two" aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+							<li class="breadcrumb-item active"><a href="javascript:void(0);">Affiliates</a></li>
+						</ol>
+					</nav>
+				</div>
+			</div>
 				<div class="col-lg-12">
 					<div class="widget-content searchable-container list">
 						<div class="row layout-top-spacing layout-spacing">
@@ -44,49 +46,68 @@
 										<div class="row">
 											<div class="col-xl-12 col-md-12 col-sm-12 col-12">
 												<h4>All Affliates</h4>
+												<div class="row">
+													<div class="col-md-5">
+														<div class="input-group mb-4">
+															<input type="text" class="form-control" placeholder="Type to Search" v-model="filter">
+															<div class="input-group-append">
+																<button class="btn btn-primary" type="button" @click="filter = ''">Clear</button>
+															</div>
+														</div>
+													</div>
+												</div>
+
+
 											</div>
 										</div>
 									</div>
 									<div class="widget-content widget-content-area">
 										<div class="table-responsive mb-4">
-											<table id="style-3" class="table style-3 table-hover">
-												<thead>
-												<tr>
-													<th>Id</th>
-													<th>Name</th>
-													<th>Affiliate Id</th>
-													<th>Email</th>
-													<th>Sales.</th>
-													<th>Country</th>
-													<th>Sponsor</th>
-													<th class="text-center">Status</th>
-													<th class="text-center">Action</th>
-												</tr>
-												</thead>
 
-												<tbody>
-												<tr v-for="affiliate in getAffiliates.response" class="items">
+											    <b-table
+													@filtered="onFiltered"
+													:filter-included-fields="filterOn"
+													:current-page="currentPage"
+													:per-page="perPage"
+													:sort-by.sync="sortBy"
+													:sort-desc.sync="sortDesc"
+													:filter="filter" id="style-3"
+													class="table style-3 table-hover"
+													striped
+													hover
+													:fields="fields"
+													:items="getAffiliates.response">
 
-													<th>{{affiliate.order}}</th>
-													<td>{{affiliate.name}}</td>
-													<td>{{affiliate.affiliate_id}}</td>
-													<td>{{affiliate.email}}</td>
-													<td>{{affiliate.sales}}</td>
+													<template #cell(details)="row">
+														{{row.item.details.country}}
+													</template>
 
-													<td>{{affiliate.details.country}}</td>
-													<td>{{affiliate.sponsor.first_name}} {{affiliate.sponsor.last_name}} </td>
-													<td class="text-center">
-														<span v-if="affiliate.sales >= 3" class="shadow-none badge outline-badge-success">Active</span>
-														<span v-else class="shadow-none badge badge-danger">Inactive</span>
-													</td>
-													<td class="text-center">
-														<button  @click="goToDetails(affiliate.affiliate_id)" class="btn btn-outline-primary">view</button>
-<!--														<button  @click="showDeleteConfirmationModal(affiliate.affiliate_id)" class="btn btn-outline-danger">Delete</button>-->
-													</td>
-											    	</tr>
+													<template #cell(active)="row">
+														<p class="badge-success badge" v-if="row.item.active">	Active	</p>
+														<p  class="badge-danger badge" v-else >	Inactive </p>
+													</template>
 
-												</tbody>
-											</table>
+													<template #cell(sponsor)="row">
+														{{row.item.sponsor.first_name}} {{row.item.sponsor.last_name}}
+													</template>
+
+													<template #cell(actions)="row">
+														<button @click="showCompressionModal(row.item.order, row.item.name)" class="btn btn-success">Compres</button>
+														<button
+															@click="goToDetails(row.item.affiliateid)"
+															class="btn ml-1 btn-primary">view</button>
+													</template>
+
+												</b-table>
+
+											<b-pagination
+													v-model="currentPage"
+													:total-rows="rows"
+													:per-page="perPage"
+													size="sm"
+											></b-pagination>
+
+
 										</div>
 									</div>
 								</div>
@@ -98,7 +119,6 @@
 	</div>
 </template>
 <script>
-
 	import Loading from 'vue-loading-overlay';
 import { mapGetters } from 'vuex';
 export default {
@@ -108,77 +128,95 @@ export default {
 	data() {
 		return {
 			title: 'Affiliates',
+			compressModal: false,
+			compression: {
+				selectedAffiliate: null,
+				exchange_id: null,
+				affiliate_name: 'Working'
+			},
+
+			filter: null,
+			filterOn: ['name', 'email'],
 			isLoading: false,
 			fullPage: true,
 			password: 'Majesticares1234',
+			sortBy: 'order',
+			sortDesc: false,
 			form: {
 				affiliate_id: null
 			},
+			totalRows: 1,
+			currentPage: 1,
+			perPage: 20,
+			pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
 			onCancel: false,
+			fields: [
+				{ key: 'order',  label: 'id', sortable: true, sortDirection: 'asc' },
+				{ key: 'name', label: 'Name',  sortable: true, sortDirection: 'asc' },
+				{ key: 'affiliateid', label: 'Affiliate Id'},
+				{ key: 'email', label: 'Email' },
+				{ key: 'sales', label: 'Sales' },
+				{ key: 'booster', label: 'Boosters'},
+				{ key: 'details', label: 'Country'},
+				{ key: 'active', label: 'Status' },
+				{ key: 'sponsor', label: 'Sponsor' },
+				{ key: 'actions', label: 'Actions' }
+			],
 		}
 	},
 	computed: {
 		...mapGetters([
 			'getAffiliates'
-		])
+		]),
+		rows() {
+			return this.getAffiliates.response.length
+		}
 	},
 
-	mounted() {
-        this.isLoading = true
-        this.$store.dispatch('FETCH_AFFILIATES')
-            .then( response => {
-                console.log(response)
-                this.datatable()
-                this.isLoading = false
-            }).catch(error => {
-            this.isLoading = false
-            console.log(error.response)
-        })
-
-	},
 	created() {
-
+		this.init()
 	},
 	methods: {
 
+		init() {
+			this.isLoading = true
+			this.$store.dispatch('FETCH_AFFILIATES')
+					.then( response => {
+						console.log(response)
+						this.isLoading = false
+					}).catch(error => {
+					this.isLoading = false
+					console.log(error.response)
+			})
+		},
 		goToDetails(value) {
 			var url = '/dashboard/affiliates/'+value
 			this.$router.push(url);
 		},
 
-		deleteAffiliate() {
-			this.$store.dispatch('DELETE_AFILIATE', this.form.affiliate_id)
+		showCompressionModal( affiliate_id, name)  {
+			this.compressModal = true
+			this.compression.selectedAffiliate = affiliate_id
+			this.compression.affiliate_name = name
+		},
+
+		compress() {
+			this.$store.dispatch('AFFILIATE_COMPRESS', this.compression)
 				.then( response => {
-					$('#deleteConfirmationModal').modal('hide');
-					console.log(response)
+					console.log(response.data)
+					this.compressModal = false
+
+					this.init()
 				})
-				.catch(error => {
-					console.log(error)
-				})
+			.catch( error => {
+				console.log(error.response)
+			})
 		},
 
-		showDeleteConfirmationModal(id){
-			this.form.affiliate_id = id
-			$('#deleteConfirmationModal').modal('show');
-		},
-
-
-		datatable() {
-
-		    c3 = $('#style-3').DataTable({
-				"oLanguage": {
-					"oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
-					"sInfo": "Showing page _PAGE_ of _PAGES_",
-					"sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
-					"sSearchPlaceholder": "Search...",
-					"sLengthMenu": "Results :  _MENU_",
-				},
-				"stripeClasses": [],
-				"lengthMenu": [5, 10, 20, 50],
-				"pageLength": 50
-			});
-
-			multiCheck(c3);
+		onFiltered(filteredItems) {
+			// Trigger pagination to update the number of buttons/pages due to filtering
+			this.totalRows = filteredItems.length
+			this.currentPage = 1
 		}
 	}
 }

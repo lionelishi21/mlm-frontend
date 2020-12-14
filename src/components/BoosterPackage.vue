@@ -1,53 +1,45 @@
 <template>
-    <div class="widget widget-account-invoice-one">
-                    <div class="widget-heading">
-                        <h5 class="">MCC Booster Package</h5>
-                        <div class="acc-total-info">
-                            <p class="acc-amount">$25.00 each</p>
-                        </div>
-                    </div>
-
-                    <div class="widget-content">
-                        <div class="invoice-box">
-                            <div class="inv-detail">
-                                <div class="info-detail-1" v-for="pack in packages" style="font-size: 16px;">
-                                    <h4 class="text-primary mt-2"><strong>{{pack.name}}</strong></h4>
-                                    <h3>
-                                        <select @change="updateQty($event)" class="form-control form-control-lg" style="color: black;">
-                                            <option><h2><strong>Qty</strong></h2></option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option>
-                                        </select>
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="inv-action">
-                                <h3><strong>${{total}}.00</strong></h3>
-                            </div>
-                            <div class="inv-action">
-                                <a href="#" @click="goToPayment()" class="btn btn-block btn-primary">Purchase Booster ${{total}}.00</a>
-                            </div>
-                        </div>
-                    </div>
+    <div class="widget widget-five">
+        <div class="widget-content">
+            <div class="header">
+                <div class="header-body">
+                    <h6>MCC Booster Package</h6>
+                    <small><h3><strong>${{total}}.00</strong></h3></small>
                 </div>
+            </div>
+            <div class="w-content">
+                <div class="info-detail-1" v-for="pack in packages" style="font-size: 16px;">
+                    <h4 class="text-primary"><strong>{{pack.name}}</strong></h4>
+                    <h3>
+                        <select @change="updateQty($event)" class="form-control form-control-lg" style="color: black;">
+                            <option><h2><strong>Qty</strong></h2></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                        </select>
+                    </h3>
+                    <a href="#" @click="goToPayment()" class="btn btn-block btn-primary">Purchase Booster Pkgs ${{total}}.00</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 <script>
     import BoosterPayment from "../components/partials/BoosterPayment";

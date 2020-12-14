@@ -38,17 +38,21 @@ import UserBoosterDetails from "../views/UserBoosterDetails";
 import Authentication from  "../layouts/Authentication";
 import NewLogin from '../layouts/Login';
 import ResetPassword from '../layouts/ForgotPassword';
-
+import PageNotFound from '../views/PageNotFound';
+import SystemPurchase from "../views/SystemPurchase";
+import SystemPurchaseDetails from "../views/SystemPurchaseDetails";
+import Transferwise from "../views/Transferwise";
 Vue.use(VueRouter)
 
   const routes = [
+      { path: "*", component: PageNotFound },
   {
-    path: '/auth',
+    path: '/',
     component: Authentication,
     children: [
 
       {
-        path: 'login',
+        path: '',
         component: NewLogin,
         meta: {
           allowAnonymous: true
@@ -66,7 +70,6 @@ Vue.use(VueRouter)
   },
   {
     path: '/dashboard',
-    name: 'Home',
     component: Home,
     children: [
       {
@@ -80,7 +83,6 @@ Vue.use(VueRouter)
           allowAnonymous: true
         }
       },
-
       {
         path: 'make-payment/:id',
         component: MakePayment
@@ -92,6 +94,18 @@ Vue.use(VueRouter)
       {
         path: 'boosters',
         component: Boosters
+      },
+      {
+        path: 'system-packages',
+        component: SystemPurchase
+      },
+      {
+        path: 'transferwise',
+        component: Transferwise
+      },
+      {
+        path: 'system-packages/details/:id',
+        component: SystemPurchaseDetails
       },
       {
         path: 'booster-details/:id',
@@ -177,7 +191,7 @@ Vue.use(VueRouter)
     }
   },
   {
-    path: '/',
+    path: '/landd',
     name: 'Landing',
     component: Landing,
     children: [
@@ -271,7 +285,7 @@ router.beforeEach((to, from, next) => {
 
   } else if (!to.meta.allowAnonymous && !isLoggedIn()) {
     next({
-      path: '/auth/login',
+      path: '/',
       query: { redirect: to.fullPath }
     })
   } else if (to.name == 'register' && isLoggedIn()) {

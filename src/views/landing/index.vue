@@ -349,14 +349,6 @@
 				title: 'Home Page"'
 			}
 		},
-
-		// beforeRouteEnter (to, from, next) {
-		// 	next(vm => {
-		// 		vm.dashboard();
-		// 		next();
-		// 	})
-		// },
-
 		methods: {
 			goToCheckout() {
 				this.$router.push('/checkout')
@@ -367,9 +359,3 @@
 		}
 	}
 </script>
-<style lang="scss" scoped>
-	.text-success {
-		color: #2ecc71 !important;
-	}
-
-</style>

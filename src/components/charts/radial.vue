@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div class="text-center">
        <apexchart class="p-0" type="radialBar" height="250" :options="chartOptions" :series="[ sales ]"></apexchart>
    </div>
 </template>

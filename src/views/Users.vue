@@ -1,15 +1,38 @@
 <template>
     <div id="content" class="main-content">
+        <loading :active.sync="isLoading"
+                 :can-cancel="false"
+                 :is-full-page="fullPage"></loading>
 
-        <div class="vld-parent">
+        <b-modal  v-model="boosterModal" title="Booster" modal-footer centered hide-footer="true">
+            <label class="text-dark" >Select Amount of Booster Packages</label>
+            <select class="form-control" name="" v-model="packages.qty">
+                <option value="1">1 Package</option>
+                <option value="2">2 Packages</option>
+                <option value="3">3 Packages</option>
+                <option value="4">4 Packages</option>
+                <option value="5">5 Packages</option>
+                <option value="6">6 Packages</option>
+                <option value="7">7 Packages</option>
+                <option value="8">8 Packages</option>
+                <option value="9">9 Packages</option>
+                <option value="10">10 Packages</option>
+                <option value="11">11 Packages</option>
+                <option value="12">12 Packages</option>
+                <option value="13">13 Packages</option>
+                <option value="14">14 Packages</option>
+                <option value="15">15 Packages</option>
+                <option value="16">16 Packages</option>
+                <option value="17">17 Packages</option>
+                <option value="18">18 Packages</option>
+                <option value="19">19 Packages</option>
+                <option value="20">20 Packages</option>
+            </select>
+            <hr>
+            <button class="btn btn-primary" @click="createBoosters()">Submit</button>
+        </b-modal>
 
-<!--            <loading :active.sync="isLoading"-->
-<!--                     :can-cancel="true"-->
-<!--                     :on-cancel="onCancel"-->
-<!--                     :is-full-page="fullPage"></loading>-->
-        </div>
-
-        <div class="modal fade slide-up disable-scroll"  id="booster_modal"
+        <div class="modal fade slide-up disable-scroll"  id="bmodal-1"
              tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
             <div class="modal-dialog ">
 
@@ -21,88 +44,74 @@
                             </button>
                             <h5>Booster</h5>
                         </div>
+
                         <div class="modal-body">
-
                             <div class="form-group">
-
-                                <label class="text-dark" >Select Amount of Booster Packages</label>
-                                <select class="form-control" name="" v-model="packages.qty">
-                                    <option value="1">1 Package</option>
-                                    <option value="2">2 Packages</option>
-                                    <option value="3">3 Packages</option>
-                                    <option value="4">4 Packages</option>
-                                    <option value="5">5 Packages</option>
-                                    <option value="6">6 Packages</option>
-                                    <option value="7">7 Packages</option>
-                                    <option value="8">8 Packages</option>
-                                    <option value="9">9 Packages</option>
-                                    <option value="10">10 Packages</option>
-                                    <option value="11">11 Packages</option>
-                                    <option value="12">12 Packages</option>
-                                    <option value="13">13 Packages</option>
-                                    <option value="14">14 Packages</option>
-                                    <option value="15">15 Packages</option>
-                                    <option value="16">16 Packages</option>
-                                    <option value="17">17 Packages</option>
-                                    <option value="18">18 Packages</option>
-                                    <option value="19">19 Packages</option>
-                                    <option value="20">20 Packages</option>
-                                </select>
-
                             </div>
-
                             <div class="form-group">
-
-                                <button class="btn btn-primary" @click="createBoosters()">Submit</button>
-
                             </div>
-
                         </div>
                     </div>
                 </div>
                 <!-- /.modal-content -->
             </div>
         </div>
-
-
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Fix Affiliate</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-row mb-4">
-                            <div class="form-group col-md-12">
-                                <label>Select the affiliate to give sales</label>
-                                <select v-model="form.parent_id" class="form-control">
-                                    <option v-for="usr in getAffiliates.response" :value="usr.affiliate_id">{{usr.name}}</option>
-                                </select>
-                            </div>
-                        </div>
+<!--        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--            <div class="modal-dialog" role="document">-->
+<!--                <div class="modal-content">-->
+<!--                    <div class="modal-header">-->
+<!--                        <h5 class="modal-title" id="exampleModalLabel">Fix Affiliate</h5>-->
+<!--                    </div>-->
+<!--                    <div class="modal-body">-->
+<!--                        <div class="form-row mb-4">-->
+<!--                            <div class="form-group col-md-12">-->
+<!--                                <label>Select the affiliate to give sales</label>-->
+<!--                                <select v-model="form.parent_id" class="form-control">-->
+<!--                                    <option v-for="usr in getAffiliates.response" :value="usr.affiliate_id">{{usr.name}}</option>-->
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
-                        <button @click="save()" type="button" class="btn btn-primary">Save</button>
-                    </div>
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>-->
+<!--                        <button @click="save()" type="button" class="btn btn-primary">Save</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="layout-px-spacing">
+
+            <div class="row layout-top-spacing">
+                <div class="col-lg-12">
+                    <nav class="breadcrumb-two" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Users</a></li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
-        </div>
-        <div class="">
-        </div>
-        <div class="layout-px-spacing">
+
             <div class="col-lg-12">
                 <div class="widget-content searchable-container list">
-                    <div class="row layout-top-spacing layout-spacing">
+                    <div class="row" v-show="showalert">
                         <div class="col-lg-12">
-                            <div class="statbox widget box box-shadow">
-                                <div class="widget-header">
+                            <div class="alert alert-primary" role="alert">
+                                <strong>Success!</strong> Booster Packages was added successfully.</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row layout-top-spacing layout-spacing">
+
+                        <div class="col-lg-12">
+                            <div class="card box box-shadow">
+                                <div class="card-header">
+                                    <h4>All Affliates</h4>
+                                </div>
+                                <div class="card-body">
                                     <div class="row">
-                                        <div class="col-xl-6 col-md-6 col-sm-6 col-6">
-                                            <h4>All Affliates</h4>
-                                        </div>
                                         <div class="col-xl-6 col-md-6 col-sm-6 col-6">
                                             <div class="w-100">
                                                 <input v-model="filter" autocomplete="false" type="text" class="w-100 form-control product-search br-30" id="input-search" placeholder="Search Users" >
@@ -133,9 +142,7 @@
                                                         <td v-if="user.affiliate"><strong class="text-success">{{user.affiliate.affiliate_id}}</strong></td>
                                                         <td v-else="user.affiliate"><strong class="text-danger">No Affiliate Id</strong></td>
                                                         <td class="text-center">
-                                                            <butto  v-if="user.affiliate" class="btn btn">Added</butto>
-<!--                                                            <button v-else @click="showModal(user.id)" class="btn btn-danger">Add Affiliate</button>-->
-<!--                                                            <button class="btn btn-primary">View Details</button>-->
+                                                                <button  v-if="user.affiliate" class="btn btn">Added</button>
                                                                 <button class="btn btn-primary" @click="showBoostersModal(user.id)"> Add Booster </button>
                                                         </td>
 
@@ -170,10 +177,22 @@
 <script>
     import { mapGetters } from 'vuex';
     import api from '../api/services/user-services';
+    import Loading from 'vue-loading-overlay';
+
     export default {
+
+        components: {
+            Loading
+        },
+
         name: "Users.vue",
         data() {
             return {
+                isLoading: false,
+                fullPage: true,
+                showalert: false,
+                modalShow: false,
+                boosterModal: false,
                 offset: 30,
                 users: {},
                 fullpage: true,
@@ -221,7 +240,7 @@
 
             showBoostersModal(userId) {
                 this.packages.user_id = userId
-                $('#booster_modal').modal('show')
+                this.boosterModal = !this.boosterModal
             },
 
             // Our method to GET results from a Laravel endpoint
@@ -255,12 +274,14 @@
             createBoosters() {
 
                 this.isLoading = true
+                this.showalert = false
                 this.$store.dispatch('BUY_BOOSTER_PACKAGES', this.packages)
                     .then( response => {
 
                         this.isLoading = false
-                        $('#booster_modal').modal('hide')
+                        this.boosterModal = !this.boosterModal
                         console.log(response)
+                        this.showalert = true
 
                     }).catch( error => {
                         this.isLoading = false

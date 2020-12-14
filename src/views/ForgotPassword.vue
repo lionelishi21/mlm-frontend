@@ -1,6 +1,5 @@
 <template>
     <div class="container" style="height: 80vh">
-        <h1>Working</h1>
         <div class="vld-parent">
             <loading :active.sync="isLoading"
                      :can-cancel="true"

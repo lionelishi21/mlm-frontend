@@ -73,7 +73,20 @@ const actions = {
 			}).catch( error => {
 				console.log(error.response)
 		})
-	}
+	},
+
+	AFFILIATE_COMPRESS( content, params) {
+		return new Promise((resolve, reject) => {
+			api.makeCompression(params)
+				.then( response => {
+					resolve(response)
+				})
+				.catch( error => {
+					console.log(error.response)
+					reject(error.response)
+				})
+		})
+     }
 }
 
 const mutations = {

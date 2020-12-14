@@ -2,7 +2,7 @@
 	<div class="form-container outer">
 		<a href="#" @click="back()">
 			<h4 class="p-2 text-success">
-				<i class="fa fa-arrow-circle-left"></i> Back
+				<i class="fa fa-home"></i> Home
 			</h4>
 		</a>
 		<div class="form-form">

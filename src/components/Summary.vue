@@ -1,26 +1,18 @@
 <template>
-    <div class="widget widget-account-invoice-one">
-
-        <div class="header">
-            <div class="header-body">
-                <h6><b>Wallet</b></h6>
-            </div>
-        </div>
-
+    <div class="widget widget-five">
         <div class="widget-content">
-            <div class="invoice-box">
-
-                <div class="acc-total-info">
-                    <h5>Balance</h5>
-                    <p class="acc-amount">{{totalCashbonus | currency}}</p>
-                </div>
-                <div class="inv-action">
-                    <a href="#" class="btn btn-success"@click="goToSummary()">Withdraw</a>
-                    <a href="#" class="btn btn-success"@click="goToPersonalSales()">Personal Sales</a>
+            <div class="header">
+                <div class="header-body">
+                    <h6>Wallet  Balance</h6>
                 </div>
             </div>
+            <div class="w-content">
+                <h5>Balance</h5>
+                <h2 class="acc-amount">{{totalCashbonus | currency}}</h2>
+                <a href="#" class="btn btn-success btn-flat"@click="goToSummary()">Withdraw </a>
+                <a href="#" class="btn btn-success btn-flat ml-1"@click="goToPersonalSales()">Personal Sales</a>
+            </div>
         </div>
-
     </div>
 </template>
 
@@ -62,7 +54,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

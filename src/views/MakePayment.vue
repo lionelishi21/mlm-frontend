@@ -7,71 +7,28 @@
                 :is-full-page="true">
         </loading>
 
-         <!--   Card Modal   -->
-        <div class="modal fade slide-up disable-scroll"  id="card_method"
-             tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
-            <div class="modal-dialog ">
+        <b-modal  v-model="showmodal" title="Payment" centered hide-footer="true">
+            <card-payment @send-payment="acceptPayment"></card-payment>
 
-                <div class="modal-content-wrapper">
-                    <div class="modal-content">
-                        <div class="modal-header clearfix text-left">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                <i class="pg-close fs-14"></i>
-                            </button>
-                            <h5>Payment</h5>
-                        </div>
-                        <div class="modal-body">
-                            <card-payment @send-payment="acceptPayment"></card-payment>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
+        </b-modal>
+
+
+        <div class="row layout-top-spacing">
+            <div class="col-md-12">
+                <nav class="breadcrumb-two" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Booster</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0);">Payment</a></li>
+                    </ol>
+                </nav>
             </div>
         </div>
-         <!--  End Card Modal-->
-
-         <!--  Paypal Modal -->
-        <div class="modal fade slide-up disable-scroll"  id="paypal_modal"
-             tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
-            <div class="modal-dialog ">
-
-                <div class="modal-content-wrapper">
-                    <div class="modal-content">
-                        <div class="modal-header clearfix text-left">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                <i class="pg-close fs-14"></i>
-                            </button>
-                            <h5>Payment</h5>
-                        </div>
-                        <div class="modal-body">
-                            <div id="app">
-                                <PayPal
-                                        currency="USD"
-                                        :client="credentials"
-                                        :amount="display_total"
-                                        :button-style="myStyle"
-                                         :experience="experience"
-                                        v-on:payment-authorized="paymentAuthorized"
-                                        v-on:payment-completed="paymentCompleted"
-                                        v-on:payment-cancelled="paymentCancelled">
-                                </PayPal>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-        </div>
-         <!--  End Paypal Modal -->
 
         <div class="row layout-px-spacing">
             <div class="col-md-12">
-
-                 <div class="widget widget-account-invoice-one" v-if="isComplete === false">
-                    <div class="widget-heading">
-                        <h5>Billing Information</h5>
-                    </div>
-                    <div class="widget-content">
+                <div class="card"  v-if="isComplete === false">
+                    <div class="card-body">
                         <div class="form-row mb-4">
                             <div class="col-md-6">
                                 <h4>Purchase MCC Booster Package </h4>
@@ -91,10 +48,9 @@
                             </select>
                         </div>
                     </div>
-                 </div>
-
-                  <div v-else class="widget widget-account-invoice-one mt-5">
-                        <div class="widget-content text-center">
+                </div>
+                <div v-else class="card mt-5">
+                        <div class="card-body">
                             <h3 class="mb-0">Order Complete!</h3>
                             <p class="text-6 my-4">"Please check your email (and Spam) for further instructions." <br>
                                 Contact <a href="">admin@majesticares.com </a>if assistance is needed.</p>
@@ -126,7 +82,7 @@
         },
 
         data: () => ({
-
+            showmodal: false,
             isComplete: false,
             amount: 0,
             form: {},
@@ -190,13 +146,8 @@
             showPaymentModal() {
 
                 if ( this.form.payment_method == 'card') {
-                    $('#card_method').modal('show')
+                    this.showmodal = !this.showmodal
                 }
-
-                if (this.form.payment_method == 'paypal') {
-                    $('#paypal_modal').modal('show')
-                }
-
             },
 
             acceptPayment(params) {

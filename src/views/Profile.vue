@@ -108,9 +108,6 @@
 	   </div>
    </div>
 </template>
-<style lang="scss" scoped>
-	@import '../cork/css/elements/alert.css';
-</style>
 <script>
 import { ValidationProvider, extend, ValidationObserver } from 'vee-validate';
 import { mapGetters } from 'vuex';

@@ -44,7 +44,16 @@ export default {
 
 	fetchUserSummary() {
 		return Api().get('/boosters/summary')
+	},
+
+	fetchUserBoosterList(id) {
+		return Api().get('/boosters/'+id+'/list/')
+	},
+
+	makeCompression( params ) {
+		return Api().post('/affiliates/compression', params )
 	}
+
 }
 
 

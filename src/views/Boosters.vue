@@ -1,8 +1,10 @@
 <template>
     <div id="content" class="main-content">
+        <loading :active.sync="isLoading"
+                 :can-cancel="false"
+                 :is-full-page="fullPage"></loading>
 
         <div class="layout-px-spacing">
-            <!--   Card Modal   -->
             <!--   Card Modal   -->
             <div class="modal fade slide-up disable-scroll"  id="booster_modal"
                  tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
@@ -63,11 +65,7 @@
 
             <div class="col-lg-12">
                 <div class="widget-content searchable-container list">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button class="btn btn-primary pull-right" @click="showBoosters()">Add Boosters</button>
-                        </div>
-                    </div>
+
                     <div class="row layout-top-spacing layout-spacing">
 
                         <div class="col-lg-12">
@@ -93,12 +91,12 @@
 <!--                                                <th>Escrow</th>-->
                                                 <th>Tiers</th>
                                                 <th>Boosters</th>
+
                                                 <th class="text-center">Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr v-for="affiliate in boosterAll" class="items">
-
                                                 <td><h4 class="text-primary">{{ affiliate.id}}</h4></td>
                                                 <td>
                                                     <h4 v-if="affiliate.is_system" style="color: darkolivegreen;" >
@@ -111,13 +109,8 @@
                                                     </h4>
                                                 </td>
                                                 <td><h4 class="text-primary">{{ affiliate.email}}</h4> </td>
-<!--                                                <td>-->
-<!--                                                    <h4 class="text-primary" v-if="affiliate.escrow">{{ affiliate.escrow.amount }}</h4>-->
-<!--                                                    <h4 class="text-primary" v-else>Pending</h4>-->
-<!--                                                </td>-->
-
                                                 <td><h4 class="text-primary">  </h4> </td>
-                                                <td><h4 class="text-primary"> {{affiliate.boosters}} </h4></td>
+                                                <td><h4 class="text-primary"> {{affiliate.boosters}} {{affiliate.sales}}</h4></td>
                                                 <td class="text-center">
                                                     <button  @click="goToDetails(affiliate.affiliate_id)" class="btn btn-outline-primary">view</button>
                                                 </td>
@@ -144,7 +137,8 @@
         name: "Boosters",
 
         data:() => ({
-
+            isLoading: false,
+            fullPage: true,
             isLoading: false,
             fullpage: true,
             packages: {
@@ -187,13 +181,12 @@
 
             acceptPayment(params) {
                 this.isLoading = true
+
+
                 this.$store.dispatch('BUY_BOOSTER_PACKAGES', this.packages)
                     .then( response => {
-
                         this.isLoading = false
                         $('#boosterModal').modal('hide')
-
-
                         console.log(response)
 
                     }).catch( error => {

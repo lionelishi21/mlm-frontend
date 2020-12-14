@@ -13,7 +13,7 @@
                     <div class="form-content">
 
                         <h1 class="">Password Recovery</h1>
-                        <p class="signup-link recovery">Enter your email and instructions will sent to you!</p>
+                        <p class="signup-link recovery">Enter your email and instructions be will emailed to you!</p>
                         <ValidationObserver ref="observer" v-slot="{ invalid }">
                             <form @submit.prevent="sendLink(user)">
                             <div class="form">
@@ -30,7 +30,7 @@
                                 <div class="d-sm-flex justify-content-between">
 
                                     <div class="field-wrapper">
-                                        <button type="submit" class="btn btn-primary" value="">Reset</button>
+                                        <button type="submit" class="btn btn-primary" value="">Send</button>
                                     </div>
                                 </div>
 

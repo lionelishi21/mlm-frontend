@@ -14,15 +14,15 @@
             <div class="progress-order-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <ul class="list-inline badge-collapsed-img mb-3 text-center">
-                            <p class="text-6 mt-5">
+                        <ul class="list-inline badge-collapsed-img mb-4 mt-4 text-center">
+                            <h4>
                                 <strong>Personal Sales <br>{{sales.length}}</strong>
-                            </p>
+                            </h4>
                             <hr>
-                            <p class="text-6 mt-3 text-success"><strong>Booster Package(s) <br>
+                            <h4 class="text-6 mt-4 text-success"><strong>Booster Package(s) <br>
                                 {{boosters}}
                             </strong>
-                            </p>
+                            </h4>
 
                         </ul>
                     </div>

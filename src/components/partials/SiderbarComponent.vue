@@ -1,206 +1,195 @@
 <template>
-<!--  BEGIN SIDEBAR  -->
-<div class="sidebar-wrapper sidebar-theme" v-click-outside="hide" >
-    <nav id="compactSidebar" ref="compactSidebar" >
 
-        <div class="">
-            <a href="/dashboard">
-                <img src="@/assets/logo.png" alt="logo" style="width: 100%;">
-            </a>
-        </div>
+    <!--  BEGIN SIDEBAR  -->
+    <div class="sidebar-wrapper sidebar-theme">
 
-        <ul class="menu-categories">
+        <nav id="sidebar">
+             <ul class="navbar-nav theme-brand flex-row  text-center">
+                    <li class="nav-item theme-logo">
+                        <a href="index.html">
+                            <img src="@/assets/logo.png" class="navbar-logo" alt="logo">
+                        </a>
+                    </li>
+                    <li class="nav-item theme-text">
+                        <a href="#" class="nav-link"> MCC </a>
+                    </li>
+                    <li class="nav-item toggle-sidebar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left sidebarCollapse"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    </li>
+                </ul>
+                <div class="shadow-bottom"></div>
+            <ul class="list-unstyled menu-categories" id="accordionExample">
 
-            <router-link  v-if="user.role_id == 1" tag="li" active-class="active" to="/dashboard/admin-dashboard" class="menu" exact>
-                <a href="/dashboard/admin-dashboard" data-active="false" class="menu-toggle">
-                    <div class="base-menu">
-                        <div class="base-icons">
-                            <i class="text-white fa fa-chart-line fa-1x" width="24" height="24"></i>
+
+
+                <router-link  v-if="user.role_id == 1" tag="li" active-class="active" to="/dashboard/admin-dashboard" class="menu" exact>
+                    <a href="#" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pie-chart"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                            <span>Analytics</span>
                         </div>
-                    </div>
-                </a>
-                <div class="tooltip"><span>Analytics</span></div>
-            </router-link>
+                    </a>
+                </router-link>
 
-            <router-link tag="li" active-class="active" to="/dashboard" class="menu" exact>
-                <a href="/dashboard" data-active="false" class="menu-toggle">
-                    <div class="base-menu">
-                        <div class="base-icons">
-                            <i class="text-white fa fa-home fa-1x" width="24" height="24"></i>
+                <router-link tag="li" active-class="active" to="/dashboard" class="menu" exact>
+                    <a href="#" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 class="feather feather-home">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z">
+                                </path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+
+                            <span>Dashboard</span>
                         </div>
-                    </div>
-                </a>
-                <div class="tooltip"><span>Dasboard</span></div>
-            </router-link>
+                    </a>
+                </router-link>
 
-            <router-link v-if="user.role_id == 1" tag="li" active-class="active" to="/dashboard/boosters" class="menu" exact>
-                <a href="/boosters" data-active="false" class="menu-toggle">
-                    <div class="base-menu">
-                        <div class="base-icons">
-                            <i class="text-white fa fa-angle-double-down fa-1x" width="24" height="24"></i>
+
+                <router-link v-if="user.role_id == 1" tag="li" active-class="active" to="/dashboard/system-packages" class="menu" >
+                    <a href="#" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-airplay">
+                                <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path>
+                                <polygon points="12 15 17 21 7 21 12 15"></polygon></svg>
+                            <span>Systems Pgks</span>
                         </div>
-                    </div>
-                </a>
-                <div class="tooltip"><span>Boosters</span></div>
-            </router-link>
+                    </a>
+                </router-link>
+                <router-link v-if="user.role_id == 1" tag="li" active-class="active" to="/dashboard/boosters" class="menu">
+                    <a href="#" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-airplay">
+                                <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path>
+                                <polygon points="12 15 17 21 7 21 12 15"></polygon></svg>
 
-            <router-link v-if="user.role_id == 1" to="/dashboard/affiliates" tag="li" active-class="active" class="menu">
-                <a href="#app" data-active="false" class="menu-toggle">
-                    <div class="base-menu">
-                        <div class="base-icons">
-                            <i class="text-white fa fa-users fa-1x" width="24" height="24"></i>
+                            <span>Boosters</span>
                         </div>
-                    </div>
-                </a>
-                <div class="tooltip"><span>Affiliates</span></div>
-            </router-link>
+                    </a>
+                </router-link>
 
-            <router-link v-if="user.role_id == 1" to="/dashboard/payouts" tag="li" active-class="active" class="menu">
-                <a href="" data-active="false" class="menu-toggle">
-                    <div class="base-menu">
-                        <div class="base-icons">
-                            <i class="text-white fa fa-file fa-1x" width="24" height="24"></i>
+                <router-link v-if="user.role_id == 1" to="/dashboard/affiliates" tag="li" active-class="active" class="menu">
+                    <a href="#" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            <span>Affiliates</span>
                         </div>
-                    </div>
-                </a>
-                <div class="tooltip"> <span> Payouts </span></div>
-            </router-link>
+                    </a>
+                </router-link>
 
+                <router-link v-if="user.role_id == 1" to="/dashboard/payouts" tag="li" active-class="active" class="menu">
+                <a href="#" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-clipboard">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                            </svg>
 
-            <router-link v-if="user.role_id == 1" to="/dashboard/users" tag="li" active-class="active" class="menu">
-                <a href="#app" data-active="false" class="menu-toggle">
-                    <div class="base-menu">
-                        <div class="base-icons">
-                            <i class="text-white fa fa-user fa-1x" width="24" height="24"></i>
+                            <span>Payouts</span>
                         </div>
-                    </div>
-                </a>
-                <div class="tooltip"><span>Users</span></div>
-            </router-link>
+                    </a>
+                </router-link>
 
-            <router-link to="/dashboard/wallet" tag="li" active-class="active" class="menu">
-                <a href="#app" data-active="false" class="menu-toggle">
-                    <div class="base-menu">
-                        <div class="base-icons">
-                            <i class="fa-1x text-white fa fa-wallet" aria-hidden="true" width="24" height="24"></i>
+                <router-link v-if="user.role_id == 1" to="/dashboard/users" tag="li" active-class="active" class="menu">
+                    <a href="#" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                 stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-clipboard">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                            </svg>
+                            <span>Users</span>
                         </div>
-                    </div>
-                </a>
-                <div class="tooltip"><span>Wallet</span></div>
-            </router-link>
+                    </a>
+                </router-link>
 
-            <router-link to="/dashboard/ebook" tag="li" active-class="active" class="menu">
-                <a href="#app" data-active="false" class="menu-toggle">
-                    <div class="base-menu">
-                        <div class="base-icons">
-                            <i class="fa-1x text-white fa fa-book" aria-hidden="true" width="24" height="24"></i>
+                <router-link to="/dashboard/wallet" tag="li" active-class="active" class="menu">
+                    <a href="#" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                            <span>Wallet</span>
                         </div>
-                    </div>
-                </a>
-                <div class="tooltip"><span>Ebook</span></div>
-            </router-link>
+                    </a>
+                </router-link>
 
-            <router-link v-if="user.role_id == 1" to="/dashboard/accounts" tag="li" active-class="active" class="menu">
-                <a href="#app" data-active="false" class="menu-toggle">
-                    <div class="base-menu">
-                        <div class="base-icons">
-                            <i class="fa-1x text-white fa fa-book" aria-hidden="true" width="24" height="24"></i>
+                <router-link to="/dashboard/ebook" tag="li" active-class="active" class="menu">
+                    <a href="#" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-book">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20">
+                            </path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                            <span>EBook</span>
                         </div>
-                    </div>
-                </a>
-                <div class="tooltip"><span>Accounts</span></div>
-            </router-link>
+                    </a>
+                </router-link>
 
-            <router-link to="/dashboard/settings" tag="li" active-class="active" class="menu">
-                <a href="#" data-active="false" class="menu-toggle">
-                    <div class="base-menu">
-                        <div class="base-icons">
-                            <i class="text-white fa fa-cogs fa-1x" width="24" height="24"></i>
+                <router-link v-if="user.role_id == 1" to="/dashboard/accounts" tag="li" active-class="active" class="menu">
+                    <a href="#" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                 height="24" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-user">'
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            <span>Accounts</span>
                         </div>
-                    </div>
-                </a>
-                <div class="tooltip"><span>Settings</span></div>
-            </router-link>
-        </ul>
-    </nav>
-    <div id="compact_submenuSidebar" class="submenu-sidebar">
+                    </a>
+                </router-link>
 
-        <div class="theme-brand-name">
-            <a href="index.html">Cork</a>
-        </div>
+                <router-link to="/dashboard/settings" tag="li" active-class="active" class="menu">
+                    <a href="#" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">'</path></svg>
+                            <span>Settings</span>
+                        </div>
+                    </a>
+                </router-link>
 
-        <div class="submenu" id="dashboard">
-            <div class="category-info">
-                <h5>Menu 1</h5>
-                <p>This menu consist of Different Icons.</p>
-            </div>
-        </div>
+                <router-link to="/dashboard/transferwise" tag="li" active-class="active" class="menu">
+                    <a href="#" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">'</path></svg>
+                            <span>TransferWise</span>
+                        </div>
+                    </a>
+                </router-link>
 
-        <div class="submenu" id="app">
-            <div class="category-info">
-                <h5>Menu 2</h5>
-                <p>This menu consist of Same Icons.</p>
-            </div>
-            <ul class="submenu-list" data-parent-element="#app">
-                <li>
-                    <a href="javascript:void(0)"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg></span> Submenu 1 </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg></span> Submenu 2 </a>
-                </li>
             </ul>
-        </div>
 
-        <div class="submenu" id="users">
-            <div class="category-info">
-                <h5>Menu 3</h5>
-                <p>This menu consist of Sub-Sub category.</p>
-            </div>
-            <ul class="submenu-list" data-parent-element="#users">
-                <li>
-                    <a href="javascript:void(0)"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg></span> Submenu 1 </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg></span> Submenu 2 </a>
-                </li>
-                <li class="sub-submenu">
-                    <a role="menu" class="collapsed" data-toggle="collapse" data-target="#starter-kit" aria-expanded="false"><div><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg></span> Submenu 3 </div> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg></a>
-                    <ul id="starter-kit" class="collapse" data-parent="#compact_submenuSidebar">
-                        <li>
-                            <a href="javascript:void(0);"> Sub Submenu 1 </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);"> Sub Submenu 2 </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);"> Sub Submenu 2 </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-
-        <div class="submenu" id="more">
-            <div class="category-info">
-                <h5>Starter Kit</h5>
-                <p>With starter kit, you can begin your work without any hassle.</p>
-            </div>
-            <ul class="submenu-list" data-parent-element="#more">
-                <li class="active">
-                    <a href="starter_kit_blank_page.html"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg></span> Blank Page </a>
-                </li>
-                <li>
-                    <a href="starter_kit_breadcrumb.html"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg></span> Breadcrumb </a>
-                </li>
-                <li>
-                    <a href="starter_kit_boxed.html"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"><circle cx="12" cy="12" r="10"></circle></svg></span> Boxed </a>
-                </li>
-            </ul>
-        </div>
+        </nav>
 
     </div>
-</div>
-<!--  END SIDEBAR  -->
+    <!--  END SIDEBAR  -->
+
 </template>
 <script>
     import ClickOutside from 'vue-click-outside'
@@ -216,7 +205,6 @@
             ClickOutside
         },
         methods: {
-
             hide() {
                 $(".main-container").removeClass('sbar-open')
             }

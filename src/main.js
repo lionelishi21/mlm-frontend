@@ -6,8 +6,10 @@ import router from './router'
 import store from './store'
 import vueCountryRegionSelect from 'vue-country-region-select'
 import VueCurrencyFilter from 'vue-currency-filter'
+
 import $ from 'jquery'
 window.$ = $
+
 import { ModalPlugin } from 'bootstrap-vue'
 import PrettyCheckbox from 'pretty-checkbox-vue';
 import VuePhoneNumberInput from 'vue-phone-number-input';
@@ -20,9 +22,13 @@ import VueSnackbar from 'vue-snack'
 import 'vue-snack/dist/vue-snack.min.css'
 import VueApexCharts from 'vue-apexcharts'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import { VuejsDatatableFactory } from 'vuejs-datatable';
 
+Vue.use( VuejsDatatableFactory );
 // Install BootstrapVue
 Vue.use(BootstrapVue)
+
+
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
@@ -32,11 +38,6 @@ Vue.use(VueSnackbar, { position: 'bottom-right', time: 3000 })
 
 // Or only as a filter
 import { VueMaskFilter } from 'v-mask'
-import VueTour from 'vue-tour'
-require('vue-tour/dist/vue-tour.css')
-Vue.use(VueTour)
-
-// Global register
 
 Vue.use(VueMask);
 Vue.directive('mask', VueMaskDirective);
@@ -72,7 +73,7 @@ Vue.filter('str_limit', function (value, size) {
 });
 
 Vue.use(vueCountryRegionSelect)
-Vue.config.productionTip = false
+
 
 // importing the helper
 import interceptorsSetup from './helpers/interceptors'

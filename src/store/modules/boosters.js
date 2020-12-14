@@ -4,14 +4,16 @@ const state = {
     boosters: {},
     summary: {},
     details: {},
-    user_boosters: {}
+    user_boosters: {},
+    lists: {}
 }
 
 const getters = {
     boosterAll: state => state.boosters,
     boosterDetails: state => state.details,
     boosterUser: state => state.user_boosters,
-    boosterSummary: state => state.summary
+    boosterSummary: state => state.summary,
+    boosterUserList: state => state.lists
 }
 
 const actions = {
@@ -79,6 +81,18 @@ const actions = {
             .catch( error => {
                 console.log( error.response )
             })
+    },
+
+    BOOSTER_USER_SUMMARY({commit}, id ) {
+
+        api.fetchUserBoosterList( id )
+            .then( response => {
+                console.log( response )
+                commit('SET_USER_BOOSTER_LIST', response.data)
+            })
+            .catch( error => {
+                console.log( error.response )
+            } )
     }
 }
 
@@ -98,6 +112,10 @@ const mutations = {
 
     SET_BOOSTER_SUMMARY( state, summar ) {
         state.summary = summar
+    },
+
+    SET_USER_BOOSTER_LIST( state, list ) {
+        state.lists = list
     }
 }
 

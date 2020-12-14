@@ -1,25 +1,22 @@
 <template>
     <div class="form-container outer">
         <a href="#" @click="back()">
-            <h4 class="p-2 text-success">
-                <i class="fa fa-arrow-circle-left"></i> Back
-            </h4>
+            <h3 class="p-2" style="color: dark-green;">
+                <i class="fa fa-home"></i> Home
+            </h3>
         </a>
         <div class="form-form">
             <div class="form-form-wrap">
-
-
                 <div class="form-container" >
-
                     <div class="form-content">
 
-                        <img class="logos mt-2 mb-5" src="@/assets/logo.png" height="100" alt="MCC" />
+                        <img class="logos mb-3" src="@/assets/logo.png" height="100" alt="MCC" />
 
                         <h1 class="">Sign In</h1>
-                        <p class="">Log in to your backoffice to continue.</p>
+                        <p class="pb-1">Log in to your backoffice to continue.</p>
 
                         <ValidationObserver ref="observer" v-slot="{ invalid }">
-                         <form class="text-left" @submit.prevent="login(user)">
+                         <form class="text-left mt-0 pt-0" @submit.prevent="login(user)">
                             <div class="form">
 
                                 <div class="alert alert-danger" role="alert" v-if="error.message">
@@ -154,6 +151,3 @@
         }
     }
 </script>
-<style scoped>
-
-</style>

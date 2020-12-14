@@ -1,57 +1,57 @@
 <template>
-    <div>
-        <div class="widget widget-card-four" >
-            <div class="">
-                <div class="">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div v-if="stats.current_status == 'Ruby'" class="card-header ruby" >
-                                <h4 class="text-white text-6 pt-2">
-                                    <b>
-                                        {{stats.current_status}}
-                                    </b>
-                                </h4>
-                            </div>
-
-                            <div v-if="stats.current_status == 'Bronze'" class="card-header bronze" >
-                                <h4 class="text-white text-6 pt-2">
-                                    <b>
-                                        {{stats.current_status}}
-                                    </b>
-                                </h4>
-                            </div>
-
-                            <div v-if="stats.current_status == 'Silver'" class="card-header silver" >
-                                <h4 class="text-dard text-6 pt-2">
-                                    <b>
-                                        {{stats.current_status}}
-                                    </b>
-                                </h4>
-                            </div>
-
-                            <div v-if="stats.current_status == 'Gold'" class="card-header gold" >
-                                <h4 class="text-white text-6 pt-2">
-                                    <b>
-                                        {{stats.current_status}}
-                                    </b>
-                                </h4>
-                            </div>
-
-                            <div v-if="stats.current_status == 'Diamond'" class="card-header diamond" >
-                                <h4 class="text-dark text-6 pt-2">
-                                    <b>
-                                        {{stats.current_status}}
-                                    </b>
-                                </h4>
-                            </div>
-
-                            <sales-chart :sales="stats.percentage""></sales-chart>
-                        </div>
+<div class="card" >
+    <div class="row">
+                <div class="col-md-12">
+                    <div v-if="stats.current_status == 'Ruby'" class="card-header ruby" >
+                        <h4 class="text-white text-6 pt-2">
+                            <b>
+                                {{stats.current_status}} Status
+                            </b>
+                        </h4>
                     </div>
+
+                    <div v-if="stats.current_status == 'Bronze'" class="card-header bronze" >
+                        <h4 class="text-white text-6 pt-2">
+                            <b>
+                                {{stats.current_status}} Status
+                            </b>
+                        </h4>
+                    </div>
+
+                    <div v-if="stats.current_status == 'Silver'" class="card-header silver" >
+                        <h4 class="text-white text-6 pt-2">
+                            <b>
+                                {{stats.current_status}} Status
+                            </b>
+                        </h4>
+                    </div>
+
+                    <div v-if="stats.current_status == 'Gold'" class="card-header gold" >
+                        <h4 class="text-white text-6 pt-2">
+                            <b>
+                                {{stats.current_status}} Status
+                            </b>
+                        </h4>
+                    </div>
+
+                    <div v-if="stats.current_status == 'Diamond'" class="card-header diamond" >
+                        <h4 class="text-dark text-6 pt-2">
+                            <b>
+                                {{stats.current_status}} Status
+                            </b>
+                        </h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <sales-chart :sales="stats.percentage"></sales-chart>
+                        <h5 class="text text-success text-6"><strong>Booster Pkgs: Your Personal Boost is currently {{stats.boost}}%</strong></h5>
+
+                    </div>
+
                 </div>
+        <hr>
+
             </div>
-        </div>
-    </div>
+</div>
 </template>
 
 <script>

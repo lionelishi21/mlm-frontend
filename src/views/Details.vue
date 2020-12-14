@@ -9,7 +9,7 @@
 			<div class="row layout-spacing">
 				<!-- Content -->
 				<div class="col-xl-3 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
-					<div class="user-profile">
+					<div class="card">
 						<div class="widget-content widget-content-area">
 							<div class="text-center user-info">
 								<img src="@/assets/avatar/img12.jpg" alt="avatar">
@@ -88,9 +88,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="work-experience layout-spacing ">
+					<div class="card layout-spacing ">
 						<div class="widget-content widget-content-area">
-							<p class="text-5 text-dark">Personal Sales</p>
+							<p class="text-6 text-dark">Personal Sales</p>
 							<hr>
 							<div class="row pb-2" v-for="sale in getAffiliateDetails.personal_sales">
 
@@ -106,27 +106,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-9 col-lg-6 col-md-7 col-sm-12 layout-top-spacing">
-					<div class="row mb-5" >
-<!--						<div class="col-md-4">-->
-<!--							<div class="widget widget-card-four" >-->
-<!--								<div class="widget-content">-->
-<!--									<div class="w-content">-->
-<!--										<div class="w-info">-->
-<!--											<p class="text-6 text-danger">Escrow Amount</p>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--									<div class="progress-order-body">-->
-<!--										<div class="row mt-1">-->
-<!--											<div class="col-md-12">-->
-<!--												<h1 class="text-primary">{{getAffiliateDetails.escrow}}</h1>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</div>-->
-<!--							</div>-->
-<!--						</div>-->
 
+				<div class="col-xl-9 col-lg-6 col-md-7 col-sm-12 layout-top-spacing">
+
+					<div class="row mb-5" >
 						<div class="col-md-6">
 							<personal-sales :sales="getAffiliateDetails.personal_sales"
 											:boosters="getAffiliateDetails.boosters">
@@ -136,12 +119,11 @@
 						<div class="col-md-6">
 							<group-sales :user_id="getAffiliateDetails.user.id" :stats="getAffiliateDetails.stats"></group-sales>
 						</div>
-
 					</div>
 
-					<div class="bio layout-spacing ">
+					<div class="card layout-spacing ">
 						<div class="widget-content widget-content-area">
-							<h3 class="">Affiliates</h3>
+							<h4 class="">Affiliates</h4>
 
 							<div class="bio-skill-box">
 								<div class="row">
@@ -181,6 +163,39 @@
 
 						</div>
 					</div>
+
+					<div class="card layout-spacing" style="height: 20%; overflow-y: scroll;">
+						<div class="widget-four mt-2" >
+							<div class="widget-heading">
+								<h5 class="">Booster Packages</h5>
+								{{boosterUserList}}
+							</div>
+							<div class="widget-content" >
+								<div class="vistorsBrowser" >
+									<div class="browser-list" v-for="(boost, index ) in boosterSummary">
+										<div class="w-icon">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chrome"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
+										</div>
+										<div class="w-browser-details">
+
+											<div class="w-browser-info">
+												<h4><strong> Booster {{index + 1}} </strong></h4>
+												<p class="browser-count text-dark"><strong>{{boost.stats.tiers}} | {{boost.stats.percentage}}%</strong></p>
+
+											</div>
+
+											<div class="w-browser-stats">
+												<div class="progress">
+													<div class="progress-bar bg-gradient-danger" role="progressbar" :style="'width: '+boost.stats.percentage+'%'" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -218,7 +233,9 @@ export default {
 		...mapGetters([
 			'getAffiliateDetails',
 			'getUserDetails',
-			'getCashBonuses'
+			'getCashBonuses',
+			'boosterSummary',
+			'boosterUserList'
 		]),
 		groupMore() {
 			return this.getAffiliateDetails.group_sales_counts - 10
@@ -238,6 +255,7 @@ export default {
 	},
 
 	methods: {
+
 	    percentage(num, per) {
 	      return (num/100)*per;
         },
@@ -246,6 +264,8 @@ export default {
 			var affiliateId = this.$route.params.id
 			this.$store.dispatch('AFFILIATE_DETAILS', affiliateId)
 			this.$store.dispatch('GET_USER_DETAILS')
+			this.$store.dispatch('BOOSTER_SUMMARY')
+			this.$store.dispatch('BOOSTER_USER_SUMMARY', affiliateId)
 			// this.$store.dispatch('GET_USER_CASHBONUS', affiliateId)
 		},
 

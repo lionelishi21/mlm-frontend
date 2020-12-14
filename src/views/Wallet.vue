@@ -169,10 +169,10 @@
 								<thead>
 								<tr>
 									<th><div class="th-content">Available On</div></th>
-									<th><div class="th-content">Tier</div></th>
+									<th><div class="th-content">Status</div></th>
 									<th><div class="th-content">Group Sales</div></th>
 									<th><div class="th-content th-heading">Cash Bonus</div></th>
-									<th><div class="th-content">Status</div></th>
+									<th><div class="th-content">Payout</div></th>
 								</tr>
 								</thead>
 								<tbody>
