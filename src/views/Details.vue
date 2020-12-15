@@ -111,12 +111,15 @@
 
 					<div class="row mb-5" >
 						<div class="col-md-6">
+
+							{{getAffiliateDetails.personal_sales}}
 							<personal-sales :sales="getAffiliateDetails.personal_sales"
 											:boosters="getAffiliateDetails.boosters">
 							</personal-sales>
 						</div>
 
 						<div class="col-md-6">
+							{{getAffiliateDetails.stats}}
 							<group-sales :user_id="getAffiliateDetails.user.id" :stats="getAffiliateDetails.stats"></group-sales>
 						</div>
 					</div>
@@ -269,8 +272,6 @@ export default {
 		},
 
 		replaceRoute(value) {
-
-	    	alert(value)
 	    	this.isLoading = true
 			var self = this;
 			setTimeout(function() {
