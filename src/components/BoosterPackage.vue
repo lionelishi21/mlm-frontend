@@ -44,8 +44,8 @@
 <script>
     import BoosterPayment from "../components/partials/BoosterPayment";
     import PayPal from 'vue-paypal-checkout'
-    export default {
 
+    export default {
         name: "Boaster-packages.vue",
         components: {
             BoosterPayment,

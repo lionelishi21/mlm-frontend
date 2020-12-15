@@ -8,7 +8,7 @@
 					<p class="text-6 my-4">"Please check your email (and Spam) for further instructions." <br>
 					Contact <a href="">admin@majesticares.com </a>if assistance is needed.</p>
 				</div>
-				<a href="/login" class="btn btn-primary btn-rounded btn-xl font-weight-semibold text-2 px-4 py-3 mt-1 mb-4"><i class="fas fa-angle-left pr-3"></i>PROCEED TO LOGIN</a>
+				<a href="https://app.majesticares.com" class="btn btn-primary btn-rounded btn-xl font-weight-semibold text-2 px-4 py-3 mt-1 mb-4"><i class="fas fa-angle-left pr-3"></i>PROCEED TO LOGIN</a>
 			</div>
 		</div>
 	</section>

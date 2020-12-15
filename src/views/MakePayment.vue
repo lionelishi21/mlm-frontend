@@ -44,7 +44,6 @@
                             <select @change="showPaymentModal()" class="form-control" v-model="form.payment_method">
                                 <option value="">Select Payment Method</option>
                                 <option value="card">Debit/Credit Card</option>
-                                <option value="paypal">Paypal</option>
                             </select>
                         </div>
                     </div>

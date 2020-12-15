@@ -59,7 +59,7 @@
 
                                         <div class="b-skills">
                                             <div class="text-center">
-                                                <h5>E-book System Purchases</h5>
+                                                <h5>E-book Sys. Purchases</h5>
                                                 <h2>{{systemDetails.ebook.length}}</h2>
                                             </div>
                                         </div>
@@ -70,7 +70,7 @@
 
                                         <div class="b-skills">
                                             <div class="text-center">
-                                                <h5>Booster Pckgs System Purchases</h5>
+                                                <h5>BP Sys. Purchases</h5>
                                                 <h2>{{systemDetails.booster.length}}</h2>
                                             </div>
                                         </div>
@@ -81,7 +81,7 @@
 
                                         <div class="b-skills">
                                             <div class="text-center">
-                                                <h5>Super Booster Sys. Purchases</h5>
+                                                <h5>SBP Sys. Purchases</h5>
                                                 <h2>0</h2>
                                             </div>
                                         </div>

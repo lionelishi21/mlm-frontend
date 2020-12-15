@@ -7,6 +7,54 @@
 		  </loading>
 	</div>
 	<notification-component :msg="message"></notification-component>
+	<b-modal  v-model="withdrawModal" title="Booster" modal-footer centered hide-footer="true">
+		<div class="widget-account-invoice-one">
+
+			<div class="widget-heading">
+				<h5 class="">Wallet</h5>
+			</div>
+
+			<div class="widget-content">
+				<div class="invoice-box">
+
+					<div class="acc-total-info">
+						<h5>Balance</h5>
+						<p class="acc-amount">{{totalItem | currency }}</p>
+					</div>
+
+					<div class="inv-detail">
+						<div class="info-detail-1" v-for="cash in escrow">
+							<p>{{cash.tier}}</p>
+							<p>{{cash.cash_bonus | currency}}</p>
+						</div>
+						<div class="info-detail-3 info-sub">
+							<div class="info-detail">
+								<p>Transfer Fee</p>
+								<p>-{{percentage | currency}}</p>
+							</div>
+						</div>
+						<hr>
+						<div class="info-detail-3 info-sub">
+							<div class="info-detail">
+								<p>Total</p>
+								<p class="text-dark"><strong>{{totalTransfer | currency}}</strong></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="inv-action">
+						<button v-for="type in getPayoutAccount"
+								class="btn btn-primary mt-3 btn-lg"
+								@click="payouts(type.type)"><i class="fa fa-money-check"></i>
+							Confirm
+						</button>
+						<button class="btn  mt-3 btn-lg" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</b-modal>
 
     <!-- Error Messages	-->
 	<div class="col-md-12">
@@ -55,39 +103,7 @@
 						<div class="widget-content">
 							<div class="invoice-box">
 
-								<div class="acc-total-info">
-									<h5>Balance</h5>
-									<p class="acc-amount">{{totalItem | currency }}</p>
-								</div>
 
-								<div class="inv-detail">
-									<div class="info-detail-1" v-for="cash in escrow">
-										<p>{{cash.tier}}</p>
-										<p>{{cash.cash_bonus | currency}}</p>
-									</div>
-									<div class="info-detail-3 info-sub">
-										<div class="info-detail">
-											<p>Transfer Fee</p>
-											<p>-{{percentage | currency}}</p>
-										</div>
-									</div>
-									<hr>
-									<div class="info-detail-3 info-sub">
-										<div class="info-detail">
-											<p>Total</p>
-											<p class="text-dark"><strong>{{totalTransfer | currency}}</strong></p>
-										</div>
-									</div>
-								</div>
-
-								<div class="inv-action">
-									<button v-for="type in getPayoutAccount"
-											class="btn btn-primary mt-3 btn-lg"
-											@click="payouts(type.type)"><i class="fa fa-money-check"></i>
-										Confirm
-									</button>
-									<button class="btn  mt-3 btn-lg" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
-								</div>
 							</div>
 						</div>
 
@@ -264,6 +280,7 @@ export default {
 	data() {
 		return {
 			sales: 0,
+			withdrawModal: false,
 			isPayoneerActive: false,
 			isPayPalActive: false,
 			isBankActive: false,
@@ -377,11 +394,11 @@ export default {
 					this.payout.success.mesg = 'Withdraw was successful'
 					this.isLoading = false
 					this.init();
-					$('#payoutModal').modal('hide')
+					this.withdrawModal = !this.withdrawModal
 				})
 			.catch( error => {
 				this.isLoading = false
-				$('#payoutModal').modal('hide')
+				this.withdrawModal = !this.withdrawModal
 				this.init()
 				this.payout.errors.error = true
 				if (error.data) {
@@ -404,9 +421,7 @@ export default {
 		},
 
 		payouts(params) {
-			if (params == 'Paypal') {
-				this.paypalWithdrawal()
-			}
+
 
 			if ( params == 'Stripe') {
 				this.request()
@@ -422,7 +437,7 @@ export default {
 					this.isLoading = false
 					this.init();
 					this.message = 'Withdraw was successfull'
-					$('#payoutModal').modal('hide')
+					this.withdrawModal = !this.withdrawModal
 					$('.toast').toast('show');
 					console.log(response)
 				})
@@ -451,7 +466,7 @@ export default {
        },
 
        payoutModal() {
-          $('#payoutModal').modal('show')
+		   this.withdrawModal = !this.withdrawModal
        },
 
        hidePayoutModal() {

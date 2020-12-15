@@ -7,6 +7,7 @@
 			</div>
 
 			<div class="row layout-spacing">
+
 				<!-- Content -->
 				<div class="col-xl-3 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
 					<div class="card">
@@ -88,22 +89,21 @@
 							</div>
 						</div>
 					</div>
-					<div class="card layout-spacing ">
-						<div class="widget-content widget-content-area">
-							<p class="text-6 text-dark">Personal Sales</p>
+					<div class="row mt-5">
+						<div class="col-md-12">
+							<h5>Personal Sales</h5>
 							<hr>
-							<div class="row pb-2" v-for="sale in getAffiliateDetails.personal_sales">
-
-								<div class="col-md-12">
-									<div class="card" @click="replaceRoute(sale.affiliate_id)">
-										<div class="p-2 text-center">
-											<p><a class="text-dark" href="#">{{sale.purchaser_name}}</a></p>
-<!--											<a href="#" class="text-primary">{{sale.link.link}}</a>-->
-										</div>
-									</div>
+						</div>
+					</div>
+					<div class="row">
+						<a @click="replaceRoute(sale.affiliate_id)" class="card1 text-center" href="#" v-for="sale in getAffiliateDetails.personal_sales">
+							<h4>{{sale.purchaser_name}}</h4>
+							<div class="go-corner" href="#">
+								<div class="go-arrow">
+									→
 								</div>
 							</div>
-						</div>
+						</a>
 					</div>
 				</div>
 
@@ -130,9 +130,14 @@
 									<div class="col-md-4">
 									</div>
 									<div class="col-md-4 ">
-										<div class="d-flex b-skills text-center">
+										<div class="text-center">
 											<div class="text-center">
-												<h5>{{getAffiliateDetails.user.first_name}} {{getAffiliateDetails.user.last_name}}</h5>
+												<a class="card text-center" href="#" >
+													<div class="card-body">
+														<h4>{{getAffiliateDetails.user.first_name}} {{getAffiliateDetails.user.last_name}}</h4>
+													</div>
+												</a>
+												<h5></h5>
 											</div>
 										</div>
 									</div>
@@ -141,11 +146,15 @@
 								</div>
 								<div class="row">
 									<div class="col-md-4" v-for="af in getAffiliateDetails.affiliate">
-										<div class="card mt-5" @click.prevent="replaceRoute(af.affiliateId)" style="cursor: pointer">
-											<div class="card-body text-center">
-												<h5>{{af.username}}</h5>
+										<a @click.prevent="replaceRoute(af.affiliateId)" class="card3 text-center" href="#" >
+											<h4>{{af.username}}</h4>
+											<div class="go-corner" href="#">
+												<div class="go-arrow">
+													→
+												</div>
 											</div>
-										</div>
+										</a>
+
 										<div class="row mt-3" v-if="af.children">
 											<div class="col-md-4" v-for="child in af.children">
 												<div class="card">
@@ -164,32 +173,21 @@
 						</div>
 					</div>
 
-					<div class="card layout-spacing" style="height: 20%; overflow-y: scroll;">
-						<div class="widget-four mt-2" >
-							<div class="widget-heading">
-								<h5 class="">Booster Packages</h5>
-								{{boosterUserList}}
-							</div>
-							<div class="widget-content" >
-								<div class="vistorsBrowser" >
-									<div class="browser-list" v-for="(boost, index ) in boosterSummary">
-										<div class="w-icon">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chrome"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
-										</div>
-										<div class="w-browser-details">
 
-											<div class="w-browser-info">
-												<h4><strong> Booster {{index + 1}} </strong></h4>
-												<p class="browser-count text-dark"><strong>{{boost.stats.tiers}} | {{boost.stats.percentage}}%</strong></p>
-
-											</div>
-
-											<div class="w-browser-stats">
-												<div class="progress">
-													<div class="progress-bar bg-gradient-danger" role="progressbar" :style="'width: '+boost.stats.percentage+'%'" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-												</div>
-											</div>
-
+					<div class="card card-primary mt-5" style="max-height: 30%; overflow-y: scroll;">
+						<div class="card-header">
+							<h4>Booster Packages</h4>
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-6" v-for="(boost, index ) in boosterUserList">
+									<div class="w-browser-info">
+										<h4><strong> Booster {{index + 1}} </strong></h4>
+										<p class="browser-count text-dark"><strong>{{boost.stats.tiers}} | {{boost.stats.percentage}}%</strong></p>
+									</div>
+									<div class="w-browser-stats">
+										<div class="progress">
+											<div class="progress-bar bg-gradient-danger" role="progressbar" :style="'width: '+boost.stats.percentage+'%'" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
 									</div>
 								</div>
@@ -236,6 +234,7 @@ export default {
 			'getCashBonuses',
 			'boosterSummary',
 			'boosterUserList'
+
 		]),
 		groupMore() {
 			return this.getAffiliateDetails.group_sales_counts - 10
@@ -271,15 +270,15 @@ export default {
 
 		replaceRoute(value) {
 
+	    	alert(value)
 	    	this.isLoading = true
-			this.$nextTick(() => {
+			var self = this;
+			setTimeout(function() {
+				var url = '/dashboard/affiliates/'+value
+				self.$router.push(url);
 
-				this.$store.dispatch('AFFILIATE_DETAILS', value)
-				.then( response => {
-					this.isLoading = false
-				})
-				this.$store.dispatch('GET_USER_DETAILS')
-			});
+				self.isLoading = false
+			}, 2000);
 
 		},
 
@@ -313,4 +312,192 @@ export default {
 	}
 }
 </script>
+<style lang="scss" scoped>
 
+	.go-corner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		width: 32px;
+		height: 32px;
+		overflow: hidden;
+		top: 0;
+		right: 0;
+		background-color: #00838d;
+		border-radius: 0 4px 0 32px;
+	}
+
+	.go-arrow {
+		margin-top: -4px;
+		margin-right: -4px;
+		color: white;
+		font-family: courier, sans;
+	}
+
+	.card1 {
+		display: block;
+		position: relative;
+		width: 100%;
+		background-color: #f2f8f9;
+		border-radius: 4px;
+		padding: 32px 24px;
+		margin: 12px;
+		text-decoration: none;
+		z-index: 0;
+		overflow: hidden;
+
+	&:before {
+		 content: "";
+		 position: absolute;
+		 z-index: -1;
+		 top: -16px;
+		 right: -16px;
+		 background: #00838d;
+		 height: 32px;
+		 width: 32px;
+		 border-radius: 32px;
+		 transform: scale(1);
+		 transform-origin: 50% 50%;
+		 transition: transform 0.25s ease-out;
+	 }
+
+	&:hover:before {
+
+		 transform: scale(25);
+	 }
+	}
+
+	.card1:hover {
+	p {
+		transition: all 0.3s ease-out;
+		color: rgba(255, 255, 255, 0.8);
+	}
+	h4 {
+		transition: all 0.3s ease-out;
+		color: #ffffff;
+	}
+	}
+
+	.card2 {
+		display: block;
+		top: 0px;
+		position: relative;
+		max-width: 262px;
+		background-color: #f2f8f9;
+		border-radius: 4px;
+		padding: 32px 24px;
+		margin: 12px;
+		text-decoration: none;
+		z-index: 0;
+		overflow: hidden;
+		border: 1px solid #f2f8f9;
+
+	&:hover {
+		 transition: all 0.2s ease-out;
+		 box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+		 top: -4px;
+		 border: 1px solid #cccccc;
+		 background-color: white;
+	 }
+
+	&:before {
+		 content: "";
+		 position: absolute;
+		 z-index: -1;
+		 top: -16px;
+		 right: -16px;
+		 background: #00838d;
+		 height: 32px;
+		 width: 32px;
+		 border-radius: 32px;
+		 transform: scale(2);
+		 transform-origin: 50% 50%;
+		 transition: transform 0.15s ease-out;
+	 }
+
+	&:hover:before {
+		 transform: scale(2.15);
+	 }
+	}
+
+	.card3 {
+		display: block;
+		top: 0px;
+		position: relative;
+		max-width: 100%;
+		background-color: #f2f8f9;
+		border-radius: 4px;
+		padding: 32px 24px;
+		margin: 12px;
+		text-decoration: none;
+		overflow: hidden;
+		border: 1px solid #f2f8f9;
+
+	.go-corner {
+		opacity: 0.7;
+	}
+
+	&:hover {
+		 border: 1px solid #00838d;
+		 box-shadow: 0px 0px 999px 999px rgba(255, 255, 255, 0.5);
+		 z-index: 500;
+	 }
+	}
+
+	.card3:hover {
+	p{color: #00838d}
+	.go-corner {
+		transition: opactiy 0.3s linear;
+		opacity: 1;
+	}
+	}
+
+	.card4 {
+		display: block;
+		top: 0px;
+		position: relative;
+		max-width: 262px;
+		background-color: #ffffff;
+		border-radius: 4px;
+		padding: 32px 24px;
+		margin: 12px;
+		text-decoration: none;
+		overflow: hidden;
+		border: 1px solid #cccccc;
+
+	.go-corner {
+		background-color: #00838d;
+		height: 100%;
+		width: 16px;
+		padding-right: 9px;
+		border-radius: 0;
+		transform: skew(6deg);
+		margin-right: -36px;
+		align-items: start;
+		background-image: linear-gradient(-45deg, #8F479A 1%, #DC2A74 100%);
+	}
+
+	.go-arrow {
+		transform: skew(-6deg);
+		margin-left: -2px;
+		margin-top: 9px;
+		opacity: 0;
+	}
+
+	&:hover {
+		 border: 1px solid #CD3D73;
+	 }
+
+	h3 {margin-top: 8px;}
+	}
+
+	.card4:hover {
+	.go-corner {
+		margin-right: -12px;
+	}
+	.go-arrow {
+		opacity: 1;
+	}
+	}
+</style>

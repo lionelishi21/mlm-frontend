@@ -47,7 +47,7 @@ export default {
 	},
 
 	fetchUserBoosterList(id) {
-		return Api().get('/boosters/'+id+'/list/')
+		return Api().get('/boosters/list/'+id )
 	},
 
 	makeCompression( params ) {

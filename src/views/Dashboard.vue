@@ -87,7 +87,6 @@
 										<div class="w-browser-info">
 											<h4><strong> Booster {{index + 1}} </strong></h4>
 											<p class="browser-count text-dark"><strong>{{boost.stats.tiers}} / {{boost.stats.percentage}}%</strong></p>
-
 										</div>
 
 										<div class="w-browser-stats">
