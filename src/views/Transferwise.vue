@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3"
+                <div class="col-md-3"></div>
             </div>
         </div>
     </div>
@@ -61,7 +61,8 @@
             transfer_modal: false,
             form: {
                 email: null,
-                phone: null
+                phone: null,
+                currency: null
             }
         }),
 

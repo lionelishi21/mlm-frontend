@@ -111,15 +111,12 @@
 
 					<div class="row mb-5" >
 						<div class="col-md-6">
-
-							{{getAffiliateDetails.personal_sales}}
 							<personal-sales :sales="getAffiliateDetails.personal_sales"
 											:boosters="getAffiliateDetails.boosters">
 							</personal-sales>
 						</div>
 
 						<div class="col-md-6">
-							{{getAffiliateDetails.stats}}
 							<group-sales :user_id="getAffiliateDetails.user.id" :stats="getAffiliateDetails.stats"></group-sales>
 						</div>
 					</div>
@@ -148,6 +145,7 @@
 									</div>
 								</div>
 								<div class="row">
+
 									<div class="col-md-4" v-for="af in getAffiliateDetails.affiliate">
 										<a @click.prevent="replaceRoute(af.affiliateId)" class="card3 text-center" href="#" >
 											<h4>{{af.username}}</h4>

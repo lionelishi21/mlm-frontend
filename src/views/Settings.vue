@@ -13,7 +13,7 @@
         <div class="col-md-12">
 
             <!-- Page Header -->
-            <div class="breadcrumb-five">
+            <div class="breadcrumb-five mt-2">
                 <ul class="breadcrumb">
                     <li class="mb-2"><a href="javscript:void(0);">Home</a></li>
                     <li class="active mb-2"><a href="javscript:void(0);"> Settings</a></li>
@@ -169,26 +169,25 @@
 
                                     <li class="list-group-item list-group-item-action text-center" v-if="checkIfCountry(getDetail.country)">
                                         <div class="mt-5">
-                                            <h5 class="pb-4">Add bank account or debit card</h5>
-                                            <button class="btn btn-primary mb-5" @click="showPayoneerBankAccountModal()"><i class="fa fa-plus"></i> Add Payoneer Bank Account </button>
-                                            <button class="btn btn-primary mb-5" @click="showPayoneerDebitCardModal()"><i class="fa fa-plus"></i> Add Payoneer Debit Card </button>
                                             <div class="row">
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-1"></div>
-
-                                                <div class="col-md-2">
-                                                    <img width="50px" src="@/assets/img/payoneer.png" alt="">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <div class="card card-block w-100" style="background: #f2f5f7;">
+                                                        <div class="card-body">
+                                                            <div class="row text-center">
+                                                                <div class="col-md-12">
+                                                                    <img src="@/assets/transferwise.png" width="50%">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row text-center">
+                                                                <div class="col-md-12">
+                                                                    <button class="btn btn-primary btn-rounded" @click="showTransferWiseModal()">Add Account</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-
-                                                <div class="col-md-1"></div>
-                                                <div class="col-md-4"></div>
-                                            </div>
-                                            <div class="row mt-2 mb-3">
-                                                <div class="col-md-12 text-center mb-3">
-                                                    <h5><i>Payoneer</i></h5>
-                                                    <p>Payoneer Global Payment Service</p>
-<!--                                                    <a href="https://www.payoneer.com/accounts/">Signup</a>-->
-                                                </div>
+                                                <div class="col-md-3"></div>
                                             </div>
                                         </div>
                                     </li>
@@ -261,6 +260,13 @@
 
         data() {
             return {
+                isLoading: false,
+                transfer_modal: false,
+                form: {
+                    email: null,
+                    phone: null,
+                    currency: null
+                },
                 step: 1,
 
                 type: {
@@ -573,6 +579,31 @@
                     }
                 }
                 return false;
+            },
+
+            showTransferWiseModal() {
+                this.transfer_modal = !this.transfer_modal
+            },
+
+            addTransferWiseAccount() {
+
+                this.isLoading = true;
+                var self = this
+
+                setTimeout(function() {
+
+                    self.$store.dispatch('TRANSFERWISE_POST', this.form)
+                        .then( response => {
+                            console.log( response )
+                            self.isLoading = false
+                            self.modal = !self.modal
+                        })
+                        .catch( error => {
+                            self.isLoading = false
+                            console.log(error.response)
+                        })
+
+                }, 2000, this);
             }
         }
     }
