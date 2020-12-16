@@ -519,7 +519,6 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-
                     <div class="card-body" v-if="transferwiseAccount">
                         <div id='right-defaults' class='dragula'>
                             <div class="media  d-md-flex d-block text-sm-left text-center">
@@ -539,6 +538,12 @@
                         </div>
                     </div>
                     <div class="card-body" style="background: #f2f5f7;" v-else>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <a href="https://transferwise.com/invite/u/robertd2231">Click to Create A TransferWise Account</a>
+                                <small>Then add account email and currency here</small>
+                            </div>
+                        </div>
                         <div class="row text-center">
                             <div class="col-md-12">
                                 <img src="@/assets/transferwise.png" width="10%">
