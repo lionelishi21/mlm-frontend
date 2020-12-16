@@ -1,13 +1,11 @@
 <template>
-<div id="content" class="main-content">
-	<div class="vld-parent">
-		   <loading :active.sync="isLoading"
-			  :can-cancel="true"
-			  :is-full-page="fullPage">
-		  </loading>
-	</div>
+	<div id="content" class="main-content">
+		<loading :active.sync="isLoading"
+				 :can-cancel="false"
+				 :is-full-page="fullPage"></loading>
+
 	<notification-component :msg="message"></notification-component>
-	<b-modal  v-model="withdrawModal" title="Booster" modal-footer centered hide-footer="true">
+	<b-modal  v-model="withdrawModal" title="Withdraw Funds" modal-footer centered hide-footer="true">
 		<div class="widget-account-invoice-one">
 
 			<div class="widget-heading">
@@ -27,12 +25,12 @@
 							<p>{{cash.tier}}</p>
 							<p>{{cash.cash_bonus | currency}}</p>
 						</div>
-						<div class="info-detail-3 info-sub">
-							<div class="info-detail">
-								<p>Transfer Fee</p>
-								<p>-{{percentage | currency}}</p>
-							</div>
-						</div>
+<!--						<div class="info-detail-3 info-sub">-->
+<!--							<div class="info-detail">-->
+<!--								<p>Transfer Fee</p>-->
+<!--								<p>-{{percentage | currency}}</p>-->
+<!--							</div>-->
+<!--						</div>-->
 						<hr>
 						<div class="info-detail-3 info-sub">
 							<div class="info-detail">
@@ -48,7 +46,11 @@
 								@click="payouts(type.type)"><i class="fa fa-money-check"></i>
 							Confirm
 						</button>
-						<button class="btn  mt-3 btn-lg" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Cancel</button>
+						<button v-if="transferwiseAccount"
+								class="btn btn-primary mt-3 btn-lg"
+								@click="payouts('transferwise')"
+						>TransferWIse</button>
+						<button class="btn  mt-3 btn-lg" data-dismiss="modal" @click="withdrawModal = !withdrawModal"><i class="flaticon-cancel-12"></i> Cancel</button>
 					</div>
 				</div>
 			</div>
@@ -56,32 +58,41 @@
 		</div>
 	</b-modal>
 
-    <!-- Error Messages	-->
-	<div class="col-md-12">
-		<div v-if="payout.errors.error" class="alert alert-danger mb-4" role="alert">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<i class="fa fa-times"></i>
-			</button>
-			<strong>Error Message!</strong> {{payout.errors.mesg}}</button>
-		</div>
-	</div>
-    <!--End Error Message -->
-	<div class="col-md-12" v-if="!getUserStripeAccount">
-		<div class="alert alert-light-danger mb-4" role="alert">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
-			<strong>Alert!</strong> Complete your transfer account in order to enable automatic payouts.</button>
+	<div class="row">
+		<!-- Error Messages	-->
+		<div class="col-md-12 mt-5">
+			<div v-if="payout.errors.error" class="alert alert-danger mb-4" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<i class="fa fa-times"></i>
+				</button>
+				<strong>Error Message!</strong> {{payout.errors.mesg}}</button>
+			</div>
 		</div>
 	</div>
 
 
-	<div class="col-md-12">
-		<div v-if="payout.success.succuss" class="alert alert-success mb-4" role="alert">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<i class="fa fa-times"></i>
-			</button>
-			<strong>Error Message!</strong> {{payout.success.mesg}}</button>
+	<div class="row">
+		<!--End Error Message -->
+		<div class="col-md-12" v-if="!getUserStripeAccount">
+			<div class="alert alert-light-danger mb-4" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
+				<strong>Alert!</strong> Complete your transfer account in order to enable automatic payouts.</button>
+			</div>
 		</div>
 	</div>
+
+
+	<div class="row">
+		<div class="col-md-12">
+			<div v-if="payout.success.succuss" class="alert alert-success mb-4" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<i class="fa fa-times"></i>
+				</button>
+				<strong>Error Message!</strong> {{payout.success.mesg}}</button>
+			</div>
+		</div>
+	</div>
+
 
 	<div class="modal fade" id="payoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
@@ -117,15 +128,8 @@
 	</div>
 
 	<div v-if="getPersonalSales > 2" class="layout-px-spacing">
-		<div class="breadcrumb-five">
-			<ul class="breadcrumb">
-				<li class="mb-2"><a href="javscript:void(0);">Home</a>
-				</li>
-				<li class="active mb-2"><a href="javscript:void(0);">Wallet</a></li>
-			</ul>
-		</div>
 		<div class="row">
-			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="widget widget-card-four">
 					<div class="widget-content">
 						<div class="text-center mt-4">
@@ -136,18 +140,18 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="widget widget-card-four">
 					<div class="widget-content">
 						<div class="text-center mt-4">
 							<h1 class="value text-success">{{ payoutTotal | currency }}</h1>
 							<h6 class="text-6 text-bold">Paid Out</h6>
-							<small class="text-dark">The total amount that was paid out</small>
+							<small class="text-dark">The total paid out</small>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="card">
 					<div class="card-body">
 						<div class="text-center" v-if="getUserStripeAccount">
@@ -160,6 +164,23 @@
 						<div class="text-center" v-else>
 							<h4>Payout Account</h4>
 							<h6 class="pt-3">No Payout Account</h6>
+							<button class="btn btn-primary" @click="addAccount()">Add Account</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+				<div class="card">
+					<div class="card-body">
+						<div class="text-center" v-if="transferwiseAccount">
+							<h6>Payout Account</h6>
+							<h5 class="pt-1">TransferWise</h5>
+							<p>Email: {{transferwiseAccount.email}}</p>
+							<span class="badge badge-primary mt-1 text-3">Currency: {{transferwiseAccount.currency}}</span>
+						</div>
+						<div class="text-center" v-else>
+							<h4>Payout Account</h4>
+							<h6 class="pt-3">No International Payout Account</h6>
 							<br>
 							<button class="btn btn-primary" @click="addAccount()">Add Account</button>
 						</div>
@@ -330,6 +351,7 @@ export default {
 			'getPersonalSales',
 			'fetchLink',
 			'getUserStripeAccount',
+			'transferwiseAccount'
 		]),
 
 		totalItem: function(){
@@ -351,7 +373,8 @@ export default {
 			return ((5/ 100) * this.totalItem).toFixed(2)
 		},
 		totalTransfer() {
-			return this.totalItem - this.percentage
+			return this.totalItem
+			// return this.totalItem - this.percentage
 		}
 
 	},
@@ -376,6 +399,7 @@ export default {
 			this.$store.dispatch('GET_USER_PAYOUT_ACCOUNT')
 			this.$store.dispatch('GET_AFFILIATE_LINK')
 			this.$store.dispatch('FETCH_STRIPE_ACCOUNT')
+			this.$store.dispatch('TRANSFERWISE_FETCH_ACCOUNT')
 
 		},
 		request() {
@@ -426,9 +450,41 @@ export default {
 			if ( params == 'Stripe') {
 				this.request()
 			}
-			if (params == "MCC") {
-
+			if (params == "transferwise") {
+				this.internationalPayout()
 			}
+		},
+
+		internationalPayout() {
+			this.isLoading = true;
+
+			this.payout.errors.mesg = '';
+			let transfer = {
+				transfer: this.totalItem
+			}
+
+			this.$store.dispatch('TRANSFERWISE_PAYOUT', transfer)
+					.then( response => {
+						console.log(response)
+
+						this.success.success = true
+						this.payout.success.mesg = 'Withdraw was successful'
+						this.isLoading = false
+						this.init();
+						this.withdrawModal = !this.withdrawModal
+					})
+					.catch( error => {
+
+						this.isLoading = false
+						this.withdrawModal = !this.withdrawModal
+						this.init()
+						this.payout.errors.error = true
+						if (error.data) {
+							this.payout.errors.mesg = error.data.message
+						}
+
+						console.log(error)
+					})
 		},
 
 		withDraw() {

@@ -55,6 +55,9 @@
 															</div>
 														</div>
 													</div>
+													<div class="col-md-6">
+
+													</div>
 												</div>
 
 
@@ -75,6 +78,7 @@
 													class="table style-3 table-hover"
 													striped
 													hover
+													sort-icon-left
 													:fields="fields"
 													:items="getAffiliates.response">
 
@@ -157,7 +161,7 @@ export default {
 				{ key: 'sales', label: 'Sales' },
 				{ key: 'booster', label: 'Boosters'},
 				{ key: 'details', label: 'Country'},
-				{ key: 'active', label: 'Status' },
+				{ key: 'active', label: 'Status', sortable: true,  sortDirection: 'dsc'},
 				{ key: 'sponsor', label: 'Sponsor' },
 				{ key: 'actions', label: 'Actions' }
 			],

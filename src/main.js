@@ -21,20 +21,25 @@ import ApexCharts from 'apexcharts'
 import VueSnackbar from 'vue-snack'
 import 'vue-snack/dist/vue-snack.min.css'
 import VueApexCharts from 'vue-apexcharts'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import { VuejsDatatableFactory } from 'vuejs-datatable';
+import JsonExcel from "vue-json-excel";
 
+Vue.component("downloadExcel", JsonExcel);
 Vue.use( VuejsDatatableFactory );
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 
 
 // Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin)
+Vue.use(BootstrapVueIcons)
 
 Vue.component('apexchart', VueApexCharts)
 Vue.use(VueApexCharts)
 Vue.use(VueSnackbar, { position: 'bottom-right', time: 3000 })
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // Or only as a filter
 import { VueMaskFilter } from 'v-mask'

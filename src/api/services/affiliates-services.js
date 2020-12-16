@@ -52,6 +52,18 @@ export default {
 
 	makeCompression( params ) {
 		return Api().post('/affiliates/compression', params )
+	},
+
+	postTransferWise( params) {
+		return Api().post('/transferwises/save', params )
+	},
+
+	transferwiseFetch() {
+		return Api().get('/transferwises')
+	},
+
+	transferwisePayout(params) {
+		return Api().post('/transferwises/payout', params)
 	}
 
 }
