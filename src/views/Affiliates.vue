@@ -87,8 +87,9 @@
 													</template>
 
 													<template #cell(active)="row">
-														<p class="badge-success badge" v-if="row.item.active">	Active	</p>
-														<p  class="badge-danger badge" v-else >	Inactive </p>
+														<p class="badge-success badge" v-if="row.item.active == true">	Active	</p>
+														<p  class="badge-danger badge" v-if="row.item.active == false" >	Inactive </p>
+														<p  class="badge-primary badge" v-if="row.item.active === 'system'" >	System </p>
 													</template>
 
 													<template #cell(sponsor)="row">

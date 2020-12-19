@@ -4,7 +4,7 @@
             <div class="header">
                 <div class="header-body">
                     <h6>MCC Booster Package</h6>
-                    <small><h3><strong>${{total}}.00</strong></h3></small>
+                    <small><h6><strong>${{total}}.00</strong></h6></small>
                 </div>
             </div>
             <div class="w-content">

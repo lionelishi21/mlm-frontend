@@ -26,9 +26,9 @@
 
 			<div class="row">
 
-				<div class="col-md-8">
+				<div class="col-lg-6 col-xl-8  col-sm-12">
 					<div class="row">
-						<div class="col-md-6 layout-spacing">
+						<div class="col-lg-12 col-xl-6 col-md-12 col-sm-12 layout-top-spacing">
 								<div class="widget widget-five">
 									<div class="widget-content">
 										<div class="header">
@@ -45,17 +45,17 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-6 layout-spacing">
+							<div class="col-lg-12 col-xl-6 col-md-12 col-sm-12 layout-top-spacing">
 								<summary-component :affiliateid="getUserDetails.affiliate.affiliate_id"></summary-component>
 							</div>
 					 </div>
 					<div class="row layout-spacing">
 
-						<div class="col-md-6 layout-spacing">
+						<div class="col-lg-12 col-xl-6 col-md-12 col-sm-12 layout-top-spacing">
 							<booster-package></booster-package>
 						</div>
 
-						<div class="col-md-6 layout-spacing">
+						<div class="col-lg-12 col-xl-6 col-md-12 col-sm-12 layout-top-spacing">
 							<div class="row">
 								<div class="col-12">
 									<personal-sales :userid="getUserDetails.id"  :boosters="userDasboard.boosters" :sales="getUserDetails.purchase"></personal-sales>
@@ -68,11 +68,11 @@
 					</div>
 				</div>
 
-				<div class="col-md-4">
+				<div class="col-lg-6 col-xl-4  col-sm-12">
 					<div class="">
 						<group-sales :user_id="getUserDetails.id" :stats="getGroupSales"></group-sales>
 					</div>
-					<div class="widget-four mt-2" style="height: 20%; overflow-y: scroll;">
+					<div class="widget-four mt-2" style="max-height: 50%; overflow-y: scroll;">
 						<div class="widget-heading">
 							<h5 class="">Booster Packages</h5>
 						</div>
@@ -91,7 +91,11 @@
 
 										<div class="w-browser-stats">
 											<div class="progress">
-												<div class="progress-bar bg-gradient-danger" role="progressbar" :style="'width: '+boost.stats.percentage+'%'" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+												<div class="progress-bar bg-gradient-danger"
+													 role="progressbar" :style="'width: '+boost.stats.percentage+'%'"
+													 aria-valuenow="90" aria-valuemin="0"
+													 aria-valuemax="100">
+												</div>
 											</div>
 										</div>
 

@@ -44,8 +44,9 @@
 						<button v-for="type in getPayoutAccount"
 								class="btn btn-primary mt-3 btn-lg"
 								@click="payouts(type.type)"><i class="fa fa-money-check"></i>
-							Confirm
+							Confirm BanK Withdraw
 						</button>
+
 						<button v-if="transferwiseAccount"
 								class="btn btn-primary mt-3 btn-lg"
 								@click="payouts('transferwise')"
@@ -421,13 +422,15 @@ export default {
 					this.withdrawModal = !this.withdrawModal
 				})
 			.catch( error => {
+				console.log(error.response)
+
 				this.isLoading = false
 				this.withdrawModal = !this.withdrawModal
 				this.init()
 				this.payout.errors.error = true
-				if (error.data) {
-					this.payout.errors.mesg = 'Something wrong with your account information please contact administrator'
-				}
+				// if (error.data) {
+				// 	this.payout.errors.mesg = 'Something wrong with your account information please contact administrator'
+				// }
 
 				console.log(error.data)
 			})
@@ -466,7 +469,6 @@ export default {
 			this.$store.dispatch('TRANSFERWISE_PAYOUT', transfer)
 					.then( response => {
 						console.log(response)
-
 						this.success.success = true
 						this.payout.success.mesg = 'Withdraw was successful'
 						this.isLoading = false

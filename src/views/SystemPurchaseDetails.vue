@@ -100,11 +100,16 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                {{systemDetails}}
-                                                <b-table  :fields="fields" :items="systemDetails.ebook"></b-table>
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <b-table  :fields="fields" :items="systemDetails.ebook">
+                                                        <template #cell(actions)="row">
+                                                            <button class="btn btn-primary" @click="changeSystem(row.item.id)">Convert To MCC</button>
+                                                        </template>
+                                                    </b-table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -128,12 +133,13 @@
         name: "SystemPurchaseDetails.vue",
 
         created() {
-            var id = this.$route.params.id
-            this.$store.dispatch('SYSTEM_DETAILS', id)
+          this.init()
         },
         data: () => ({
             fields: [
-                { key: 'id', label: 'Id' }
+                { key: 'id', label: 'Id' },
+                { key: 'affiliate_id', label: 'Affiliate Id'},
+                { key: 'actions', lable: 'Actions'}
             ]
         }),
         computed: {
@@ -151,13 +157,20 @@
         },
 
         methods: {
-            changeSystem(affliateId) {
+            init() {
+                var id = this.$route.params.id
+                this.$store.dispatch('SYSTEM_DETAILS', id)
+            },
+            changeSystem(affiliateId) {
                 var params = {
-                    affiliate: affiliateId
+                    affiliate_id: affiliateId
                 }
                 this.$store.dispatch('SYSTEM_UPDATE', params )
                 .then( response => {
 
+                    alert('deleting')
+                    this.init();
+                    console.log( response.data)
                 })
             }
         }

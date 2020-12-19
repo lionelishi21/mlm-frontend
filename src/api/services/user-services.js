@@ -196,8 +196,8 @@ export default {
 		return Api().get('/escrow/all?page='+page+'&filter='+filter)
 	},
 
-	postEscrowPayout() {
-		return Api().post('/escrow/manual-transfer')
+	postEscrowPayout(params) {
+		return Api().post('/escrow/manual-transfer', params)
 	}
 }
 

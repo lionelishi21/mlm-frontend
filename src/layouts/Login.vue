@@ -1,15 +1,16 @@
 <template>
-    <div class="form-container outer">
-        <a href="#" @click="back()">
-            <h3 class="p-2" style="color: dark-green;">
-                <i class="fa fa-home"></i> Home
-            </h3>
-        </a>
-        <div class="form-form">
+    <div class="form-container outer ">
+        <div class="form-form ">
             <div class="form-form-wrap">
+
                 <div class="form-container" >
                     <div class="form-content">
-
+                        <a href="#" class="btn btn-link mb-3" @click="back()">
+                            <i class="far fa-home"></i> Back to Home
+                        </a>
+                        <hr>
+                        <h6>Welcome Back</h6>
+                        <br>
                         <img class="logos mb-3" src="@/assets/logo.png" height="100" alt="MCC" />
 
                         <h1 class="">Sign In</h1>
@@ -40,14 +41,21 @@
                                             <a @click="goToForgotPassword()" href="#" class="forgot-pass-link">Forgot Password?</a>
                                         </div>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                                        <input v-model="user.password" type="password" class="form-control" placeholder="Password">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="toggle-password" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                        <input v-model="user.password" :type="type" class="form-control" placeholder="Password">
+                                        <svg xmlns="http://www.w3.org/2000/svg"  @click="showPassword()" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round"
+                                             stroke-linejoin="round"
+                                             id="toggle-password"
+                                             class="feather feather-eye">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>
+                                        </svg>
                                         <span class="help-block text-danger">{{errors[0]}}</span>
                                     </div>
                                 </validation-provider>
                                 <div class="d-sm-flex justify-content-between">
                                     <div class="field-wrapper">
-                                        <button :disabled="invalid" type="submit" class="btn btn-primary" value="">Log In</button>
+                                        <button :disabled="invalid" type="submit" class="btn btn-lg btn-primary" value="">Sign In</button>
                                     </div>
                                 </div>
                             </div>
@@ -85,6 +93,7 @@
         },
         data() {
             return {
+                type: 'password',
                 title: 'Login Page',
                 isLoading: false,
                 fullPage: true,
@@ -112,8 +121,22 @@
 
         },
         methods: {
+
+            showPassword() {
+
+            },
+            showPassword() {
+                if(this.type === 'password') {
+                        this.type = 'text'
+                         this.btnText = 'Hide Password'
+                } else {
+                    this.type = 'password'
+                    this.btnText = 'Show Password'
+                }
+            },
+
             back() {
-                this.$router.push('/')
+                this.$router.push('https://majesticares.com')
             },
             goToForgotPassword(){
                 this.$router.push('/auth/password-reset')
@@ -151,3 +174,28 @@
         }
     }
 </script>
+<style lang="scss" scoped>
+    .bg {
+        background-color: #000000;
+        background-size: cover;
+        -webkit-background-size: cover;
+        width: 100%;
+        height: 1000px;
+        overflow: hidden;
+        position: relative;
+    /*below show how it works*/
+    &:after {
+         content: "";
+         width: 200%;
+         height: 0;
+         padding-top: 200%;
+         border-radius: 100%;
+         background: #f7f7f7;
+         position: absolute;
+         top: 60%;
+         left: 50%;
+         transform: translateX(-50%);
+     }
+    }
+
+</style>

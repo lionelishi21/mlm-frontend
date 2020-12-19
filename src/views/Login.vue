@@ -1,19 +1,11 @@
 <template>
 	<div class="form-container outer">
-		<a href="#" @click="back()">
-			<h4 class="p-2 text-success">
-				<i class="fa fa-home"></i> Home
-			</h4>
-		</a>
+
 		<div class="form-form">
 			<div class="form-form-wrap">
-
-
 				<div class="form-container" >
-
 					<div class="form-content">
-
-						<img class="logos mt-2 mb-5" src="@/assets/logo.png" height="100" alt="MCC" />
+						<img class="logos mb-5" src="@/assets/logo.png" height="100" alt="MCC" />
 
 						<h1 class="">Sign In</h1>
 						<p class="">Log in to your backoffice to continue.</p>

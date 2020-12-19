@@ -32,6 +32,17 @@ const actions = {
             .catch( error => {
                 console.log(error.response)
             })
+    },
+
+    SYSTEM_UPDATE( { commit }, params) {
+
+        api.updateSystemPackages(params)
+            .then( response => {
+                console.log( response.data)
+            })
+            .catch( error => {
+                console.log(error.respop)
+            })
     }
 }
 

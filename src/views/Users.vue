@@ -119,51 +119,35 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-content widget-content-area">
+                                <div class="card-body">
+                                    <b-table
+                                        :filter-included-fields="filterOn"
+                                        :current-page="currentPage"
+                                        :per-page="perPage"
+                                        :sort-by.sync="sortBy"
+                                        :sort-desc.sync="sortDesc"
+                                        :filter="filter"
+                                        id="style-3"
+                                        class="table style-3 table-hover"
+                                        striped
+                                        hover
+                                        sort-icon-left
+                                        :items="users"
+                                        :fields="fields"
+                                    >
+                                        <template #cell(status)="row">
+                                            <h3 class="badge badge-success" v-if="row.item.status">
+                                                {{row.item.status}}
+                                            </h3>
+                                            <span v-else class="badge-danger badge">
+                                                  {{row.item.status}}
+                                            </span>
+                                        </template>
 
-                                    <div class="table-responsive mb-4">
-
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered mb-4">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Phone Number</th>
-                                                        <th>Affiliate Id</th>
-                                                        <th class="text-center">Action</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr v-for="user in users.data">
-                                                        <td><strong class="text-warning">{{user.first_name}} {{user.last_name}}</strong></td>
-                                                        <td><strong class="text-warning">{{user.email}}</strong></td>
-                                                        <td><strong class="text-warning">{{user.phone_number}}</strong></td>
-                                                        <td v-if="user.affiliate"><strong class="text-success">{{user.affiliate.affiliate_id}}</strong></td>
-                                                        <td v-else="user.affiliate"><strong class="text-danger">No Affiliate Id</strong></td>
-                                                        <td class="text-center">
-                                                                <button  v-if="user.affiliate" class="btn btn">Added</button>
-                                                                <button class="btn btn-primary" @click="showBoostersModal(user.id)"> Add Booster </button>
-                                                        </td>
-
-                                                    </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                    </div>
-                                    <div class="paginating-container">
-                                        <ul class="">
-                                            <pagination :limit="2" :data="users" @pagination-change-page="getResults">
-                                                <span slot="prev-nav">&lt; Previous</span>
-                                                <span slot="next-nav">Next &gt;</span>
-                                            </pagination>
-                                        </ul>
-                                    </div>
-<!--                                    <pagination limit="10" :data="users" @pagination-change-page="getResults">-->
-<!--                                    </pagination>-->
-
+                                        <template #cell(actions)="row">
+                                            <button class="btn btn-primary" @click="showBoostersModal(row.item.id)"> Add Booster </button>
+                                        </template>
+                                    </b-table>
                                 </div>
                             </div>
                         </div>
@@ -188,6 +172,15 @@
         name: "Users.vue",
         data() {
             return {
+
+                fields: [
+                    { key: 'id', label: 'Id', sortable: true,},
+                    { key: 'name', label: 'Name', sortable: true, },
+                    { key: 'email', label: 'Email', sortable: true,},
+                    { key: 'affiliate_id', label: 'Affiliate Id'},
+                    { key: 'status', label: 'Affiliate', sortable: true,},
+                    { key: 'actions', label: 'Actions', sortable: true,}
+                ],
                 isLoading: false,
                 fullPage: true,
                 showalert: false,
@@ -205,6 +198,16 @@
                     user_id: null,
                     method: 'manual',
                 },
+                filter: null,
+                filterOn: ['name', 'email'],
+                isLoading: false,
+                fullPage: true,
+                currentPage: 1,
+                perPage: 20,
+                pageOptions: [5, 10, 15, { value: 100, text: "Show a lot" }],
+                password: 'Majesticares1234',
+                sortBy: 'order',
+                sortDesc: false,
             }
         },
 

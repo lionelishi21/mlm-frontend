@@ -1,10 +1,10 @@
 <template>
     <div class="form-container outer">
-        <a href="#" @click="back()">
-            <h3 class="p-2" style="color: dark-green;">
-                <i class="fa fa-home"></i> Home
-            </h3>
-        </a>
+<!--        <a href="#" @click="back()">-->
+<!--            <h3 class="p-2" style="color: dark-green;">-->
+<!--                <i class="fa fa-home"></i> Home-->
+<!--            </h3>-->
+<!--        </a>-->
         <div class="form-form">
             <div class="form-form-wrap">
                 <div class="form-container" >

@@ -34,7 +34,7 @@ const actions = {
                 })
                 .catch( error => {
                     console.log(error.response)
-                    reject(error.response)
+                    reject(error)
                 })
         })
     },

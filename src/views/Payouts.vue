@@ -2,28 +2,29 @@
     <!--  BEGIN CONTENT AREA  -->
     <div id="content" class="main-content">
 
-        <!--  Bank Modal Popup -->
-        <div class="modal fade" id="confrimPayout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body text-center">
-                        <h3>Manual Payout</h3>
-                        <h5>Are you sure about this payout?</h5>
-                        <p>What method did you use?</p>
-                        <select v-model="form.method" class="form-control">
-                            <option value="">Select</option>
-                            <option value="wired">Wire Transfer</option>
-                            <option value="paypal">PayPal</option>
-                            <option value="western union">Western Union</option>
-                            <option value="moneygram">Money Gram</option>
-                            <option value="check">Check</option>
-                        </select>
-                        <hr>
-                        <button class="btn btn-primary">Confirm</button>
-                    </div>
+
+        <b-modal v-model="payoutOutModal" hide-footer>
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h3>Manual Payout</h3>
+                    <h5>Are you sure about this payout?</h5>
+                    <p>What method did you use?</p>
+
+                    <select v-model="form.method" class="form-control">
+                        <option value="">Select</option>
+                        <option value="wired">Wire Transfer</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="western union">Western Union</option>
+                        <option value="moneygram">Money Gram</option>
+                        <option value="check">Check</option>
+                    </select>
+
+                    <hr>
+                    <button class="btn btn-default" @click="payoutOutModal = !payoutOutModal">Cancel</button>
+                    <button class="btn btn-primary" @click="manualPayout()">Confirm</button>
                 </div>
             </div>
-        </div>
+        </b-modal>
 
         <div class="layout-px-spacing">
 
@@ -64,97 +65,35 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="row">
                 <div class="col-md-12">
-
                     <div class="card">
                         <div class="card-body">
-                            <ul class="nav nav-tabs mb-3 mt-3" id="borderTop" role="tablist">
-                                <li class="nav-item">
-                                    <a class=" text-dark nav-link active"
-                                       @click="tab('all')"
-                                       id="border-top-home-tab"
-                                       data-toggle="tab"
-                                       href="#border-top-home" role="tab" aria-controls="border-top-home" aria-selected="true"> <h6>All Cash Bonuses</h6></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark"
-                                       @click="tab('paid')"
-                                       id="border-top-profile-tab"
-                                       data-toggle="tab"
-                                       href="#border-top-profile"
-                                       role="tab" aria-controls="border-top-profile"
-                                       aria-selected="false"> Paid Out Cash Bonuses</a>
-                                </li>
-                                <li class="nav-item text-dark">
-                                    <a class="nav-link"
-                                       @click="tab('available')"
-                                       id="border-top-contact-tab"
-                                       data-toggle="tab"
-                                       href="#border-top-contact"
-                                       role="tab"
-                                       aria-controls="border-top-contact"
-                                       aria-selected="false">Available Cash Bonuses</a>
-                                </li>
-                            </ul>
-
-
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped table-checkable table-highlight-head mb-4">
-                                    <thead>
-                                    <tr class="text-dark">
-                                        <th class="">Affiliate Name</th>
-                                        <th class="">Affiliate Email</th>
-                                        <th class="">Cash Bonus</th>
-                                        <th class="">Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody class="text-dark" v-if="tab == 'all'">
-                                        <tr v-for="escrow in getAllUserEscrows.data">
-                                            <td>{{escrow.user.first_name}} {{escrow.user.last_name}}</td>
-                                            <td>{{escrow.user.email}}</td>
-                                            <td><span class="badge-danger badge"> {{ escrow.cash_bonus }} </span> </td>
-                                            <td> {{escrow.status }}</td>
-                                            <td> <button class="btn-primary btn" @click="confirmationModal(escrow.id)"> Manual Payout </button> </td>
-                                        </tr>
-                                    </tbody>
+                                <b-table :fields="fields" :items="getAllUserEscrows">
 
-                                    <tbody class="text-dark" v-if="tab == 'paid'">
-                                        <tr v-for="escrow in getAllUserEscrows.escrows" v-if="escrow.status = 'Transfer'">
-                                            <td>{{escrow.user.first_name}} {{escrow.user.last_name}}</td>
-                                            <td>{{escrow.user.email}}</td>
-                                            <td><span class="badge-danger badge"> {{ escrow.cash_bonus }} </span> </td>
-                                            <td> {{escrow.status }}</td>
-                                            <td> <button class="btn-primary btn" v-if="escrow.status = 'Transfer'" disabled="disabled"> Paid! </button>  </td>
-                                        </tr>
-                                    </tbody>
+                                    <template #cell(status)="row">
+                                        <h5><span class="badge badge-danger" v-if="row.item.status == 'Completed'">{{row.item.status}}</span></h5>
+                                        <h5> <span class="badge badge-primary" v-if="row.item.status == 'Processing'">
+                                               <small> {{row.item.status}}</small>
+                                            </span>
+                                        </h5>
+                                        <h5> <span class="badge badge-success"  v-if="row.item.status == 'Available'" >{{row.item.status}}</span></h5>
 
-                                    <tbody class="text-dark" v-if="tab == 'available'">
-                                        <tr v-for="escrow in getAllUserEscrows.escrows" v-if="escrow.status = 'Ready'">
-                                            <td>{{escrow.user.first_name}} {{escrow.user.last_name}}</td>
-                                            <td>{{escrow.user.email}}</td>
-                                            <td><span class="badge-danger badge"> {{ escrow.cash_bonus }} </span> </td>
-                                            <td> {{escrow.status }}</td>
-                                            <td> <button class="btn-primary btn" @click="confirmationModal(escrow.id)"> Payout </button> </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                    </template>
+                                    <template #cell(actions)="row">
+                                        <button class="btn btn-success btn-sm" @click="showBoostersModal(row.item.id)"> Manual Payout </button>
+                                        <button class="btn btn-danger ml-1 btn-sm" @click="deletePayout(row.item.id)"> <i class="far fa-trash-o"></i>
+                                            Remove</button>
+                                    </template>
+                                </b-table>
                             </div>
-                            <div class="paginating-container">
-                                <ul class="">
-                                    <pagination :limit="2" :data="getAllUserEscrows" @pagination-change-page="getResults">
-                                        <span slot="prev-nav">&lt; Previous</span>
-                                        <span slot="next-nav">Next &gt;</span>
-                                    </pagination>
-                                </ul>
-                            </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -166,13 +105,20 @@
         name: "Payouts.vue",
         data() {
             return {
-                tab: 'all',
                 isLoading: false,
                 form: {
-                    selectedEscrow: null,
+                    payout_id: null,
                     method: null
                 },
-               filter: ''
+                payoutOutModal: false,
+                filter: '',
+                fields: [
+                    {key: 'id', label: 'id', sortable: true, sortDirection: 'desc'  },
+                    {key: 'user', label: 'Affiliate', sortable: true},
+                    {key: 'status', label: 'Status', sortable: true },
+                    {key: 'payout', label: 'Payout' },
+                    {key: 'actions', label: 'Actions'}
+                ]
 
             }
         },
@@ -189,19 +135,19 @@
 
         methods: {
 
-            tab(param) {
-                this.tab = param
-            },
 
             manualPayout() {
+
                 this.isLoading = true
                 this.$store.dispatch('MANUAL_PAYOUT', this.form)
                     .then( response => {
                         this.isLoading = false
+                        this.payoutOutModal = !this.payoutOutModal
                         console.log( response )
                     })
                     .catch( error => {
                         this.isLoading = false
+                        this.payoutOutModal = !this.payoutOutModal
                         console.log( error.response )
                     })
             },
@@ -212,9 +158,21 @@
                 this.$store.dispatch('FETCH_ALL_ESCROWS', params)
             },
 
-            confirmationModal(id) {
-                this.selectedEscrow = id
-                $('#confrimPayout').modal('show')
+            showBoostersModal(id) {
+                this.form.payout_id = id
+                this.payoutOutModal = true
+            },
+
+            deletePayout(id) {
+
+                this.$store.dispatch('PAYOUT_REMOVE', id)
+                    .then( response => {
+                        console.log( response.data)
+                        this.$store.dispatch('FETCH_ALL_ESCROWS', this.filter)
+                    })
+                .catch( error => {
+                    console.log( error.response )
+                })
             }
         }
     }
