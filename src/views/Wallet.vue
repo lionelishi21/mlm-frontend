@@ -5,7 +5,7 @@
 				 :is-full-page="fullPage"></loading>
 
 	<notification-component :msg="message"></notification-component>
-	<b-modal  v-model="withdrawModal" title="Withdraw Funds" modal-footer centered hide-footer="true">
+	<b-modal  v-model="withdrawModal" title="Withdraw Funds" modal-footer centered hide-footer>
 		<div class="widget-account-invoice-one">
 
 			<div class="widget-heading">
@@ -128,7 +128,7 @@
 		</div>
 	</div>
 
-	<div v-if="getPersonalSales > 2" class="layout-px-spacing">
+	<div v-if="getPersonalSales.sales > 2 || getPersonalSales.booster > 0" class="layout-px-spacing">
 		<div class="row">
 			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="widget widget-card-four">
@@ -269,11 +269,11 @@
 				<div class="form-container">
 					<div class="form-content">
 						<div class="user-meta text-center">
-							<h4 class=""><strong>You Have only {{getPersonalSales}} Personal Sales</strong></h4>
+							<h4 class=""><strong>You Have only {{getPersonalSales}} Personal Sales and {{getPersonalSales.booster}} Booster Packages</strong></h4>
 							<h4 ><strong>Get
-								<span v-if="getPersonalSales == 0" class="text-dark">3</span>
-								<span v-if="getPersonalSales == 1" class="text-dark">2</span>
-								<span v-if="getPersonalSales == 2" class="text-dark">1</span>
+								<span v-if="getPersonalSales.sales == 0" class="text-dark">3</span>
+								<span v-if="getPersonalSales.sales == 1" class="text-dark">2</span>
+								<span v-if="getPersonalSales.sales == 2" class="text-dark">1</span>
 								more to start receiving cash bonuses<br>
 							</strong>
 							</h4>
