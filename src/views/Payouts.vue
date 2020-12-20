@@ -143,6 +143,7 @@
                     .then( response => {
                         this.isLoading = false
                         this.payoutOutModal = !this.payoutOutModal
+                        this.$store.dispatch('FETCH_ALL_ESCROWS', this.filter)
                         console.log( response )
                     })
                     .catch( error => {
