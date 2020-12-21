@@ -128,7 +128,7 @@
 		</div>
 	</div>
 
-	<div v-if="getPersonalSales.sales > 2 || getPersonalSales.booster > 0" class="layout-px-spacing">
+	<div class="layout-px-spacing">
 		<div class="row">
 			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="widget widget-card-four">
@@ -263,31 +263,31 @@
 	</div>
     </div>
 
-	<div v-else class="outer">
-		<div class="form-form">
-			<div class="form-form-wrap">
-				<div class="form-container">
-					<div class="form-content">
-						<div class="user-meta text-center">
-							<h4 class=""><strong>You Have only {{getPersonalSales}} Personal Sales and {{getPersonalSales.booster}} Booster Packages</strong></h4>
-							<h4 ><strong>Get
-								<span v-if="getPersonalSales.sales == 0" class="text-dark">3</span>
-								<span v-if="getPersonalSales.sales == 1" class="text-dark">2</span>
-								<span v-if="getPersonalSales.sales == 2" class="text-dark">1</span>
-								more to start receiving cash bonuses<br>
-							</strong>
-							</h4>
-							<hr>
-							<input type="text" class=" text-center form-control input-lg" :value="fetchLink.link">
+<!--	<div v-else class="outer">-->
+<!--		<div class="form-form">-->
+<!--			<div class="form-form-wrap">-->
+<!--				<div class="form-container">-->
+<!--					<div class="form-content">-->
+<!--						<div class="user-meta text-center">-->
+<!--							<h4 class=""><strong>You Have only {{getPersonalSales.sales}} Personal Sales and {{getPersonalSales.booster}} Booster Packages</strong></h4>-->
+<!--							<h4 ><strong>Get-->
+<!--								<span v-if="getPersonalSales.sales == 0" class="text-dark">3</span>-->
+<!--								<span v-if="getPersonalSales.sales == 1" class="text-dark">2</span>-->
+<!--								<span v-if="getPersonalSales.sales == 2" class="text-dark">1</span>-->
+<!--								more to start receiving cash bonuses<br>-->
+<!--							</strong>-->
+<!--							</h4>-->
+<!--							<hr>-->
+<!--							<input type="text" class=" text-center form-control input-lg" :value="fetchLink.link">-->
 
-							<br>
-							<small>Use your Link</small>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!--							<br>-->
+<!--							<small>Use your Link</small>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
 </div>
 </template>
 <script>

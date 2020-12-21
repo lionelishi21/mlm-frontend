@@ -192,12 +192,16 @@ export default {
 		return Api().post('/customers/remove-account', params)
 	},
 
-	getAllUserEscrow(filter, page) {
-		return Api().get('/escrow/all?page='+page+'&filter='+filter)
+	getAllUserEscrow() {
+		return Api().get('/escrow/all')
 	},
 
 	postEscrowPayout(params) {
 		return Api().post('/escrow/manual-transfer', params)
+	},
+
+	removePayout(id) {
+		return Api().get('/escrow/delete/'+id)
 	}
 }
 

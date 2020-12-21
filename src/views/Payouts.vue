@@ -1,7 +1,20 @@
 <template>
     <!--  BEGIN CONTENT AREA  -->
     <div id="content" class="main-content">
+        <loading :active.sync="isLoading"
+                 :can-cancel="false"
+                 :is-full-page="fullPage"></loading>
 
+        <b-modal v-model="removemodal" hide-footer>
+            <div class="row text-center layout-spacing">
+                <div class="col-md-12 ">
+                    <h3>Remove Payout?</h3>
+                    <h5>Are you sure you want to remove this payout?</h5>
+                    <button class="btn btn-default" @click="removemodal = !removemodal">Cancel</button>
+                    <button class="btn btn-primary" @click="deletePayout()">Yes</button>
+                </div>
+            </div>
+        </b-modal>
 
         <b-modal v-model="payoutOutModal" hide-footer>
             <div class="row text-center">
@@ -39,7 +52,7 @@
                     <div class="widget widget-card-four">
                         <div class="widget-content">
                             <div class="text-center mt-4">
-                                <h1 class="value text-success">1000</h1>
+                                <h1 class="value text-success">{{totalPayout + 2000}}</h1>
                                 <h6 class="text-6 text-bold">Available</h6>
                                 <small class="test-dark">Availble cash bonus</small>
                             </div>
@@ -72,7 +85,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <b-table :fields="fields" :items="getAllUserEscrows">
+                                <b-table :fields="fields" :items="getAllUserEscrows" ref="table">
 
                                     <template #cell(status)="row">
                                         <h5><span class="badge badge-danger" v-if="row.item.status == 'Completed'">{{row.item.status}}</span></h5>
@@ -83,10 +96,14 @@
                                         <h5> <span class="badge badge-success"  v-if="row.item.status == 'Available'" >{{row.item.status}}</span></h5>
 
                                     </template>
+                                    <template #cell(stats)="row">
+                                        <p>Group Sales: {{row.item.stats.groupSales}}</p>
+                                        <p>Current Status: {{row.item.stats.current_status}}</p>
+                                    </template>
                                     <template #cell(actions)="row">
                                         <button class="btn btn-success btn-sm" @click="showBoostersModal(row.item.id)"> Manual Payout </button>
-                                        <button class="btn btn-danger ml-1 btn-sm" @click="deletePayout(row.item.id)"> <i class="far fa-trash-o"></i>
-                                            Remove</button>
+<!--                                        <button class="btn btn-danger ml-1 btn-sm" @click="confirmationModal(row.item.id)"> <i class="far fa-trash-o"></i>-->
+<!--                                            Remove</button>-->
                                     </template>
                                 </b-table>
                             </div>
@@ -101,11 +118,20 @@
 <script>
     import { mapGetters } from 'vuex'
     import api from "../api/services/user-services";
+    import Loading from 'vue-loading-overlay';
     export default {
         name: "Payouts.vue",
+
+        components: {
+            Loading
+        },
+
         data() {
             return {
                 isLoading: false,
+                selectId: null,
+                removemodal: false,
+                fullPage: true,
                 form: {
                     payout_id: null,
                     method: null
@@ -117,7 +143,9 @@
                     {key: 'user', label: 'Affiliate', sortable: true},
                     {key: 'status', label: 'Status', sortable: true },
                     {key: 'payout', label: 'Payout' },
-                    {key: 'actions', label: 'Actions'}
+                    {key: 'actions', label: 'Actions'},
+                    {key: 'user_status', label: 'User Status'},
+                    {key: 'stats', label: 'Stats'}
                 ]
 
             }
@@ -126,11 +154,22 @@
         computed: {
             ...mapGetters([
                 'getAllUserEscrows'
-            ])
+            ]),
+            totalPayout: function(){
+                    var trans = this.getAllUserEscrows
+                    let sum = 0;
+                    for(let i = 0; i < trans.length; i++){
+                        if(trans[i].status == 'Available' && trans[i].user_status == true ) {
+                            sum += parseFloat(trans[i].payout);
+                        }
+                    }
+                    return sum;
+            }
+
         },
 
         created() {
-            this.$store.dispatch('FETCH_ALL_ESCROWS', this.filter)
+            this.$store.dispatch('FETCH_ALL_ESCROWS')
         },
 
         methods: {
@@ -153,27 +192,39 @@
                     })
             },
 
-            // Our method to GET results from a Laravel endpoint
-            getResults(page = 1) {
-                var params = { page: page, filter: this.filter}
-                this.$store.dispatch('FETCH_ALL_ESCROWS', params)
-            },
-
             showBoostersModal(id) {
                 this.form.payout_id = id
                 this.payoutOutModal = true
             },
 
+            confirmationModal(id) {
+                this.selectId = id
+                this.removemodal = !this.removemodal
+            },
+
             deletePayout(id) {
 
-                this.$store.dispatch('PAYOUT_REMOVE', id)
-                    .then( response => {
-                        console.log( response.data)
-                        this.$store.dispatch('FETCH_ALL_ESCROWS', this.filter)
+                this.isLoading = true
+                var self = this
+
+                setTimeout(function () {
+
+                    self.$store.dispatch('PAYOUT_REMOVE', self.selectId )
+                        .then( response => {
+                            console.log(response.data)
+                            self.$store.dispatch('FETCH_ALL_ESCROWS')
+                            self.isLoading = false
+                            self.removemodal = false
+                            self.$refs.table.refresh();
+                        })
+                    .catch( error => {
+                        console.log(error.response)
+                        self.isLoading = false
+                        self.removemodal = false
                     })
-                .catch( error => {
-                    console.log( error.response )
-                })
+
+                }, 1000);
+
             }
         }
     }

@@ -25,28 +25,21 @@ const actions = {
             })
     },
 
-    FETCH_ALL_ESCROWS( { commit }, params ) {
+    FETCH_ALL_ESCROWS({commit} ) {
 
-        return new Promise(( resolve, reject) => {
 
-            var filter = params['filter']
-            var page   = params['page']
-
-            api.getAllUserEscrow(filter, page)
+            api.getAllUserEscrow()
                 .then( response => {
                     console.log(response)
                     commit('SET_USER_ESCROW', response.data)
-                    resolve(response)
                 })
                 .catch( error => {
                     console.log(error.response)
-                    reject(error.response)
                 })
-        })
 
     },
 
-    MANUAL_PAYOUT( { commit, dispatch }, params) {
+    MANUAL_PAYOUT( content, params) {
 
         return new Promise((resolve, reject) => {
 
@@ -61,6 +54,22 @@ const actions = {
                 })
         })
 
+    },
+
+    PAYOUT_REMOVE(content, id) {
+
+        return new Promise((resolve, reject) => {
+             api.removePayout(id)
+                 .then( response => {
+                     console.log(response)
+                     resolve(response)
+                 })
+                 .reject( error => {
+                     console.log(error.response)
+                     reject(error)
+
+                 })
+        })
     }
 }
 

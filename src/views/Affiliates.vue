@@ -97,7 +97,7 @@
 													</template>
 
 													<template #cell(actions)="row">
-														<button @click="showCompressionModal(row.item.order, row.item.name)" class="btn btn-success">Compres</button>
+<!--														<button @click="showCompressionModal(row.item.order, row.item.name)" class="btn btn-success">Compres</button>-->
 														<button
 															@click="goToDetails(row.item.affiliateid)"
 															class="btn ml-1 btn-primary">view</button>
