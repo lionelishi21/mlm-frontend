@@ -387,10 +387,10 @@
                     </ul>
                 </div>
                 <!-- End Page Header -->
-                <div v-if="getUserStripeAccount.transfer  != 'active'" class="alert alert-light-danger mb-4" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
-                    <strong>Alert!</strong> Complete your transfer account in order to enable automatic payouts.</button>
-                </div>
+<!--                <div v-if="getUserStripeAccount.transfer  != 'active'" class="alert alert-light-danger" role="alert">-->
+<!--                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><svg> ... </svg></button>-->
+<!--                    <strong>Alert!</strong> Complete your transfer account in order to enable automatic payouts.</button>-->
+<!--                </div>-->
             </div>
         </div>
         <div class="row">
@@ -401,18 +401,22 @@
                             <div class="card">
 
                                 <div class="card-body">
-<!--                                    <div class="" v-if="getUserStripeAccount">-->
-<!--                                        <h5 class="">{{getUserStripeAccount.name}}</h5>-->
-<!--                                        <p>Country: {{getUserStripeAccount.country}}</p>-->
-<!--                                        <p>Payout Status:-->
-<!--                                            <span class="badge badge-danger text-3" v-if="getUserStripeAccount.transfer  == 'inactive'">{{getUserStripeAccount.transfer}}</span>-->
-<!--                                            <span class="badge badge-success text-3" v-else>{{getUserStripeAccount.transfer}}</span>-->
+                                    <div class="" v-if="getUserStripeAccount">
+                                        <h5 class="">{{getUserStripeAccount.name}}</h5>
+                                        <p>Country: {{getUserStripeAccount.country}}</p>
+                                        <p>Payout Status:
+                                            <span class="badge badge-danger text-3" v-if="getUserStripeAccount.transfer  == 'inactive'">{{getUserStripeAccount.transfer}}</span>
+                                            <span class="badge badge-success text-3" v-else>{{getUserStripeAccount.transfer}}</span>
 
-<!--                                        </p>-->
-<!--                                        <button class="btn btn-danger btn-sm" @click="accountUpdate()">-->
-<!--                                            Update-->
-<!--                                        </button>-->
-<!--                                    </div>-->
+                                        </p>
+                                        <button class="btn btn-danger btn-sm pull-right" @click="accountUpdate()">
+                                            Update
+                                        </button>
+                                    </div>
+                                    <div class="mt-5">
+                                        <h5 class="pb-4">Verify your identity with stripe will enable automatic payout for supported debit card and bank account</h5>
+                                        <button class="btn btn-primary mb-5 pull-right" @click="accountOnboarding()"><i class="fa fa-user-alt-slash"></i> Verify Identity </button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="statbox widget box box-shadow">
@@ -427,33 +431,6 @@
                                 </div>
                                 <div class="widget-content widget-content-area">
                                     <div class="list-group list-group-icons-meta" >
-                                        <li class="list-group-item list-group-item-action">
-                                            <div class="" v-if="getUserStripeAccount">
-                                                <div class="user-profile">
-                                                    <div class="widget-content widget-content-area">
-                                                        <div>
-                                                            <img src="@/assets/avatar/img12.jpg" alt="avatar">
-                                                            <h5 class="">{{getUserStripeAccount.name}}</h5>
-                                                            <p>Country: {{getUserStripeAccount.country}}</p>
-                                                            <p>Payout Status:
-                                                                <span class="badge badge-danger text-3" v-if="getUserStripeAccount.transfer  == 'inactive'">{{getUserStripeAccount.transfer}}</span>
-                                                                <span class="badge badge-success text-3" v-else>{{getUserStripeAccount.transfer}}</span>
-
-                                                            </p>
-                                                            <button class="btn btn-danger btn-sm" @click="accountUpdate()">
-                                                                Update
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <li class="list-group-item list-group-item-action text-center" v-if="getStripeAccount">
-                                            <div class="mt-5">
-                                                <h5 class="pb-4">Verify your identity with stripe will enable automatic payout for supported debit card and bank account</h5>
-                                                <button class="btn btn-primary mb-5" @click="accountOnboarding()"><i class="fa fa-user-alt-slash"></i> Verify Identity </button>
-                                            </div>
-                                        </li>
-
                                         <li class="list-group-item list-group-item-action text-center">
                                             <div class="mt-5">
                                                 <h5 class="">Add bank account or debit card</h5>
