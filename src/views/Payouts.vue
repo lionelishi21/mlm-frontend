@@ -102,8 +102,8 @@
                                     </template>
                                     <template #cell(actions)="row">
                                         <button class="btn btn-success btn-sm" @click="showBoostersModal(row.item.id)"> Manual Payout </button>
-<!--                                        <button class="btn btn-danger ml-1 btn-sm" @click="confirmationModal(row.item.id)"> <i class="far fa-trash-o"></i>-->
-<!--                                            Remove</button>-->
+                                        <button class="btn btn-danger ml-1 btn-sm" @click="confirmationModal(row.item.id)"> <i class="far fa-trash-o"></i>
+                                            Remove</button>
                                     </template>
                                 </b-table>
                             </div>
