@@ -145,7 +145,6 @@
 									</div>
 								</div>
 								<div class="row">
-
 									<div class="col-md-4" v-for="af in getAffiliateDetails.affiliate">
 										<a @click.prevent="replaceRoute(af.affiliateId)" class="card3 text-center" href="#" >
 											<h4>{{af.username}}</h4>

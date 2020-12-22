@@ -64,6 +64,7 @@
             <!--  End Card Modal-->
 
             <div class="col-lg-12">
+
                 <div class="widget-content searchable-container list">
 
                     <div class="row layout-top-spacing layout-spacing">
