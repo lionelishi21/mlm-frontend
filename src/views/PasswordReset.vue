@@ -1,73 +1,64 @@
 <template>
-    <div class="container">
-        <h1>Working</h1>
-        <div class="vld-parent">
-            <loading :active.sync="isLoading"
-                     :can-cancel="true"
-                     :on-cancel="onCancel"
-                     :is-full-page="fullPage"></loading>
-            <label><input type="checkbox" v-model="fullPage">Full page?</label>
-            <button @click.prevent="doAjax">fetch Data</button>
-        </div>
-        <section  style="padding-top: 20%;">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
+    <div class="form-container outer">
+        <loading :active.sync="isLoading"
+                 :can-cancel="true"
+                 :on-cancel="onCancel"
+                 :is-full-page="fullPage">
+        </loading>
 
-                    <div class="card-body" style="margin-top: 10%; background: white">
+        <div class="form-form">
+            <div class="form-form-wrap">
+                <div class="form-container">
+                    <div class="form-content">
 
-                        <div class="alert alert-danger" role="alert" v-if="error.message">
-                            <h4 class="alert-heading">Error!</h4>
-                            <p class="text-white">{{error.message}}</p>
-                        </div>
-                        <!-- Form Group -->
+                        <img class="logos mb-3" src="@/assets/logo.png" height="100" alt="MCC" />
+
+                        <h1 class="">Reset your password</h1>
                         <ValidationObserver ref="observer" v-slot="{ invalid }">
-                            <form @submit.prevent="password(user)">
+                            <form @submit.prevent="password(user)"
+                                <div class="form">
 
-                                <div class="form-group mb-3 text-center">x`
-                                    <legend><small>Reset your password</small></legend>
-                                </div>
-
-                                <validation-provider rules="required|email" v-slot="{ errors }">
                                     <div class="form-group mb-3">
-                                        <label class="text-dark">Email Address</label>
-                                        <div class="input-group">
-                                            <input v-model="user.email" name="username" placeholder="Email address" type="text" class="form-control form-control-lg" />
-                                        </div>
-                                        <span class="help-block text-danger">{{errors[0]}}</span>
+                                        <legend><small>Enter your new password</small></legend>
                                     </div>
-                                </validation-provider>
 
-                                <validation-provider name="confirm" rules="required" v-slot="{ errors }">
+                                    <validation-provider rules="required|email" v-slot="{ errors }">
+                                        <div class="form-group mb-3">
+                                            <div class="input-group">
+                                                <input v-model="user.email" name="username" placeholder="Email address" type="text" class="form-control form-control-lg" />
+                                            </div>
+                                            <span class="help-block text-danger">{{errors[0]}}</span>
+                                        </div>
+                                    </validation-provider>
+
+                                    <validation-provider name="confirm" rules="required" v-slot="{ errors }">
+                                        <div class="form-group mb-3">
+                                            <div class="input-group">
+                                                <input v-model="user.password" name="pwd" type="password"  placeholder="Enter password" class="form-control text-dark form-control-lg" />
+                                            </div>
+                                            <span class="help-block text-danger">{{errors[0]}}</span>
+                                        </div>
+                                    </validation-provider>
+
+                                    <validation-provider  rules="required|passwordconfirm:@confirm" v-slot="{ errors }">
+                                        <div class="form-group">
+                                            <input type="password" v-model="user.password_confirmation" class="form-control form-control-lg" id="location" placeholder="Confrim password">
+                                            <span class="help-block text-danger" v-if="errors[0]">{{errors[0]}}</span>
+                                        </div>
+                                    </validation-provider>
+
                                     <div class="form-group mb-3">
-                                        <label class="text-dark">Password</label>
-                                        <div class="input-group">
-                                            <input v-model="user.password" name="pwd" type="password"  placeholder="Enter password" class="form-control text-dark form-control-lg" />
-                                        </div>
-                                        <span class="help-block text-danger">{{errors[0]}}</span>
+                                            <button :disabled="invalid" type="submit" class="btn btn-block btn-primary mt-2">Update</button>
                                     </div>
-                                </validation-provider>
 
-                                <validation-provider  rules="required|passwordconfirm:@confirm" v-slot="{ errors }">
-                                    <div class="form-group">
-                                        <label class="text-dark" for="location">Confrim Password</label>
-                                        <input type="password" v-model="user.password_confirmation" class="form-control form-control-lg" id="location" placeholder="Confrim password">
-                                        <span class="help-block text-danger" v-if="errors[0]">{{errors[0]}}</span>
-                                    </div>
-                                </validation-provider>
-
-                                <div class="row">
-                                    <div class="col-sm-12  text-right">
-                                        <button :disabled="invalid" type="submit" class="btn pull-right btn-primary mt-2">Update</button>
-                                    </div>
                                 </div>
                             </form>
                         </ValidationObserver>
                     </div>
                 </div>
-                <div class="col-md-3"></div>
             </div>
-        </section>
+        </div>
+
     </div>
 </template>
 <script>
@@ -128,7 +119,7 @@
             if (this.$route.query.token != undefined ) {
                 this.user.token = this.$route.query.token
             } else {
-                this.$router.push('/login')
+                this.$router.push('/')
             }
 
         },
@@ -144,7 +135,7 @@
                         this.isLoading = false
                         this.complete = true
                         console.log(response)
-                        this.$router.push('/login')
+                        this.$router.push('/')
                     })
                     .catch( error => {
                         this.isLoading = false
@@ -155,12 +146,3 @@
         }
     }
 </script>
-<style lang="scss" scoped>
-    .logos {
-        padding: 9%;
-        margin: 100px;
-    }
-    body {
-        color: white !important;
-    }
-</style>

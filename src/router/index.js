@@ -50,10 +50,17 @@ Vue.use(VueRouter)
     path: '/',
     component: Authentication,
     children: [
-
       {
         path: '',
         component: NewLogin,
+        meta: {
+          allowAnonymous: true
+        }
+      },
+
+      {
+        path:'/reset-password',
+        component: PasswordReset,
         meta: {
           allowAnonymous: true
         }
@@ -189,84 +196,7 @@ Vue.use(VueRouter)
     meta: {
       allowAnonymous: true
     }
-  },
-  {
-    path: '/landd',
-    name: 'Landing',
-    component: Landing,
-    children: [
-      {
-        path: 'private-policy',
-        name: 'Private Policy',
-        component: PrivatePolicy,
-        meta: {
-          allowAnonymous: true
-        }
-      },
-      {
-        path: '',
-        component: LandingPage,
-        meta: {
-           allowAnonymous: true
-        }
-      }, 
-      {
-        path: 'aboutus',
-        name: 'About us', 
-        component: Aboutus,
-        meta: {
-          allowAnonymous: true
-        }
-      },
-      {
-        path: 'checkout',
-        component: Checkout,
-         meta: {
-           allowAnonymous: true
-        }
-      },
-      {
-        path: 'howitworks',
-        component: Howitworks,
-        meta: {
-           allowAnonymous: true
-        }
-      },
-      {
-        path: '/order-completed',
-        component: OrderComplete,
-        meta: {
-          allowAnonymous: true
-        }
-      },
-      {
-        path: '/register',
-        component: Register,
-      },
-      {
-        path: '/login',
-        name: 'Login',
-        component: Login,
-        meta: {
-           allowAnonymous: true
-        }
-      },
-      {
-        path: '/passwordreset',
-        component: ForgotPassword,
-        meta: {
-          allowAnonymous: true
-        }
-      },
-      {
-        path:'/reset-password',
-        component: PasswordReset,
-        meta: {
-          allowAnonymous: true
-        }
-      }
-    ]
-  },
+  }
  
 ]
 

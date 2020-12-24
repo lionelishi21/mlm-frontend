@@ -4,7 +4,7 @@
 
 
      <!--  User Modal Popup -->
-    <user-account :country="getDetail.country"></user-account>
+    <user-account :country="getDetail.country" :bankmodal="bankmodal" :cardmodal="cardmodal" ></user-account>
      <!--  End User Modal Popup -->
     <b-modal v-model="transfer_update_modal" title="TransferWise" modal-footer centered hide-footer="true" >
         <label class="text-dark" >TransferWise Contact Information</label>
@@ -382,79 +382,99 @@
                 <!-- Page Header -->
                 <div class="breadcrumb-five mt-2">
                     <ul class="breadcrumb">
-                        <li class="mb-2"><a href="javscript:void(0);">Home</a></li>
-                        <li class="active mb-2"><a href="javscript:void(0);"> Settings</a></li>
+                        <li class=""><a href="javscript:void(0);">Home</a></li>
+                        <li class="active"><a href="javscript:void(0);"> Settings</a></li>
                     </ul>
                 </div>
                 <!-- End Page Header -->
-<!--                <div v-if="getUserStripeAccount.transfer  != 'active'" class="alert alert-light-danger" role="alert">-->
-<!--                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><svg> ... </svg></button>-->
-<!--                    <strong>Alert!</strong> Complete your transfer account in order to enable automatic payouts.</button>-->
-<!--                </div>-->
+                <div class="alert alert-danger mt-4" role="alert" v-if="getUserStripeAccount.transfer  != 'active'">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"</button>
+                    <strong>Alert!</strong> Complete your transfer account in order to enable automatic payouts.</button>
+                </div>
             </div>
         </div>
+        <div class="row layout-top-spacing">
+            <div class="col-md-6">
+                    <div class="card component-card_5">
+                    <div class="card-body">
+                            <div class="row text-center" v-if="getUserStripeAccount">
+                                <div class="col-md-12">
+                                    <p><img src="https://img.icons8.com/color/48/000000/stripe.png"/></p>
+                                    <h5 class="">{{getUserStripeAccount.name}}</h5>
+                                    <p>Country: {{getUserStripeAccount.country}}</p>
+
+                                    <p>Payout Status:
+                                        <span class="badge badge-danger text-3" v-if="getUserStripeAccount.transfer  == 'inactive'">{{getUserStripeAccount.transfer}}</span>
+                                        <span class="badge badge-success text-3" v-else>{{getUserStripeAccount.transfer}}</span>
+                                    </p>
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <button class="btn btn-primary pull-right btn-rounded" @click="accountUpdate()">
+                                        Update Account
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div class="text-center" v-else>
+                                <p><img src="https://img.icons8.com/color/48/000000/stripe.png"/></p>
+                                <h5 class="pb-3">Verify your identity with stripe will enable automatic payout for supported debit card and bank account</h5>
+                                <button class="btn btn-primary mb-5 pull-right" @click="accountOnboarding()"><i class="fa fa-user-alt-slash"></i> Verify Identity </button>
+                            </div>
+
+                        </div>
+                    </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card component-card_5">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                               <p><img src="@/assets/transferwise.png"></p>
+                                <h5 class="pb-4">Verify your identity with stripe will enable automatic payout for supported debit card and bank account</h5>
+                                <a href="https://transferwise.com/invite/u/robertd2231">Go to TransferWise a create an account</a>
+<!--                                <small>Then add account email and currency here</small>-->
+                            </div>
+                        </div>
+                        <div class="row text-center mt-3">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary btn-rounded" @click="showTransferWiseModal()">Add Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
               <div class="col-lg-12">
                 <div class="widget-content searchable-container list">
                     <div class="row layout-top-spacing layout-spacing">
                         <div class="col-lg-12">
                             <div class="card">
-
                                 <div class="card-body">
-                                    <div class="" v-if="getUserStripeAccount">
-                                        <h5 class="">{{getUserStripeAccount.name}}</h5>
-                                        <p>Country: {{getUserStripeAccount.country}}</p>
-                                        <p>Payout Status:
-                                            <span class="badge badge-danger text-3" v-if="getUserStripeAccount.transfer  == 'inactive'">{{getUserStripeAccount.transfer}}</span>
-                                            <span class="badge badge-success text-3" v-else>{{getUserStripeAccount.transfer}}</span>
-
-                                        </p>
-                                        <button class="btn btn-danger btn-sm pull-right" @click="accountUpdate()">
-                                            Update
-                                        </button>
-                                    </div>
                                     <div class="mt-5">
-                                        <h5 class="pb-4">Verify your identity with stripe will enable automatic payout for supported debit card and bank account</h5>
-                                        <button class="btn btn-primary mb-5 pull-right" @click="accountOnboarding()"><i class="fa fa-user-alt-slash"></i> Verify Identity </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="statbox widget box box-shadow">
+                                        <h5 class="">Add bank account or debit card</h5>
+                                        <h6 class="text-danger pb-2">Bank Transfer takes 1-3 business days while Debit Card Transfer takes up 30 mins </h6>
 
-                                <div class="widget-header">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>Payout Methods</h4>
-                                            <p></p>
+                                        <button class="btn btn-primary mb-5" @click="modalBankAccount()"><i class="fa fa-plus"></i> Add Bank </button>
+                                        <button class="btn btn-primary mb-5 ml-1" @click="modalDebitCard()"><i class="fa fa-plus"></i> Add Debit Card <span class="badge badge-success">Recommended</span></button>
+                                        <div class="row">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-2">
+                                                <img width="50px" src="@/assets/svg/004-mastercard.svg" alt="">
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <img width="50px" src="@/assets/svg/007-discover.svg" alt="">
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <img width="50px" src="@/assets/svg/005-visa.svg" alt="">
+                                            </div>
+                                            <div class="col-md-3Z"></div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content widget-content-area">
-                                    <div class="list-group list-group-icons-meta" >
-                                        <li class="list-group-item list-group-item-action text-center">
-                                            <div class="mt-5">
-                                                <h5 class="">Add bank account or debit card</h5>
-                                                <h6 class="text-danger pb-2">Bank Transfer takes 1-3 business days while Debit Card Transfer takes up 30 mins </h6>
-
-                                                <button class="btn btn-primary mb-5" @click="modalBankAccount()"><i class="fa fa-plus"></i> Add Bank Account </button>
-                                                <button class="btn btn-primary mb-5 ml-1" @click="modalDebitCard()"><i class="fa fa-plus"></i> Add Debit Card <span class="badge badge-success">Recommended</span></button>
-                                                <div class="row">
-                                                    <div class="col-md-3"></div>
-                                                    <div class="col-md-2">
-                                                        <img width="50px" src="@/assets/svg/004-mastercard.svg" alt="">
-                                                    </div>
-
-                                                    <div class="col-md-2">
-                                                        <img width="50px" src="@/assets/svg/007-discover.svg" alt="">
-                                                    </div>
-
-                                                    <div class="col-md-2">
-                                                        <img width="50px" src="@/assets/svg/005-visa.svg" alt="">
-                                                    </div>
-                                                    <div class="col-md-3Z"></div>
-                                                </div>
-                                             </div>
-                                        </li>
                                     </div>
                                 </div>
                             </div>
@@ -463,13 +483,14 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+
+        <div class="row layout-top-spacing">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body" v-if="getStripeAccount">
-                        <div id='right-defaults' class='dragula' v-for="acc in getStripeAccount">
-                            <div class="media  d-md-flex d-block text-sm-left text-center">
-                                <img src="@/assets/svg/005-credit-card.svg"  class="mt-2" alt="" width="40px">
+                <div class="card" v-if="getStripeAccount">
+                    <div class="card-body">
+                        <div id='right-default' class='dragula' v-for="acc in getStripeAccount">
+                            <div class="media d-md-flex d-block text-sm-left text-center">
+                                <img src="https://img.icons8.com/color/48/000000/stripe.png"/>
                                 <div class="media-body">
                                     <div class="d-xl-flex justify-content-between">
                                         <div class="ml-3" v-if="acc.object == 'bank_account'">
@@ -481,7 +502,7 @@
                                             <h6>{{acc.bank_name}}</h6>
                                             <p class="mt-0">{{acc.brand}} {{acc.funding}} **** {{acc.last4}} </p>
                                         </div>
-
+                                        
                                         <div>
                                             <router-link to="/dashboard/wallet" tag="a" class="btn btn-success btn-sm" v-if="getUserStripeAccount['transfer']" >Transfer Active</router-link>
                                             <button class="btn btn-danger btn-sm ml-2" @click="deleteAccount(acc.id, acc.object, acc.account)">Delete</button>
@@ -493,7 +514,15 @@
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card" v-else>
+                    <div class="card-body text-center">
+                        <h4>Bank Transfer takes 1-3 business days while Debit Card Transfer takes up 30 mins</h4>
+                        <button class="btn btn-primary" @click="modalBankAccount()"><i class="fa fa-plus"></i> Add Bank Account </button>
+                        <button class="btn btn-primary ml-1" @click="modalDebitCard()"><i class="fa fa-plus"></i> Add Debit Card <span class="badge badge-success">Recommended</span></button>
+                    </div>
+                </div>
+
+                <div class="card mt-3">
                     <div class="card-body" v-if="transferwiseAccount" >
                         <div id='right-defaults' class='dragula'>
                             <div class="media  d-md-flex d-block text-sm-left text-center">
@@ -512,25 +541,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body" style="background: #f2f5f7;" v-else>
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <a href="https://transferwise.com/invite/u/robertd2231">Click to Create A TransferWise Account</a>
-                                <small>Then add account email and currency here</small>
-                            </div>
-                        </div>
-                        <div class="row text-center">
-                            <div class="col-md-12">
-                                <img src="@/assets/transferwise.png" width="10%">
-                            </div>
-                        </div>
-                        <div class="row text-center mt-3">
-                            <div class="col-md-12">
-                                <button class="btn btn-primary btn-rounded" @click="showTransferWiseModal()">Add Account</button>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -566,6 +576,8 @@
 
         data() {
             return {
+                bankmodal: false,
+                cardmodal: false,
                 isLoading: false,
                 transfer_modal: false,
                 transfer_update_modal: false,
@@ -706,7 +718,7 @@
                 this.$store.dispatch('ADD_PAYPAL_ACCOUNT', this.paypal)
                     .then( response => {
                         this.init()
-                        $('#accountModal').modal('hide')
+                        this.bankmodal = !this.bankmodal
                         console.log( response.data )
                     })
                     .catch( error => {
@@ -723,6 +735,7 @@
                         var url = response.link
                         window.location.href = url;
                         console.log( response )
+                        this.bankmodal = !this.bankmodal
                     })
                     .catch( error => {
                         console.log(error)
@@ -743,7 +756,7 @@
                         console.log(response)
                         debugger;
                         this.isLoading = false
-                        $('#accountModal').modal('hide')
+                        this.cardmodal = !this.cardmodal
                         this.init()
                         // //Todo: show notification
 
@@ -790,24 +803,23 @@
                 this.paypalIsActive = false
                 this.step = 1
 
-                $('#accountModal').modal('show')
+                this.bankmodal = !this.bankmodal
             },
 
             modalBankAccount() {
-                $('#bankAccountModal').modal('show')
+                this.bankmodal = !this.bankmodal
             },
 
             modalDebitCard() {
-
-                $('#debitCardModal').modal('show')
+               this.cardmodal = !this.cardmodal
             },
 
             showBankModal() {
-                $('#bankModal').modal('show')
+               this.bankmodal = !this.bankmodal
             },
 
             showPayoneerDebitCardModal() {
-                $('#payoneerDebitCardModal').modal('show')
+                this.cardmodal = !this.cardmodal
             },
 
             showPayoneerBankAccountModal() {
@@ -928,5 +940,9 @@
 <style scoped>
     label {
         color:black;
+    }
+
+    .component-card_5 {
+        width: 100% !important;
     }
 </style>

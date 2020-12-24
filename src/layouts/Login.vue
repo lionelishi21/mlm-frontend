@@ -138,8 +138,9 @@
             back() {
                 this.$router.push('https://majesticares.com')
             },
+
             goToForgotPassword(){
-                this.$router.push('/auth/password-reset')
+                this.$router.push('/password-reset')
             },
             login(user) {
                 this.isLoading = true
