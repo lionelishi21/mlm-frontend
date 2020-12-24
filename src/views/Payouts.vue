@@ -52,7 +52,7 @@
                     <div class="widget widget-card-four">
                         <div class="widget-content">
                             <div class="text-center mt-4">
-                                <h1 class="value text-success">{{totalPayout + 2000}}</h1>
+                                <h1 class="value text-success">{{totalPayout + 1000}}</h1>
                                 <h6 class="text-6 text-bold">Available</h6>
                                 <small class="test-dark">Availble cash bonus</small>
                             </div>

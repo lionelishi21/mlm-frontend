@@ -1,134 +1,110 @@
 <template>
 	<div id="content" class="main-content">
-		<loading :active.sync="isLoading"
-				 :can-cancel="false"
-				 :is-full-page="fullPage"></loading>
 
-	<notification-component :msg="message"></notification-component>
-	<b-modal  v-model="withdrawModal" title="Withdraw Funds" modal-footer centered hide-footer>
-		<div class="widget-account-invoice-one">
+        <!-- Msc -->
+		<loading :active.sync="isLoading" :can-cancel="false" :is-full-page="fullPage"></loading>
+	    <notification-component :msg="message"></notification-component>
+		<b-modal  v-model="withdrawModal" title="Withdraw Funds" modal-footer centered hide-footer>
+			<div class="widget-account-invoice-one">
 
-			<div class="widget-heading">
-				<h5 class="">Wallet</h5>
-			</div>
+				<div class="widget-heading">
+					<h5 class="">Wallet</h5>
+				</div>
 
-			<div class="widget-content">
-				<div class="invoice-box">
+				<div class="widget-content">
+					<div class="invoice-box">
 
-					<div class="acc-total-info">
-						<h5>Balance</h5>
-						<p class="acc-amount">{{totalItem | currency }}</p>
-					</div>
-
-					<div class="inv-detail">
-						<div class="info-detail-1" v-for="cash in escrow">
-							<p>{{cash.tier}}</p>
-							<p>{{cash.cash_bonus | currency}}</p>
+						<div class="acc-total-info">
+							<h5>Balance</h5>
+							<p class="acc-amount">{{totalItem | currency }}</p>
 						</div>
-<!--						<div class="info-detail-3 info-sub">-->
-<!--							<div class="info-detail">-->
-<!--								<p>Transfer Fee</p>-->
-<!--								<p>-{{percentage | currency}}</p>-->
-<!--							</div>-->
-<!--						</div>-->
-						<hr>
-						<div class="info-detail-3 info-sub">
-							<div class="info-detail">
-								<p>Total</p>
-								<p class="text-dark"><strong>{{totalTransfer | currency}}</strong></p>
+
+						<div class="inv-detail">
+							<div class="info-detail-1" v-for="cash in escrow">
+								<p>{{cash.tier}}</p>
+								<p>{{cash.cash_bonus | currency}}</p>
+							</div>
+	<!--						<div class="info-detail-3 info-sub">-->
+	<!--							<div class="info-detail">-->
+	<!--								<p>Transfer Fee</p>-->
+	<!--								<p>-{{percentage | currency}}</p>-->
+	<!--							</div>-->
+	<!--						</div>-->
+							<hr>
+							<div class="info-detail-3 info-sub">
+								<div class="info-detail">
+									<p>Total</p>
+									<p class="text-dark"><strong>{{totalTransfer | currency}}</strong></p>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="inv-action">
-						<button v-for="type in getPayoutAccount"
-								class="btn btn-primary mt-3 btn-lg"
-								@click="payouts(type.type)"><i class="fa fa-money-check"></i>
-							Confirm BanK Withdraw
-						</button>
+						<div class="inv-action">
+							<button v-for="type in getPayoutAccount"
+									class="btn btn-primary mt-3 btn-lg"
+									@click="payouts(type.type)"><i class="fa fa-money-check"></i>
+								Confirm BanK Withdraw
+							</button>
 
-						<button v-if="transferwiseAccount"
-								class="btn btn-primary mt-3 btn-lg"
-								@click="payouts('transferwise')"
-						>TransferWIse</button>
-						<button class="btn  mt-3 btn-lg" data-dismiss="modal" @click="withdrawModal = !withdrawModal"><i class="flaticon-cancel-12"></i> Cancel</button>
+							<button v-if="transferwiseAccount"
+									class="btn btn-primary mt-3 btn-lg"
+									@click="payouts('transferwise')"
+							>TransferWIse</button>
+							<button class="btn  mt-3 btn-lg" data-dismiss="modal" @click="withdrawModal = !withdrawModal"><i class="flaticon-cancel-12"></i> Cancel</button>
+						</div>
 					</div>
 				</div>
+
 			</div>
+		</b-modal>
+        <!-- End Msc -->
 
-		</div>
-	</b-modal>
+        <!-- Content Start Here -->
+	    <div class="layout-px-spacing">
 
-	<div class="row">
-		<!-- Error Messages	-->
-		<div class="col-md-12 mt-5">
-			<div v-if="payout.errors.error" class="alert alert-danger mb-4" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<i class="fa fa-times"></i>
-				</button>
-				<strong>Error Message!</strong> {{payout.errors.mesg}}</button>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="row">
-		<!--End Error Message -->
-		<div class="col-md-12" v-if="!getUserStripeAccount">
-			<div class="alert alert-light-danger mb-4" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
-				<strong>Alert!</strong> Complete your transfer account in order to enable automatic payouts.</button>
+		<div class="row layout-top-spacing">
+			<div class="col-md-12">
+				<nav class="breadcrumb-two" aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+						<li class="breadcrumb-item active"><a href="javascript:void(0);">Wallet</a></li>
+					</ol>
+				</nav>
 			</div>
 		</div>
-	</div>
 
-
-	<div class="row">
-		<div class="col-md-12">
-			<div v-if="payout.success.succuss" class="alert alert-success mb-4" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<i class="fa fa-times"></i>
-				</button>
-				<strong>Error Message!</strong> {{payout.success.mesg}}</button>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="modal fade" id="payoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Confirm Payout</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<div class="row">
+			<!-- Error Messages	-->
+			<div class="col-md-12">
+				<div v-if="payout.errors.error" class="alert alert-danger mb-4" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<i class="fa fa-times"></i>
 					</button>
+					<strong>Error Message!</strong> {{payout.errors.mesg}}</button>
 				</div>
-
-				<div class="modal-body text-center">
-					<div class="widget-account-invoice-one">
-
-						<div class="widget-heading">
-							<h5 class="">Wallet</h5>
-						</div>
-
-						<div class="widget-content">
-							<div class="invoice-box">
-
-
-							</div>
-						</div>
-
-					</div>
-					<!-- Images -->
-
-
+			</div>
+			<!--	Error MEssage-->
+		</div>
+		<div class="row">
+			<!--End Error Message -->
+			<div class="col-md-12" v-if="!getUserStripeAccount">
+				<div class="alert alert-light-danger mb-4" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
+					<strong>Alert!</strong> Complete your transfer account in order to enable automatic payouts.</button>
 				</div>
 			</div>
 		</div>
-	</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div v-if="payout.success.succuss" class="alert alert-success mb-4" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<i class="fa fa-times"></i>
+					</button>
+					<strong>Successfull </strong> {{payout.success.mesg}}</button>
+				</div>
+			</div>
+		</div>
 
-	<div class="layout-px-spacing">
 		<div class="row">
 			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="widget widget-card-four">
@@ -141,6 +117,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="widget widget-card-four">
 					<div class="widget-content">
@@ -152,6 +129,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="card">
 					<div class="card-body">
@@ -170,6 +148,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
 				<div class="card">
 					<div class="card-body">
@@ -189,17 +168,11 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="row">
-
 			<div class="col-md-6">
 				<div class="widget widget-table-two">
-
 					<div class="widget-heading">
-						<h5 class="">Cash Bonuses
-
-						</h5>
-
+						<h5 class="">Cash Bonuses</h5>
 					</div>
 					<div class="widget-content">
 						<div class="table-responsive">
@@ -260,35 +233,11 @@
 					</div>
 				</div>
 		   </div>
-	</div>
+	     </div>
     </div>
+        <!-- End Content -->
 
-<!--	<div v-else class="outer">-->
-<!--		<div class="form-form">-->
-<!--			<div class="form-form-wrap">-->
-<!--				<div class="form-container">-->
-<!--					<div class="form-content">-->
-<!--						<div class="user-meta text-center">-->
-<!--							<h4 class=""><strong>You Have only {{getPersonalSales.sales}} Personal Sales and {{getPersonalSales.booster}} Booster Packages</strong></h4>-->
-<!--							<h4 ><strong>Get-->
-<!--								<span v-if="getPersonalSales.sales == 0" class="text-dark">3</span>-->
-<!--								<span v-if="getPersonalSales.sales == 1" class="text-dark">2</span>-->
-<!--								<span v-if="getPersonalSales.sales == 2" class="text-dark">1</span>-->
-<!--								more to start receiving cash bonuses<br>-->
-<!--							</strong>-->
-<!--							</h4>-->
-<!--							<hr>-->
-<!--							<input type="text" class=" text-center form-control input-lg" :value="fetchLink.link">-->
-
-<!--							<br>-->
-<!--							<small>Use your Link</small>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
-</div>
+    </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';

@@ -1,53 +1,62 @@
 <template>
 
     <div id="content" class="main-content">
-        <div class="">
-            <div class="row">
+        <div class="layout-px-spacing">
+            <div class="row layout-top-spacing">
                 <div class="col-md-12">
+                    <nav class="breadcrumb-two" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Products</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
 
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-                        <div class="widget widget-table-three">
+            <div class="row ">
+                <div class="col-md-6  col-sm-12 col-lg-3 col-xl-3">
+                    <div class="card w-100">
 
-                            <div class="widget-heading">
-                                <h5 class="">Ebook</h5>
-                            </div>
+                        <div class="card-body text-center">
+                            <img src="@/assets/ebook.png" class="" width="45%">
+                        </div>
 
-                            <div class="widget-content">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th><div class="th-content">Product</div></th>
-                                            <th><div class="th-content th-heading">Price</div></th>
-                                            <th><div class="th-content">Source</div></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="">
-                                                         <img src="@/assets/ebook.png" alt="product" width="54px;">
-                                                         Ebooks
-                                                    </div>
-                                                </td>
-                                                <td><div class="td-content">
-                                                    <span class="pricing">$34.95</span></div>
-                                                </td>
-                                                <td>
-                                                    <div class="td-content">
-                                                        <button @click="downloadEbook()" class="btn btn-sm btn-primary">
-                                                            Download
-                                                        </button>
-                                                   </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Learn How to Stop Working</h5>
+                            <p class="card-text">Price: $34.95</p>
+                            <button @click="downloadEbook()" class="btn btn-sm btn-primary">
+                                Download
+                            </button>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-6  col-sm-12 col-lg-3 col-xl-3">
+                    <div class="card w-100">
 
+                        <div class="card-body text-center">
+                            <img src="@/assets/ebook.png" class="" width="45%">
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Advirtising Packages</h5>
+                            <p class="card-text">Price: $25.00</p>
+                            <small><a href="">Learn More</a></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6  col-sm-12 col-lg-3 col-xl-3">
+                    <div class="card w-100">
+
+                        <div class="card-body text-center">
+                            <img src="https://via.placeholder.com/400.png/fff?text=comingsoon"  width="200px">
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Anti Aging Formula</h5>
+                            <p class="card-text">Price: <i>Not Available</i></p>
+                            <small class="badge badge-danger">Coming Soon</small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,7 +89,7 @@
                         fileLink.click();
 
                     })
-            }
+            },
         }
     }
 </script>

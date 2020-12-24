@@ -394,7 +394,7 @@
             </div>
         </div>
         <div class="row layout-top-spacing">
-            <div class="col-md-6">
+            <div class="col-md-4">
                     <div class="card component-card_5">
                     <div class="card-body">
                             <div class="row text-center" v-if="getUserStripeAccount">
@@ -425,14 +425,13 @@
                         </div>
                     </div>
             </div>
-
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card component-card_5">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 text-center">
                                <p><img src="@/assets/transferwise.png"></p>
-                                <h5 class="pb-4">Verify your identity with stripe will enable automatic payout for supported debit card and bank account</h5>
+                                <h5>Verify your identity with stripe will enable automatic payout for supported debit card and bank account</h5>
                                 <a href="https://transferwise.com/invite/u/robertd2231">Go to TransferWise a create an account</a>
 <!--                                <small>Then add account email and currency here</small>-->
                             </div>
@@ -440,6 +439,26 @@
                         <div class="row text-center mt-3">
                             <div class="col-md-12">
                                 <button class="btn btn-primary btn-rounded" @click="showTransferWiseModal()">Add Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card component-card_5">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <p><img src="https://img.icons8.com/color/48/000000/bitcoin--v1.png"/></p>
+                                <h5>Add your Crypton Currency Wallet to recieve your cash bonus</h5>
+                                <span class="badge badge-danger">Coming Soon!</span>
+                                <br>
+                                <small>Please be patient this option will soon be available</small>
+                            </div>
+                        </div>
+                        <div class="row text-center mt-3">
+                            <div class="col-md-12">
+                                <button disabled="disabled" class="btn btn-primary btn-rounded" @click="showTransferWiseModal()">Add Account</button>
                             </div>
                         </div>
                     </div>
