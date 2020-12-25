@@ -76,11 +76,19 @@
 		<div class="row">
 			<!-- Error Messages	-->
 			<div class="col-md-12">
-				<div v-if="payout.errors.error" class="alert alert-danger mb-4" role="alert">
+				<div  v-show="error_alert" class="alert alert-danger mb-4" role="alert">
+					<strong>Error Message!</strong> {{message}}
+				</div>
+			</div>
+			<!--	Error MEssage-->
+
+			<!-- Error Messages	-->
+			<div class="col-md-12">
+				<div v-if="success_alert" class="alert alert-success mb-4" role="alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<i class="fa fa-times"></i>
 					</button>
-					<strong>Error Message!</strong> {{payout.errors.mesg}}</button>
+					<strong>Success!</strong> {{message}}</button>
 				</div>
 			</div>
 			<!--	Error MEssage-->
@@ -275,6 +283,8 @@ export default {
 				account_routing_number: ''
 			},
 			message: '',
+			error_alert: false,
+			success_alert: false,
 			payout: {
 
 				errors: {
@@ -352,36 +362,37 @@ export default {
 			this.$store.dispatch('TRANSFERWISE_FETCH_ACCOUNT')
 
 		},
+
 		request() {
 
 			this.isLoading = true;
+			this.error_alert = false;
+			this.success_alert = false;
 
 			let transfer = {
 				transfer: this.totalItem
 			}
-
 			this.$store.dispatch('TRANSFER_FUNDS', transfer)
 				.then( response => {
-					console.log(response)
 
-					this.success.success = true
-					this.payout.success.mesg = 'Withdraw was successful'
-					this.isLoading = false
+					// console.log('transfer_success', response.data)
+					this.message = 'Transfer was successful';
+					this.success_alert = true
 					this.init();
 					this.withdrawModal = !this.withdrawModal
-				})
-			.catch( error => {
-				console.log(error.response)
 
-				this.isLoading = false
-				this.withdrawModal = !this.withdrawModal
-				this.init()
-				this.payout.errors.error = true
-				// if (error.data) {
-				// 	this.payout.errors.mesg = 'Something wrong with your account information please contact administrator'
-				// }
+				}).catch( error => {
+					// console.log(error.response)
 
-				console.log(error.data)
+					if (error.response.data ) {
+						this.message = error.response.data.message
+					} else {
+						this.message = 'Something went wrong';
+					}
+
+					this.error_alert = true
+					this.withdrawModal = !this.withdrawModal
+					this.isLoading = false
 			})
 		},
 

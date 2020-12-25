@@ -159,7 +159,7 @@
                     var trans = this.getAllUserEscrows
                     let sum = 0;
                     for(let i = 0; i < trans.length; i++){
-                        if(trans[i].status == 'Available' && trans[i].user_status == true ) {
+                        if(trans[i].status == 'Available' && trans[i].stats.groupSales >= 12 ) {
                             sum += parseFloat(trans[i].payout);
                         }
                     }

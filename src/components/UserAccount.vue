@@ -11,15 +11,22 @@
         <b-modal v-model="bankmodal" modal-footer centered hide-footer="true" >
             <div class="row">
                 <div class="col-md-12">
-                    <h4>{{country}} Bank Account Information</h4>
+                    <h4> Bank Account Information</h4>
                     <hr>
+
+                    <div v-if="alerts.debit.isAlert" class="alert alert-danger mb-4" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        <strong>Card Error!</strong> {{alerts.debit.message}}.</button>
+                    </div>
+
                     <form>
 
                         <div class="form-group">
                             <ValidationProvider name="account_number" rules="required" v-slot="{ errors }">
-                                <label class="text-dark" v-if="country == 'US'">Routing Number:</label>
-                                <label class="text-dark" v-if="country == 'CA'">Sort Code:</label>
-                                <input type="text" v-model="bank.routing_number" class="form-control">
+                                <label for="">Routing Number</label>
+                                <input type="text" v-model="bank.routing_number"  placeholder="" class="form-control">
                                 <span class="text-danger">{{ errors[0] }}</span>
                             </ValidationProvider>
                         </div>
@@ -68,7 +75,7 @@
 
                         <div class="form-group">
                             <button class="btn btn-block btn-lg btn-primary" @click.prevent="saveBankInformation()">Submit</button>
-                            <button class="btn btn-block btn-lg btn-default" @click.prevent="cancel()">Cancel</button>
+                            <button class="btn btn-block btn-lg btn-default" @click.prevent="bankmodal = false">Cancel</button>
                         </div>
                     </form>
                 </div>
@@ -149,7 +156,7 @@
 
                         <div class="form-group">
                             <button class="btn btn-block btn-primary" @click.prevent="saveDebitCard()">Submit</button>
-                            <button class="btn btn-block btn-lg btn-default" @click.prevent="cancel()">Cancel</button>
+                            <button class="btn btn-block btn-lg btn-default" @click.prevent="cardmodal = false">Cancel</button>
                         </div>
 
                     </form>
@@ -158,91 +165,7 @@
         </b-modal>
 
         <!--  Debit Card Modal Popup -->
-        <div class="modal fade" id="debitCardModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="col-md-12">
-                            <h4>Debit Card Information</h4>
 
-                            <div v-if="alerts.debit.isAlert" class="alert alert-danger mb-4" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                                <strong>Card Error!</strong> {{alerts.debit.message}}.</button>
-                            </div>
-                            <hr>
-
-                            <form>
-                                <ValidationProvider name="name" rules="required" v-slot="{ errors }">
-                                    <div class="form-group">
-                                        <label class="text-dark">Card Holder Name</label>
-                                        <input type="text" v-model="debit.name" class="form-control">
-                                        <span class="text-danger">{{ errors[0] }}</span>
-                                    </div>
-                                </ValidationProvider>
-                                <ValidationProvider name="name" rules="required" v-slot="{ errors }">
-                                    <div class="form-group">
-                                        <label class="text-dark">Currency</label>
-                                        <select v-model="debit.currency" class="form-control">
-                                            <option value="usd">US</option>
-                                            <option value="can">CA</option>
-                                            <option value="gbp">GB</option>
-                                            <option value="sek">SE</option>
-                                            <option value="chf">CH</option>
-                                        </select>
-                                        <span class="text-danger">{{ errors[0] }}</span>
-                                    </div>
-                                </ValidationProvider>
-                                <ValidationProvider name="name" rules="required" v-slot="{ errors }">
-                                    <div class="form-group">
-                                        <label class="text-dark">Card Number</label>
-                                        <input type="text"  v-mask="'####-####-####-####'" v-model="debit.number" class="form-control">
-                                        <span class="text-danger">{{ errors[0] }}</span>
-                                    </div>
-                                </ValidationProvider>
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <ValidationProvider name="name" rules="required" v-slot="{ errors }">
-                                            <div class="form-group ">
-                                                <label class="text-dark">Expiry Date</label>
-                                                <input type="number" v-mask="'##'" v-model="debit.exp_month" class="form-control">
-                                                <span class="text-danger">{{ errors[0] }}</span>
-                                            </div>
-                                        </ValidationProvider>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <ValidationProvider name="name" rules="required" v-slot="{ errors }">
-                                            <div class="form-group">
-                                                <label class="text-dark">Expiry Year</label>
-                                                <input type="number" v-mask="'####'" v-model="debit.exp_year" class="form-control">
-                                                <span class="text-danger">{{ errors[0] }}</span>
-                                            </div>
-                                        </ValidationProvider>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <ValidationProvider name="name" rules="required" v-slot="{ errors }">
-                                            <div class="form-group">
-                                                <label class="text-dark">CVC</label>
-                                                <input type="text" v-model="debit.cvc" class="form-control">
-                                                <span class="text-danger">{{ errors[0] }}</span>
-                                            </div>
-                                        </ValidationProvider>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <button class="btn btn-block btn-primary" @click.prevent="saveDebitCard()">Submit</button>
-                                    <button class="btn btn-block btn-lg btn-default" @click.prevent="cancel()">Cancel</button>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!--  Debit Card Popup End -->
     </div>
 </template>
@@ -304,17 +227,21 @@
 
             saveBankInformation() {
 
-                this.bank.country = this.country
+                this.success_alert = false
+                this.error_alert = false
 
+                this.bank.country = this.country
                 this.$store.dispatch('ADD_USER_BANK', this.bank)
                     .then( response => {
-
                         this.init()
-                        this.cancel()
+                        this.bankmodal = false
                         console.log( response )
+                        this.success_alert = true
+
                     })
                     .catch( error => {
                         console.log(error)
+                        this.error_alert = true
                     })
             },
 
@@ -322,8 +249,8 @@
 
                 this.isLoading = true
 
-                this.alerts.debit.isALert = false
-                this.alerts.debit.message = ''
+                this.success_alert = false
+                this.error_alert = false
 
                 //TODO add loaifng
                 this.$store.dispatch('ADD_CUSTOMER_DEBIT', this.debit)
@@ -335,7 +262,8 @@
 
                         var msg = 'Card Added successfully';
                         this.showSweetAlert(msg)
-                        this.cancel()
+                        this.cardmodal = false
+
                     })
                     .catch( error => {
                         console.log(error.data)
@@ -343,6 +271,7 @@
 
                         this.alerts.debit.isAlert = true
                         this.alerts.debit.message = error.data.message
+                        this.cardmodal = false
                     })
             },
             init() {

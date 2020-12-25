@@ -398,6 +398,7 @@
                     <div class="card component-card_5">
                     <div class="card-body">
                             <div class="row text-center" v-if="getUserStripeAccount">
+
                                 <div class="col-md-12">
                                     <p><img src="https://img.icons8.com/color/48/000000/stripe.png"/></p>
                                     <h5 class="">{{getUserStripeAccount.name}}</h5>
@@ -475,10 +476,10 @@
                                 <div class="card-body">
                                     <div class="mt-5">
                                         <h5 class="">Add bank account or debit card</h5>
-                                        <h6 class="text-danger pb-2">Bank Transfer takes 1-3 business days while Debit Card Transfer takes up 30 mins </h6>
+                                        <h6 class="text-danger pb-2">Bank Transfer takes 2 business days</h6>
 
-                                        <button class="btn btn-primary mb-5" @click="modalBankAccount()"><i class="fa fa-plus"></i> Add Bank </button>
-                                        <button class="btn btn-primary mb-5 ml-1" @click="modalDebitCard()"><i class="fa fa-plus"></i> Add Debit Card <span class="badge badge-success">Recommended</span></button>
+                                        <button class="btn btn-primary mb-5" @click="modalBankAccount()"></i> Add Bank Account </button>
+                                        <button class="btn btn-primary mb-5 ml-1" @click="modalDebitCard()"></i> Add Debit Card <span class="badge badge-success">Recommended</span></button>
                                         <div class="row">
                                             <div class="col-md-3"></div>
                                             <div class="col-md-2">
@@ -826,11 +827,13 @@
             },
 
             modalBankAccount() {
-                this.bankmodal = !this.bankmodal
+                this.cardmodal = false
+                this.bankmodal = true
             },
 
             modalDebitCard() {
-               this.cardmodal = !this.cardmodal
+                this.bankmodal = false
+               this.cardmodal = true
             },
 
             showBankModal() {

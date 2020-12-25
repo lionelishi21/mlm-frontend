@@ -26,14 +26,12 @@ const actions = {
     },
 
     TRANSFER_FUNDS(context, params) {
-
         return new Promise( (resolve, reject) => {
             api.transferFunds(params)
                 .then( response => {
                     resolve(response)
                 })
                 .catch( error => {
-                    console.log(error.response)
                     reject(error)
                 })
         })

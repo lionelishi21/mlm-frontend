@@ -9,7 +9,6 @@
 
         <b-modal  v-model="showmodal" title="Payment" centered hide-footer="true">
             <card-payment @send-payment="acceptPayment"></card-payment>
-
         </b-modal>
 
 
@@ -162,6 +161,7 @@
                         $('#card_method').modal('hide')
                         this.isComplete = true
 
+                        this.showmodal = false
                         console.log(response)
 
                     }).catch( error => {
