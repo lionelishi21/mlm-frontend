@@ -47,6 +47,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div v-else class="card mt-5">
                         <div class="card-body">
                             <h3 class="mb-0">Order Complete!</h3>
