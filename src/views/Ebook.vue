@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="card-body">
-                            <h5 class="card-title">Advirtising Packages</h5>
+                            <h5 class="card-title">Advirtising Package</h5>
                             <p class="card-text">Price: $25.00</p>
                             <small><a href="">Learn More</a></small>
                         </div>

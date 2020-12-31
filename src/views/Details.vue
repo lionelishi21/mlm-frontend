@@ -89,21 +89,25 @@
 							</div>
 						</div>
 					</div>
-					<div class="row mt-5">
-						<div class="col-md-12">
+					<div class="card mt-3">
+						<div class="card-header">
 							<h5>Personal Sales</h5>
-							<hr>
 						</div>
-					</div>
-					<div class="row">
-						<a @click="replaceRoute(sale.affiliate_id)" class="card1 text-center" href="#" v-for="sale in getAffiliateDetails.personal_sales">
-							<h4>{{sale.purchaser_name}}</h4>
-							<div class="go-corner" href="#">
-								<div class="go-arrow">
-									→
+						<div class="card-body" style="max-height: 80vh; overflow-y: scroll;">
+							<div class="row">
+								<div class="col-md-12" v-for="sale in getAffiliateDetails.personal_sales">
+									<a @click="replaceRoute(sale.affiliate_id)" class="card1 text-center px-0" href="#" >
+										<h4>{{sale.purchaser_name}}</h4>
+										<div class="go-corner" href="#">
+											<div class="go-arrow">
+												→
+											</div>
+										</div>
+									</a>
 								</div>
+
 							</div>
-						</a>
+						</div>
 					</div>
 				</div>
 

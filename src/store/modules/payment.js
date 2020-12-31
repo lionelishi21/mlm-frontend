@@ -70,7 +70,7 @@ const actions = {
                      resolve(response.data)
                  })
                  .catch( error => {
-                     console.log(error)
+                     console.log(error.response)
                      reject(error)
                  })
         })

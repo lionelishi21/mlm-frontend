@@ -172,6 +172,7 @@ export default {
 		...mapGetters([
 			'getAffiliates'
 		]),
+
 		rows() {
 			return this.getAffiliates.response.length
 		}
@@ -180,6 +181,7 @@ export default {
 	created() {
 		this.init()
 	},
+
 	methods: {
 
 		init() {
