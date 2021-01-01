@@ -62,189 +62,200 @@
         <!-- Content Start Here -->
 	    <div class="layout-px-spacing">
 
-		<div class="row layout-top-spacing">
-			<div class="col-md-12">
-				<nav class="breadcrumb-two" aria-label="breadcrumb">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-						<li class="breadcrumb-item active"><a href="javascript:void(0);">Wallet</a></li>
-					</ol>
-				</nav>
+			<div class="row layout-top-spacing">
+				<div class="col-md-12">
+					<nav class="breadcrumb-two" aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+							<li class="breadcrumb-item active"><a href="javascript:void(0);">Wallet</a></li>
+						</ol>
+					</nav>
+				</div>
 			</div>
-		</div>
 
-		<div class="row">
-			<!-- Error Messages	-->
-			<div class="col-md-12">
-				<div  v-show="error_alert" class="alert alert-danger mb-4" role="alert">
-					<strong>Error Message!</strong> {{message}}
+			<div class="row">
+				<!-- Error Messages	-->
+				<div class="col-md-12">
+					<div  v-show="error_alert" class="alert alert-danger mb-4" role="alert">
+						<strong>Error Message!</strong> {{message}}
+					</div>
 				</div>
-			</div>
-			<!--	Error MEssage-->
+				<!--	Error MEssage-->
 
-			<!-- Error Messages	-->
-			<div class="col-md-12">
-				<div v-if="success_alert" class="alert alert-success mb-4" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<i class="fa fa-times"></i>
-					</button>
-					<strong>Success!</strong> {{message}}</button>
+				<!-- Error Messages	-->
+				<div class="col-md-12">
+					<div v-if="success_alert" class="alert alert-success mb-4" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<i class="fa fa-times"></i>
+						</button>
+						<strong>Success!</strong> {{message}}</button>
+					</div>
+				</div>
+				<!--	Error MEssage-->
+			</div>
+			<div class="row">
+				<!--End Error Message -->
+				<div class="col-md-12" v-if="!getUserStripeAccount">
+					<div class="alert alert-light-danger mb-4" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
+						<strong>Alert!</strong> Complete your transfer account in order to enable automatic payouts.</button>
+					</div>
 				</div>
 			</div>
-			<!--	Error MEssage-->
-		</div>
-		<div class="row">
-			<!--End Error Message -->
-			<div class="col-md-12" v-if="!getUserStripeAccount">
-				<div class="alert alert-light-danger mb-4" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><svg> ... </svg></button>
-					<strong>Alert!</strong> Complete your transfer account in order to enable automatic payouts.</button>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div v-if="payout.success.succuss" class="alert alert-success mb-4" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<i class="fa fa-times"></i>
-					</button>
-					<strong>Successfull </strong> {{payout.success.mesg}}</button>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-				<div class="widget widget-card-four">
-					<div class="widget-content">
-						<div class="text-center mt-4">
-							<h1 class="value text-success">{{totalItem | currency }}</h1>
-							<h6 class="text-6 text-bold">Wallet</h6>
-							<small class="test-dark">Availble cash bonus</small>
-						</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div v-if="payout.success.succuss" class="alert alert-success mb-4" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<i class="fa fa-times"></i>
+						</button>
+						<strong>Successfull </strong> {{payout.success.mesg}}</button>
 					</div>
 				</div>
 			</div>
 
-			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-				<div class="widget widget-card-four">
-					<div class="widget-content">
-						<div class="text-center mt-4">
-							<h1 class="value text-success">{{ payoutTotal | currency }}</h1>
-							<h6 class="text-6 text-bold">Paid Out</h6>
-							<small class="text-dark">The total paid out</small>
+			<div class="row">
+				<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+					<div class="widget widget-card-four">
+						<div class="widget-content">
+							<div class="text-center mt-4">
+								<h1 class="value text-success">{{totalItem | currency }}</h1>
+								<h6 class="text-6 text-bold">Wallet</h6>
+								<small class="test-dark">Availble cash bonus</small>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-				<div class="card">
-					<div class="card-body">
-						<div class="text-center" v-if="getUserStripeAccount">
-							<h6>Payout Account</h6>
-							<h5 class="pt-3">{{getUserStripeAccount.name}}</h5>
-							<p>Country: {{getUserStripeAccount.country}}</p>
-							<span class="badge badge-danger text-3" v-if="getUserStripeAccount.transfer  == 'inactive'">{{getUserStripeAccount.transfer}}</span>
-							<span class="badge badge-success text-3" v-else>{{getUserStripeAccount.transfer}}</span>
-						</div>
-						<div class="text-center" v-else>
-							<h4>Payout Account</h4>
-							<h6 class="pt-3">No Payout Account</h6>
-							<button class="btn btn-primary" @click="addAccount()">Add Account</button>
+				<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+					<div class="widget widget-card-four">
+						<div class="widget-content">
+							<div class="text-center mt-4">
+								<h1 class="value text-success">{{ payoutTotal | currency }}</h1>
+								<h6 class="text-6 text-bold">Paid Out</h6>
+								<small class="text-dark">The total paid out</small>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
-				<div class="card">
-					<div class="card-body">
-						<div class="text-center" v-if="transferwiseAccount">
-							<h6>Payout Account</h6>
-							<h5 class="pt-1">TransferWise</h5>
-							<p>Email: {{transferwiseAccount.email}}</p>
-							<span class="badge badge-primary mt-1 text-3">Currency: {{transferwiseAccount.currency}}</span>
-						</div>
-						<div class="text-center" v-else>
-							<h4>Payout Account</h4>
-							<h6 class="pt-3">No International Payout Account</h6>
-							<br>
-							<button class="btn btn-primary" @click="addAccount()">Add Account</button>
+				<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+					<div class="card">
+						<div class="card-body">
+							<div class="text-center" v-if="getUserStripeAccount">
+								<h6>Payout Account</h6>
+								<h5 class="pt-3">{{getUserStripeAccount.name}}</h5>
+								<p>Country: {{getUserStripeAccount.country}}</p>
+								<span class="badge badge-danger text-3" v-if="getUserStripeAccount.transfer  == 'inactive'">{{getUserStripeAccount.transfer}}</span>
+								<span class="badge badge-success text-3" v-else>{{getUserStripeAccount.transfer}}</span>
+							</div>
+							<div class="text-center" v-else>
+								<h4>Payout Account</h4>
+								<h6 class="pt-3">No Payout Account</h6>
+								<button class="btn btn-primary" @click="addAccount()">Add Account</button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6">
-				<div class="widget widget-table-two">
-					<div class="widget-heading">
-						<h5 class="">Cash Bonuses</h5>
-					</div>
-					<div class="widget-content">
-						<div class="table-responsive">
-							<table class="table">
-								<thead>
-								<tr>
-									<th><div class="th-content">Available On</div></th>
-									<th><div class="th-content">Status</div></th>
-									<th><div class="th-content">Group Sales</div></th>
-									<th><div class="th-content th-heading">Cash Bonus</div></th>
-									<th><div class="th-content">Payout</div></th>
-								</tr>
-								</thead>
-								<tbody>
-								<tr v-for="cash in escrow">
-									<td><div class="td-content customer-name">{{cash.created_at}}</div></td>
-									<td><div class="td-content product-brand">{{cash.tier}}</div></td>
-									<td><div class="td-content">{{cash.sales}}</div></td>
-									<td><div class="td-content pricing"><span class="">{{cash.cash_bonus | currency}}</span></div></td>
-									<td><div class="td-content"><span>{{cash.status}}</span></div></td>
-									<!--										<td><div class="td-content">{{cash.status}}</div></td>-->
-								</tr>
-								</tbody>
-							</table>
-							<div class="row">
-								<div class="col-md-12">
-									<button class="btn btn-success mb-3 btn-lg pull-right btn-block" @click="payoutModal()">Withdraw</button>
-								</div>
+
+				<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+					<div class="card">
+						<div class="card-body">
+							<div class="text-center" v-if="transferwiseAccount">
+								<h6>Payout Account</h6>
+								<h5 class="pt-1">TransferWise</h5>
+								<p>Email: {{transferwiseAccount.email}}</p>
+								<span class="badge badge-primary mt-1 text-3">Currency: {{transferwiseAccount.currency}}</span>
+							</div>
+							<div class="text-center" v-else>
+								<h4>Payout Account</h4>
+								<h6 class="pt-3">No International Payout Account</h6>
+								<br>
+								<button class="btn btn-primary" @click="addAccount()">Add Account</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
-				<div class="widget widget-table-one">
-					<div class="widget-heading">
-						<h5 class="">Transactions</h5>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="widget widget-table-two">
+						<div class="widget-heading">
+							<h5 class="">Cash Bonuses</h5>
+						</div>
+						<div class="widget-content">
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+									<tr>
+										<th><div class="th-content">Available On</div></th>
+										<th><div class="th-content">Status</div></th>
+										<th><div class="th-content">Group Sales</div></th>
+										<th><div class="th-content th-heading">Cash Bonus</div></th>
+										<th><div class="th-content">Payout</div></th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr v-for="cash in escrow">
+										<td><div class="td-content customer-name">{{cash.created_at}}</div></td>
+										<td><div class="td-content product-brand">{{cash.tier}}</div></td>
+										<td><div class="td-content">{{cash.sales}}</div></td>
+										<td><div class="td-content pricing"><span class="">{{cash.cash_bonus | currency}}</span></div></td>
+										<td><div class="td-content"><span>{{cash.status}}</span></div></td>
+										<!--										<td><div class="td-content">{{cash.status}}</div></td>-->
+									</tr>
+									</tbody>
+								</table>
+								<div class="row">
+									<div class="col-md-12">
+										<button class="btn btn-success mb-3 btn-lg pull-right btn-block" @click="payoutModal()">Withdraw</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="widget-content">
-						<div class="transactions-list" v-for="trans in getTransactions">
-							<div class="t-item">
-								<div class="t-company-name">
-									<div class="t-icon">
-										<div class="avatar avatar-xl">
-											<span class="avatar-title rounded-circle">SP</span>
+				</div>
+				<div class="col-md-6">
+					<div class="widget widget-table-one">
+						<div class="widget-heading">
+							<h5 class="">Transactions</h5>
+						</div>
+						<div class="widget-content">
+							<div class="transactions-list" v-for="trans in getTransactions">
+								<div class="t-item">
+									<div class="t-company-name">
+										<div class="t-icon">
+											<div class="avatar avatar-xl">
+												<span class="avatar-title rounded-circle">SP</span>
+											</div>
+										</div>
+										<div class="t-name">
+											<h4>{{trans.type}}</h4>
+											<p class="meta-date">{{trans.created_at}}</p>
 										</div>
 									</div>
-									<div class="t-name">
-										<h4>{{trans.type}}</h4>
-										<p class="meta-date">{{trans.created_at}}</p>
+									<div class="t-rate rate-inc">
+										<p><span>+{{trans.amount}}</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></p>
 									</div>
-								</div>
-								<div class="t-rate rate-inc">
-									<p><span>+{{trans.amount}}</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></p>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-		   </div>
-	     </div>
-    </div>
-        <!-- End Content -->
+			   </div>
+			 </div>
+       </div>
 
+        <!-- End Content -->
+		<div class="footer-wrapper">
+
+			<div class="footer-section f-section-1">
+				<p class="">Copyright © 2021 <a target="_blank" href="https://designreset.com">Lionel Francis</a>, All rights reserved.</p>
+			</div>
+
+			<div class="footer-section f-section-2">
+				<p class="">Coded with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></p>
+			</div>
+
+		</div>
     </div>
 </template>
 <script>

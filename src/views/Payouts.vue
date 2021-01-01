@@ -1,52 +1,46 @@
 <template>
     <!--  BEGIN CONTENT AREA  -->
     <div id="content" class="main-content">
-        <loading :active.sync="isLoading"
-                 :can-cancel="false"
-                 :is-full-page="fullPage"></loading>
-
+        <loading :active.sync="isLoading" :can-cancel="false" :is-full-page="fullPage"></loading>
         <b-modal v-model="removemodal" hide-footer>
-            <div class="row text-center layout-spacing">
-                <div class="col-md-12 ">
-                    <h3>Remove Payout?</h3>
-                    <h5>Are you sure you want to remove this payout?</h5>
-                    <button class="btn btn-default" @click="removemodal = !removemodal">Cancel</button>
-                    <button class="btn btn-primary" @click="deletePayout()">Yes</button>
-                </div>
-            </div>
-        </b-modal>
-
+    <div class="row text-center layout-spacing">
+        <div class="col-md-12 ">
+            <h3>Remove Payout?</h3>
+            <h5>Are you sure you want to remove this payout?</h5>
+            <button class="btn btn-default" @click="removemodal = !removemodal">Cancel</button>
+            <button class="btn btn-primary" @click="deletePayout()">Yes</button>
+        </div>
+    </div>
+</b-modal>
         <b-modal v-model="payoutOutModal" hide-footer>
-            <div class="row text-center">
-                <div class="col-md-12">
-                    <h3>Manual Payout</h3>
-                    <h5>Are you sure about this payout?</h5>
-                    <p>What method did you use?</p>
+    <div class="row text-center">
+        <div class="col-md-12">
+            <h3>Manual Payout</h3>
+            <h5>Are you sure about this payout?</h5>
+            <p>What method did you use?</p>
 
-                    <select v-model="form.method" class="form-control">
-                        <option value="">Select</option>
-                        <option value="wired">Wire Transfer</option>
-                        <option value="paypal">PayPal</option>
-                        <option value="western union">Western Union</option>
-                        <option value="moneygram">Money Gram</option>
-                        <option value="check">Check</option>
-                    </select>
+            <select v-model="form.method" class="form-control">
+                <option value="">Select</option>
+                <option value="wired">Wire Transfer</option>
+                <option value="paypal">PayPal</option>
+                <option value="western union">Western Union</option>
+                <option value="moneygram">Money Gram</option>
+                <option value="check">Check</option>
+            </select>
 
-                    <hr>
-                    <button class="btn btn-default" @click="payoutOutModal = !payoutOutModal">Cancel</button>
-                    <button class="btn btn-primary" @click="manualPayout()">Confirm</button>
-                </div>
-            </div>
-        </b-modal>
+            <hr>
+            <button class="btn btn-default" @click="payoutOutModal = !payoutOutModal">Cancel</button>
+            <button class="btn btn-primary" @click="manualPayout()">Confirm</button>
+        </div>
+    </div>
+</b-modal>
 
         <div class="layout-px-spacing">
-
             <div class="row layout-top-spacing mb-3">
                 <div class="col-md-12">
                     <h6><i>Affliates Payouts</i></h6>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
                     <div class="widget widget-card-four">
@@ -78,8 +72,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -113,6 +105,9 @@
             </div>
         </div>
     </div>
+
+
+
 </template>
 
 <script>
