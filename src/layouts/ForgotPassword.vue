@@ -14,6 +14,9 @@
 
                         <h1 class="">Password Recovery</h1>
                         <p class="signup-link recovery">Enter your email and instructions be will emailed to you!</p>
+                        <div class="row" v-show="complete">
+                            <span class="alert alert-success" ><h6> Success Message! Password reset link has been sent to your email. Please check your email for further instructions</h6></span>
+                        </div>
                         <ValidationObserver ref="observer" v-slot="{ invalid }">
                             <form @submit.prevent="sendLink(user)">
                             <div class="form">
@@ -31,7 +34,10 @@
 
                                     <div class="field-wrapper">
                                         <button type="submit" class="btn btn-primary" value="">Send</button>
+                                        <hr>
+                                        <a href="/">Go to login</a>
                                     </div>
+
                                 </div>
 
                             </div>
@@ -93,6 +99,8 @@
         methods: {
 
             sendLink(user) {
+
+                this.complete = false
 
                 this.error.message = ''
                 this.isLoading = true

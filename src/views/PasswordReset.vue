@@ -15,7 +15,7 @@
 
                         <h1 class="">Reset your password</h1>
                         <ValidationObserver ref="observer" v-slot="{ invalid }">
-                            <form @submit.prevent="password(user)"
+                            <form @submit.prevent="password(user)">
                                 <div class="form">
 
                                     <div class="form-group mb-3">
